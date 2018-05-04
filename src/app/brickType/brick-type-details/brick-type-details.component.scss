@@ -1,0 +1,29 @@
+
+.brick-type-form {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    align-items: stretch;
+    mat-input-container {
+        width: 100%;
+    }
+    button {
+        width: 50%;
+    }
+}
+
+.button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.button-container button{
+    //width: 150px;
+    margin: 5px;
+}
+
+
+
+

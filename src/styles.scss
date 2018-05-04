@@ -1,0 +1,343 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
+
+@import './custom-theme.scss';
+ 
+html{
+    height: 100%;
+    // //background: #a2c7dd;
+    // background: url(images/360302.png) repeat-y;
+    // -moz-background-size: 100%; /* Firefox 3.6+ */
+    // -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+    // -o-background-size: 100%; /* Opera 9.6+ */
+    // background-size: 100%; /* Современные браузеры */
+}
+body {
+    height: 100%;
+    font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+    ///background: #ffffff;
+    padding: 0;
+    margin: 0;
+
+    color: #ffffff;
+    label, span, h1, h2, h3, h4, h5, a{
+        color: #ffffff;
+    }
+}
+// =-========================== Mat-Card ==========================
+.mat-card {
+    background: rgba(34, 34, 34, 0.712);
+    color: white;
+    label, span{
+        color: #ffffff;
+    }
+}
+.mat-dialog-container, .mat-select-content{
+    background: #a2c7dd;
+    //background: #8aa0ad;
+    color: white;
+    label, span{
+        color: #ffffff;
+    }
+}
+.my-card{
+    background: rgba(34, 34, 34, 0.712);
+    color: white;
+    label, span{
+        color: #ffffff;
+    }
+    padding: 3px;
+}
+
+// ==================================== LIST WITH SMALL COLOR brick =============================
+.small-brick-type {
+    margin: 14px 25px;
+    width: 30px;
+    height: 20px;
+    box-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.color-list-option{
+    display: flex;
+    justify-content: left;
+}
+p{
+    margin: 0;
+    padding: 0;
+}
+
+// ===================================  TITLE IN HEADED ========================
+h1{
+    font-size: 60px;
+    margin: 10px 0;
+    font-weight: 700;
+}
+h2{
+    font-size: 36px;
+    margin: 10px 0;
+    font-weight: 700;
+}
+h3{
+    font-size: 24px;
+    font-weight: 700;
+}
+h4{
+    font-size: 18px;
+    font-weight: 700;
+}
+h5 {
+    font-size: 16px;
+    font-weight: 700;
+}
+.title-container{
+    margin: 14px 0px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.title-page-container{
+    font-size: 28px;
+    margin: 14px 0px;
+    text-align: center;
+    font-weight: bold;
+}
+.title-header{
+     max-width: 960px;
+    min-width: 430px;
+    margin: auto;
+}
+
+//======================================= TOOLTIP ======================================
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    // ON THE TOP 
+    // bottom: 100%;
+    // left: 50%;
+    // margin-left: -60px;
+    
+    // ON THE RIGHT
+    left: 105%;
+    top: 40px;
+    
+    /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 100%; /* To the left of the tooltip */
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+
+// =========================== TEXT SHADOW ======================================
+.text-shadow{
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+// -======================= PARTICLE JS ===================
+canvas{ display: block; vertical-align: bottom; } 
+.calendar{
+    position: relative;
+    z-index: 2;
+}
+/* ---- particles.js container ---- */ 
+#particles-js
+{ 
+    position: fixed;
+    top: 0px;
+    left: 0px; 
+    z-index: 1;
+    width: 100%; 
+    height: 100%; 
+    //background-color:  #573537; 
+    background-image: url(""); 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: 50% 50%; 
+} 
+/* ---- stats.js ---- */ 
+.count-particles{ 
+    background: #000022;
+    position: absolute; 
+    top: 48px; 
+    left: 0; 
+    width: 80px; 
+    color: #13E8E9; 
+    font-size: .8em; 
+    text-align: left; 
+    text-indent: 4px; 
+    line-height: 14px; 
+    padding-bottom: 2px; 
+    font-family: Helvetica, Arial, sans-serif; 
+    font-weight: bold; 
+} 
+.js-count-particles{ 
+    font-size: 1.1em; 
+} 
+#stats, .count-particles
+{ 
+    -webkit-user-select: none; 
+    margin-top: 5px; 
+    margin-left: 5px; 
+} 
+#stats
+{ 
+    border-radius: 3px 3px 0 0; 
+    overflow: hidden; 
+} 
+.count-particles{ 
+    border-radius: 0 0 3px 3px; 
+}
+// ================================ HEXAGON ======================
+.hexagon { 
+    margin: 50px 15px;
+    width: 260px; 
+    height: 150px; 
+    //background: linear-gradient(to top, #966e00, #ebbe2a);
+    position: relative; 
+} 
+.hexagon:before { 
+   content: ""; 
+   position: absolute; 
+   top: -75px; 
+   left: 0; 
+   width: 0; 
+   height: 0; 
+   border-left: 130px solid transparent; 
+   border-right: 130px solid transparent; 
+   //border-bottom: 75px solid #ebbe2a; 
+} 
+.hexagon:after { 
+   content: ""; 
+   position: absolute; 
+   bottom: -75px; 
+   left: 0; 
+   width: 0; 
+   height: 0; 
+   border-left: 130px solid transparent; 
+   border-right: 130px solid transparent; 
+   //border-top: 75px solid  #966e00; 
+}
+
+.category-family{
+    //background: linear-gradient(45deg, #ebbe2a, #966e00);
+    background: linear-gradient(0deg, #966e00, #ebbe2a);
+}
+.category-family:before{
+    border-bottom: 75px solid #ebbe2a; 
+}
+.category-family:after{
+    border-top: 75px solid  #966e00; 
+}
+
+.category-health{
+    background: linear-gradient(0deg, #007f96, #1cdafc);;
+}
+.category-health:before{
+    border-bottom: 75px solid #1cdafc; 
+}
+.category-health:after{
+    border-top: 75px solid  #007f96; 
+}
+
+
+.category-hobby{
+    background: linear-gradient(0deg, #009669, #26ffbe);;
+}
+.category-hobby:before{
+    border-bottom: 75px solid #26ffbe; 
+}
+.category-hobby:after{
+    border-top: 75px solid  #009669; 
+}
+
+
+.category-sport{
+    background: linear-gradient(0deg, #3809b8, #8257f8);;
+}
+.category-sport:before{
+    border-bottom: 75px solid #8257f8; 
+}
+.category-sport:after{
+    border-top: 75px solid  #3809b8; 
+}
+
+
+.category-frends{
+    background: linear-gradient(0deg, #21a500, #5cff33);;
+}
+.category-frends:before{
+    border-bottom: 75px solid #5cff33; 
+}
+.category-frends:after{
+    border-top: 75px solid  #21a500; 
+}
+
+
+.category-business{
+    background: linear-gradient(0deg, #96008e, #ff35f5);;
+}
+.category-business:before{
+    border-bottom: 75px solid #ff35f5; 
+}
+.category-business:after{
+    border-top: 75px solid  #96008e; 
+}
+
+
+.category-selfmind{
+    background: linear-gradient(0deg, #960000, #ff3d3d);;
+}
+.category-selfmind:before{
+    border-bottom: 75px solid #ff3d3d; 
+}
+.category-selfmind:after{
+    border-top: 75px solid  #960000; 
+}
+
+
+.category-relax{
+    background: linear-gradient(0deg, #6f700d, #a0a12f);;
+}
+.category-relax:before{
+    border-bottom: 75px solid #a0a12f; 
+}
+.category-relax:after{
+    border-top: 75px solid  #6f700d; 
+}
+
+
+.category-own{
+    background: linear-gradient(0deg, #444444, #7c7c7c);;
+}
+.category-own:before{
+    border-bottom: 75px solid #7c7c7c; 
+}
+.category-own:after{
+    border-top: 75px solid  #444444; 
+}

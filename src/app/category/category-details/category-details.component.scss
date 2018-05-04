@@ -1,0 +1,44 @@
+
+.category-form {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    //flex-wrap: wrap;
+    align-items: stretch;
+    mat-input-container {
+        width: 100%;
+    }
+    button {
+        width: 50%;
+    }
+    .second-col, .first-col{
+        width: 100%;
+        display: flex;
+    }
+    .first-col{
+        display: flex;
+        justify-content: space-between;        
+        mat-input-container {
+            width: 45%;
+            box-sizing: border-box;
+            input{
+                height: 23px;
+            }
+        }
+    }
+}
+// .mat-input-wrapper{
+//     height: 100px!important;
+// }
+.button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.button-container button{
+    //width: 150px;
+    margin: 5px;
+}
+

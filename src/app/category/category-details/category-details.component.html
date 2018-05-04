@@ -1,0 +1,33 @@
+
+
+
+<form [formGroup]="categoryDetailsForm" class="category-form" >
+    <div class="first-col">
+        <mat-input-container>
+            <input matInput required placeholder="Name" formControlName="name">
+        </mat-input-container>
+
+        <mat-input-container>
+            <input type="color" matInput required placeholder="Color" formControlName="color">
+        </mat-input-container>
+    </div>
+  
+    <div class="second-col">
+        <mat-input-container>
+            <textarea matInput placeholder="Description" formControlName="description" rows="3"></textarea>
+        </mat-input-container>
+    </div>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" 
+              [disabled]='categoryDetailsForm.invalid'
+              (click)="createCategory()">Добавить</button>
+      <button mat-raised-button color="primary" 
+              *ngIf="category && category._id"
+              [disabled]='categoryDetailsForm.invalid'
+              (click)="updateCategory()">Сохранить</button>
+      <button mat-raised-button color="warn" 
+              *ngIf="category && category._id"
+              (click)="deleteCategory()">Удалить</button>
+    </div>
+</form>

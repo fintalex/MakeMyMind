@@ -1,0 +1,39 @@
+
+  <form [formGroup]="brickTypeDetailsForm" class="brick-type-form" >
+    <mat-input-container>
+      <input matInput required placeholder="Name" formControlName="name">
+    </mat-input-container>
+
+    <mat-form-field>
+      <mat-select placeholder="Category" matInput required formControlName="category">
+        <mat-option *ngFor="let category of categoriesList"
+                    [value]="category._id">
+          <div class="color-list-option">
+            <div class="small-brick-type" [ngStyle]="{'background-color':category.color}"></div>
+            <div>{{ category.name }}</div>   
+          </div>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-input-container>
+      <input type="sign" matInput required placeholder="Sign" formControlName="sign">
+    </mat-input-container>
+  
+    <mat-input-container>
+      <textarea matInput placeholder="Description" formControlName="ruleDescription"></textarea>
+    </mat-input-container>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" 
+              [disabled]='brickTypeDetailsForm.invalid'
+              (click)="createBrickType()">Добавить</button>
+      <button mat-raised-button color="primary" 
+              *ngIf="brickType && brickType._id"
+              [disabled]='brickTypeDetailsForm.invalid'
+              (click)="updateBrickType()">Сохранить</button>
+      <button mat-raised-button color="warn" 
+              *ngIf="brickType && brickType._id"
+              (click)="deleteBrickType()">Удалить</button>
+    </div>
+  </form>

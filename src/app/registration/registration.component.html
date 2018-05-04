@@ -1,0 +1,16 @@
+<mat-card class="registration">
+  <form [formGroup]="regForm" novalidate (submit)="reg()">
+          <mat-input-container>
+              <input type="text" matInput placeholder="Username" formControlName="username">
+          </mat-input-container>
+          <mat-input-container>
+              <input type="password" matInput placeholder="Password" formControlName="password">
+          </mat-input-container>
+          <mat-input-container>
+              <input type="nickname" matInput placeholder="Nickname" formControlName="nickname">
+          </mat-input-container>
+
+          <button mat-raised-button color="primary" [disabled]="regForm.invalid">Зарегистрироваться</button>
+         
+  </form>
+</mat-card>

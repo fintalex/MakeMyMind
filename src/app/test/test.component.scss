@@ -1,0 +1,648 @@
+//=========================leson 1==================================
+
+// .item{
+//     //height: 100px;
+//     width: 100px;
+//     background: red;
+//     margin: 5px;
+//     //align-self: stretch;
+// }
+
+// .container{
+//     //width: 600px;
+//     display: flex; 
+//     //flex-direction: column; // row
+//     flex-wrap: wrap; // nowrap
+//     justify-content: center;
+//     align-items: flex-start;
+//     height: 600px;
+//     background: grey;
+// }
+
+// .first{
+//     align-self: stretch;
+// }
+
+//=========================leson 2==================================
+// .container{
+//     width: 100%;
+//     max-width: 960px;
+//     margin:  0 auto;
+//     background: grey;
+//     display: flex;
+//     flex-wrap: wrap;
+// }
+
+// .block-first{
+//     background: black;
+//     min-height: 430px;
+//     font-size: 40px;
+//     color: white;
+//     flex: auto;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+
+// .container-right{
+//     background: rgb(0, 204, 255);
+//     margin-left: 30px;
+//     display: flex;
+//     flex: 0 0 220px;
+//     flex-direction: column;
+// }
+
+// .block-item{
+//     background: rgb(159, 255, 135);
+//     font-size: 40px;
+//     min-height: 200px;
+//     flex: auto;
+//     display: flex;
+//     justify-content: center;
+//     margin-bottom: 30px;
+//     align-items: center;
+// }
+
+// .block-item:last-child{
+//     margin-bottom: 0;
+// }
+//=========================leson 3==================================
+// .top{
+//     background: black;
+//     width: 100%;
+//     max-width: 960px;
+//     min-width: 460px;
+//     min-height: 100px;
+//     margin: 0 auto 40px;
+// }
+
+// .grid{
+//     width: 100%;
+//     max-width: 960px;
+//     min-width: 460px;
+//     margin: 0 auto;
+//     padding: 0 30px;
+//     display: flex;
+//     flex-wrap: wrap;
+//     box-sizing: border-box;    
+// }
+
+// .grid-item{
+//     background: black;
+//     min-height: 200px;
+//     font-size: 40px;
+//     color: white;
+//     margin: 0 10px 20px;
+//     flex: 1 1 calc(33.33% - 20px);
+//     //width: 30%;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+//=========================leson 4==================================
+// .body{
+//     margin: 0;
+//     padding: 0 15px;
+//     display: flex;
+//     flex-direction: column;
+//     flex: auto;
+// }
+
+// a{
+//     color: #fff;
+//     text-decoration: underline;
+// }
+
+// a:hover{
+//     text-decoration: none;
+// }
+
+// img{
+//     border: 0;
+// }
+
+// h1{
+//     margin-top: 0;
+// }
+
+// .header{
+//     width: 100%;
+//     max-width: 960px;
+//     min-width: 430px;
+//     margin: 0 auto 30px;
+//     padding: 30px 0 10px;
+//     display: flex;
+//     flex-wrap: wrap;
+//     align-items: flex-end;
+//     justify-content: space-between;
+//     box-sizing: border-box;
+// }
+// .logo{
+//     background: black;
+//     width: 200px;
+//     height: 80px;
+//     font-size: 0;
+//     margin: 0 10px 10px 0;
+//     display: flex;
+//     flex: none;
+//     align-items: center;
+// }
+// .nav{
+//     margin: -5px 0 10px -15px;
+//     display: flex;
+//     flex-wrap: wrap;
+// }
+// .nav-itm{
+//     background: black;
+//     width: 130px;
+//     height: 50px;
+//     font-size: 1.5rem;
+//     color: #fff;
+//     text-decoration: none;
+//     text-align:  center;
+//     margin: 5px 0 0 15px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+
+// .main{
+//     width: 100%;
+//     min-width: 430px;
+//     max-width: 960px;
+//     margin: auto;
+//     flex: auto;
+//     box-sizing: border-box;
+// }
+
+// .fline{
+//     background: #000;
+//     width: 70%;
+//     min-height: 80px;
+//     margin:  0 0 30px 30px;
+// }
+
+// .sline{
+//     background: #000;
+//     width: 80%;
+//     min-height: 80px;
+//     margin:  0 0 30px 30px;
+// }
+// .grid{
+//     display: flex;
+//     justify-content: space-between;
+//     flex-wrap: wrap;
+// }
+// .grid-itm{
+//     margin-bottom: 30px;
+//     flex: 0 1 calc(25% - 30px *3/4);
+// }
+// .grid-img{
+//     width: 100%;
+//     height: auto;
+//     display: block;
+//     margin-bottom: 30px;
+// }
+// .sqr{
+//     width: 200px;
+//     height: 200px;
+//     background: black;
+// }
+
+// @media screen and (max-width: 800px){
+//     .grid-itm{
+//         flex: 0 1 calc(50% - 30px / 2);
+//     }
+// }
+
+// @media screen and (max-width: 600px){
+//     .grid-itm{
+//         flex: 0 1 100%;
+//     }
+// }
+//=========================leson 5==================================
+
+// .main{
+//     height: 500px;
+//     max-width: 1000px;
+//     margin: 0 auto;
+//     border: 1px solid black;
+//     display: flex;
+//     justify-content: center;
+//     align-items: stretch;
+//     flex-flow: row wrap;
+//     align-content: stretch;
+// }
+
+// .bl{
+//     border: 1px solid red;
+//     background: rgb(125, 224, 248);
+//     margin: 20px;
+//     padding: 10px;
+//     // flex-basis: 100px;
+//     // flex-grow: 0;
+//     // flex-shrink: 1;
+//     flex: 0 1 200px;
+// }
+
+// //  .fl1{flex-grow: 3}
+// //  .fl2{flex-grow: 2}
+// // .fl3{line-height: 17px}
+// // .fl4{line-height: 18px}
+// // .fl5{line-height: 15px}
+// // .fl6{line-height: 25px}
+
+//=========================leson 6==================================
+// .body{
+//     background: #fff;
+//     min-height: 100%;
+//     display: flex;
+//     flex-direction: column;
+//     margin: 0;
+//     padding: 0 15px;
+//     flex: auto;
+// }
+// a {color: #fff; text-decoration: none; }
+// img {border: 0; }
+// h1 {margin-top: 0; }
+
+// .header{
+//     width: 100%;
+//     max-width: 960px;
+//     min-width: 430px;
+//     margin: 0 auto 30px;
+//     padding: 30px 0 10px;
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: space-between;
+//     box-sizing: border-box;
+// }
+// .logo{
+//     background: black;
+//     width: 150px;
+//     height: 50px;
+//     margin: 0 10px 40px 0;
+//     display: flex;
+//     flex: none;
+//     align-items: center;
+//     justify-content: center;
+// }
+
+// .header-right{
+//     background: black;
+//     min-height: 50px;
+//     font-size: 20px;
+//     color: white;
+//     margin-bottom: 40px;
+//     flex-basis: 300px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+// .header-bottom{
+//     background: black;
+//     min-height: 50px;
+//     font-size: 20px;
+//     color: white;
+//     flex-basis: 100%;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+// .main{
+//     width: 100%;
+//     max-width: 960px;
+//     min-width: 430px;
+//     margin: auto;
+//     flex:auto;
+//     box-sizing:  border-box;
+// }
+// .grid{
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: space-between;
+// }
+// .grid-tim{
+//     margin-bottom: 30px;
+//     flex-basis: calc(33.33% - 30px  * 2/3);
+//     display: flex;
+//     flex-wrap: wrap;
+// }
+// .grid-img{
+//     width: 200px;
+//     height: 200px;
+//     background: #000;
+//     margin: 0 auto 20px;
+//     flex: 0 1 80%;
+// }
+// .grid-title{
+//     text-align: center;
+// }
+// .grid-cont{
+//     flex: 0 1 100%;
+// }
+// .footer{
+//     text-align: center;
+//     background: black;
+//     max-width: 960px;
+//     min-width: 430px;
+//     width: 100%;
+//     color: white;
+//     margin: auto;
+//     padding: 15px;
+//     box-sizing: border-box;
+// }
+
+// @media screen and(max-width: 800px){
+//     .header-right{ 
+//         display: none;}
+//     .grid-tim { 
+//         flex-wrap: nowrap; 
+//         flex-basis: 100%; 
+//     }
+//     .grid-img{
+//         flex: 0 0 auto;
+//     }
+//     .grid-tim:nth-child(even) .grid-img{
+//         //flex-direction: row-reverse;
+//         margin: 0 0 0 30px;
+//         order: 2;
+//     }
+//     .grid-tim:nth-child(odd) .grid-img{
+//         margin: 0 30px 0 0;
+//     }
+//     .grid-cont{
+//         flex: 1 1 auto;
+//     }
+//     .grid-title{
+//         text-align: left;
+//     }
+// }
+// @media screen and(max-width: 600px){
+//     .grid-img {
+//         display: none;
+//     }
+// }
+//=========================leson 7 Делаем header и навигацию сайта==================================
+//=========================leson 8 верстка SideBar сайта==================================
+//=========================leson 9 Верстка адаптивного слайдера==================================
+// a{
+//     color: white;
+//     text-decoration: none;
+// }
+// .header{
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: space-between;
+//     padding: 10px;
+//     background: #689CD2;
+//     color: white;
+//     font-family: Helvetica, sans-serif;
+// }
+// .header_section{
+//     display: flex;
+//     align-items: center;
+// }
+// .header_item{
+//     padding: 10px 15px;
+//     font-size: 20px;
+//     margin-left: 5px;
+// }
+// .header_item:hover{
+//     background: #ff9900;
+//     border-radius: 4px;
+// }
+// .headerlogo{
+//     font-weight: bold;
+// }
+// .headerButton{
+//     cursor: pointer;
+// }
+// .sideBar a{
+//     color: #689CD2;
+// }
+// .sideBar{
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     height: 630px;
+//     width: 150px;
+//     border-right: 1px solid #d7dbdd;
+//     background: #fcfdfd;
+//     padding: 10px;
+// }
+// .sideBar-item{
+//     cursor: pointer;
+//     padding: 8px 10px;
+//     font-size: 18px;
+// }
+// .sideBar-item:hover{
+//     background: #eef3f5;
+//     border-radius: 4px;
+// }
+
+
+// .main{
+//     display: flex;
+// }
+// // .wrap{
+// //     display: flex;
+// //     align-items: stretch;
+// //     width: 90%;
+// //     margin: auto;
+// //     flex-direction: column;
+// // }
+// // .wrap button{
+// //     width: 30px;
+// //     border: none;
+// //     background: transparent;
+// //     font-size: 40px;
+// //     text-align: center;
+// //     outline: none;
+// //     opacity: 0.5;
+// //     transition: opacity 300ms ease-out;
+// // }
+// // .wrap button:hover{
+// //     opacity: 1;
+// // }
+// // .slider{
+// //     display: flex;
+// //     flex-direction: row;
+// // }
+// // .scroller{
+// //     flex: 1;
+// //     overflow: hidden;
+// // }
+// // .items{
+// //     list-style-type: none;
+// //     white-space: nowrap;
+// //     transition: transform 1s ease-in-out;
+// // }
+// // .item{
+// //     padding: 30px 20px;
+// //     display:  inline-block;
+// //     width: 100%;
+// //     height: 500px;
+// //     background-size: cover;
+// //     background-position: 50% 50%;
+// //     box-shadow: inset 0 0 10px grba(0, 0, 0, 0.5);
+// // }
+
+// .gallery{
+//     padding: .5vw;
+//     font-size: 0;
+//     // flex-wrap: wrap;
+//     // flex-direction: column;
+//     flex-flow: row wrap;
+//     display: flex;
+// }
+// .gallery div{
+//     //flex: auto;
+//     flex-grow: 1;
+//     width: 237px;
+//     margin: .5vw;
+// }
+// .gallery div img{
+//     width: 100%;
+//     height: auto;
+// }
+
+// @media screen and(max-width: 540px){
+//     .gallery div {margin:  0; }
+//     .gallery {padding: 0; }
+// }
+// .gallery:hover img{
+//     opacity: 0.3;
+//     transition: .8s opacity;
+// }
+// .gallery:hover img:hover{
+//     opacity: 1;
+//     transition: .8s opacity;
+// }
+// =========================================== Code Dojo 1 ==========================================
+// * {
+//     box-sizing: border-box;
+// }
+
+// .body{
+//     font-size: 1.35em;
+//     font-family: 'Nunito', sans-serif;
+//     color: #fff;
+//     background: #e8e9e9;
+//     padding-left: 5%;
+//     padding-right: 5%;
+// }
+
+// h1 { color: #555; }
+
+// .flex-container{
+//     padding: 10px;
+//     background: #fff;
+//     border-radius: 5px;
+//     margin: 45px auto;
+//     box-shadow: 0 1.5px 0 0 rgba(0, 0, 0, 0.1);
+
+//     display: flex;
+//     flex-direction: row;
+//     flex-wrap: wrap;
+//     height: 600px;
+//     justify-content: center;
+//     //align-items: center;
+// }
+
+// .flex-element{
+//     color: #fff;
+//     padding: 15px;
+//     margin: auto;
+//     background: firebrick;
+//     border-radius: 3px;
+//     //flex-grow:1;
+//     //flex-basis: 200px;
+
+//     //flex: 1 100px;
+// }
+
+// .element1{
+//     //align-self: center;
+// }
+// .element2{
+    
+// }
+// .element3{
+    
+// }
+// .element4{
+//     //align-self: flex-end;
+// }
+// .element5{
+    
+// }
+// .element6{
+    
+// }
+
+// // .flex-element:last-child{
+// //     margin-left: auto;
+// // }
+// // .flex-element:first-child{
+// //     margin-right: auto;
+// // }
+// // .flex-element:nth-child(4){
+// //     margin: auto;
+// // }
+// // .flex-element:nth-child(2){
+// //     //flex-grow: 3;
+// //     flex-shrink: 2;
+// // }
+// =========================================== Верстка адаптивного макета сайта ==========================================
+
+// /* ---- reset ---- */ 
+// body{ 
+//     margin:0; font:normal 75% Arial, Helvetica, sans-serif; 
+// } 
+// canvas{ display: block; vertical-align: bottom; } 
+// /* ---- particles.js container ---- */ 
+// #particles-js
+// { 
+//     position:absolute; 
+//     width: 100%; 
+//     height: 100%; 
+//     //background-color:  #573537; 
+//     background-image: url(""); 
+//     background-repeat: no-repeat; 
+//     background-size: cover; 
+//     background-position: 50% 50%; 
+// } 
+// /* ---- stats.js ---- */ 
+// .count-particles{ 
+//     background: #000022;
+//     position: absolute; 
+//     top: 48px; 
+//     left: 0; 
+//     width: 80px; 
+//     color: #13E8E9; 
+//     font-size: .8em; 
+//     text-align: left; 
+//     text-indent: 4px; 
+//     line-height: 14px; 
+//     padding-bottom: 2px; 
+//     font-family: Helvetica, Arial, sans-serif; 
+//     font-weight: bold; 
+// } 
+// .js-count-particles{ 
+//     font-size: 1.1em; 
+// } 
+// #stats, .count-particles
+// { 
+//     -webkit-user-select: none; 
+//     margin-top: 5px; 
+//     margin-left: 5px; 
+// } 
+// #stats
+// { 
+//     border-radius: 3px 3px 0 0; 
+//     overflow: hidden; 
+// } 
+// .count-particles{ 
+//     border-radius: 0 0 3px 3px; 
+// }

@@ -1,0 +1,36 @@
+<div class="title-container">
+  Укажите цель на {{data.curBrick.date | date:'dd.MM.yyyy'}}
+</div>
+
+<form [formGroup]="brickDetailsForm" class="brick-modal-form" >
+
+    <mat-form-field>
+      <mat-select placeholder="BrickTypes" matInput required formControlName="brickType">
+        <mat-option *ngFor="let brickType of existentBrickTypes"
+                    [value]="brickType._id">
+          <div class="color-list-option">
+            <div class="small-brick-type" [ngStyle]="{'background-color':brickType.category.color}"></div>
+            <div>{{ brickType.name }}</div>   
+          </div>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-input-container>
+      <textarea matInput placeholder="Description" formControlName="description"></textarea>
+    </mat-input-container>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" 
+              [disabled]='brickDetailsForm.invalid'
+              *ngIf="!data.curBrick || !data.curBrick._id"
+              (click)="createBrick()">Добавить</button>
+      <button mat-raised-button color="primary" 
+              *ngIf="data.curBrick && data.curBrick._id"
+              [disabled]='brickDetailsForm.invalid'
+              (click)="updateBrick()">Сохранить</button>
+      <button mat-raised-button color="warn" 
+              *ngIf="data.curBrick && data.curBrick._id"
+              (click)="deleteBrick()">Удалить</button>
+    </div>
+</form>

@@ -1,0 +1,33 @@
+
+
+<!-- <mat-card>
+  <p>
+    category-list works!
+  </p>
+</mat-card> -->
+
+<!-- <mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let cat of categories" (click)="selectCategory(cat)">{{cat.name}}</mat-list-item>
+  </mat-list> -->
+
+  <!-- <mat-list role="list">
+    <mat-list-item role="listitem" 
+                  class="category-list"
+                  *ngFor="let cat of categories" 
+                  (click)="selectCategory(cat)">
+      <button mat-button 
+              class="category-button"
+              [ngStyle]="{'background-color':cat.color}">
+        {{cat.name}}        
+      </button>
+    </mat-list-item>
+  </mat-list> -->
+
+  <div class="category-list">
+      <button mat-raised-button class="category-button text-shadow"
+            [ngStyle]="{'background-color':cat.color}"
+            *ngFor="let cat of categories" 
+            (click)="selectCategory(cat)">
+        {{cat.name}} 
+    </button>
+  </div>

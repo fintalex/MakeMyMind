@@ -1,0 +1,27 @@
+
+<div class="title-header my-card">
+    <div class="title-page-container">
+        ШАГ 2: Поставь свои цели
+    </div>
+</div> 
+
+<div class="brick-type-center">
+    
+  <mat-card class="">   
+      <div class="brick-type-details">
+          <brick-type-details [brickType]="selectedBrickType"  *ngIf="existentCategories"
+                                [categoriesList]="existentCategories"
+                                (createBrickTypeEvent)="onCreateBrickType($event)"
+                                (deleteBrickTypeEvent)="onDeleteBrickType($event)"
+                                (updateBrickTypeEvent)="onUpdateBrickType($event)"></brick-type-details>
+      </div> 
+  </mat-card>
+
+  <mat-card class="">   
+      <div class="brick-type-list">
+          <brick-type-list [brickTypes]="existentBrickTypes"
+                          (selectBrickTypeEvent)="onSelectBrickType($event)"></brick-type-list>
+      </div>
+  </mat-card>
+
+</div>

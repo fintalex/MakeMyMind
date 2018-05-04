@@ -1,0 +1,358 @@
+.margin-top--20{
+    margin-top: -20px;
+}
+.category-sample-list{
+    // max-width: 960px;
+    // min-width: 430px;
+    // margin: auto;
+    // position: relative;
+    // z-index: 10;
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+.category-sample{
+    max-width: 250px;
+    padding: 20px;
+    min-width: 130px;
+    margin: 20px;
+    background-color: rgba(17, 17, 17, 0.671);
+}
+.category-sample-description{
+    padding: 10px;
+    text-align: justify;
+    span{
+        font-size: 16px;
+        font-weight: 400; 
+        
+    }
+}
+
+.category-icon-container{
+    display: flex;
+    margin: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.category-icon{
+    font-weight: 700;
+    width: 100px;
+    height: 36px;    
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //box-shadow: 0px 0px 10px 8px rgba(0,0,0,0.3);
+    //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.category-sample-name{
+    position: relative;
+    z-index: 25;
+    margin-top: -30px;
+    h3{
+        margin: 0px;
+    }
+}
+
+
+.category-test{
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    // position: relative;
+    // z-index: 10;
+}
+
+.categories-cards{
+    position: relative;
+    z-index: 10;
+    padding: 20px;
+}
+// =======================================MENU===============================
+.menu-on-home{
+    width: 100%;
+    display: flex;
+    // max-width: 960px;
+    // min-width: 430px;
+    margin: auto;
+    color: white;
+    background-color: rgba(17, 17, 17, 0.527);
+    padding: 20px;
+    //margin-top: -20px;
+    button{
+        font-size: 20px;
+    }
+}
+
+// ================================ FIRST SCREEN ===========================
+.first-section{
+    position: relative;
+    z-index: 10;
+
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+.first-screen{
+    display: flex;
+    // max-width: 960px;
+    // min-width: 430px;
+    // margin: auto;
+    color: white;
+    height: 100%;
+}
+.left-home-continer{ 
+    width: 50%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 50px;
+    .main-words{
+        font-size: 42px;
+        letter-spacing: 4px;
+        line-height: 40px;
+        text-transform: uppercase;
+        text-align: left;
+    }
+    .secondary-words{
+        margin-top: 30px;
+        font-size: 20px;
+        //letter-spacing: 4px;
+        //text-transform: uppercase;
+        text-align: left;
+    }
+}
+.right-home-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    background-image: url(../../images/mind-reading-22.png);
+    background-position: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+// ============================ PARALLAX FROM TRAVIS =================================
+
+.home-page{ 
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    line-height: 1.8em;
+    color: #666;
+
+    text-align: center;
+    // height: 100vh;
+    // margin: 0;
+    // overflow-x: hidden;
+    // //overflow-y: auto;
+    // //-webkit-overflow-scrolling: touch;
+    
+    // -webkit-perspective: 1px;
+    // perspective: 1px;
+}
+
+.pimg1, .pimg2, .pimg3{
+    padding: 20px;
+    position: relative;
+    //opacity: 0.70;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+}
+
+.pimg1-container{ 
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+.pimg1{
+    background-image: url(../../images/866422.jpg);
+    height: 200vh;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+}
+
+.pimg2-container{
+    height: 400px;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.pimg2{
+    position: absolute;
+    z-index: 2;
+    background-image: url(../../images/architecture-buildings-city-366283.png);
+    height: 100vh;
+    width: 100%;
+    top: -400px;
+    background-attachment: scroll;
+}
+.inspire-words{
+    position: relative;
+    z-index: 10;
+}
+.pimg3-container{ 
+    position: relative;
+    //height: 800px;
+    width: 100%;
+    overflow: hidden;
+}
+.pimg3{
+    position: absolute;
+    background-image: url(../../images/35724774.jpg);
+    height: 1800px;
+    width: 100%;
+    // top: 300px;
+    // left: 20%;
+    background-attachment: scroll;
+}
+
+.section{
+    text-align: center;
+    padding: 20px;
+    //overflow: hidden;
+}
+
+.section-light{
+    background-color: #f4f4f4;
+    color: #666;
+}
+
+.section-dark{
+    background-color: #282e34;
+    color: #ddd;
+}
+
+.ptext{
+    position: absolute;
+    top:100px;
+    width: 100%;
+    text-align: center;
+    color: #000;
+    font-size: 27px;
+    letter-spacing: 8px;
+    text-transform: uppercase;;
+}
+
+.left-fast, .right-fast, .center-to-right, .center-fix, .center-to-up{    
+    position: absolute;
+    color: #fff;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
+.left-fast{
+    top: -100px;
+    left: 100px;    
+    font-size: 27px;
+}
+.right-fast{
+    top: -200px;
+    left: 70%;    
+    font-size: 25px;
+}
+.center-to-right{
+    top: 300px;
+    left: 30%;
+    font-size: 22px;
+}
+.center-fix{
+    top: 70px;
+    left: 40%;
+    font-size: 22px;
+}
+.center-to-up{
+    top: 400px;
+    left: 60%;
+    font-size: 18px;
+}
+
+.ptext, .left-fast, .right-fast, .center-to-right, .center-fix, .center-to-up .border{
+    background-color: rgba(17, 17, 17, 0.527);
+    color: #fff;
+    padding: 20px;
+}
+
+// ==================== STEPS ==========================
+.all-steps-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.step-container{
+    height: 400px;
+    width: 300px;
+    // border: 1px solid #fff;
+    // border-radius: 5px;
+    // padding: 10px;
+    // box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.342), 0 6px 20px 0 rgba(255, 255, 255, 0.363);
+}
+
+.white-shadow{
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.342), 0 6px 20px 0 rgba(255, 255, 255, 0.363);
+}
+
+.blue-shadow{
+    border: 1px solid #0097a7;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(000, 178, 200, 0.342), 0 6px 10px 0 rgba(000, 178, 200, 0.363);
+}
+
+.step-header{
+    font-size: 26px;
+    padding: 20px;
+}
+
+.step-description{
+    padding: 5px;
+}
+
+.step-image-category, .step-image-bricktype, .step-image-wall{
+    margin-top: 40px;
+    height: 200px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    // border: 1px solid #0097a7;
+    // border-radius: 5px;
+    // padding: 10px;
+    // box-shadow: 0 4px 8px 0 rgba(000, 178, 200, 0.342), 0 6px 10px 0 rgba(000, 178, 200, 0.363);
+
+    transition: all 1.2s ease;
+}
+.step-image-category:hover, .step-image-bricktype:hover, .step-image-wall:hover{
+    transition: 0.4s ease-in;
+    transform: translatey(-20px) scale(1.2);
+}
+
+.step-image-category{
+    background-image: url(../../images/category.jpg);
+}
+
+.step-image-bricktype{
+    background-image: url(../../images/goals.jpg);
+}
+
+.step-image-wall{
+    background-image: url(../../images/wall.jpg);
+}

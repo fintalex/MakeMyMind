@@ -1,0 +1,18 @@
+.category-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.category-button {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    //text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    //border-radius: 4px;
+    // cursor: pointer;
+    // text-align: center;
+    // padding: 10px 20px;
+    margin: 5px;
+    flex-grow: 1;
+}

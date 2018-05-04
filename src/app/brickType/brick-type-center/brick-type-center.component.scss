@@ -1,0 +1,23 @@
+
+.brick-type-center{
+    max-width: 960px;
+    min-width: 430px;
+    margin: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.brick-type-center div{
+    padding: 10px;
+}
+
+.brick-type-details{
+    flex-grow: 1;
+    width: 300px;
+    //border: 1px solid black;
+}
+.brick-type-list{
+    width: 300px;
+}

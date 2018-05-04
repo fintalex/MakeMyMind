@@ -1,0 +1,28 @@
+<div class="auth-wrapper">
+  <mat-card class="auth-form">
+      <form [formGroup]='loginForm' (submit)="login()">
+
+            <span *ngIf="warningMessage" class="warn-span">{{warningMessage}}</span>
+
+            <mat-input-container>
+                <input required placeholder="Username" matInput formControlName="username">
+            </mat-input-container>
+
+            <mat-input-container>
+                <input required type="password" placeholder="Password" matInput formControlName="password">
+            </mat-input-container>
+
+            <div class="button-footer">
+                <button 
+                    color="primary"
+                    mat-raised-button 
+                    [disabled]="loginForm.invalid" >
+                        Войти
+                </button>
+
+                <a class="auth-link" routerLink="/registration">Регистрация</a>
+            </div>
+      </form>
+
+  </mat-card>
+</div>

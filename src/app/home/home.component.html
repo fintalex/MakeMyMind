@@ -1,0 +1,414 @@
+
+<div class="home-page">
+    
+    <div class="pimg1-container">
+        <div class="pimg1">
+
+          
+        </div>
+        <div class="first-section">
+                    
+            <div class="menu-on-home margin-top--20">
+                <button mat-button routerLink="/home" class="logo"><mat-icon>home</mat-icon>Make my mind</button>
+                <button mat-button routerLink="/wall" *ngIf="authService.CurrentUser">Стена</button>
+                <button mat-button routerLink="/category" *ngIf="authService.CurrentUser">Категории</button>
+                <button mat-button routerLink="/brickType" *ngIf="authService.CurrentUser">Цели</button>
+            </div>
+            <div class="first-screen">
+                <div class="left-home-continer">
+                    <div class="main-words">
+                            Саморазвитие - лучшая инвестиция в самого себя. 
+                    </div>
+                    <div class="secondary-words">
+                            Привычки подобны канату. Мы плетем и плетем его изо дня в день, и вскоре его уже невозможно разорвать
+                    </div>
+                </div>
+                <div class="right-home-container">
+                    Here will be an image
+                </div>
+            </div>
+            <!-- <div class="ptext">
+                <span class="border">
+                    parallax website
+                </span>
+            </div> -->
+            <div class="menu-on-home">
+                Here will be something more
+            </div>
+
+        </div>
+    </div>
+    
+
+    <section class="section section-dark">
+
+        <div class="all-steps-container">
+            <div class="step-container white-shadow">
+                <div class="step-header">ШАГ 1:</div>
+                <div class="step-description">Определи свои сферы влияния</div>
+                <div class="step-image step-image-category blue-shadow"></div>
+            </div>
+            <div class="step-container white-shadow">
+                <div class="step-header">ШАГ 2:</div>
+                <div class="step-description">Поставь цели и задай привычки</div>
+                <div class="step-image step-image-bricktype blue-shadow"></div>
+            </div>
+            <div class="step-container white-shadow">
+                <div class="step-header">ШАГ 3:</div>
+                <div class="step-description">Строй свою стену будущего</div>
+                <div class="step-image step-image-wall blue-shadow"></div>
+            </div>
+        </div>
+        <!-- <h2>Section One</h2>
+        <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus libero rerum dolorem nulla, earum ullam odio tenetur sint. 
+            Illo dolorem commodi maiores iusto a ratione molestiae maxime, veritatis animi officiis obcaecati nisi iure! Tempora nostrum illo dolore 
+            corporis nam autem fuga eligendi sequi blanditiis magnam, eveniet a dolor. Labore tempore voluptatem consequuntur! Neque facere corporis quisquam? 
+            Praesentium nemo, veniam sapiente voluptate hic sit dolore obcaecati porro debitis aspernatur laboriosam nulla quisquam nobis dolor est inventore 
+            deserunt tempora expedita culpa? Optio exercitationem beatae reprehenderit eveniet labore magni distinctio, dignissimos, minus alias autem sed sint nihil, omnis et quas odit dolorum! Deleniti.
+        </p> -->
+    </section>
+    
+    <div class="pimg2-container">
+        <div class="inspire-words">
+            <div class="left-fast">
+                    <span class="border">
+                        Ставь цели
+                    </span>
+                </div>
+                <div class="center-to-right">
+                    <span class="border">
+                        Распиши план
+                    </span>
+                </div>
+                <div class="center-fix">
+                    <span class="border">
+                        Будь одержим
+                    </span>
+                </div>
+                <div class="center-to-up">
+                    <span class="border">
+                        Не сдавайся
+                    </span>
+                </div>
+                <div class="right-fast">
+                    <span class="border">
+                        Получай результат
+                    </span>
+                </div>
+        </div>
+        
+        <div class="pimg2">          
+        </div>
+    </div>
+
+    <section class="section section-dark">
+        
+        <div class="category-test">
+            <h1>Определи свои сферы влияния</h1>
+        </div>
+        <div class="category-sample-list">
+            <div class="hexagon category-family">
+                <!-- <div class="category-icon-container">
+                    <div class="category-icon category-family text-shadow blue-shadow">C</div> 
+                    <div class="category-family text-shadow">C</div>
+                </div>-->
+                <div class="category-sample-name">
+                    <h3>Семья</h3>
+                </div>
+                <div class="category-sample-description">
+                    <span>
+                        Все, чего бы ты не достигал, к чему бы не стремился, все это мы делаем ради кого то. Не забывай, что в конце пути с тобой останется твоя семья. 
+                    </span>
+                </div>
+            </div>
+            <div class="hexagon category-health">
+                <!-- <div class="category-icon-container">
+                    <div class="category-icon category-health text-shadow blue-shadow">З</div>
+                </div> -->
+                <div class="category-sample-name">
+                    <h3>Здоровье</h3>
+                </div>
+                <div class="category-sample-description">
+                    <span>
+                        Многие вспоминают о своем здоровье только когда оно само о себе напомнит. Позаботься о нем заранее, а оно ответит тебе взаимностью.
+                    </span>
+                </div>
+            </div>
+            <div class="hexagon category-hobby">
+                <!-- <div class="category-icon-container">
+                    <div class="category-icon category-hobby text-shadow blue-shadow">Х</div>
+                </div> -->
+                <div class="category-sample-name">
+                    <h3>Хобби</h3>
+                </div>
+                <div class="category-sample-description">
+                    <span>
+                        Некоторые люди восхищают, вдохновляют, они становятся интересными. И это из за того, что они увлечены чем-то и не стоят на месте.
+                    </span>
+                </div>
+            </div>
+            <div class="hexagon category-sport">
+                <!-- <div class="category-icon-container">
+                    <div class="category-icon category-sport text-shadow blue-shadow">S</div>
+                </div> -->
+                <div class="category-sample-name">
+                    <h3>Спорт</h3>
+                </div>
+                <div class="category-sample-description">
+                    <span>
+                        Тут не нужно много слов. Спорт и закаляет, и воспитывает победителя, и учит добиваться целей, и он нужен для укрепления духа и тела.</span>
+                </div>
+            </div>
+            <div class="hexagon category-frends">
+                <!-- <div class="category-icon-container">
+                    <div class="category-icon category-frends text-shadow blue-shadow">F</div>
+                </div> -->
+                <div class="category-sample-name">
+                    <h3>Друзья</h3>
+                </div>
+                <div class="category-sample-description">
+                    <span>
+                        Про друзей некоторые люди тоже забывают. Забывают в погоне за счастьем о том, что счастливыми нас также делают и друзья.
+                    </span>
+                </div>
+            </div>
+            <div class="hexagon category-business">
+                <!-- <div class="category-icon-container">
+                    <div class="category-icon category-business text-shadow blue-shadow">B</div>
+                </div> -->
+                <div class="category-sample-name">
+                    <h3>Бизнес</h3>
+                </div>
+                <div class="category-sample-description">
+                    <span>
+                        А вот про бизнес уже вправе решать каждый сам. Но наверное каждый из нас задумывался, - "Надо делать что то свое".
+                    </span>
+                </div>
+            </div>
+            <div class="hexagon category-selfmind">
+                <!-- <div class="category-icon-container">
+                    <div class="category-icon category-selfmind text-shadow blue-shadow">M</div>
+                </div> -->
+                <div class="category-sample-name">
+                    <h3>Саморазвитие</h3>
+                </div>
+                <div class="category-sample-description">
+                    <span>
+                        Мир вокруг не стоит на месте. Так будь же на коне, на пике, будь в тренде, совершенствуйся, выработай привычку читать.
+                    </span>
+                </div>
+            </div>
+            <div class="hexagon category-relax">
+                <!-- <div class="category-icon-container">
+                    <div class="category-icon category-relax text-shadow blue-shadow">R</div>
+                </div> -->
+                <div class="category-sample-name">
+                    <h3>Отдых</h3>
+                </div>
+                <div class="category-sample-description">
+                    <span>
+                        Но и про отдых не забывай. Ведь можно загнать себя и потерять всякий интерес. Сосуд иногда нужно опустошить прежде чем его наполнить. 
+                    </span>
+                </div>
+            </div>
+            <div class="hexagon category-own">
+                <!-- <div class="category-icon-container">
+                    <div class="category-icon category-home text-shadow blue-shadow">H</div>
+                </div> -->
+                <div class="category-sample-name">
+                    <h3>...</h3>
+                </div>
+                <div class="category-sample-description">
+                    <span>
+                        Или создайте свою категорию. Может у Вас есть мировоззрение, которое достойно быть в отдельной категории.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="pimg3-container">
+        <div class="pimg3">
+        </div>
+            <!-- <div class="ptext">
+                <span class="border">
+                    image three text
+                </span>
+
+            </div> -->
+        <div class="categories-cards">
+            <div class="category-test">
+                <h1>Определи свои сферы влияния</h1>
+            </div>
+            <div class="category-sample-list">
+                <div class="category-sample white-shadow">
+                    <div class="category-icon-container">
+                        <div class="category-icon category-family text-shadow blue-shadow">C</div>
+                    </div>
+                    <div class="category-sample-name">
+                        <h3>Семья</h3>
+                    </div>
+                    <div class="category-sample-description">
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae nihil maxime nam. Aperiam tenetur excepturi ci quis
+                            fugit?</span>
+                    </div>
+                </div>
+                <div class="category-sample white-shadow">
+                    <div class="category-icon-container">
+                        <div class="category-icon category-health text-shadow blue-shadow">З</div>
+                    </div>
+                    <div class="category-sample-name">
+                        <h3>Здоровье</h3>
+                    </div>
+                    <div class="category-sample-description">
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim saepe atque fuga rem labore autem veritatis magni harum
+                            odit quibusdam.
+                        </span>
+                    </div>
+                </div>
+                <div class="category-sample white-shadow">
+                    <div class="category-icon-container">
+                        <div class="category-icon category-hobby text-shadow blue-shadow">Х</div>
+                    </div>
+                    <div class="category-sample-name">
+                        <h3>Хобби</h3>
+                    </div>
+                    <div class="category-sample-description">
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim saepe atque fuga rem labore autem veritatis magni harum
+                            odit quibusdam.</span>
+                    </div>
+                </div>
+                <div class="category-sample white-shadow">
+                    <div class="category-icon-container">
+                        <div class="category-icon category-sport text-shadow blue-shadow">S</div>
+                    </div>
+                    <div class="category-sample-name">
+                        <h3>Спорт</h3>
+                    </div>
+                    <div class="category-sample-description">
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim saepe atque fuga rem labore autem veritatis magni harum
+                            odit quibusdam.</span>
+                    </div>
+                </div>
+                <div class="category-sample white-shadow">
+                    <div class="category-icon-container">
+                        <div class="category-icon category-frends text-shadow blue-shadow">F</div>
+                    </div>
+                    <div class="category-sample-name">
+                        <h3>Друзья</h3>
+                    </div>
+                    <div class="category-sample-description">
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim saepe atque fuga rem labore autem veritatis magni harum
+                            odit quibusdam.</span>
+                    </div>
+                </div>
+                <div class="category-sample white-shadow">
+                    <div class="category-icon-container">
+                        <div class="category-icon category-business text-shadow blue-shadow">B</div>
+                    </div>
+                    <div class="category-sample-name">
+                        <h3>Бизнес</h3>
+                    </div>
+                    <div class="category-sample-description">
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim saepe atque fuga rem labore autem veritatis magni harum
+                            odit quibusdam.</span>
+                    </div>
+                </div>
+                <div class="category-sample white-shadow">
+                    <div class="category-icon-container">
+                        <div class="category-icon category-selfmind text-shadow blue-shadow">M</div>
+                    </div>
+                    <div class="category-sample-name">
+                        <h3>Саморазвитие</h3>
+                    </div>
+                    <div class="category-sample-description">
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim saepe atque fuga rem labore autem veritatis magni harum
+                            odit quibusdam.</span>
+                    </div>
+                </div>
+                <div class="category-sample white-shadow">
+                    <div class="category-icon-container">
+                        <div class="category-icon category-relax text-shadow blue-shadow">R</div>
+                    </div>
+                    <div class="category-sample-name">
+                        <h3>Отдых</h3>
+                    </div>
+                    <div class="category-sample-description">
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim saepe atque fuga rem labore autem veritatis magni harum
+                            odit quibusdam.</span>
+                    </div>
+                </div>
+                <div class="category-sample white-shadow">
+                    <div class="category-icon-container">
+                        <div class="category-icon category-home text-shadow blue-shadow">H</div>
+                    </div>
+                    <div class="category-sample-name">
+                        <h3>Дом</h3>
+                    </div>
+                    <div class="category-sample-description">
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim saepe atque fuga rem labore autem veritatis magni harum
+                            odit quibusdam.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="section section-dark">
+        <h2>Section three</h2>
+        <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus libero rerum dolorem nulla, earum ullam odio tenetur sint. 
+            Illo dolorem commodi maiores iusto a ratione molestiae maxime, veritatis animi officiis obcaecati nisi iure! Tempora nostrum illo dolore 
+            corporis nam autem fuga eligendi sequi blanditiis magnam, eveniet a dolor. Labore tempore voluptatem consequuntur! Neque facere corporis quisquam? 
+            Praesentium nemo, veniam sapiente voluptate hic sit dolore obcaecati poristinctio, dignissimos, minus alias autem sed sint nihil, omnis et quas odit dolorum! Deleniti.
+        </p>
+    </section>
+
+    <!-- <div class="pimg1">
+        <div class="ptext">
+            <span class="border">
+                Parallax websites
+            </span>
+
+        </div>
+    </div> -->
+</div>
+
+<!-- <div class="body">
+    <div class="parallax-group">
+        <header class="front">
+            <h1>parallax</h1>
+        </header>
+
+        <div class="back">   
+            <div class="back2"></div>        
+            <h3>HERLO</h3>     
+        </div>
+        <h2>HERLO</h2>     
+        
+
+        <header class="front">
+            <h1>parallax</h1>
+        </header>
+
+        <div class="back">   
+            <div class="back2"></div>        
+        </div>
+        <h2>HERLO</h2>     
+        
+
+        <header class="front">
+            <h1>parallax</h1>
+        </header>
+    </div>
+</div> -->
+
+<!-- 
+<div class="home-page">
+       
+
+    
+
+      
+</div> -->

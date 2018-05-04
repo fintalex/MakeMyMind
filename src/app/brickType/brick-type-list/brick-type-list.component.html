@@ -1,0 +1,9 @@
+
+<div class="brick-type-list">
+  <button mat-raised-button class="brick-type-button text-shadow"
+        *ngFor="let brickType of brickTypes" 
+        [ngStyle]="{'background-color': brickType.category.color}"
+        (click)="selectBrickType(brickType)">
+    {{brickType.sign}} 
+</button>
+</div>
