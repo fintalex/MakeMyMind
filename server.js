@@ -37,5 +37,5 @@ app.set('port', config.server.port);
 
 const server = http.createServer(app);
 
-server.listen(config.server.port, () => console.log(`Running on localhost:${config.server.port}`));
+server.listen(config.server.port, () => console.log(`Running on :${config.server.port}`));
 
