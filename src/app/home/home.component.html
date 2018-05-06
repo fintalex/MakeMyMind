@@ -9,10 +9,24 @@
         <div class="first-section">
                     
             <div class="menu-on-home margin-top--20">
-                <button mat-button routerLink="/home" class="logo"><mat-icon>home</mat-icon>Make my mind</button>
-                <button mat-button routerLink="/wall" *ngIf="authService.CurrentUser">Стена</button>
-                <button mat-button routerLink="/category" *ngIf="authService.CurrentUser">Категории</button>
-                <button mat-button routerLink="/brickType" *ngIf="authService.CurrentUser">Цели</button>
+                <div class="left-area-menu">
+                    <button mat-button routerLink="/home" class="logo">
+                        <mat-icon>home</mat-icon>Make my mind</button>
+                    <button mat-button routerLink="/wall" *ngIf="authService.CurrentUser">Стена</button>
+                    <button mat-button routerLink="/category" *ngIf="authService.CurrentUser">Категории</button>
+                    <button mat-button routerLink="/brickType" *ngIf="authService.CurrentUser">Цели</button>
+                </div>
+
+                <div class="rigth-area-menu">
+                    <button mat-button [matMenuTriggerFor]="userinfo" *ngIf="authService.CurrentUser">{{authService.CurrentUser.username}}</button>
+                    <mat-menu #userinfo="matMenu">
+                        <button mat-menu-item>{{authService.CurrentUser.nickname}}</button>
+                        <button mat-menu-item>{{authService.CurrentUser.created}}</button>
+                    </mat-menu>
+        
+                    <button mat-button (click)="logout()" *ngIf="authService.CurrentUser">Выйти</button>
+                    <button mat-button *ngIf="!authService.CurrentUser" routerLink="/auth">Войти</button>
+                </div>
             </div>
             <div class="first-screen">
                 <div class="left-home-continer">
