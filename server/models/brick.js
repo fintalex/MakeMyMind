@@ -23,7 +23,7 @@ brickSchema.statics.getAllBricksForMonthByUserId = (userId, date, callback) => {
     //firstDayInMonth.setHours(0,0,0,0);
     //console.log("firstDayInMonth = ", firstDayInMonth);
     firstDayInMonth.setHours(0,0,0,0);
-    //console.log("firstDayInMonth = ", firstDayInMonth);
+    console.log("FIRST DAY IN MONTH = ", firstDayInMonth);
 
     var firstDayInNextMonth = new Date(date);
     console.log("LAST DAY IN MONTH = ", firstDayInNextMonth);

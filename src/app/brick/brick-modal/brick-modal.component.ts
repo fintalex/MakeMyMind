@@ -51,6 +51,7 @@ export class BrickModalComponent implements OnInit {
     createBrick() {
         this.brickDetailsForm.value.user = this.authService.CurrentUser._id;
         this.brickDetailsForm.value.date = this.data.curBrick.date;
+        console.log("CreateBrick from Modal - ", this.data.curBrick.date);
         this.brickService.createBrick(this.brickDetailsForm.value)
             .subscribe(newBrick => {
                 newBrick.status = 1; // created
