@@ -19,7 +19,7 @@ function daysInMonth (month, year) {
 brickSchema.statics.getAllBricksForMonthByUserId = (userId, date, callback) => {
     console.log("Date is = ", date);
     var firstDayInMonth = (new Date(date));
-    firstDayInMonth.setDate(1);
+    firstDayInMonth.setDate(0);
     //firstDayInMonth.setHours(0,0,0,0);
     //console.log("firstDayInMonth = ", firstDayInMonth);
     firstDayInMonth.setHours(0,0,0,0);

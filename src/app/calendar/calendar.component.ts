@@ -98,7 +98,7 @@ export class CalendarComponent implements OnInit {
         var dayInMonth = this.daysInMonth(this.curDate.getMonth(), this.curDate.getFullYear());
         var year = this.curDate.getFullYear();
         var dayToday = new Date();  //this.curDate;
-        dayToday.setHours(0,0,0,0);
+        dayToday.setHours(12,0,0,0);
 
         for(var i = 1; i <= dayInMonth; i++){
             var newDay = new Date(year, monthNumber, i);
