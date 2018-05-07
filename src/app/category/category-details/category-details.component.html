@@ -3,19 +3,19 @@
 
 <form [formGroup]="categoryDetailsForm" class="category-form" >
     <div class="first-col">
-        <mat-input-container>
+        <mat-form-field>
             <input matInput required placeholder="Name" formControlName="name">
-        </mat-input-container>
+        </mat-form-field>
 
-        <mat-input-container>
+        <mat-form-field>
             <input type="color" matInput required placeholder="Color" formControlName="color">
-        </mat-input-container>
+        </mat-form-field>
     </div>
   
     <div class="second-col">
-        <mat-input-container>
+        <mat-form-field>
             <textarea matInput placeholder="Description" formControlName="description" rows="3"></textarea>
-        </mat-input-container>
+        </mat-form-field>
     </div>
 
     <div class="button-container">

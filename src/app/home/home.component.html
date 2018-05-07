@@ -11,7 +11,9 @@
             <div class="menu-on-home margin-top--20">
                 <div class="left-area-menu">
                     <button mat-button routerLink="/home" class="logo">
-                        <mat-icon>home</mat-icon>Make my mind</button>
+                        <mat-icon>home</mat-icon>
+                        <span class="logo">Make my mind</span> 
+                    </button>
                     <button mat-button routerLink="/wall" *ngIf="authService.CurrentUser">Стена</button>
                     <button mat-button routerLink="/category" *ngIf="authService.CurrentUser">Категории</button>
                     <button mat-button routerLink="/brickType" *ngIf="authService.CurrentUser">Цели</button>

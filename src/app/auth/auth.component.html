@@ -4,13 +4,13 @@
 
             <span *ngIf="warningMessage" class="warn-span">{{warningMessage}}</span>
 
-            <mat-input-container>
+            <mat-form-field>
                 <input required placeholder="Username" matInput formControlName="username">
-            </mat-input-container>
+            </mat-form-field>
 
-            <mat-input-container>
+            <mat-form-field>
                 <input required type="password" placeholder="Password" matInput formControlName="password">
-            </mat-input-container>
+            </mat-form-field>
 
             <div class="button-footer">
                 <button 

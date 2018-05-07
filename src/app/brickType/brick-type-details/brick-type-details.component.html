@@ -1,8 +1,8 @@
 
   <form [formGroup]="brickTypeDetailsForm" class="brick-type-form" >
-    <mat-input-container>
+    <mat-form-field>
       <input matInput required placeholder="Name" formControlName="name">
-    </mat-input-container>
+    </mat-form-field>
 
     <mat-form-field>
         <mat-select placeholder="Category" matInput required formControlName="category">
@@ -16,13 +16,13 @@
         </mat-select>
     </mat-form-field>
 
-    <mat-input-container>
+    <mat-form-field>
         <input type="sign" matInput required placeholder="Sign" formControlName="sign">
-    </mat-input-container>
+    </mat-form-field>
   
-    <mat-input-container>
+    <mat-form-field>
         <textarea matInput placeholder="Description" formControlName="ruleDescription"></textarea>
-    </mat-input-container>
+    </mat-form-field>
 
     
     <mat-checkbox color="primary" formControlName="isPrivate" >Is Private</mat-checkbox>

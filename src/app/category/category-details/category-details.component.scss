@@ -5,7 +5,7 @@
     flex-direction: column;
     //flex-wrap: wrap;
     align-items: stretch;
-    mat-input-container {
+    mat-form-field {
         width: 100%;
     }
     button {
@@ -18,7 +18,7 @@
     .first-col{
         display: flex;
         justify-content: space-between;        
-        mat-input-container {
+        mat-form-field {
             width: 45%;
             box-sizing: border-box;
             input{

@@ -1,21 +1,33 @@
-<!-- <div id="particles-js"></div>  -->
+
 <div class="calendar">
             
-      <div class="calendar-buttons" >
+    <div class="nav-container">
+        <div class="calendar-buttons" >
             <div class="prev-next-container">
-                  <button mat-raised-button class="navigate-btn first-btn" (click)="prevMonth()"><</button>
-                  <button mat-raised-button class="navigate-btn second-btn" (click)="nextMonth()">></button>
+                    <button mat-raised-button class="navigate-btn first-btn" (click)="prevMonth()">&lt;</button>
+                    <button mat-raised-button class="navigate-btn second-btn" (click)="nextMonth()">&gt;</button>
             </div>
             <div>
-                  <button mat-raised-button class="navigate-btn today-btn" (click)="todayMonth()">Сегодня</button>
+                    <button mat-raised-button class="navigate-btn today-btn" (click)="todayMonth()">Сегодня</button>
             </div>
             <div class="today-data">
-                  {{this.curDate |  dateru:'MMMM YYYY' | capitalize}}
+                    {{this.curDate |  dateru:'MMMM YYYY' | capitalize}}
             </div>
             <div></div>
-      </div>
+        </div>
 
-      <div class="one-day tooltip" [ngClass]="{'day-today': curday.today, 'day-disabled': curday.disabled}"
+        <div class="week-nav">
+            <div class="week-text">Пон</div>
+            <div class="week-text">Втр</div>
+            <div class="week-text">Срд</div>
+            <div class="week-text">Чет</div>
+            <div class="week-text">Пят</div>
+            <div class="week-text">Суб</div>
+            <div class="week-text">Вск</div>
+        </div>        
+    </div>
+      
+      <div class="one-day tooltip" [ngClass]="{'day-weekend': curday.isWeekend, 'day-today': curday.today, 'day-disabled': curday.disabled}"
             *ngFor="let curday of daysArray"
             (click)="openBrickModal(brick, curday, $event)">
 
