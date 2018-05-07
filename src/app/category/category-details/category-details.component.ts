@@ -44,6 +44,7 @@ export class CategoryDetailsComponent implements OnInit {
 
   public createCategory() {
       this.createCategoryEvent.emit(this.categoryDetailsForm.value);
+      this.categoryDetailsForm.reset();
   }
 
   public deleteCategory() {

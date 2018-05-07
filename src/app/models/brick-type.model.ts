@@ -9,4 +9,5 @@ export class BrickType {
     isRemoved: boolean;
     category: Category;
     user: string;
+    isPrivate: Boolean;
 }

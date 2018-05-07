@@ -24,11 +24,11 @@ export class BrickTypeDetailsComponent implements OnInit {
     private updateBrickTypeEvent = new EventEmitter();
 
     public brickTypeDetailsForm: FormGroup = new FormGroup({
-
         name: new FormControl(),
         category: new FormControl(),
         sign: new FormControl(),
-        ruleDescription: new FormControl()
+        ruleDescription: new FormControl(),
+        isPrivate: new FormControl(true)
     });
 
     constructor() { }
@@ -44,13 +44,16 @@ export class BrickTypeDetailsComponent implements OnInit {
                 name: new FormControl(this.brickType.name),
                 category: new FormControl(this.brickType.category._id),
                 sign: new FormControl(this.brickType.sign),
-                ruleDescription: new FormControl(this.brickType.ruleDescription)
+                ruleDescription: new FormControl(this.brickType.ruleDescription),
+                isPrivate: new FormControl(this.brickType.isPrivate)
             });
         }
     }
 
     public createBrickType() {
         this.createBrickTypeEvent.emit(this.brickTypeDetailsForm.value);
+
+        this.brickTypeDetailsForm.reset();
     }
 
     public deleteBrickType() {
@@ -64,6 +67,7 @@ export class BrickTypeDetailsComponent implements OnInit {
         this.brickType.category = this.brickTypeDetailsForm.value.category;
         this.brickType.sign = this.brickTypeDetailsForm.value.sign;
         this.brickType.ruleDescription = this.brickTypeDetailsForm.value.ruleDescription;
+        this.brickType.isPrivate = this.brickTypeDetailsForm.value.isPrivate;
         this.updateBrickTypeEvent.emit(this.brickType);
     }
 }

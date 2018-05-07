@@ -5,24 +5,28 @@
     </mat-input-container>
 
     <mat-form-field>
-      <mat-select placeholder="Category" matInput required formControlName="category">
-        <mat-option *ngFor="let category of categoriesList"
-                    [value]="category._id">
-          <div class="color-list-option">
-            <div class="small-brick-type" [ngStyle]="{'background-color':category.color}"></div>
-            <div>{{ category.name }}</div>   
-          </div>
-        </mat-option>
-      </mat-select>
+        <mat-select placeholder="Category" matInput required formControlName="category">
+            <mat-option *ngFor="let category of categoriesList"
+                        [value]="category._id">
+            <div class="color-list-option">
+                <div class="small-brick-type" [ngStyle]="{'background-color':category.color}"></div>
+                <div>{{ category.name }}</div>   
+            </div>
+            </mat-option>
+        </mat-select>
     </mat-form-field>
 
     <mat-input-container>
-      <input type="sign" matInput required placeholder="Sign" formControlName="sign">
+        <input type="sign" matInput required placeholder="Sign" formControlName="sign">
     </mat-input-container>
   
     <mat-input-container>
-      <textarea matInput placeholder="Description" formControlName="ruleDescription"></textarea>
+        <textarea matInput placeholder="Description" formControlName="ruleDescription"></textarea>
     </mat-input-container>
+
+    
+    <mat-checkbox color="primary" formControlName="isPrivate" >Is Private</mat-checkbox>
+   
 
     <div class="button-container">
       <button mat-raised-button color="primary" 

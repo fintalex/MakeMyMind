@@ -23,7 +23,7 @@ const brickTypeSchema = mongoose.Schema({
         type: Boolean,
         default: false
     },
-
+    isPrivate: { type: Boolean, default: true }
 });
 
 brickTypeSchema.statics.getAllBrickTypesByUserId = (userId, callback) => {

@@ -1,6 +1,6 @@
 
-<div class="main-app" *ngIf="router.url != '/home'">
-    <mat-toolbar color="primary" class="toolbar-container" >
+<div class="main-app">
+    <mat-toolbar color="primary" class="toolbar-container" *ngIf="router.url != '/home'">
         <div class="left-area-menu">
             <button mat-button routerLink="/home" class="logo"><mat-icon>home</mat-icon>Make my mind</button>
             <button mat-button routerLink="/wall" *ngIf="authService.CurrentUser">Стена</button>
@@ -26,6 +26,6 @@
     </div>
 </div>
 
-<div class="home-app" *ngIf="router.url === '/home'">
+<!-- <div class="home-app" >
     <router-outlet></router-outlet>
-</div>
+</div> -->
