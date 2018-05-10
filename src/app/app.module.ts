@@ -17,6 +17,7 @@ import { BrickTypeService } from './brickType/brickType.service';
 import { GuardService } from './services/guard.service';
 import { AuthService } from './services/auth.service';
 import { BrickService } from './brick/brick.service';
+import { UserService } from './services/user.service';
 
 // ========================== Component ==============================
 import { AppComponent } from './app.component';
@@ -78,6 +79,7 @@ export function createTranslateLoader(http: HttpClient) {
         BrickService,
         GuardService,
         AuthService,
+        UserService,
         DatePipe
     ],
     bootstrap: [AppComponent]

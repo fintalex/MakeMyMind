@@ -4,26 +4,26 @@
     <div class="nav-container">
         <div class="calendar-buttons" >
             <div class="prev-next-container">
-                    <button mat-raised-button class="navigate-btn first-btn" (click)="prevMonth()">&lt;</button>
+                <button mat-raised-button class="navigate-btn first-btn" (click)="prevMonth()">&lt;</button>
                     <button mat-raised-button class="navigate-btn second-btn" (click)="nextMonth()">&gt;</button>
             </div>
             <div>
-                    <button mat-raised-button class="navigate-btn today-btn" (click)="todayMonth()">Сегодня</button>
+                <button mat-raised-button class="navigate-btn today-btn" (click)="todayMonth()" >{{'Today' | translate}}</button>
             </div>
             <div class="today-data">
-                    {{this.curDate |  dateru:'MMMM YYYY' | capitalize}}
+                {{this.curDate |  dateru:'MMMM YYYY' | capitalize}}
             </div>
             <div></div>
         </div>
 
         <div class="week-nav">
-            <div class="week-text">Пон</div>
-            <div class="week-text">Втр</div>
-            <div class="week-text">Срд</div>
-            <div class="week-text">Чет</div>
-            <div class="week-text">Пят</div>
-            <div class="week-text">Суб</div>
-            <div class="week-text">Вск</div>
+            <div class="week-text" translate>Mon</div>
+            <div class="week-text" translate>Tue</div>
+            <div class="week-text" translate>Wed</div>
+            <div class="week-text" translate>Thu</div>
+            <div class="week-text" translate>Fri</div>
+            <div class="week-text" translate>Sat</div>
+            <div class="week-text" translate>Sun</div>
         </div>        
     </div>
       

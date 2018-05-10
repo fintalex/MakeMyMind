@@ -12,17 +12,23 @@
         </div>
 
         <div class="rigth-area-menu">
-            <button mat-button [matMenuTriggerFor]="userinfo" *ngIf="authService.CurrentUser">{{authService.CurrentUser.username}}</button>
-            <mat-menu #userinfo="matMenu">
-                <button mat-menu-item>{{authService.CurrentUser.nickname}}</button>
-                <button mat-menu-item>{{authService.CurrentUser.created}}</button>
+            <button mat-button *ngIf="authService.CurrentUser" [matMenuTriggerFor]="userinfo" >{{authService.CurrentUser.username}}</button>
+            <mat-menu #userinfo="matMenu" >
+                <button mat-menu-item *ngIf="authService.CurrentUser">{{authService.CurrentUser.nickname}}</button>
+                <button mat-menu-item *ngIf="authService.CurrentUser">{{authService.CurrentUser.created}}</button>
             </mat-menu>
 
-            <button mat-button (click)="swithcLanguage('ru')" >ru</button>
-            <button mat-button (click)="swithcLanguage('en')" >en</button>
+            <button mat-button  *ngIf="authService.CurrentUser" [matMenuTriggerFor]="selectLang">{{authService.CurrentUser.locale}}</button>
+            <mat-menu #selectLang="matMenu">
+                <button mat-menu-item (click)="swithcLanguage('ru')" >ru</button>
+                <button mat-menu-item (click)="swithcLanguage('en')" >en</button>
+            </mat-menu>
 
-            <button mat-button (click)="logout()" *ngIf="authService.CurrentUser">Выйти</button>
-            <button mat-button *ngIf="!authService.CurrentUser" routerLink="/auth">Войти</button>
+            <!-- <button mat-button (click)="swithcLanguage('ru')" >ru</button>
+            <button mat-button (click)="swithcLanguage('en')" >en</button> -->
+
+            <button mat-button (click)="logout()" *ngIf="authService.CurrentUser">{{'Log out' | translate}}</button>
+            <button mat-button *ngIf="!authService.CurrentUser" routerLink="/auth">{{'Log in' | translate}}</button>
         </div>
     </mat-toolbar>
 

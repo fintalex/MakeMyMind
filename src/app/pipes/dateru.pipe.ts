@@ -29,7 +29,7 @@ export class DateRu implements PipeTransform {
 
         // toLocaleString - https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
         
-        return moment(value).locale('ru').format(format);
+        return moment(value).locale('en').format(format);
         //return curDate.toLocaleString("ru-RU", options);
     }
 }

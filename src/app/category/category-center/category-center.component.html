@@ -1,8 +1,8 @@
 
 
 <div class="title-header my-card">
-    <div class="title-page-container">
-        ШАГ 1: Определи свои категории
+    <div class="title-page-container" translate>
+        Step1.SpotYourInfluenceScope
     </div>
 </div> 
 
@@ -12,8 +12,8 @@
     <div class="category-manage">
         
         <mat-card class="category-details">   
-            <div class="title-container">
-                Создай категорию
+            <div class="title-container" translate>
+                CreateYourInfluenceScope
             </div>
             <category-details [category]="selectedCategory"
                                 (createCategoryEvent)="onCreateCategory($event)"
@@ -23,8 +23,8 @@
         </mat-card>
 
         <mat-card class="category-list">  
-            <div class="title-container">
-                Твой список категорий
+            <div class="title-container" translate>
+                YourListOfInfluenceScope
             </div>
             <category-list [categories]="existentCategories"
                             (selectCategoryEvent)="onSelectCategory($event)"></category-list>
@@ -34,34 +34,41 @@
 
     <div class="category-summary">
         <mat-card class="">
-           <div class="category-about">
-               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem laboriosam rerum est, dolorum, quasi error laudantium, perspiciatis beatae eveniet temporibus atque saepe aliquam consequuntur similique et repellendus 
-               deserunt voluptatibus. 
+           <div class="category-about" translate>
+               InfluenceScopeDescription
             </div>
            <div class="category-example">
-               <div class="category-name">Семья</div>
-               <div class="category-description">Lorem ipsum animndae expedita molestias cumque consequatur, qui nihil aliquid nemo pers.</div>
+               <div class="category-name" translate>FamalyScopeName</div>
+               <div class="category-description" translate>FamalyScopeDescription</div>
            </div>
            <div class="category-example">
-               <div class="category-name">Здоровье</div>
-               <div class="category-description">Repellendus ds, doloque facilis sit magni quos rerum dignissimos nihil inciquibusdam corrupti rerum, dicta facere id sunt ad.</div>
+               <div class="category-name" translate>HealthScopeName</div>
+               <div class="category-description" translate>HealthScopeDescription</div>
            </div>
            <div class="category-example">
-               <div class="category-name">Спорт</div>
-               <div class="category-description">Dicta, in ducimus, peorum quo mollo reprehenderitmaiores recusandae quod. Quam quod autem voluptas neque id veniam vitae iusto?</div>
+               <div class="category-name" translate>HobbyScopeName</div>
+               <div class="category-description" translate>HobbyScopeDescription</div>
            </div>
            <div class="category-example">
-               <div class="category-name">Работа</div>
-               <div class="category-description">Labomos sit omnis non obcaecati. Dolorum iusto rerum qui possimus nulla sunt commodi porro fugit, quos, laborum optio?</div>
+               <div class="category-name" translate>SportScopeName</div>
+               <div class="category-description" translate>SportScopeDescription</div>
            </div>
            <div class="category-example">
-               <div class="category-name">Друзья</div>
-               <div class="category-description">Facerevoluptate laudantium asperiores aamet omnis rem totam doloribus quibusdam repudiandae nisi cumque voluptate quia ipsum, quod voluptatibus.</div>
+               <div class="category-name" translate>FrendsScopeName</div>
+               <div class="category-description" translate>FrendsScopeDescription</div>
            </div>
            <div class="category-example">
-               <div class="category-name">Хобби</div>
-               <div class="category-description">Dolorem facere quidem nematione, consectetur ipsam dillam repellat?</div>
+               <div class="category-name" translate>BusinessScopeName</div>
+               <div class="category-description" translate>BusinessScopeDescription</div>
            </div>
+           <div class="category-example">
+            <div class="category-name" translate>LearningScopeName</div>
+            <div class="category-description" translate>LearningScopeDescription</div>
+        </div>
+        <div class="category-example">
+            <div class="category-name" translate>RelaxScopeName</div>
+            <div class="category-description" translate>RelaxScopeDescription</div>
+        </div>
         </mat-card>
     </div>
 

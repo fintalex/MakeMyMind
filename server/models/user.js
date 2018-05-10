@@ -21,6 +21,10 @@ const UserSchema = mongoose.Schema({
     updated: {
         type: Date,
         default: Date.now()
+    },
+    locale: {
+        type: String,
+        default: 'ru'
     }
 });
 
@@ -38,6 +42,16 @@ UserSchema.statics.addUser = (user, callback) => {
 
 UserSchema.statics.loginUser = (user, callback) => {
     User.findOne({'username': user.email, 'password': user.password}, callback);
+}
+
+UserSchema.statics.updateUserLocale = (id, locale, callback) => {
+    console.log("LOCALE is " + locale + ", and id is - " + id);
+    User.update({'_id': id}, 
+                { $set: 
+                    {
+                        'locale': locale
+                    }
+                }, callback);      
 }
 
 

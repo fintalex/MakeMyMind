@@ -15,6 +15,10 @@ export class AuthService{
         }
     }
 
+    updateCurrentUserInStorage() {
+        localStorage.setItem('currentUser', JSON.stringify(this.CurrentUser));
+    }
+
     login(email: string, password: string){
         return this.http.post('/api/users/login', { email: email, password: password })
             .map((res: Response) => {

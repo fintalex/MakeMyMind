@@ -24,13 +24,13 @@
       <button mat-raised-button color="primary" 
               [disabled]='brickDetailsForm.invalid'
               *ngIf="!data.curBrick || !data.curBrick._id"
-              (click)="createBrick()">Добавить</button>
+              (click)="createBrick()">{{'Add' | translate}}</button>
       <button mat-raised-button color="primary" 
               *ngIf="data.curBrick && data.curBrick._id"
               [disabled]='brickDetailsForm.invalid'
-              (click)="updateBrick()">Сохранить</button>
+              (click)="updateBrick()">{{'Update' | translate}}</button>
       <button mat-raised-button color="warn" 
               *ngIf="data.curBrick && data.curBrick._id"
-              (click)="deleteBrick()">Удалить</button>
+              (click)="deleteBrick()">{{'Delete' | translate}}</button>
     </div>
 </form>

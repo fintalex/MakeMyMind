@@ -4,30 +4,30 @@
 <form [formGroup]="categoryDetailsForm" class="category-form" >
     <div class="first-col">
         <mat-form-field>
-            <input matInput required placeholder="Name" formControlName="name">
+            <input matInput required placeholder="{{'NameCategory' | translate}}" formControlName="name">
         </mat-form-field>
 
         <mat-form-field>
-            <input type="color" matInput required placeholder="Color" formControlName="color">
+            <input type="color" matInput required placeholder="{{'SetColorForCategory' | translate}}" formControlName="color">
         </mat-form-field>
     </div>
   
     <div class="second-col">
         <mat-form-field>
-            <textarea matInput placeholder="Description" formControlName="description" rows="3"></textarea>
+            <textarea matInput placeholder="{{'DescriptionCategory' | translate}}" formControlName="description" rows="3"></textarea>
         </mat-form-field>
     </div>
 
     <div class="button-container">
       <button mat-raised-button color="primary" 
               [disabled]='categoryDetailsForm.invalid'
-              (click)="createCategory()">Добавить</button>
+              (click)="createCategory()">{{'Add' | translate}}</button>
       <button mat-raised-button color="primary" 
               *ngIf="category && category._id"
               [disabled]='categoryDetailsForm.invalid'
-              (click)="updateCategory()">Сохранить</button>
+              (click)="updateCategory()">{{'Update' | translate}}</button>
       <button mat-raised-button color="warn" 
               *ngIf="category && category._id"
-              (click)="deleteCategory()">Удалить</button>
+              (click)="deleteCategory()">{{'Delete' | translate}}</button>
     </div>
 </form>

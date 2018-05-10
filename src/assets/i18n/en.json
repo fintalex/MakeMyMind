@@ -1,5 +1,53 @@
 {
+    "Log out": "Log out",
+    "Log in": "Log in",
+
     "Wall": "Wall",
     "Category": "Category",
-    "Goals": "Goals"
+    "Goals": "Goals",
+
+    "Mon": "Mon",
+    "Tue": "Tue",
+    "Wed": "Wed",
+    "Thu": "Thu",
+    "Fri": "Fri",
+    "Sat": "Sat",
+    "Sun": "Sun",
+    "Today": "Today",
+
+    "NameCategory": "Influence Scope",
+    "DescriptionCategory": "Description of Influence Scope",
+    "SetColorForCategory": "Set Color",
+
+    "Add": "Add",
+    "Delete": "Delete",
+    "Update": "Update", 
+
+    "Step1": {
+        "SpotYourInfluenceScope" : "Step 1: Spot Your Influence Scope"
+    },
+    "CreateYourInfluenceScope": "Create your influence scope",
+    "YourListOfInfluenceScope": "Your influence scope list",
+
+    "InfluenceScopeDescription": "You can focus on the one Scope to achieve a success. But as a rule, peoples may win in one Scope but lose in another. BALANCED Influence Scope will help you to achieve HARMONY in your live.",
+
+    "FamalyScopeName": "Famaly",
+    "HealthScopeName": "Health",
+    "HobbyScopeName": "Hobby",
+    "SportScopeName": "Sport",
+    "FrendsScopeName": "Frends",
+    "BusinessScopeName": "Business",
+    "LearningScopeName": "Learning",
+    "RelaxScopeName": "Relax",
+    "CustomScopeName": "Custom Scope",
+
+    "FamalyScopeDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nisi facere porro optio perferendis adipisci atque quis molestias dolor doloribus?",
+    "HealthScopeDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nisi facere porro optio perferendis adipisci atque quis molestias dolor doloribus?",
+    "HobbyScopeDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nisi facere porro optio perferendis adipisci atque quis molestias dolor doloribus?",
+    "SportScopeDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nisi facere porro optio perferendis adipisci atque quis molestias dolor doloribus?",
+    "FrendsScopeDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nisi facere porro optio perferendis adipisci atque quis molestias dolor doloribus?",
+    "BusinessScopeDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nisi facere porro optio perferendis adipisci atque quis molestias dolor doloribus?",
+    "LearningScopeDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nisi facere porro optio perferendis adipisci atque quis molestias dolor doloribus?",
+    "RelaxScopeDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nisi facere porro optio perferendis adipisci atque quis molestias dolor doloribus?",
+    "CustomScopeDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nisi facere porro optio perferendis adipisci atque quis molestias dolor doloribus?"
 }

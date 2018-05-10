@@ -84,5 +84,19 @@ router.put('/', (req, res, next) => {
     });
 });
 
+// update user locale
+router.post('/updatelocale', function(req, res, next){
+    console.log("updatelocale -", req.body);
+
+    User.updateUserLocale(req.body._id, req.body.locale, (err, user) => {
+        console.log("user after change locale - ", user);
+        if(err){
+            console.log('Error in update user locale');
+        } else {user
+            res.json(user);
+        }
+    });
+});
+
 
 module.exports = router;
