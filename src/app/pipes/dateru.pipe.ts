@@ -1,14 +1,15 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import * as moment from 'moment';
 import 'moment/locale/ru';
-
-
+import { AuthService } from '../services/auth.service';
 
 @Pipe({
     name: "dateru"
 })
 
 export class DateRu implements PipeTransform {
+    constructor(private authService: AuthService){}
+
     transform(value: string, format: string): any {
 
         if (!value) return value;
@@ -29,7 +30,7 @@ export class DateRu implements PipeTransform {
 
         // toLocaleString - https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
         
-        return moment(value).locale('en').format(format);
+        return moment(value).locale(this.authService.CurrentUser.locale).format(format);
         //return curDate.toLocaleString("ru-RU", options);
     }
 }

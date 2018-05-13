@@ -1,16 +1,23 @@
 <mat-card class="registration">
-  <form [formGroup]="regForm" novalidate (submit)="reg()">
-          <mat-form-field>
-              <input type="text" matInput placeholder="Username" formControlName="username">
-          </mat-form-field>
-          <mat-form-field>
-              <input type="password" matInput placeholder="Password" formControlName="password">
-          </mat-form-field>
-          <mat-form-field>
-              <input type="nickname" matInput placeholder="Nickname" formControlName="nickname">
-          </mat-form-field>
+    <form [formGroup]="regForm" novalidate (submit)="reg()">
 
-          <button mat-raised-button color="primary" [disabled]="regForm.invalid">Зарегистрироваться</button>
-         
-  </form>
+        <div class="title-page-container" translate>
+            Registration
+        </div>
+
+        <mat-form-field>
+            <input type="text" matInput required placeholder="{{'Email' | translate}}" formControlName="username">
+        </mat-form-field>
+        <mat-form-field>
+            <input type="password" matInput required placeholder="{{'Password' | translate}}" formControlName="password">
+        </mat-form-field>
+        <mat-form-field>
+            <input type="nickname" matInput required placeholder="{{'Nickname' | translate}}" formControlName="nickname">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" [disabled]="regForm.invalid">
+                {{'CreateAccount' | translate}}
+        </button>
+
+    </form>
 </mat-card>

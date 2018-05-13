@@ -6,8 +6,9 @@ import { User } from '../models/user.model';
 @Injectable()
 export class AuthService{
 
-    CurrentUser: User;
-
+    CurrentUser: User = null;
+    curLocale: string = 'ru';
+    
     constructor(private http: Http) {
         var userInStorage = localStorage.getItem('currentUser');
         if (userInStorage) {

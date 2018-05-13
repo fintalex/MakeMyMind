@@ -1,7 +1,7 @@
 export class Category {
-    _id: string;
+    _id?: string;
     name: string;
     color: string;
     description: string;
-    user: string;
+    user?: string;
 }

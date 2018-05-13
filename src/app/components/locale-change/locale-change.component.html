@@ -1,0 +1,7 @@
+
+
+<button mat-button  [matMenuTriggerFor]="selectLang">{{authService.CurrentUser ? authService.CurrentUser.locale : authService.curLocale}}</button>
+<mat-menu #selectLang="matMenu">
+    <button mat-menu-item (click)="swithcLanguage('ru')" >ru</button>
+    <button mat-menu-item (click)="swithcLanguage('en')" >en</button>
+</mat-menu>

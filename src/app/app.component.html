@@ -18,17 +18,12 @@
                 <button mat-menu-item *ngIf="authService.CurrentUser">{{authService.CurrentUser.created}}</button>
             </mat-menu>
 
-            <button mat-button  *ngIf="authService.CurrentUser" [matMenuTriggerFor]="selectLang">{{authService.CurrentUser.locale}}</button>
-            <mat-menu #selectLang="matMenu">
-                <button mat-menu-item (click)="swithcLanguage('ru')" >ru</button>
-                <button mat-menu-item (click)="swithcLanguage('en')" >en</button>
-            </mat-menu>
+            <locale-change></locale-change>
 
-            <!-- <button mat-button (click)="swithcLanguage('ru')" >ru</button>
-            <button mat-button (click)="swithcLanguage('en')" >en</button> -->
+            <!-- <button mat-button (click)="logout()" *ngIf="authService.CurrentUser">{{'Log out' | translate}}</button>
+            <button mat-button *ngIf="!authService.CurrentUser" routerLink="/auth">{{'Log in' | translate}}</button> -->
 
-            <button mat-button (click)="logout()" *ngIf="authService.CurrentUser">{{'Log out' | translate}}</button>
-            <button mat-button *ngIf="!authService.CurrentUser" routerLink="/auth">{{'Log in' | translate}}</button>
+            <loging></loging>
         </div>
     </mat-toolbar>
 

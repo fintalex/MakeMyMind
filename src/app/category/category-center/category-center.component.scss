@@ -1,3 +1,178 @@
+// ================== animated affect ===========================
+.category-name{
+    transition: 0.4s ease-in;
+}
+.add-button{ 
+    opacity: 0;
+    transition: 0.4s ease-in;
+}
+
+.hexagon:hover{
+    .category-name{
+        transition: 0.4s ease-in;
+        transform: translateY(-25px);
+        opacity: 0;
+    }
+    .add-button{
+        transition: 0.4s ease-in;
+        transform: translateY(-25px);
+        opacity: 1;
+    }
+}
+// .hexagon:hover{
+//     .category-name:after{
+//         content: "Add";
+//         transition: 0.4s ease-in;
+//         opacity: 1;
+//         //animation: animate-category 0.5s;
+//     }
+// }
+// @keyframes animate-category{
+//     100%{
+//         content: "Add"
+//     }
+// }
+
+// ================================ HEXAGON ======================
+
+$hexagon-index: 0.3;
+
+.hexagon { 
+    cursor: pointer;
+    margin: 50px * $hexagon-index 15px * $hexagon-index;
+    width: 260px * $hexagon-index; 
+    height: 150px  * $hexagon-index; 
+    //background: linear-gradient(to top, #966e00, #ebbe2a);
+    position: relative; 
+    text-align: center;
+    vertical-align: middle;
+    box-sizing: border-box;
+    padding-top: 8px;
+
+    transition: all 0.5s ease;
+} 
+
+.hexagon:before { 
+   content: ""; 
+   position: absolute; 
+   top: -75px * $hexagon-index; 
+   left: 0; 
+   width: 0; 
+   height: 0; 
+   border-left: 130px * $hexagon-index solid transparent; 
+   border-right: 130px * $hexagon-index solid transparent; 
+   //border-bottom: 75px solid #ebbe2a; 
+} 
+.hexagon:after { 
+   content: ""; 
+   position: absolute; 
+   bottom: -75px * $hexagon-index; 
+   left: 0; 
+   width: 0; 
+   height: 0; 
+   border-left: 130px * $hexagon-index solid transparent; 
+   border-right: 130px * $hexagon-index solid transparent; 
+   //border-top: 75px solid  #966e00; 
+}
+
+.category-family{
+    //background: linear-gradient(45deg, #ebbe2a, #966e00);
+    background: linear-gradient(0deg, #966e00, #ebbe2a);
+}
+.category-family:before{
+    border-bottom: 75px * $hexagon-index solid #ebbe2a; 
+}
+.category-family:after{
+    border-top: 75px * $hexagon-index solid  #966e00; 
+}
+
+.category-health{
+    background: linear-gradient(0deg, #007f96, #1cdafc);;
+}
+.category-health:before{
+    border-bottom: 75px * $hexagon-index solid #1cdafc; 
+}
+.category-health:after{
+    border-top: 75px * $hexagon-index solid  #007f96; 
+}
+
+
+.category-hobby{
+    background: linear-gradient(0deg, #009669, #26ffbe);;
+}
+.category-hobby:before{
+    border-bottom: 75px * $hexagon-index solid #26ffbe; 
+}
+.category-hobby:after{
+    border-top: 75px * $hexagon-index solid  #009669; 
+}
+
+
+.category-sport{
+    background: linear-gradient(0deg, #3809b8, #8257f8);;
+}
+.category-sport:before{
+    border-bottom: 75px * $hexagon-index solid #8257f8; 
+}
+.category-sport:after{
+    border-top: 75px * $hexagon-index solid  #3809b8; 
+}
+
+
+.category-frends{
+    background: linear-gradient(0deg, #21a500, #5cff33);;
+}
+.category-frends:before{
+    border-bottom: 75px * $hexagon-index solid #5cff33; 
+}
+.category-frends:after{
+    border-top: 75px * $hexagon-index solid  #21a500; 
+}
+
+
+.category-business{
+    background: linear-gradient(0deg, #96008e, #ff35f5);;
+}
+.category-business:before{
+    border-bottom: 75px * $hexagon-index solid #ff35f5; 
+}
+.category-business:after{
+    border-top: 75px * $hexagon-index solid  #96008e; 
+}
+
+
+.category-selfmind{
+    background: linear-gradient(0deg, #960000, #ff3d3d);;
+}
+.category-selfmind:before{
+    border-bottom: 75px * $hexagon-index solid #ff3d3d; 
+}
+.category-selfmind:after{
+    border-top: 75px * $hexagon-index solid  #960000; 
+}
+
+
+.category-relax{
+    background: linear-gradient(0deg, #6f700d, #a0a12f);;
+}
+.category-relax:before{
+    border-bottom: 75px * $hexagon-index solid #a0a12f; 
+}
+.category-relax:after{
+    border-top: 75px * $hexagon-index solid  #6f700d; 
+}
+
+
+.category-own{
+    background: linear-gradient(0deg, #444444, #7c7c7c);;
+}
+.category-own:before{
+    border-bottom: 75px * $hexagon-index solid #7c7c7c; 
+}
+.category-own:after{
+    border-top: 75px * $hexagon-index solid  #444444; 
+}
+
 
 .category-center{
     max-width: 960px;
@@ -47,17 +222,26 @@
 .category-about{
     //width: 100%;
     border-bottom: 2px solid white; 
+    margin-bottom: 10px;
 }
 .category-example{
     display: flex;
     width: 100%;
     padding: 5px;
-    .category-name{
-        min-width: 100px;
+    text-align: justify;
+    .category-name, .add-button{
+        text-decoration: underline;
+        min-width: 68px;
         padding: 5px;
+        font-weight: 700;
+        font-size: 14px;
     }
     .category-description{
         flex-grow: 1;
         padding: 5px;
     }
 }
+.category-example:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+

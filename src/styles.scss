@@ -236,33 +236,35 @@ canvas{ display: block; vertical-align: bottom; }
 //     border-radius: 0 0 3px 3px; 
 // }
 // ================================ HEXAGON ======================
+$hexagon-index: 1;
+
 .hexagon { 
-    margin: 50px 15px;
-    width: 260px; 
-    height: 150px; 
+    margin: 50px * $hexagon-index 15px * $hexagon-index;
+    width: 260px * $hexagon-index; 
+    height: 150px  * $hexagon-index; 
     //background: linear-gradient(to top, #966e00, #ebbe2a);
     position: relative; 
 } 
 .hexagon:before { 
    content: ""; 
    position: absolute; 
-   top: -75px; 
+   top: -75px * $hexagon-index; 
    left: 0; 
    width: 0; 
    height: 0; 
-   border-left: 130px solid transparent; 
-   border-right: 130px solid transparent; 
+   border-left: 130px * $hexagon-index solid transparent; 
+   border-right: 130px * $hexagon-index solid transparent; 
    //border-bottom: 75px solid #ebbe2a; 
 } 
 .hexagon:after { 
    content: ""; 
    position: absolute; 
-   bottom: -75px; 
+   bottom: -75px * $hexagon-index; 
    left: 0; 
    width: 0; 
    height: 0; 
-   border-left: 130px solid transparent; 
-   border-right: 130px solid transparent; 
+   border-left: 130px * $hexagon-index solid transparent; 
+   border-right: 130px * $hexagon-index solid transparent; 
    //border-top: 75px solid  #966e00; 
 }
 
@@ -271,20 +273,20 @@ canvas{ display: block; vertical-align: bottom; }
     background: linear-gradient(0deg, #966e00, #ebbe2a);
 }
 .category-family:before{
-    border-bottom: 75px solid #ebbe2a; 
+    border-bottom: 75px * $hexagon-index solid #ebbe2a; 
 }
 .category-family:after{
-    border-top: 75px solid  #966e00; 
+    border-top: 75px * $hexagon-index solid  #966e00; 
 }
 
 .category-health{
     background: linear-gradient(0deg, #007f96, #1cdafc);;
 }
 .category-health:before{
-    border-bottom: 75px solid #1cdafc; 
+    border-bottom: 75px * $hexagon-index solid #1cdafc; 
 }
 .category-health:after{
-    border-top: 75px solid  #007f96; 
+    border-top: 75px * $hexagon-index solid  #007f96; 
 }
 
 
@@ -292,10 +294,10 @@ canvas{ display: block; vertical-align: bottom; }
     background: linear-gradient(0deg, #009669, #26ffbe);;
 }
 .category-hobby:before{
-    border-bottom: 75px solid #26ffbe; 
+    border-bottom: 75px * $hexagon-index solid #26ffbe; 
 }
 .category-hobby:after{
-    border-top: 75px solid  #009669; 
+    border-top: 75px * $hexagon-index solid  #009669; 
 }
 
 
@@ -303,10 +305,10 @@ canvas{ display: block; vertical-align: bottom; }
     background: linear-gradient(0deg, #3809b8, #8257f8);;
 }
 .category-sport:before{
-    border-bottom: 75px solid #8257f8; 
+    border-bottom: 75px * $hexagon-index solid #8257f8; 
 }
 .category-sport:after{
-    border-top: 75px solid  #3809b8; 
+    border-top: 75px * $hexagon-index solid  #3809b8; 
 }
 
 
@@ -314,10 +316,10 @@ canvas{ display: block; vertical-align: bottom; }
     background: linear-gradient(0deg, #21a500, #5cff33);;
 }
 .category-frends:before{
-    border-bottom: 75px solid #5cff33; 
+    border-bottom: 75px * $hexagon-index solid #5cff33; 
 }
 .category-frends:after{
-    border-top: 75px solid  #21a500; 
+    border-top: 75px * $hexagon-index solid  #21a500; 
 }
 
 
@@ -325,10 +327,10 @@ canvas{ display: block; vertical-align: bottom; }
     background: linear-gradient(0deg, #96008e, #ff35f5);;
 }
 .category-business:before{
-    border-bottom: 75px solid #ff35f5; 
+    border-bottom: 75px * $hexagon-index solid #ff35f5; 
 }
 .category-business:after{
-    border-top: 75px solid  #96008e; 
+    border-top: 75px * $hexagon-index solid  #96008e; 
 }
 
 
@@ -336,10 +338,10 @@ canvas{ display: block; vertical-align: bottom; }
     background: linear-gradient(0deg, #960000, #ff3d3d);;
 }
 .category-selfmind:before{
-    border-bottom: 75px solid #ff3d3d; 
+    border-bottom: 75px * $hexagon-index solid #ff3d3d; 
 }
 .category-selfmind:after{
-    border-top: 75px solid  #960000; 
+    border-top: 75px * $hexagon-index solid  #960000; 
 }
 
 
@@ -347,10 +349,10 @@ canvas{ display: block; vertical-align: bottom; }
     background: linear-gradient(0deg, #6f700d, #a0a12f);;
 }
 .category-relax:before{
-    border-bottom: 75px solid #a0a12f; 
+    border-bottom: 75px * $hexagon-index solid #a0a12f; 
 }
 .category-relax:after{
-    border-top: 75px solid  #6f700d; 
+    border-top: 75px * $hexagon-index solid  #6f700d; 
 }
 
 
@@ -358,8 +360,8 @@ canvas{ display: block; vertical-align: bottom; }
     background: linear-gradient(0deg, #444444, #7c7c7c);;
 }
 .category-own:before{
-    border-bottom: 75px solid #7c7c7c; 
+    border-bottom: 75px * $hexagon-index solid #7c7c7c; 
 }
 .category-own:after{
-    border-top: 75px solid  #444444; 
+    border-top: 75px * $hexagon-index solid  #444444; 
 }

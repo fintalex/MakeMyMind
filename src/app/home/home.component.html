@@ -20,14 +20,17 @@
                 </div>
 
                 <div class="rigth-area-menu">
+
                     <button mat-button [matMenuTriggerFor]="userinfo" *ngIf="authService.CurrentUser">{{authService.CurrentUser.username}}</button>
                     <mat-menu #userinfo="matMenu">
-                        <button mat-menu-item>{{authService.CurrentUser.nickname}}</button>
-                        <button mat-menu-item>{{authService.CurrentUser.created}}</button>
+                        <button mat-menu-item *ngIf="authService.CurrentUser">{{authService.CurrentUser.nickname}}</button>
+                        <button mat-menu-item *ngIf="authService.CurrentUser">{{authService.CurrentUser.created}}</button>
                     </mat-menu>
-        
-                    <button mat-button (click)="logout()" *ngIf="authService.CurrentUser">Выйти</button>
-                    <button mat-button *ngIf="!authService.CurrentUser" routerLink="/auth">Войти</button>
+
+                    <locale-change></locale-change>
+
+                    <loging></loging>
+
                 </div>
             </div>
             <div class="first-screen">
@@ -62,17 +65,17 @@
     <section class="section section-dark">
 
         <div class="all-steps-container">
-            <div class="step-container white-shadow">
+            <div class="step-container white-shadow" routerLink="/category">
                 <div class="step-header">ШАГ 1:</div>
                 <div class="step-description">Определи свои сферы влияния</div>
                 <div class="step-image step-image-category blue-shadow"></div>
             </div>
-            <div class="step-container white-shadow">
+            <div class="step-container white-shadow" routerLink="/bricktype">
                 <div class="step-header">ШАГ 2:</div>
                 <div class="step-description">Поставь цели и задай привычки</div>
                 <div class="step-image step-image-bricktype blue-shadow"></div>
             </div>
-            <div class="step-container white-shadow">
+            <div class="step-container white-shadow" routerLink="/wall">
                 <div class="step-header">ШАГ 3:</div>
                 <div class="step-description">Строй свою стену будущего</div>
                 <div class="step-image step-image-wall blue-shadow"></div>
@@ -251,13 +254,15 @@
     <div class="pimg3-container">
         <div class="pimg3">
         </div>
+
+        <h1>Поставь цели и работай над привычками</h1>
             <!-- <div class="ptext">
                 <span class="border">
                     image three text
                 </span>
 
             </div> -->
-        <div class="categories-cards">
+        <!-- <div class="categories-cards">
             <div class="category-test">
                 <h1>Определи свои сферы влияния</h1>
             </div>
@@ -372,7 +377,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <section class="section section-dark">

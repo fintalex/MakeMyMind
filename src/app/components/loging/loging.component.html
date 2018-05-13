@@ -1,0 +1,2 @@
+<button mat-button (click)="logout()" *ngIf="authService.CurrentUser">{{'Log out' | translate}}</button>
+<button mat-button *ngIf="!authService.CurrentUser" routerLink="/auth">{{'Log in' | translate}}</button>

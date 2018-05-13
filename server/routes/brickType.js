@@ -6,9 +6,9 @@ var BrickType = require('../models/brickType');
 
 // GET all BrickTypes by User id
 router.get('/getByUserId/:userId', function(req, res, next){
-    //console.log("GET all brickType types API");
+    console.log("GET all brickType types API");
     BrickType.getAllBrickTypesByUserId(req.params.userId, (err, brickTypes) => {
-        //console.log("BrickType Types - ", brickTypes);
+        console.log("BrickType Types - ", brickTypes);
         if(err){
             console.log('Error get brickType types');
         } else {
@@ -60,7 +60,7 @@ router.put('/', (req, res, next) => {
 
 router.delete('/:id', function(req, res) {
     console.log('Deleting BrickType');
-    BrickType.findByIdAndRemove(req.params.id, (err, deletedBrickType) => {
+    BrickType.softDeleteBrickType(req.params.id, (err, deletedBrickType) => {
         if (err){
             res.send('Error deleting BrickType');
         } else {

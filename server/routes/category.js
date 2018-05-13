@@ -75,9 +75,10 @@ router.put('/', (req, res, next) => {
     });
 });
 
+// DELETE Categoty (soft deleting)
 router.delete('/:id', function(req, res) {
     console.log('Deleting category');
-    Category.findByIdAndRemove(req.params.id, (err, deletedCategory) => {
+    Category.softDeleteCategory(req.params.id, (err, deletedCategory) => {
         if (err){
             res.send('Error deleting category');
         } else {

@@ -1,74 +1,95 @@
-
-
 <div class="title-header my-card">
     <div class="title-page-container" translate>
         Step1.SpotYourInfluenceScope
     </div>
-</div> 
+</div>
 
 <div class="category-center">
-    
-            
+
+
     <div class="category-manage">
-        
-        <mat-card class="category-details">   
+
+        <mat-card class="category-details">
             <div class="title-container" translate>
                 CreateYourInfluenceScope
             </div>
-            <category-details [category]="selectedCategory"
-                                (createCategoryEvent)="onCreateCategory($event)"
-                                (deleteCategoryEvent)="onDeleteCategory($event)"
-                                (updateCategoryEvent)="onUpdateCategory($event)"></category-details>
-           
+            <category-details [category]="selectedCategory" (createCategoryEvent)="onCreateCategory($event)" (deleteCategoryEvent)="onDeleteCategory($event)"
+                (updateCategoryEvent)="onUpdateCategory($event)"></category-details>
+
         </mat-card>
 
-        <mat-card class="category-list">  
+        <mat-card class="category-list">
             <div class="title-container" translate>
                 YourListOfInfluenceScope
             </div>
-            <category-list [categories]="existentCategories"
-                            (selectCategoryEvent)="onSelectCategory($event)"></category-list>
+            <category-list [categories]="existentCategories" (selectCategoryEvent)="onSelectCategory($event)"></category-list>
         </mat-card>
 
     </div>
 
     <div class="category-summary">
         <mat-card class="">
-           <div class="category-about" translate>
-               InfluenceScopeDescription
+            <div class="category-about" translate>
+                InfluenceScopeDescription
             </div>
-           <div class="category-example">
-               <div class="category-name" translate>FamalyScopeName</div>
-               <div class="category-description" translate>FamalyScopeDescription</div>
-           </div>
-           <div class="category-example">
-               <div class="category-name" translate>HealthScopeName</div>
-               <div class="category-description" translate>HealthScopeDescription</div>
-           </div>
-           <div class="category-example">
-               <div class="category-name" translate>HobbyScopeName</div>
-               <div class="category-description" translate>HobbyScopeDescription</div>
-           </div>
-           <div class="category-example">
-               <div class="category-name" translate>SportScopeName</div>
-               <div class="category-description" translate>SportScopeDescription</div>
-           </div>
-           <div class="category-example">
-               <div class="category-name" translate>FrendsScopeName</div>
-               <div class="category-description" translate>FrendsScopeDescription</div>
-           </div>
-           <div class="category-example">
-               <div class="category-name" translate>BusinessScopeName</div>
-               <div class="category-description" translate>BusinessScopeDescription</div>
-           </div>
-           <div class="category-example">
-            <div class="category-name" translate>LearningScopeName</div>
-            <div class="category-description" translate>LearningScopeDescription</div>
-        </div>
-        <div class="category-example">
-            <div class="category-name" translate>RelaxScopeName</div>
-            <div class="category-description" translate>RelaxScopeDescription</div>
-        </div>
+
+            <div class="category-example">
+                <div class="hexagon category-family" (click)="onCreateCategory(defaultCategies[0])">
+                    <div class="category-name" translate>FamalyScopeName</div>
+                    <div class="add-button"  translate>Add</div>
+                </div>
+
+                <div class="category-description" translate>FamalyScopeDescription</div>
+            </div>
+            <div class="category-example">
+                <div class="hexagon category-health" (click)="onCreateCategory(defaultCategies[1])">
+                    <div class="category-name" translate>HealthScopeName</div>
+                    <div class="add-button"  translate>Add</div>
+                </div>
+                <div class="category-description" translate>HealthScopeDescription</div>
+            </div>
+            <div class="category-example">
+                <div class="hexagon category-hobby" (click)="onCreateCategory(defaultCategies[2])">
+                    <div class="category-name" translate>HobbyScopeName</div>
+                    <div class="add-button"  translate>Add</div>
+                </div>
+                <div class="category-description" translate>HobbyScopeDescription</div>
+            </div>
+            <div class="category-example">
+                <div class="hexagon category-sport" (click)="onCreateCategory(defaultCategies[3])">
+                    <div class="category-name" translate>SportScopeName</div>
+                    <div class="add-button"  translate>Add</div>
+                </div>
+                <div class="category-description" translate>SportScopeDescription</div>
+            </div>
+            <div class="category-example">
+                <div class="hexagon category-frends" (click)="onCreateCategory(defaultCategies[4])">
+                    <div class="category-name" translate>FrendsScopeName</div>
+                    <div class="add-button"  translate>Add</div>
+                </div>
+                <div class="category-description" translate>FrendsScopeDescription</div>
+            </div>
+            <div class="category-example">
+                <div class="hexagon category-business" (click)="onCreateCategory(defaultCategies[5])">
+                    <div class="category-name" translate>BusinessScopeName</div>
+                    <div class="add-button"  translate>Add</div>
+                </div>
+                <div class="category-description" translate>BusinessScopeDescription</div>
+            </div>
+            <div class="category-example">
+                <div class="hexagon category-selfmind" (click)="onCreateCategory(defaultCategies[6])">
+                    <div class="category-name" translate>LearningScopeName</div>
+                    <div class="add-button"  translate>Add</div>
+                </div>
+                <div class="category-description" translate>LearningScopeDescription</div>
+            </div>
+            <div class="category-example">
+                <div class="hexagon category-relax" (click)="onCreateCategory(defaultCategies[7])" >
+                    <div class="category-name" translate>RelaxScopeName</div>
+                    <div class="add-button" translate>Add</div>
+                </div>
+                <div class="category-description" translate>RelaxScopeDescription</div>
+            </div>
         </mat-card>
     </div>
 

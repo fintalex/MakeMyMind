@@ -49,5 +49,12 @@
     "BusinessScopeDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nisi facere porro optio perferendis adipisci atque quis molestias dolor doloribus?",
     "LearningScopeDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nisi facere porro optio perferendis adipisci atque quis molestias dolor doloribus?",
     "RelaxScopeDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nisi facere porro optio perferendis adipisci atque quis molestias dolor doloribus?",
-    "CustomScopeDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nisi facere porro optio perferendis adipisci atque quis molestias dolor doloribus?"
+    "CustomScopeDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nisi facere porro optio perferendis adipisci atque quis molestias dolor doloribus?",
+
+    "SignIn": "Sign In",
+    "Registration": "Registration",
+    "CreateAccount": "Create Account",
+    "Email": "Email",
+    "Password": "Password",
+    "Nickname": "Nickname"
 }

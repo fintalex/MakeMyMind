@@ -26,8 +26,12 @@ const brickTypeSchema = mongoose.Schema({
     isPrivate: { type: Boolean, default: true }
 });
 
-brickTypeSchema.statics.getAllBrickTypesByUserId = (userId, callback) => {
-    BrickType.find({'user': userId}, callback)
+brickTypeSchema.statics.getAllBrickTypesByUserId = (userId, callback) => {        
+    BrickType.find(
+        {
+            'user': userId, 
+            'isRemoved': false  //   IS NULL or FALSE
+        }, callback)
         .populate('category');
 };
 
@@ -47,6 +51,15 @@ brickTypeSchema.statics.updateBrickType = (id, brickType, callback) => {
         .then((updatedBrickType)=> { 
             BrickType.populate(updatedBrickType, { path: 'category', model: 'Category' }, callback);
         });        
+}
+
+brickTypeSchema.statics.softDeleteBrickType = (id, callback) => {
+    BrickType.update({'_id': id}, 
+                { $set: 
+                    {
+                        'isRemoved': true
+                    }
+                }, callback);  
 }
 
 const BrickType = mongoose.model('BrickType', brickTypeSchema, 'BrickTypes');

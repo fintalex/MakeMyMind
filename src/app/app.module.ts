@@ -33,6 +33,8 @@ import { BrickTypeDetailsComponent } from './brickType/brick-type-details/brick-
 import { BrickTypeListComponent } from './brickType/brick-type-list/brick-type-list.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { BrickModalComponent } from './brick/brick-modal/brick-modal.component';
+import { LocaleChangeComponent } from './components/locale-change/locale-change.component';
+import { LogingComponent } from './components/loging/loging.component';
 
 // =============== App Pipes ====================
 import { DateRu } from './pipes/dateru.pipe';
@@ -53,7 +55,7 @@ export function createTranslateLoader(http: HttpClient) {
         CategoryListComponent, CategoryDetailsComponent, CategoryCenterComponent, TestComponent, BrickTypeCenterComponent, BrickTypeDetailsComponent, BrickTypeListComponent, CalendarComponent, BrickModalComponent,
 
         // === pipes ====
-        DateRu, CapitalizePipe, HomeComponent
+        DateRu, CapitalizePipe, HomeComponent, LocaleChangeComponent, LogingComponent
     ],
     entryComponents: [BrickModalComponent],
     imports: [
