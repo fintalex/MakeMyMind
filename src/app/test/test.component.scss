@@ -386,139 +386,139 @@
 //=========================leson 7 Делаем header и навигацию сайта==================================
 //=========================leson 8 верстка SideBar сайта==================================
 //=========================leson 9 Верстка адаптивного слайдера==================================
-// a{
-//     color: white;
-//     text-decoration: none;
-// }
-// .header{
+a{
+    color: white;
+    text-decoration: none;
+}
+.header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+    background: #689CD2;
+    color: white;
+    font-family: Helvetica, sans-serif;
+}
+.header_section{
+    display: flex;
+    align-items: center;
+}
+.header_item{
+    padding: 10px 15px;
+    font-size: 20px;
+    margin-left: 5px;
+}
+.header_item:hover{
+    background: #ff9900;
+    border-radius: 4px;
+}
+.headerlogo{
+    font-weight: bold;
+}
+.headerButton{
+    cursor: pointer;
+}
+.sideBar a{
+    color: #689CD2;
+}
+.sideBar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 630px;
+    width: 150px;
+    border-right: 1px solid #d7dbdd;
+    background: #fcfdfd;
+    padding: 10px;
+}
+.sideBar-item{
+    cursor: pointer;
+    padding: 8px 10px;
+    font-size: 18px;
+}
+.sideBar-item:hover{
+    background: #eef3f5;
+    border-radius: 4px;
+}
+
+
+.main{
+    display: flex;
+}
+// .wrap{
 //     display: flex;
-//     flex-wrap: wrap;
-//     justify-content: space-between;
-//     padding: 10px;
-//     background: #689CD2;
-//     color: white;
-//     font-family: Helvetica, sans-serif;
-// }
-// .header_section{
-//     display: flex;
-//     align-items: center;
-// }
-// .header_item{
-//     padding: 10px 15px;
-//     font-size: 20px;
-//     margin-left: 5px;
-// }
-// .header_item:hover{
-//     background: #ff9900;
-//     border-radius: 4px;
-// }
-// .headerlogo{
-//     font-weight: bold;
-// }
-// .headerButton{
-//     cursor: pointer;
-// }
-// .sideBar a{
-//     color: #689CD2;
-// }
-// .sideBar{
-//     display: flex;
+//     align-items: stretch;
+//     width: 90%;
+//     margin: auto;
 //     flex-direction: column;
-//     justify-content: space-between;
-//     height: 630px;
-//     width: 150px;
-//     border-right: 1px solid #d7dbdd;
-//     background: #fcfdfd;
-//     padding: 10px;
 // }
-// .sideBar-item{
-//     cursor: pointer;
-//     padding: 8px 10px;
-//     font-size: 18px;
+// .wrap button{
+//     width: 30px;
+//     border: none;
+//     background: transparent;
+//     font-size: 40px;
+//     text-align: center;
+//     outline: none;
+//     opacity: 0.5;
+//     transition: opacity 300ms ease-out;
 // }
-// .sideBar-item:hover{
-//     background: #eef3f5;
-//     border-radius: 4px;
-// }
-
-
-// .main{
-//     display: flex;
-// }
-// // .wrap{
-// //     display: flex;
-// //     align-items: stretch;
-// //     width: 90%;
-// //     margin: auto;
-// //     flex-direction: column;
-// // }
-// // .wrap button{
-// //     width: 30px;
-// //     border: none;
-// //     background: transparent;
-// //     font-size: 40px;
-// //     text-align: center;
-// //     outline: none;
-// //     opacity: 0.5;
-// //     transition: opacity 300ms ease-out;
-// // }
-// // .wrap button:hover{
-// //     opacity: 1;
-// // }
-// // .slider{
-// //     display: flex;
-// //     flex-direction: row;
-// // }
-// // .scroller{
-// //     flex: 1;
-// //     overflow: hidden;
-// // }
-// // .items{
-// //     list-style-type: none;
-// //     white-space: nowrap;
-// //     transition: transform 1s ease-in-out;
-// // }
-// // .item{
-// //     padding: 30px 20px;
-// //     display:  inline-block;
-// //     width: 100%;
-// //     height: 500px;
-// //     background-size: cover;
-// //     background-position: 50% 50%;
-// //     box-shadow: inset 0 0 10px grba(0, 0, 0, 0.5);
-// // }
-
-// .gallery{
-//     padding: .5vw;
-//     font-size: 0;
-//     // flex-wrap: wrap;
-//     // flex-direction: column;
-//     flex-flow: row wrap;
-//     display: flex;
-// }
-// .gallery div{
-//     //flex: auto;
-//     flex-grow: 1;
-//     width: 237px;
-//     margin: .5vw;
-// }
-// .gallery div img{
-//     width: 100%;
-//     height: auto;
-// }
-
-// @media screen and(max-width: 540px){
-//     .gallery div {margin:  0; }
-//     .gallery {padding: 0; }
-// }
-// .gallery:hover img{
-//     opacity: 0.3;
-//     transition: .8s opacity;
-// }
-// .gallery:hover img:hover{
+// .wrap button:hover{
 //     opacity: 1;
-//     transition: .8s opacity;
 // }
+// .slider{
+//     display: flex;
+//     flex-direction: row;
+// }
+// .scroller{
+//     flex: 1;
+//     overflow: hidden;
+// }
+// .items{
+//     list-style-type: none;
+//     white-space: nowrap;
+//     transition: transform 1s ease-in-out;
+// }
+// .item{
+//     padding: 30px 20px;
+//     display:  inline-block;
+//     width: 100%;
+//     height: 500px;
+//     background-size: cover;
+//     background-position: 50% 50%;
+//     box-shadow: inset 0 0 10px grba(0, 0, 0, 0.5);
+// }
+
+.gallery{
+    padding: .5vw;
+    font-size: 0;
+    // flex-wrap: wrap;
+    // flex-direction: column;
+    flex-flow: row wrap;
+    display: flex;
+}
+.gallery div{
+    //flex: auto;
+    flex-grow: 1;
+    width: 237px;
+    margin: .5vw;
+}
+.gallery div img{
+    width: 100%;
+    height: auto;
+}
+
+@media screen and(max-width: 540px){
+    .gallery div {margin:  0; }
+    .gallery {padding: 0; }
+}
+.gallery:hover img{
+    opacity: 0.3;
+    transition: .8s opacity;
+}
+.gallery:hover img:hover{
+    opacity: 1;
+    transition: .8s opacity;
+}
 // =========================================== Code Dojo 1 ==========================================
 // * {
 //     box-sizing: border-box;

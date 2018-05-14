@@ -23,18 +23,12 @@ export class BrickTypeDetailsComponent implements OnInit {
     private deleteBrickTypeEvent = new EventEmitter();
     private updateBrickTypeEvent = new EventEmitter();
 
-    public brickTypeDetailsForm: FormGroup = new FormGroup({
-        name: new FormControl(),
-        category: new FormControl(),
-        sign: new FormControl(),
-        ruleDescription: new FormControl(),
-        isPrivate: new FormControl(true)
-    });
+    public brickTypeDetailsForm: FormGroup;
 
     constructor() { }
 
     ngOnInit() {
-
+        this.setDefaultFormValues();
     }
 
     ngOnChanges() {
@@ -54,7 +48,9 @@ export class BrickTypeDetailsComponent implements OnInit {
         this.createBrickTypeEvent.emit(this.brickTypeDetailsForm.value);
 
         this.brickTypeDetailsForm.reset();
-        this.brickTypeDetailsForm.value.isPrivate = new FormControl(true);
+        
+        this.setDefaultFormValues();
+        //this.brickTypeDetailsForm.setValue({isPrivate: true});
     }
 
     public deleteBrickType() {
@@ -70,5 +66,15 @@ export class BrickTypeDetailsComponent implements OnInit {
         this.brickType.ruleDescription = this.brickTypeDetailsForm.value.ruleDescription;
         this.brickType.isPrivate = this.brickTypeDetailsForm.value.isPrivate;
         this.updateBrickTypeEvent.emit(this.brickType);
+    }
+
+    private setDefaultFormValues() {
+        this.brickTypeDetailsForm = new FormGroup({
+            name: new FormControl(),
+            category: new FormControl(),
+            sign: new FormControl(),
+            ruleDescription: new FormControl(),
+            isPrivate: new FormControl(true)
+        });
     }
 }

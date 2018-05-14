@@ -27,7 +27,7 @@
         "SpotYourInfluenceScope" : "Шаг 1: Определи Свои Сферы Влияния"
     },
     "CreateYourInfluenceScope": "Создай сферу влияния",
-    "YourListOfInfluenceScope": "Твой список сфер влияния",
+    "YourListOfInfluenceScope": "Твои сферы влияния",
 
     "InfluenceScopeDescription": "Вы можете сделать упор на одну сферу, чтобы допиться успеха. Но как правило, человек может быть поглащен одной сферой забывая о другой. СБАЛАНСИРОВАННЫЕ сферы влияния помогут вам добиться ГАРМОНИИ в вашей жизни.",
 
@@ -56,5 +56,17 @@
     "CreateAccount": "Создать Аккаунт",
     "Email": "Email",
     "Password": "Пароль",
-    "Nickname": "Ник"
+    "Nickname": "Ник",
+
+    "Step2": {
+        "SetYourSkill": "ШАГ 2: Работай со своими навыками",
+        "CreateYouSkill": "Создай навык",
+        "YouSkillList": "Твои навыки",
+        "SkillDescriptionTitle": "Зачем нужно работать с навыками?",
+        "SkillDescription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint consequuntur aspernatur obcaecati quidem voluptatem quae laborum atque. A aliquid earum ad fuga vel recusandae quibusdam cum in possimus delectus, accusantium, tempora nihil blanditiis cumque corrupti voluptatem laboriosam doloribus, architecto dolorum?",
+        "IsPrivate": "Скрыть Навык",
+        "SkillDescriptionPlaceholder": "Описание Навыка",
+        "SkillName": "Название Навыка",
+        "SkillSign": "Сокращение / Знак / Символ"
+    }
 }

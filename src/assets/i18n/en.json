@@ -56,5 +56,17 @@
     "CreateAccount": "Create Account",
     "Email": "Email",
     "Password": "Password",
-    "Nickname": "Nickname"
+    "Nickname": "Nickname",
+
+    "Step2": {
+        "SetYourSkill": "Step 2: Fount Out Your Skills",
+        "CreateYouSkill": "Create Skill",
+        "YouSkillList": "List Your Skills",
+        "SkillDescriptionTitle": "Why Do You Need to Work With Skills?",
+        "SkillDescription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint consequuntur aspernatur obcaecati quidem voluptatem quae laborum atque. A aliquid earum ad fuga vel recusandae quibusdam cum in possimus delectus, accusantium, tempora nihil blanditiis cumque corrupti voluptatem laboriosam doloribus, architecto dolorum?",
+        "IsPrivate": "IsPrivate",
+        "SkillDescriptionPlaceholder": "Skill Description",
+        "SkillName": "Skill Name",
+        "SkillSign": "Skill Sign"
+    }
 }

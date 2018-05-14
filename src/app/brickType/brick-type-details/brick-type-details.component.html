@@ -1,11 +1,11 @@
 
   <form [formGroup]="brickTypeDetailsForm" class="brick-type-form" >
     <mat-form-field>
-      <input matInput required placeholder="Name" formControlName="name">
+      <input matInput required placeholder="{{'Step2.SkillName' | translate}}" formControlName="name">
     </mat-form-field>
 
     <mat-form-field>
-        <mat-select placeholder="Category" matInput required formControlName="category">
+        <mat-select placeholder="{{'NameCategory' | translate}}" matInput required formControlName="category">
             <mat-option *ngFor="let category of categoriesList"
                         [value]="category._id">
             <div class="color-list-option">
@@ -17,15 +17,15 @@
     </mat-form-field>
 
     <mat-form-field>
-        <input type="sign" matInput required placeholder="Sign" formControlName="sign">
+        <input type="sign" matInput required placeholder="{{'Step2.SkillSign' | translate}}" formControlName="sign">
     </mat-form-field>
   
     <mat-form-field>
-        <textarea matInput placeholder="Description" formControlName="ruleDescription"></textarea>
+        <textarea matInput placeholder="{{'Step2.SkillDescriptionPlaceholder' | translate}}" formControlName="ruleDescription"></textarea>
     </mat-form-field>
 
     
-    <mat-checkbox color="primary" formControlName="isPrivate" >Is Private</mat-checkbox>
+    <mat-checkbox color="primary" formControlName="isPrivate" >{{'Step2.IsPrivate' | translate}}</mat-checkbox>
    
 
     <div class="button-container">
