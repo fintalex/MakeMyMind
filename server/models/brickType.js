@@ -30,7 +30,10 @@ brickTypeSchema.statics.getAllBrickTypesByUserId = (userId, callback) => {
     BrickType.find(
         {
             'user': userId, 
-            'isRemoved': false  //   IS NULL or FALSE
+            $or: [
+                {'isRemoved': {$exists: false}}, 
+                {'isRemoved': false}
+            ]
         }, callback)
         .populate('category');
 };

@@ -10,7 +10,7 @@ router.get('/getByUserId/:userId', function(req, res, next){
     Category.getAllCategoriesByUserId(req.params.userId, (err, categories) => {
         //console.log("categories - ", categories);
         if(err){
-            console.log('Error ret categories');
+            console.log('Error getting categories', err);
         } else {
             //console.log('Categories result - ', categories);
             res.json(categories);

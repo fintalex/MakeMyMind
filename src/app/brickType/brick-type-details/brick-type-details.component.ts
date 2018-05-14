@@ -54,6 +54,7 @@ export class BrickTypeDetailsComponent implements OnInit {
         this.createBrickTypeEvent.emit(this.brickTypeDetailsForm.value);
 
         this.brickTypeDetailsForm.reset();
+        this.brickTypeDetailsForm.value.isPrivate = new FormControl(true);
     }
 
     public deleteBrickType() {

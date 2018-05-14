@@ -10,7 +10,7 @@ router.get('/getByUserId/:userId', function(req, res, next){
     BrickType.getAllBrickTypesByUserId(req.params.userId, (err, brickTypes) => {
         console.log("BrickType Types - ", brickTypes);
         if(err){
-            console.log('Error get brickType types');
+            console.log('Error get brickType types', err);
         } else {
             res.json(brickTypes);
         }

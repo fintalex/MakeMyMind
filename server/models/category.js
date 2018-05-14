@@ -36,7 +36,10 @@ categorySchema.statics.getAllCategoriesByUserId = (userId, callback) => {
     Category.find(
         {
             'user': userId, 
-            'isRemoved': false  //   IS NULL or FALSE
+            '$or': [
+                {'isRemoved': {$exists: false}}, 
+                {'isRemoved': false}
+            ]
         }, callback);
 };
 
