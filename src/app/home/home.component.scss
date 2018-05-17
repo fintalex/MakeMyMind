@@ -260,28 +260,28 @@ $hexagon-index: 0.3;
     text-transform: uppercase;
 }
 .left-fast{
-    top: -100px;
-    left: 100px;    
+    top: -20px;
+    left: 20px;    
     font-size: 27px;
 }
 .right-fast{
-    top: -200px;
-    left: 70%;    
+    top: -50px;
+    right: 20px;    
     font-size: 25px;
 }
 .center-to-right{
     top: 300px;
-    left: 30%;
+    left: 20%;
     font-size: 22px;
 }
 .center-fix{
-    top: 70px;
+    top: 150px;
     left: 40%;
     font-size: 22px;
 }
 .center-to-up{
-    top: 400px;
-    left: 60%;
+    top: 300px;
+    right: 30%;
     font-size: 18px;
 }
 
@@ -294,14 +294,15 @@ $hexagon-index: 0.3;
 // ==================== STEPS ==========================
 .all-steps-container{
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: space-around;
 }
 
 .step-container{
     height: 400px;
-    width: 300px;
+    min-width: 300px;
     cursor: pointer;
+    margin: 10px;
     // border: 1px solid #fff;
     // border-radius: 5px;
     // padding: 10px;
@@ -360,4 +361,69 @@ $hexagon-index: 0.3;
 
 .step-image-wall{
     background-image: url(../../images/wall.jpg);
+}
+
+@media screen and(max-width: 1510px){
+    .category-sample-list .hexagon:nth-child(5){
+        margin-left: 165px;
+    }
+    .category-sample-list .hexagon:nth-child(7){
+        margin-right: 165px;
+    }
+}
+
+@media screen and(max-width: 1230px){
+    .category-sample-list .hexagon:nth-child(5){
+        margin-left: 15px;
+    }
+    .category-sample-list .hexagon:nth-child(7){
+        margin-right: 15px;
+    }
+    .category-sample-list .hexagon:nth-child(4){
+        margin-left: 175px;
+    }
+    .category-sample-list .hexagon:nth-child(5){
+        margin-right: 175px;
+    }
+    .category-sample-list .hexagon:nth-child(9){
+        margin-right: 305px;
+    }
+}
+
+@media screen and(max-width: 960px){
+    .category-sample-list .hexagon:nth-child(9){
+        margin-right: 15px;
+    }
+    .category-sample-list .hexagon:nth-child(4){
+        margin-left: 15px;
+    }
+    .category-sample-list .hexagon:nth-child(5){
+        margin-right: 15px;
+    }
+    .category-sample-list .hexagon:nth-child(3){
+        margin: 50px 175px;
+    }
+    .category-sample-list .hexagon:nth-child(6){
+        margin: 50px 175px;
+    }
+    .category-sample-list .hexagon:nth-child(9){
+        margin: 50px 175px;
+    }
+}
+@media screen and(max-width: 700px){
+    .category-sample-list .hexagon:nth-child(3){
+        margin: 50px 70px;
+    }
+    .category-sample-list .hexagon:nth-child(6){
+        margin: 50px 70px;
+    }
+    .category-sample-list .hexagon:nth-child(9){
+        margin: 50px 70px;
+    }
+}
+
+@media screen and(max-width: 636px){
+    .category-sample-list .hexagon{
+        margin: 80px 15px!important;
+    }
 }
