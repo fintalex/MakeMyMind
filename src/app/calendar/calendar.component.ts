@@ -137,7 +137,8 @@ export class CalendarComponent implements OnInit {
         }
         var summary = '';
         _.forEach(curday.bricks, (brick: any)=> {
-            summary = summary + brick.brickType.sign + (brick.description ?  " - " + brick.description : '') + "<br>";
+            summary = summary + '<b>' + brick.brickType.name + '</b>' 
+                + (brick.description ?  (" - <span class='margin-left-20'>" + brick.description + "</span>") : '') + "<br>";
         });
         return summary;
     }

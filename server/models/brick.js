@@ -34,7 +34,7 @@ brickSchema.statics.getAllBricksForMonthByUserId = (userId, date, callback) => {
     console.log("LAST DAY IN MONTH = ", firstDayInNextMonth);
 
     Brick.find({'user': userId, date: {'$gte': firstDayInMonth, '$lt': firstDayInNextMonth }}, callback)
-        .populate({ path: 'brickType', select: 'sign', populate: { path: 'category', select: 'color' }});
+        .populate({ path: 'brickType', select: 'sign name', populate: { path: 'category', select: 'color' }});
 };
 
 brickSchema.statics.getBrickById = (brickId, calllback) => {
