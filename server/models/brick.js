@@ -44,14 +44,14 @@ brickSchema.statics.getBrickById = (brickId, calllback) => {
 brickSchema.statics.addBrick = (brick, callback) => {
     Brick.create(brick)
         .then((createdBrick)=> { 
-            Brick.populate(createdBrick, { path: 'brickType', select: 'sign', populate: { path: 'category', select: 'color' }}, callback);
+            Brick.populate(createdBrick, { path: 'brickType', select: 'sign name', populate: { path: 'category', select: 'color' }}, callback);
         });   
 }
 
 brickSchema.statics.updateBrick = (id, brick, callback) => {
     Brick.findByIdAndUpdate(id, brick, { new: true})
         .then((updatedBrick)=> { 
-            Brick.populate(updatedBrick, { path: 'brickType', select: 'sign', populate: { path: 'category', select: 'color' }}, callback);
+            Brick.populate(updatedBrick, { path: 'brickType', select: 'sign name', populate: { path: 'category', select: 'color' }}, callback);
         }); 
 }
 
