@@ -41,6 +41,7 @@ import { DateRu } from './pipes/dateru.pipe';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { HomeComponent } from './home/home.component';
 import { DatePipe } from '@angular/common';
+import { HeaderComponent } from './components/header/header.component';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -55,7 +56,7 @@ export function createTranslateLoader(http: HttpClient) {
         CategoryListComponent, CategoryDetailsComponent, CategoryCenterComponent, TestComponent, BrickTypeCenterComponent, BrickTypeDetailsComponent, BrickTypeListComponent, CalendarComponent, BrickModalComponent,
 
         // === pipes ====
-        DateRu, CapitalizePipe, HomeComponent, LocaleChangeComponent, LogingComponent
+        DateRu, CapitalizePipe, HomeComponent, LocaleChangeComponent, LogingComponent, HeaderComponent
     ],
     entryComponents: [BrickModalComponent],
     imports: [

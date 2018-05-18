@@ -41,6 +41,22 @@ body {
         font-size: 18px;
     }
 }
+.menu-on-home{
+    width: 100%;
+    box-sizing: border-box;
+    // display: flex;
+    // justify-content: space-between;
+    margin: auto;
+    color: white;
+    background-color: rgba(17, 17, 17, 0.527);
+    padding: 10px;
+    button, locale-change{
+        font-size: 20px;
+    }
+    .logo{
+        font-size: 24px;
+    }
+}
 // =-========================== Mat-Card ==========================
 .mat-form-field-label-wrapper{
     label {

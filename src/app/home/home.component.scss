@@ -1,8 +1,8 @@
 $hexagon-index: 0.3;
 
-.margin-top--20{
-    margin-top: -20px;
-}
+// .margin-top--20{
+//     margin-top: -20px;
+// }
 .category-sample-list{
     // max-width: 960px;
     // min-width: 430px;
@@ -72,23 +72,6 @@ $hexagon-index: 0.3;
     position: relative;
     z-index: 10;
     padding: 20px;
-}
-// =======================================MENU===============================
-.menu-on-home{
-    width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
-    color: white;
-    background-color: rgba(17, 17, 17, 0.527);
-    padding: 20px;
-    button, locale-change{
-        font-size: 20px;
-    }
-    .logo{
-        font-size: 24px;
-    }
 }
 
 // ================================ FIRST SCREEN ===========================
