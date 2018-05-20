@@ -31,7 +31,7 @@
     <div class="button-container">
       <button mat-raised-button color="primary" 
               [disabled]='brickTypeDetailsForm.invalid'
-              *ngIf="brickType && !brickType._id"
+              *ngIf="!brickType"
               (click)="createBrickType()">{{'Add' | translate}}</button>
       <button mat-raised-button color="primary" 
               *ngIf="brickType && brickType._id"
