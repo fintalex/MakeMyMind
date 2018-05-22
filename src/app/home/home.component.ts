@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
 
             if (wScroll > imageScroll){
                 $('.pimg2').css({
-                    'transform': 'translate(0px, ' + (imageScroll + 200) * 0.3 + 'px)'
+                    'transform': 'translate(0px, ' + imageScroll * 0.3 + 'px)'
                 });
             }
         }
