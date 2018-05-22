@@ -2,6 +2,7 @@
 /* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
 
 @import './custom-theme.scss';
+@import './content/variables';
  
 html{
     height: 100%;
@@ -41,22 +42,22 @@ body {
         font-size: 18px;
     }
 }
-.menu-on-home{
-    width: 100%;
-    box-sizing: border-box;
-    // display: flex;
-    // justify-content: space-between;
-    margin: auto;
-    color: white;
-    background-color: rgba(17, 17, 17, 0.527);
-    padding: 10px;
-    button, locale-change{
-        font-size: 20px;
-    }
-    .logo{
-        font-size: 24px;
-    }
-}
+// .menu-on-home{
+//     width: 100%;
+//     box-sizing: border-box;
+//     // display: flex;
+//     // justify-content: space-between;
+//     margin: auto;
+//     color: white;
+//     background-color: rgba(17, 17, 17, 0.527);
+//     padding: 10px;
+//     button, locale-change{
+//         font-size: 20px;
+//     }
+//     .logo{
+//         font-size: 24px;
+//     }
+// }
 // =-========================== Mat-Card ==========================
 .mat-form-field-label-wrapper{
     label {
@@ -70,14 +71,7 @@ body {
         color: #ffffff;
     }
 }
-.mat-dialog-container, .mat-select-content{
-    background: #a2c7dd;
-    //background: #8aa0ad;
-    color: white;
-    label, span{
-        color: #ffffff;
-    }
-}
+
 .my-card{
     background: rgba(34, 34, 34, 0.712);
     color: white;
@@ -85,6 +79,14 @@ body {
         color: #ffffff;
     }
     padding: 3px;
+}
+// ============================== Mat-Context ====================================
+.mat-menu-content, .mat-dialog-container, .mat-select-content{
+    background: $contextBackground;
+    color: $textColor;
+    span, button{
+        color: $textColor;
+    }
 }
 
 // ==================================== LIST WITH SMALL COLOR brick =============================
@@ -208,54 +210,6 @@ canvas{ display: block; vertical-align: bottom; }
     position: relative;
     z-index: 2;
 }
-/* ---- particles.js container ---- */ 
-// #particles-js
-// { 
-//     position: fixed;
-//     top: 0px;
-//     left: 0px; 
-//     z-index: 1;
-//     width: 100%; 
-//     height: 100%; 
-//     //background-color:  #573537; 
-//     background-image: url(""); 
-//     background-repeat: no-repeat; 
-//     background-size: cover; 
-//     background-position: 50% 50%; 
-// } 
-/* ---- stats.js ---- */ 
-// .count-particles{ 
-//     background: #000022;
-//     position: absolute; 
-//     top: 48px; 
-//     left: 0; 
-//     width: 80px; 
-//     color: #13E8E9; 
-//     font-size: .8em; 
-//     text-align: left; 
-//     text-indent: 4px; 
-//     line-height: 14px; 
-//     padding-bottom: 2px; 
-//     font-family: Helvetica, Arial, sans-serif; 
-//     font-weight: bold; 
-// } 
-// .js-count-particles{ 
-//     font-size: 1.1em; 
-// } 
-// #stats, .count-particles
-// { 
-//     -webkit-user-select: none; 
-//     margin-top: 5px; 
-//     margin-left: 5px; 
-// } 
-// #stats
-// { 
-//     border-radius: 3px 3px 0 0; 
-//     overflow: hidden; 
-// } 
-// .count-particles{ 
-//     border-radius: 0 0 3px 3px; 
-// }
 // ================================ HEXAGON ======================
 $hexagon-index: 1;
 

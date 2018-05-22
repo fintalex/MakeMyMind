@@ -1,28 +1,7 @@
 
 <div class="main-app">
-    <!-- <mat-toolbar color="primary"  > -->
     <div class="menu-on-home" *ngIf="router.url != '/home'">
         <header-menu></header-menu>
-        <!-- <div class="left-area-menu">
-            <button mat-button routerLink="/home" >
-                <mat-icon>home</mat-icon>
-                <span class="logo"> Make my mind</span>
-            </button>
-            <button mat-button routerLink="/wall" *ngIf="authService.CurrentUser">{{'Wall' | translate }}</button>
-            <button mat-button routerLink="/category" *ngIf="authService.CurrentUser">{{'Category' | translate }}</button>
-            <button mat-button routerLink="/brickType" *ngIf="authService.CurrentUser">{{'Goals' | translate }}</button>
-        </div>
-
-        <div class="rigth-area-menu">
-            <button mat-button *ngIf="authService.CurrentUser" [matMenuTriggerFor]="userinfo" >{{authService.CurrentUser.username}}</button>
-            <mat-menu #userinfo="matMenu" >
-                <button mat-menu-item *ngIf="authService.CurrentUser">{{authService.CurrentUser.nickname}}</button>
-                <button mat-menu-item *ngIf="authService.CurrentUser">{{authService.CurrentUser.created}}</button>
-            </mat-menu>
-
-            <locale-change></locale-change>
-            <loging></loging>
-        </div> -->
     </div>
 
 
@@ -30,7 +9,3 @@
         <router-outlet></router-outlet>
     </div>
 </div>
-
-<!-- <div class="home-app" >
-    <router-outlet></router-outlet>
-</div> -->

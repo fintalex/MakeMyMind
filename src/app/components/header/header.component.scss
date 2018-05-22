@@ -2,6 +2,33 @@
 .header{
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
+    flex-wrap: wrap;
+    color: white;
+    background-color: rgba(17, 17, 17, 0.527);
+    padding: 10px;
+    box-sizing: border-box;
+    button, locale-change{
+        font-size: 16px;
+    }
+    .logo{
+        font-size: 16px;
+    }
+}
+
+.menu, .nav-menu{
+    display: none;
+}
+
+.left-area-menu{
+    display: flex;
+}
+
+@media screen and(max-width: 800px){
+    .menu, .nav-menu{
+        display: block;
+    }
+    .nav-button{
+        display: none;
+    }
 }

@@ -4,9 +4,21 @@
             <mat-icon>home</mat-icon>
             <span class="logo">Make my mind</span>
         </button>
-        <button mat-button routerLink="/wall" *ngIf="authService.CurrentUser">{{'Wall' | translate}}</button>
-        <button mat-button routerLink="/category" *ngIf="authService.CurrentUser">{{'Category' | translate}}</button>
-        <button mat-button routerLink="/brickType" *ngIf="authService.CurrentUser">{{'Goals' | translate}}</button>
+        <div class="icon-menu">
+            <button mat-button [matMenuTriggerFor]="navButtons" *ngIf="authService.CurrentUser" class="menu">
+                <mat-icon>menu</mat-icon>
+            </button>
+
+            <mat-menu #navButtons="matMenu" class="nav-menu">
+                <button mat-menu-item routerLink="/wall" *ngIf="authService.CurrentUser">{{'Wall' | translate}}</button>
+                <button mat-menu-item routerLink="/category" *ngIf="authService.CurrentUser">{{'Category' | translate}}</button>
+                <button mat-menu-item routerLink="/brickType" *ngIf="authService.CurrentUser">{{'Goals' | translate}}</button>
+            </mat-menu>
+
+            <button mat-button class="nav-button" routerLink="/wall" *ngIf="authService.CurrentUser">{{'Wall' | translate}}</button>
+            <button mat-button class="nav-button" routerLink="/category" *ngIf="authService.CurrentUser">{{'Category' | translate}}</button>
+            <button mat-button class="nav-button" routerLink="/brickType" *ngIf="authService.CurrentUser">{{'Goals' | translate}}</button>
+        </div>
     </div>
 
     <div class="rigth-area-menu">

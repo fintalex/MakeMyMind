@@ -204,10 +204,13 @@ $hexagon-index: 0.3;
 }
 .category-list{
     //width: 300px;
+    flex-grow: 1;
 }
 
 .category-manage{
+    min-width: 270px;
     width: 400px;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -217,7 +220,8 @@ $hexagon-index: 0.3;
 
 // ===================== CATEGORY SUMMARY =================
 .category-summary{
-    max-width: 560px;
+    min-width: 270px;
+    width: 500px;
     flex-grow: 1;
 }
 .category-about{
