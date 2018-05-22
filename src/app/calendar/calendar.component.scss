@@ -1,6 +1,6 @@
 .calendar{
     max-width: 960px;
-    min-width: 430px;
+    min-width: 270px;
     margin: auto auto;
     padding: 10px;
     display: flex;
@@ -90,12 +90,16 @@
     color: white;
     font-size: 16px;
 }
-.calendar-buttons{    
+.calendar-buttons{
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     .today-btn{
         border-radius: 5px;
-        margin-left: 10px;
+    }    
+    div{
+        padding-left: 10px;
+        padding-top: 3px;
     }
 }
 .week-nav{
