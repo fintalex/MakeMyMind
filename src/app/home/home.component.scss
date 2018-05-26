@@ -102,18 +102,18 @@ $hexagon-index: 0.3;
     box-sizing: border-box;
     padding: 50px;
     .main-words{
-        font-size: 42px;
-        letter-spacing: 4px;
-        line-height: 40px;
-        text-transform: uppercase;
-        text-align: left;
+        font-size: 36px;
+        //letter-spacing: 1px;
+        line-height: 36px;
+        //text-transform: uppercase;
+        text-align: justify;
     }
     .secondary-words{
         margin-top: 30px;
         font-size: 20px;
         //letter-spacing: 4px;
         //text-transform: uppercase;
-        text-align: left;
+        text-align: justify;
     }
 }
 .right-home-container{
@@ -125,6 +125,19 @@ $hexagon-index: 0.3;
     background-position: left;
     background-size: cover;
     background-repeat: no-repeat;
+}
+.footer-on-home{
+    width: 100%;
+    box-sizing: border-box;
+    // display: flex;
+    // justify-content: space-between;
+    margin: auto;
+    color: white;
+    background-color: rgba(17, 17, 17, 0.527);
+    padding: 10px;
+    button, locale-change{
+        font-size: 20px;
+    }
 }
 
 // ============================ PARALLAX FROM TRAVIS =================================
@@ -374,6 +387,18 @@ $hexagon-index: 0.3;
 }
 
 @media screen and(max-width: 960px){
+    .left-home-continer{
+        width: 60%;
+        .main-words, .secondary-words{
+            max-width: 300px;
+            font-size: 20px;
+            line-height: 1.2em;;
+        }
+    }
+    .right-home-container{
+        display: none;
+    }
+    
     .category-sample-list .hexagon:nth-child(9){
         margin-right: 15px;
     }
@@ -394,6 +419,10 @@ $hexagon-index: 0.3;
     }
 }
 @media screen and(max-width: 700px){
+    .left-home-continer{
+        width: 100%;
+        padding: 20px;
+    }
     .category-sample-list .hexagon:nth-child(3){
         margin: 50px 70px;
     }
