@@ -29,8 +29,40 @@
                     
                 </div>
             </div>
-            <div class="footer-on-home">
-                Исследуй наши теории
+            <div class="footer-on-home" (click)="scrollToSecondPart()">
+                <div class="arrowAnim">
+                    <div class="arrowSliding">
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="arrowSliding delay1">
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="arrowSliding delay2">
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="arrowSliding delay3">
+                        <div class="arrow"></div>
+                    </div>
+                </div>
+
+                <div class="footer-main-word">
+                    Исследуй наши возможности
+                </div>
+
+                <div class="arrowAnim">
+                    <div class="arrowSliding">
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="arrowSliding delay1">
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="arrowSliding delay2">
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="arrowSliding delay3">
+                        <div class="arrow"></div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -230,185 +262,49 @@
         <div class="pimg3">
         </div>
 
-        <h1>Поставь цели и работай над привычками</h1>
+        <!-- <h1>Поставь цели и работай над привычками</h1> -->
             <!-- <div class="ptext">
                 <span class="border">
                     image three text
                 </span>
 
             </div> -->
-        <!-- <div class="categories-cards">
+        <div class="categories-cards">
             <div class="category-test">
-                <h1>Определи свои сферы влияния</h1>
+                <h1>Работай со своими привычками</h1>
             </div>
-            <div class="category-sample-list">
-                <div class="category-sample white-shadow">
-                    <div class="category-icon-container">
-                        <div class="category-icon category-family text-shadow blue-shadow">C</div>
-                    </div>
-                    <div class="category-sample-name">
-                        <h3>Семья</h3>
-                    </div>
-                    <div class="category-sample-description">
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae nihil maxime nam. Aperiam tenetur excepturi ci quis
-                            fugit?</span>
-                    </div>
-                </div>
-                <div class="category-sample white-shadow">
-                    <div class="category-icon-container">
-                        <div class="category-icon category-health text-shadow blue-shadow">З</div>
-                    </div>
-                    <div class="category-sample-name">
-                        <h3>Здоровье</h3>
-                    </div>
-                    <div class="category-sample-description">
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim saepe atque fuga rem labore autem veritatis magni harum
-                            odit quibusdam.
-                        </span>
-                    </div>
-                </div>
-                <div class="category-sample white-shadow">
-                    <div class="category-icon-container">
-                        <div class="category-icon category-hobby text-shadow blue-shadow">Х</div>
-                    </div>
-                    <div class="category-sample-name">
-                        <h3>Хобби</h3>
-                    </div>
-                    <div class="category-sample-description">
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim saepe atque fuga rem labore autem veritatis magni harum
-                            odit quibusdam.</span>
-                    </div>
-                </div>
-                <div class="category-sample white-shadow">
-                    <div class="category-icon-container">
-                        <div class="category-icon category-sport text-shadow blue-shadow">S</div>
-                    </div>
-                    <div class="category-sample-name">
-                        <h3>Спорт</h3>
-                    </div>
-                    <div class="category-sample-description">
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim saepe atque fuga rem labore autem veritatis magni harum
-                            odit quibusdam.</span>
-                    </div>
-                </div>
-                <div class="category-sample white-shadow">
-                    <div class="category-icon-container">
-                        <div class="category-icon category-frends text-shadow blue-shadow">F</div>
-                    </div>
-                    <div class="category-sample-name">
-                        <h3>Друзья</h3>
-                    </div>
-                    <div class="category-sample-description">
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim saepe atque fuga rem labore autem veritatis magni harum
-                            odit quibusdam.</span>
-                    </div>
-                </div>
-                <div class="category-sample white-shadow">
-                    <div class="category-icon-container">
-                        <div class="category-icon category-business text-shadow blue-shadow">B</div>
-                    </div>
-                    <div class="category-sample-name">
-                        <h3>Бизнес</h3>
-                    </div>
-                    <div class="category-sample-description">
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim saepe atque fuga rem labore autem veritatis magni harum
-                            odit quibusdam.</span>
-                    </div>
-                </div>
-                <div class="category-sample white-shadow">
-                    <div class="category-icon-container">
-                        <div class="category-icon category-selfmind text-shadow blue-shadow">M</div>
-                    </div>
-                    <div class="category-sample-name">
-                        <h3>Саморазвитие</h3>
-                    </div>
-                    <div class="category-sample-description">
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim saepe atque fuga rem labore autem veritatis magni harum
-                            odit quibusdam.</span>
-                    </div>
-                </div>
-                <div class="category-sample white-shadow">
-                    <div class="category-icon-container">
-                        <div class="category-icon category-relax text-shadow blue-shadow">R</div>
-                    </div>
-                    <div class="category-sample-name">
-                        <h3>Отдых</h3>
-                    </div>
-                    <div class="category-sample-description">
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim saepe atque fuga rem labore autem veritatis magni harum
-                            odit quibusdam.</span>
-                    </div>
-                </div>
-                <div class="category-sample white-shadow">
-                    <div class="category-icon-container">
-                        <div class="category-icon category-home text-shadow blue-shadow">H</div>
-                    </div>
-                    <div class="category-sample-name">
-                        <h3>Дом</h3>
-                    </div>
-                    <div class="category-sample-description">
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim saepe atque fuga rem labore autem veritatis magni harum
-                            odit quibusdam.</span>
-                    </div>
-                </div>
+            <div class="habbit-list">
+                <div class="habbit-item">Чтение 30 мин в день</div>
+                <div class="habbit-item">Время с семьей</div>
+                <div class="habbit-item">Домашние дела, работа</div>
+                <div class="habbit-item">Пресс 15 мин</div>
+                <div class="habbit-item">Реализация мечты</div>
+                <div class="habbit-item">Запись мыслей в дневник</div>
+                <div class="habbit-item">Занятие танцами</div>
+                <div class="habbit-item">Изучение языка программирования</div>
+                <div class="habbit-item">Тренажерный зал</div>
+                <div class="habbit-item">Поиск цели в жизни</div>
+                <div class="habbit-item">Занятие хобби</div>
+                <div class="habbit-item">Выход из зоны комфорта</div>
+                <div class="habbit-item">Закалка</div>
+                <div class="habbit-item">Медитация</div>
+                <div class="habbit-item">Правильное питание</div>
+                <div class="habbit-item">День без сладкого</div>
+                <div class="habbit-item">День без сигарет</div>
+                <div class="habbit-item">Выучить 10 иностранных слов</div>
+                <div class="habbit-item">Разминка спины 15 мин</div>
+                <div class="habbit-item">Прогулка на велосипеде 1 час</div>
+                <div class="habbit-item">Изучение бизнес литературы</div>
+                <div class="habbit-item">Тренировка на стадионе</div>
+                <div class="habbit-item">Изучение спортивного элемента</div>
+                <div class="habbit-item">Утренняя зарядка</div>
             </div>
-        </div> -->
+        </div>
     </div>
 
     <section class="section section-dark">
-        <h2>Section three</h2>
+        <h2>Links</h2>
         <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus libero rerum dolorem nulla, earum ullam odio tenetur sint. 
-            Illo dolorem commodi maiores iusto a ratione molestiae maxime, veritatis animi officiis obcaecati nisi iure! Tempora nostrum illo dolore 
-            corporis nam autem fuga eligendi sequi blanditiis magnam, eveniet a dolor. Labore tempore voluptatem consequuntur! Neque facere corporis quisquam? 
-            Praesentium nemo, veniam sapiente voluptate hic sit dolore obcaecati poristinctio, dignissimos, minus alias autem sed sint nihil, omnis et quas odit dolorum! Deleniti.
         </p>
     </section>
-
-    <!-- <div class="pimg1">
-        <div class="ptext">
-            <span class="border">
-                Parallax websites
-            </span>
-
-        </div>
-    </div> -->
 </div>
-
-<!-- <div class="body">
-    <div class="parallax-group">
-        <header class="front">
-            <h1>parallax</h1>
-        </header>
-
-        <div class="back">   
-            <div class="back2"></div>        
-            <h3>HERLO</h3>     
-        </div>
-        <h2>HERLO</h2>     
-        
-
-        <header class="front">
-            <h1>parallax</h1>
-        </header>
-
-        <div class="back">   
-            <div class="back2"></div>        
-        </div>
-        <h2>HERLO</h2>     
-        
-
-        <header class="front">
-            <h1>parallax</h1>
-        </header>
-    </div>
-</div> -->
-
-<!-- 
-<div class="home-page">
-       
-
-    
-
-      
-</div> -->

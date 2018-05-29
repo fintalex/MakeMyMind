@@ -68,5 +68,16 @@ export class HomeComponent implements OnInit {
       });
   }
 
+    scrollToSecondPart () {
+        // window.scroll({
+        //     top: 500, 
+        //     left: 0, 
+        //     behavior: 'smooth' 
+        // });
+        document.querySelector('.all-steps-container').scrollIntoView({ 
+            behavior: 'smooth' 
+        });
+    }
+
   
 }
