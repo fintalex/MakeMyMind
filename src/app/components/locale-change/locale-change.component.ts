@@ -13,7 +13,7 @@ export class LocaleChangeComponent implements OnInit {
     
 
     constructor(
-        private authService: AuthService,
+        public authService: AuthService,
         private translate: TranslateService,
         private userService: UserService) {
         var loc = this.authService.CurrentUser ? this.authService.CurrentUser.locale : this.authService.curLocale;

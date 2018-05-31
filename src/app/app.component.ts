@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
 export class AppComponent {
 
     constructor(
-        private authService: AuthService,
-        private router: Router
+        public authService: AuthService,
+        public router: Router
         //private translate: TranslateService,
         //private userService: UserService
     ) {
@@ -23,20 +23,4 @@ export class AppComponent {
 
         //console.log(this.translate.instant('Wall'));
     }
-
-    // swithcLanguage(language) {
-    //     this.translate.use(language);
-    //     this.authService.CurrentUser.locale = language;
-    //     this.userService.updateUserLocale(this.authService.CurrentUser) 
-    //         .subscribe((res) => {
-    //             console.log("Locale changed to - " + res.locale);
-    //             this.authService.updateCurrentUserInStorage();
-    //         });
-    // }
-
-    // logout() {
-
-    //     this.authService.logout();
-    //     this.router.navigate(['/auth']);
-    // }
 }

@@ -2,22 +2,24 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 import { BrickType } from '../../models/brick-type.model';
 
 @Component({
-  selector: 'brick-type-list',
-  templateUrl: './brick-type-list.component.html',
-  styleUrls: ['./brick-type-list.component.scss'],
-  inputs: ['brickTypes'],
-  outputs: ['selectBrickTypeEvent']
+    selector: 'brick-type-list',
+    templateUrl: './brick-type-list.component.html',
+    styleUrls: ['./brick-type-list.component.scss'],
+    inputs: ['brickTypes'],
+    outputs: ['selectBrickTypeEvent']
 })
 export class BrickTypeListComponent implements OnInit {
 
-  private selectBrickTypeEvent = new EventEmitter();
+    brickTypes: BrickType[];
 
-  constructor() {}
+    private selectBrickTypeEvent = new EventEmitter();
 
-  ngOnInit() {
-  }
+    constructor() { }
 
-  public selectBrickType(selectedBrickType: BrickType) {
-    this.selectBrickTypeEvent.emit(selectedBrickType);
-  }
+    ngOnInit() {
+    }
+
+    public selectBrickType(selectedBrickType: BrickType) {
+        this.selectBrickTypeEvent.emit(selectedBrickType);
+    }
 }

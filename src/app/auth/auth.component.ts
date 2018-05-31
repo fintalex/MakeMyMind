@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class AuthComponent implements OnInit {
 
   private user: User;
-  private warningMessage: "";
+  public warningMessage: "";
 
   public loginForm: FormGroup = new FormGroup({
       username: new FormControl(),

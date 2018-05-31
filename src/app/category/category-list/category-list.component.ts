@@ -10,6 +10,8 @@ import { Category } from '../../models/category.model';
 })
 export class CategoryListComponent implements OnInit {
 
+    categories: Category[];
+
     private selectCategoryEvent = new EventEmitter();
 
     constructor() { }
