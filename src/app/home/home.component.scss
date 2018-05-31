@@ -132,7 +132,7 @@ $hexagon-index: 0.3;
     justify-content: center;
     align-items: center;
     width: 50%;
-    background-image: url(../../images/mind-reading-22.png);
+    //background-image: url(../../images/mind-reading-22.png);
     background-position: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -348,10 +348,12 @@ $hexagon-index: 0.3;
     font-size: 18px;
 }
 
-.ptext, .left-fast, .right-fast, .center-to-right, .center-fix, .center-to-up .border{
-    background-color: rgba(17, 17, 17, 0.527);
-    color: #fff;
-    padding: 20px;
+.ptext, .left-fast, .right-fast, .center-to-right, .center-to-up, .center-fix{
+    .border{
+        background-color: rgba(17, 17, 17, 0.527);
+        color: #fff;
+        padding: 15px;
+    }
 }
 
 // ==================== STEPS ==========================
@@ -454,6 +456,10 @@ $hexagon-index: 0.3;
 }
 
 @media screen and(max-width: 960px){
+    .inspire-words div,span{
+        font-size: 12px;
+        padding: 8px!important;
+    }
     .left-home-continer{
         width: 60%;
         .main-words, .secondary-words{

@@ -74,7 +74,8 @@ export class HomeComponent implements OnInit {
         //     left: 0, 
         //     behavior: 'smooth' 
         // });
-        document.querySelector('.all-steps-container').scrollIntoView({ 
+        document.querySelector('.how-to-work').scrollIntoView( { 
+            block: 'start',
             behavior: 'smooth' 
         });
     }
