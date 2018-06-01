@@ -12,10 +12,11 @@ export class BrickService {
         private authService: AuthService
     ) { }
 
-    getBricksForMonth(date: any) {
+    getBricksForMonth(date: any, nick: string) {
         var dto = {
             userId: this.authService.CurrentUser._id,
-            date: date
+            date: date,
+            nick: nick
         };
         return this.http.post('/api/bricks/getForMonth', dto)
             .map((res: Response) => {

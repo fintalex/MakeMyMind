@@ -17,6 +17,7 @@ const routes: Routes = [
     { path: 'auth', component: AuthComponent },
     { path: 'category', component: CategoryCenterComponent, canActivate: [GuardService] },
     { path: 'brickType', component: BrickTypeCenterComponent, canActivate: [GuardService] },
+    { path: 'wall/:nick', component: WallComponent, canActivate: [GuardService] },
     { path: 'wall', component: WallComponent, canActivate: [GuardService] },
 ];
 

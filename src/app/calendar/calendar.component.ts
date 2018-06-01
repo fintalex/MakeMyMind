@@ -6,6 +6,7 @@ import { BrickType } from '../models/brick-type.model';
 import { BrickService } from '../brick/brick.service';
 import { Brick } from '../models/brick.model';
 import * as _ from 'underscore';
+import { RouterStateSnapshot, ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -25,10 +26,12 @@ export class CalendarComponent implements OnInit {
     constructor(
         private dialog: MatDialog,
         private brickTypeService: BrickTypeService, 
-        private brickService: BrickService
+        private brickService: BrickService,
+        private route: ActivatedRoute,
+        private router: Router,
     ) {}
 
-    ngOnInit() {        
+    ngOnInit() {
 
         this.brickTypeService.getBrickTypes()
             .subscribe(allBrickTypes => {
@@ -39,7 +42,10 @@ export class CalendarComponent implements OnInit {
     }
 
     getBricksAndShowInMonth(){
-        this.brickService.getBricksForMonth(this.curDate)
+        
+        let nick = this.route.snapshot.paramMap.get('nick');
+
+        this.brickService.getBricksForMonth(this.curDate, nick)
             .subscribe(allBricksInMonth => {
                 this.brickInMonth = allBricksInMonth;
 

@@ -16,7 +16,7 @@ function daysInMonth (month, year) {
     return new Date(year, month + 1, 0).getDate();
 }
 
-brickSchema.statics.getAllBricksForMonthByUserId = (userId, date, callback) => {
+brickSchema.statics.getAllBricksForMonthByUserId = (userId, date, nick, callback) => {
     console.log("Date is = ", date);
     var firstDayInMonth = (new Date(date));
     firstDayInMonth.setDate(0);
@@ -33,7 +33,17 @@ brickSchema.statics.getAllBricksForMonthByUserId = (userId, date, callback) => {
     //firstDayInNextMonth.setDate(firstDayInNextMonth.getMonth(), firstDayInNextMonth.getFullYear());
     console.log("LAST DAY IN MONTH = ", firstDayInNextMonth);
 
-    Brick.find({'user': userId, date: {'$gte': firstDayInMonth, '$lt': firstDayInNextMonth }}, callback)
+    // HERE if NICK not empty - then find by NICK and NotPrivate
+
+    Brick.find(
+        {
+            'user': userId, 
+            date: 
+                {
+                    '$gte': firstDayInMonth, 
+                    '$lt': firstDayInNextMonth 
+                }
+            }, callback)
         .populate({ path: 'brickType', select: 'sign name', populate: { path: 'category', select: 'color' }});
 };
 
