@@ -32,19 +32,101 @@ brickSchema.statics.getAllBricksForMonthByUserId = (userId, date, nick, callback
     firstDayInNextMonth.setHours(0,0,0,0);
     //firstDayInNextMonth.setDate(firstDayInNextMonth.getMonth(), firstDayInNextMonth.getFullYear());
     console.log("LAST DAY IN MONTH = ", firstDayInNextMonth);
+    console.log("======NICK ==========="+nick+"=====", nick);
 
     // HERE if NICK not empty - then find by NICK and NotPrivate
 
-    Brick.find(
+    var userCondition = nick ? 'user.nickname' : 'user';
+    var userVal = nick ? nick : userId;
+    var matchCondition = 
         {
-            'user': userId, 
-            date: 
-                {
-                    '$gte': firstDayInMonth, 
-                    '$lt': firstDayInNextMonth 
+            'date': {
+                '$gte': firstDayInMonth, 
+                '$lt': firstDayInNextMonth 
+            },
+            // 'user.nickname': nick,
+            // $or: [
+            //     { 'brickType.isPrivate': {$exists: false} }, 
+            //     { 'brickType.isPrivate': false },
+            // ]
+        };
+
+    if (nick){
+        matchCondition['user.nickname'] = nick;
+        matchCondition['$or'] = [
+                { 'brickType.isPrivate': {$exists: false} }, 
+                { 'brickType.isPrivate': false },
+            ];
+    } else {
+        matchCondition['user._id'] = mongoose.Types.ObjectId(userId);
+    }
+
+    console.log("MATHC CONDITION - ", matchCondition);
+
+    Brick.aggregate(
+        [
+            {
+                $lookup: {
+                    from: 'Users',
+                    localField: 'user',
+                    foreignField: '_id',
+                    as: 'user'
+                },
+            },
+            {
+                $lookup: {
+                    from: 'BrickTypes',
+                    localField: 'brickType',
+                    foreignField: '_id',
+                    as: 'brickType'
                 }
-            }, callback)
-        .populate({ path: 'brickType', select: 'sign name', populate: { path: 'category', select: 'color' }});
+            },
+            {
+                $lookup: {
+                    from: 'Categories',
+                    localField: 'brickType.category',
+                    foreignField: '_id',
+                    as: 'category'
+                }
+            },
+            {
+                $unwind: '$user'
+            },
+            {
+                $unwind: '$brickType'
+            },
+            {
+                $unwind: '$category'
+            },
+            {
+                $match: matchCondition
+            },
+            {
+                $project: {
+                    'brickType.sign': 1,
+                    'brickType._id': 1,
+                    'brickType.name': 1,
+                    'brickType.category.color': '$category.color',
+                    'date': 1,
+                    'description': 1
+                }
+            }
+        ]
+
+            // {      
+            //     //'user.nickname': nick,
+            //     'date': 
+            //     {
+            //         '$gte': firstDayInMonth, 
+            //         '$lt': firstDayInNextMonth 
+            //     }
+            // }
+        )
+        // .populate({ path: 'brickType', select: 'sign name', populate: { path: 'category', select: 'color' }})
+        // .populate({ path: 'user', select: 'nickname', where: 'nickname' })  
+        // //.populate({ path: 'user', select: 'nickname', match: { 'nickname': nick} })  
+        // .where({'user': {$match: {'nickname': 'ddd'}}})
+        .exec(callback);
 };
 
 brickSchema.statics.getBrickById = (brickId, calllback) => {

@@ -21,6 +21,8 @@ export class CalendarComponent implements OnInit {
     brickInMonth: Brick[];
     curDate: Date = new Date();
 
+    curNick: string;
+
     testTooltip: "here will be two rows";
 
     constructor(
@@ -33,6 +35,8 @@ export class CalendarComponent implements OnInit {
 
     ngOnInit() {
 
+        this.curNick = this.route.snapshot.paramMap.get('nick');
+
         this.brickTypeService.getBrickTypes()
             .subscribe(allBrickTypes => {
                 this.existentBrickTypes = allBrickTypes
@@ -43,9 +47,9 @@ export class CalendarComponent implements OnInit {
 
     getBricksAndShowInMonth(){
         
-        let nick = this.route.snapshot.paramMap.get('nick');
+        
 
-        this.brickService.getBricksForMonth(this.curDate, nick)
+        this.brickService.getBricksForMonth(this.curDate, this.curNick)
             .subscribe(allBricksInMonth => {
                 this.brickInMonth = allBricksInMonth;
 
@@ -67,6 +71,10 @@ export class CalendarComponent implements OnInit {
             brick.date = day.date;
         } else {
             event.stopPropagation();
+        }
+
+        if (this.curNick){
+            return;
         }
 
         var dialogRef = this.dialog.open(BrickModalComponent, {

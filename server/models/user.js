@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const UserSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
     username: {
         type: String,
         required: true
@@ -28,23 +28,23 @@ const UserSchema = mongoose.Schema({
     }
 });
 
-UserSchema.statics.getAllUsers = (callback) => {
+userSchema.statics.getAllUsers = (callback) => {
     User.find({}, callback);
 };
 
-UserSchema.statics.getUserById = (userId, calllback) => {
+userSchema.statics.getUserById = (userId, calllback) => {
     User.find({'_id': userId}, calllback);
 };
 
-UserSchema.statics.addUser = (user, callback) => {
+userSchema.statics.addUser = (user, callback) => {
     User.create(user, callback);
 }
 
-UserSchema.statics.loginUser = (user, callback) => {
+userSchema.statics.loginUser = (user, callback) => {
     User.findOne({'username': user.email, 'password': user.password}, callback);
 }
 
-UserSchema.statics.updateUserLocale = (id, locale, callback) => {
+userSchema.statics.updateUserLocale = (id, locale, callback) => {
     console.log("LOCALE is " + locale + ", and id is - " + id);
     User.update({'_id': id}, 
                 { $set: 
@@ -56,5 +56,5 @@ UserSchema.statics.updateUserLocale = (id, locale, callback) => {
 
 
 // module.exports = mongoose.model('User', UserSchema, 'Users');
-const User = mongoose.model('User', UserSchema, 'Users');
+const User = mongoose.model('User', userSchema, 'Users');
 module.exports = User;
