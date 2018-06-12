@@ -20,6 +20,7 @@ export class CalendarComponent implements OnInit {
     existentBrickTypes: BrickType[];
     brickInMonth: Brick[];
     curDate: Date = new Date();
+    filteredHabbits = [];
 
     curNick: string;
 
@@ -45,11 +46,9 @@ export class CalendarComponent implements OnInit {
         this.getBricksAndShowInMonth();
     }
 
-    getBricksAndShowInMonth(){
+    getBricksAndShowInMonth(){  
         
-        
-
-        this.brickService.getBricksForMonth(this.curDate, this.curNick)
+        this.brickService.getBricksForMonth(this.curDate, this.curNick, this.filteredHabbits)
             .subscribe(allBricksInMonth => {
                 this.brickInMonth = allBricksInMonth;
 
@@ -143,6 +142,12 @@ export class CalendarComponent implements OnInit {
             this.daysArray.unshift(previousDay);
             firstDayInArray = previousDay;
         }
+    }
+
+    filterByHabbit(habbitsList){
+        console.log("LIST of HABBITS", habbitsList);
+        this.filteredHabbits = habbitsList;
+        this.getBricksAndShowInMonth();
     }
 
     getDayTooltip(curday){

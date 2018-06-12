@@ -1,0 +1,145 @@
+<div class="wall-side-nav" 
+    [ngClass]="{ 'side-bar-expanded': sideBarExpanded }">
+
+    <div class="side-bar-title" 
+        (click)="toogleSideBar()">
+
+        <span *ngIf="!sideBarExpanded" class="arrow-spin"><mat-icon>keyboard_arrow_left</mat-icon></span> 
+        <span *ngIf="sideBarExpanded" class="arrow-spin"><mat-icon>keyboard_arrow_right</mat-icon></span> 
+    
+        <div *ngIf="sideBarExpanded" class="side-bar-title-text">
+            <div class="title-container">Карта AlexH</div>
+        </div>
+    </div>
+
+    <div class="side-bar-body" *ngIf="sideBarExpanded">
+        
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Сферы влияния
+                    </mat-panel-title>
+                    <!-- <mat-panel-description>
+                        Type your name and age
+                    </mat-panel-description> -->
+                </mat-expansion-panel-header>
+            
+                <ul>
+                    <li>Readin</li>
+                    <li>Gym</li>
+                    <li>Health</li>
+                    <li>Family</li>
+                    <li>Wife</li>
+                    <li>Proper mill</li>
+                    <li>Swit</li>
+                </ul>
+                <!-- <mat-form-field>
+                    <input matInput placeholder="First name">
+                </mat-form-field>
+            
+                <mat-form-field>
+                    <input matInput placeholder="Age">
+                </mat-form-field> -->
+            </mat-expansion-panel>
+
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Привычки
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <ul class="side-bar-list">
+                    <li *ngFor="let brickType of visibleBrickTypes">
+                        <mat-checkbox color="primary" 
+                            [(ngModel)]="brickType.ticked"
+                            (change)="tickHabbit(brickType)">
+                                {{brickType.name}}
+                        </mat-checkbox>
+                    </li>
+                </ul>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Друзья
+                    </mat-panel-title>
+                    <!-- <mat-panel-description>
+                        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                    </mat-panel-description> -->
+                </mat-expansion-panel-header>
+                <ul>
+                    <li>Друг 1</li>
+                    <li>Друг 2</li>
+                    <li>Друг 3</li>
+                    <li>Друг 4</li>
+                    <li>Друг 5</li>
+                </ul>
+            </mat-expansion-panel>
+        
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Логи
+                    </mat-panel-title>
+                    <!-- <mat-panel-description>
+                        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                    </mat-panel-description> -->
+                </mat-expansion-panel-header>
+                <ul>
+                    <li>Лог 1</li>
+                    <li>Лог 2</li>
+                    <li>Лог 3</li>
+                    <li>Лог 4</li>
+                    <li>Лог 5</li>
+                </ul>
+            </mat-expansion-panel>
+
+        <!-- <div class="section-map">    
+            <div class="section-title"            
+                (click)="toogleHabbitMap()">
+
+                <div class="section-title-text">
+                    <div class="title-container">Привычки</div>
+                </div>
+                <span *ngIf="!habbitExpanded" ><mat-icon>keyboard_arrow_down</mat-icon></span> 
+                <span *ngIf="habbitExpanded" ><mat-icon>keyboard_arrow_up</mat-icon></span> 
+            
+            </div>    
+            <ul>
+                <li>Readin</li>
+                <li>Gym</li>
+                <li>Health</li>
+                <li>Family</li>
+                <li>Wife</li>
+                <li>Proper mill</li>
+                <li>Swit</li>
+            </ul>
+        </div>
+
+        <div class="section-map">    
+            <div class="section-title"            
+                (click)="toogleHabbitMap()">
+
+                <div class="section-title-text">
+                    <div class="title-container">Привычки</div>
+                </div>
+                <span *ngIf="!habbitExpanded" ><mat-icon>keyboard_arrow_down</mat-icon></span> 
+                <span *ngIf="habbitExpanded" ><mat-icon>keyboard_arrow_up</mat-icon></span> 
+            
+            </div>    
+            <ul>
+                <li>Readin</li>
+                <li>Gym</li>
+                <li>Health</li>
+                <li>Family</li>
+                <li>Wife</li>
+                <li>Proper mill</li>
+                <li>Swit</li>
+            </ul>
+        </div> -->
+    </div>
+</div>

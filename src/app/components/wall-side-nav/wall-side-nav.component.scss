@@ -1,0 +1,103 @@
+@import './../../../content/variables';
+
+
+
+.wall-side-nav{
+    position: absolute;
+    z-index: 10;
+    overflow: hidden;
+    right: 0px;
+    top: 8px;
+    background: $mainBackground;
+    width: 60px;
+    height: 60px;
+    border-bottom: 3px solid $primaryColor;
+    border-top: 3px solid $primaryColor;
+    border-left: 3px solid $primaryColor;
+    border-radius: 10px 0 0 10px;
+    //display: flex;
+    //justify-content: center;
+    //align-items: center;
+    font-size: 16px;
+    //padding: 15px;
+    box-sizing: border-box;
+    //transition: 0.4s ease-out;
+    animation-name: collapsBar;
+    animation-duration: 0.4s;
+}
+
+.side-bar-expanded{
+    width: 300px;
+    height: 600px;
+    //transition: 0.4s ease-in;
+    animation-name: expandBar;
+    animation-duration: 0.5s;
+}
+
+@keyframes expandBar {
+    0%  {width: 60px; height: 60px;}
+    50%  {width: 300px; height: 60px;}
+    100% {width: 300px; height: 600px;}
+}
+
+@keyframes collapsBar {
+    0%  {width: 300px; height: 600px;}
+    50%  {width: 300px; height: 60px;}
+    100% {width: 60px; height: 60px;}
+}
+
+.mat-expansion-panel{
+    margin-bottom: 10px;
+    border: 1px solid #464646;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.mat-expansion-panel-header{
+    border-bottom: 1px solid #fff;
+    font-size: 16px;
+}
+
+.side-bar-title{
+    // position: relative;
+    // z-index: 50;
+    
+    cursor: pointer;
+    border-bottom: 1px solid #fff;
+    //padding: 10px 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    .arrow-spin{
+        margin: 15px;
+        display: flex;
+        //padding: 0 20px;
+        font-size: 26px;
+    }
+    .side-bar-title-text{
+        
+    }
+}
+
+.side-bar-body{
+    padding: 20px;
+    // position: relative;
+    // z-index: 50;
+}
+
+.side-bar-list{
+    list-style-type: none;
+    padding: 0px;
+}
+
+.section-map{
+    padding: 20px;
+    .section-title{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-bottom: 1px solid #fff;
+        .section-title-text{
+            
+        }
+    }
+}

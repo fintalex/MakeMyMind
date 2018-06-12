@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const _ = require('underscore');
 
 const brickSchema = mongoose.Schema({
     description: {
@@ -16,7 +17,7 @@ function daysInMonth (month, year) {
     return new Date(year, month + 1, 0).getDate();
 }
 
-brickSchema.statics.getAllBricksForMonthByUserId = (userId, date, nick, callback) => {
+brickSchema.statics.getAllBricksForMonthByUserId = (userId, date, nick, habbits, callback) => {
     console.log("Date is = ", date);
     var firstDayInMonth = (new Date(date));
     firstDayInMonth.setDate(0);
@@ -59,6 +60,15 @@ brickSchema.statics.getAllBricksForMonthByUserId = (userId, date, nick, callback
             ];
     } else {
         matchCondition['user._id'] = mongoose.Types.ObjectId(userId);
+    }
+
+    if(habbits && habbits.length > 0){
+        var mongList = [];
+        _.forEach(habbits, (hab)=>{
+            mongList.push(mongoose.Types.ObjectId(hab));
+        });
+
+        matchCondition['brickType._id'] = {$in: mongList};
     }
 
     console.log("MATHC CONDITION - ", matchCondition);

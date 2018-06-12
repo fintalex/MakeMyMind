@@ -10,4 +10,6 @@ export class BrickType {
     category: Category;
     user: string;
     isPrivate: Boolean;
+
+    ticked: Boolean;
 }

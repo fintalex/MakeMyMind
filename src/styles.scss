@@ -43,6 +43,14 @@ body {
     }
 }
 
+// ============================== mat-expansion-panel ================
+.mat-expansion-panel{
+    background: none;
+    .mat-expansion-panel-header-title, .mat-expansion-panel-header-description, .mat-expansion-panel-header-description, .mat-expansion-indicator::after, ul, li, span, p {
+        color: #fff!important;
+    }
+}
+
 // =-========================== Mat-Card ==========================
 .mat-form-field-label-wrapper{
     label {
