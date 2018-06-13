@@ -24,7 +24,7 @@ export class WallSideNavComponent implements OnInit {
             var allBrickType = new BrickType();
             allBrickType.name = 'Все привычки';
             allBrickType.ticked = true;
-            this.visibleBrickTypes.unshift(allBrickType);
+            //this.visibleBrickTypes.unshift(allBrickType);
         }
     }
 
