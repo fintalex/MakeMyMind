@@ -101,3 +101,17 @@
         }
     }
 }
+
+.checkbox-span {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    // display: inline-block;
+    // vertical-align: sub;
+    white-space: normal;
+    line-height: 14px;
+}
+
+.brick-in-sidebar{    
+    min-width: 33px;
+}

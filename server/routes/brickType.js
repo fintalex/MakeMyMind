@@ -17,6 +17,19 @@ router.get('/getByUserId/:userId', function(req, res, next){
     });
 });
 
+// GET all BrickTypes by Nickname
+router.get('/getByNickname/:nickname', function(req, res, next){
+    console.log("GET all brickType types API");
+    BrickType.getAllBrickTypesByNickname(req.params.nickname, (err, brickTypes) => {
+        console.log("BrickType Types For Nickname - ", brickTypes);
+        if(err){
+            console.log('Error get brickType types', err);
+        } else {
+            res.json(brickTypes);
+        }
+    });
+});
+
 // GET BrickType by id 
 router.get('/:id', function(req, res, next){
     //console.log("GET BrickType by id API");

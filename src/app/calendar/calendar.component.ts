@@ -7,6 +7,7 @@ import { BrickService } from '../brick/brick.service';
 import { Brick } from '../models/brick.model';
 import * as _ from 'underscore';
 import { RouterStateSnapshot, ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -23,10 +24,12 @@ export class CalendarComponent implements OnInit {
     filteredHabbits = [];
 
     curNick: string;
+    nicknameForSideBar: string;
 
     testTooltip: "here will be two rows";
 
     constructor(
+        public authService: AuthService,
         private dialog: MatDialog,
         private brickTypeService: BrickTypeService, 
         private brickService: BrickService,
@@ -37,8 +40,9 @@ export class CalendarComponent implements OnInit {
     ngOnInit() {
 
         this.curNick = this.route.snapshot.paramMap.get('nick');
+        this.nicknameForSideBar = this.curNick ? this.curNick : this.authService.CurrentUser.nickname;
 
-        this.brickTypeService.getBrickTypes()
+        this.brickTypeService.getBrickTypes(this.curNick)
             .subscribe(allBrickTypes => {
                 this.existentBrickTypes = allBrickTypes
             });
@@ -72,7 +76,7 @@ export class CalendarComponent implements OnInit {
             event.stopPropagation();
         }
 
-        if (this.curNick){
+        if (this.curNick || day.disabled){
             return;
         }
 
@@ -120,7 +124,7 @@ export class CalendarComponent implements OnInit {
                                         });
             this.daysArray.push({
                 'date': newDay,
-                'disabled': false,
+                'disabled': dayToday.getTime() < newDay.getTime() ? true : false,
                 'today': newDay.getTime() === dayToday.getTime(),
                 'day': newDay.getDate(),
                 'bricks': bricksForThisDay,

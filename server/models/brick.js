@@ -121,17 +121,7 @@ brickSchema.statics.getAllBricksForMonthByUserId = (userId, date, nick, habbits,
                     'description': 1
                 }
             }
-        ]
-
-            // {      
-            //     //'user.nickname': nick,
-            //     'date': 
-            //     {
-            //         '$gte': firstDayInMonth, 
-            //         '$lt': firstDayInNextMonth 
-            //     }
-            // }
-        )
+        ])
         // .populate({ path: 'brickType', select: 'sign name', populate: { path: 'category', select: 'color' }})
         // .populate({ path: 'user', select: 'nickname', where: 'nickname' })  
         // //.populate({ path: 'user', select: 'nickname', match: { 'nickname': nick} })  

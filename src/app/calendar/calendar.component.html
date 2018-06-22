@@ -1,5 +1,6 @@
          
 <wall-side-nav 
+    [nickName]="nicknameForSideBar"
     [visibleBrickTypes]="existentBrickTypes"
     (tickBrickType)="filterByHabbit($event)">
         Wall Side Nav
@@ -33,7 +34,7 @@
         </div>        
     </div>
       
-      <div class="one-day tooltip" [ngClass]="{'day-weekend': curday.isWeekend, 'day-today': curday.today, 'day-disabled': curday.disabled}"
+      <div class="one-day tooltip" [ngClass]="{'day-weekend': curday.isWeekend, 'day-today': curday.today, 'day-disabled': curday.disabled, 'day-pointer': !curday.disabled && !curNick}"
             *ngFor="let curday of daysArray"
             (click)="openBrickModal(brick, curday, $event)">
 

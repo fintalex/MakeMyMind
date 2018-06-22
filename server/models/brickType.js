@@ -38,6 +38,54 @@ brickTypeSchema.statics.getAllBrickTypesByUserId = (userId, callback) => {
         .populate('category');
 };
 
+brickTypeSchema.statics.getAllBrickTypesByNickname = (nickname, callback) => {        
+    BrickType.aggregate(
+        [
+            {
+                $lookup: {
+                    from: 'Users',
+                    localField: 'user',
+                    foreignField: '_id',
+                    as: 'user'
+                },
+            },
+            {
+                $lookup: {
+                    from: 'Categories',
+                    localField: 'category',
+                    foreignField: '_id',
+                    as: 'category'
+                }
+            },
+            {
+                $unwind: '$user'
+            },
+            {
+                $unwind: '$category'
+            },
+            {
+                $match: {
+                    'user.nickname': nickname,
+                    'isPrivate': false,
+                    $or: [
+                        {'isRemoved': {$exists: false}}, 
+                        {'isRemoved': false}
+                    ]
+                }
+            },
+            {
+                $project: {
+                    'sign': 1,
+                    '_id': 1,
+                    'name': 1,
+                    'category.color': 1,
+                    'isPrivate': 1
+                }
+            }
+        ])
+        .exec(callback);
+};
+
 brickTypeSchema.statics.getBrickTypeById = (brickTypeId, calllback) => {
     BrickType.find({'_id': brickTypeId}, calllback);
 };

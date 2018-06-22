@@ -6,11 +6,12 @@ import * as _ from 'underscore';
     selector: 'wall-side-nav',
     templateUrl: './wall-side-nav.component.html',
     styleUrls: ['./wall-side-nav.component.scss'],
-    inputs: ['visibleBrickTypes'],
+    inputs: ['visibleBrickTypes', 'nickName'],
     outputs: ['tickBrickType']
 })
 export class WallSideNavComponent implements OnInit {
 
+    nickName: string;
     visibleBrickTypes: BrickType[];
     private tickBrickType = new EventEmitter();
 

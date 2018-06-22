@@ -8,7 +8,7 @@
         <span *ngIf="sideBarExpanded" class="arrow-spin"><mat-icon>keyboard_arrow_right</mat-icon></span> 
     
         <div *ngIf="sideBarExpanded" class="side-bar-title-text">
-            <div class="title-container">Карта AlexH</div>
+            <div class="title-container">Карта {{nickName}}</div>
         </div>
     </div>
 
@@ -51,10 +51,15 @@
                 </mat-expansion-panel-header>
                 <ul class="side-bar-list">
                     <li *ngFor="let brickType of visibleBrickTypes">
-                        <mat-checkbox color="primary" 
+                        <mat-checkbox 
+                            class="checkbox-content"
                             [(ngModel)]="brickType.ticked"
                             (change)="tickHabbit(brickType)">
-                                {{brickType.name}}
+                                <span class="checkbox-span">{{brickType.name}}</span>
+                                <span class="brick-in-calendar text-shadow float-right brick-in-sidebar" 
+                                    [ngStyle]="{'background-color': brickType.category.color}">
+                                    {{brickType.sign}}
+                                </span>
                         </mat-checkbox>
                     </li>
                 </ul>
