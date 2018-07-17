@@ -12,8 +12,8 @@
         </div>
     </div>
 
-    <div class="side-bar-body" *ngIf="sideBarExpanded">
-        
+    <div *ngIf="sideBarExpanded">
+        <div class="side-bar-body" >
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
@@ -102,49 +102,6 @@
                     <li>Лог 5</li>
                 </ul>
             </mat-expansion-panel>
-
-        <!-- <div class="section-map">    
-            <div class="section-title"            
-                (click)="toogleHabbitMap()">
-
-                <div class="section-title-text">
-                    <div class="title-container">Привычки</div>
-                </div>
-                <span *ngIf="!habbitExpanded" ><mat-icon>keyboard_arrow_down</mat-icon></span> 
-                <span *ngIf="habbitExpanded" ><mat-icon>keyboard_arrow_up</mat-icon></span> 
-            
-            </div>    
-            <ul>
-                <li>Readin</li>
-                <li>Gym</li>
-                <li>Health</li>
-                <li>Family</li>
-                <li>Wife</li>
-                <li>Proper mill</li>
-                <li>Swit</li>
-            </ul>
         </div>
-
-        <div class="section-map">    
-            <div class="section-title"            
-                (click)="toogleHabbitMap()">
-
-                <div class="section-title-text">
-                    <div class="title-container">Привычки</div>
-                </div>
-                <span *ngIf="!habbitExpanded" ><mat-icon>keyboard_arrow_down</mat-icon></span> 
-                <span *ngIf="habbitExpanded" ><mat-icon>keyboard_arrow_up</mat-icon></span> 
-            
-            </div>    
-            <ul>
-                <li>Readin</li>
-                <li>Gym</li>
-                <li>Health</li>
-                <li>Family</li>
-                <li>Wife</li>
-                <li>Proper mill</li>
-                <li>Swit</li>
-            </ul>
-        </div> -->
     </div>
 </div>

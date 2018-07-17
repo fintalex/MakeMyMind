@@ -8,6 +8,7 @@ import { TestComponent } from './test/test.component';
 import { BrickTypeCenterComponent } from './brickType/brick-type-center/brick-type-center.component';
 import { GuardService } from './services/guard.service';
 import { HomeComponent } from './home/home.component';
+import { FrendComponent } from './frend/frend/frend.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
     { path: 'brickType', component: BrickTypeCenterComponent, canActivate: [GuardService] },
     { path: 'wall/:nick', component: WallComponent, canActivate: [GuardService] },
     { path: 'wall', component: WallComponent, canActivate: [GuardService] },
+    { path: 'frends', component: FrendComponent, canActivate: [GuardService] },
 ];
 
 @NgModule({

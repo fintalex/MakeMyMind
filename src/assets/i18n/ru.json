@@ -68,5 +68,12 @@
         "SkillDescriptionPlaceholder": "Описание Привычки",
         "SkillName": "Название Привычки",
         "SkillSign": "Сокращение / Знак / Символ"
+    },
+
+    "Frend": {
+        "FrendPageTitle": "Друзья",
+        "SearchOfFrends": "Поиск Друзей",
+        "FrendList": "Твои Друзья",
+        "SearchControlPlaceholder": "Введите часть имени пользователя или email"
     }
 }

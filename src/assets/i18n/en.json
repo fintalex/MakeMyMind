@@ -68,5 +68,12 @@
         "SkillDescriptionPlaceholder": "Skill Description",
         "SkillName": "Skill Name",
         "SkillSign": "Skill Sign"
+    },
+
+    "Frend": {
+        "FrendPageTitle": "Frends",
+        "SearchOfFrends": "Frends Search",
+        "FrendList": "Your Frends",
+        "SearchControlPlaceholder": "Input part of user's Nickname or Email"
     }
 }

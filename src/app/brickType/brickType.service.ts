@@ -18,9 +18,7 @@ export class BrickTypeService {
                             : ('/api/brickTypes/getByUserId/' + this.authService.CurrentUser._id);
 
     return this.http.get(apiString)
-      .map((res: Response) => {
-        return res.json();
-      });
+        .map((res: Response) => res.json());
   }
 
   createBrickType(brickType: BrickType){

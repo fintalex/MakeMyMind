@@ -1,0 +1,15 @@
+.frend-search{
+    
+    .frend-search-container{
+        display: flex;
+        mat-form-field {
+            min-width: 400px;
+            width: 400px;
+        }
+    }
+    .search-button-container{
+        width: 100%;
+        padding: 10px;
+        float: left;
+    }
+}

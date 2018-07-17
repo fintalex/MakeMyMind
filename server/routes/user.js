@@ -4,12 +4,14 @@ var mongoose = require('mongoose');
 
 var User = require('../models/user');
 
+
 // GET all users
-router.get('/', function(req, res, next){
-    console.log("GET all users API 111111");
-    User.getAllUsers((err, users) => {
+router.post('/getusersddl', function(req, res, next){
+    console.log("GET all NEW users API", req.body.str);
+    User.getNewUsersForDDL(req.body.str, req.body.userId, (err, users) => {
+        //console.log('DDL USERS : ', users);
         if(err){
-            console.log('Error ret users');
+            console.log('Error get users DDL');
         } else {
             res.json(users);
         }

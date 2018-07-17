@@ -88,7 +88,7 @@ body {
     padding: 3px;
 }
 // ============================== Mat-Context ====================================
-.mat-menu-content, .mat-dialog-container, .mat-select-content{
+.mat-menu-content, .mat-dialog-container, .mat-select-content, .mat-autocomplete-panel{
     background: $contextBackground;
     color: $textColor;
     span, button{

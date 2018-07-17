@@ -37,8 +37,8 @@
               *ngIf="brickType && brickType._id"
               [disabled]='brickTypeDetailsForm.invalid'
               (click)="updateBrickType()">{{'Update' | translate}}</button>
-      <button mat-raised-button color="warn" 
-              *ngIf="brickType && brickType._id"
-              (click)="deleteBrickType()">{{'Delete' | translate}}</button>
+        <button mat-raised-button color="warn" 
+                *ngIf="brickType && brickType._id"
+                (click)="deleteBrickType()">{{'Delete' | translate}}</button>
     </div>
   </form>

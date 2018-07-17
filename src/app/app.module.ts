@@ -18,6 +18,7 @@ import { GuardService } from './services/guard.service';
 import { AuthService } from './services/auth.service';
 import { BrickService } from './brick/brick.service';
 import { UserService } from './services/user.service';
+import { FrendService } from './frend/frend.service';
 
 // ========================== Component ==============================
 import { AppComponent } from './app.component';
@@ -35,14 +36,17 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { BrickModalComponent } from './brick/brick-modal/brick-modal.component';
 import { LocaleChangeComponent } from './components/locale-change/locale-change.component';
 import { LogingComponent } from './components/loging/loging.component';
+import { HeaderComponent } from './components/header/header.component';
+import { WallSideNavComponent } from './components/wall-side-nav/wall-side-nav.component';
+import { FrendComponent } from './frend/frend/frend.component';
+import { FrendSearchComponent } from './frend/frend-search/frend-search.component';
+import { FrendListComponent } from './frend/frend-list/frend-list.component';
 
 // =============== App Pipes ====================
 import { DateRu } from './pipes/dateru.pipe';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { HomeComponent } from './home/home.component';
 import { DatePipe } from '@angular/common';
-import { HeaderComponent } from './components/header/header.component';
-import { WallSideNavComponent } from './components/wall-side-nav/wall-side-nav.component';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -57,7 +61,7 @@ export function createTranslateLoader(http: HttpClient) {
         CategoryListComponent, CategoryDetailsComponent, CategoryCenterComponent, TestComponent, BrickTypeCenterComponent, BrickTypeDetailsComponent, BrickTypeListComponent, CalendarComponent, BrickModalComponent,
 
         // === pipes ====
-        DateRu, CapitalizePipe, HomeComponent, LocaleChangeComponent, LogingComponent, HeaderComponent, WallSideNavComponent
+        DateRu, CapitalizePipe, HomeComponent, LocaleChangeComponent, LogingComponent, HeaderComponent, WallSideNavComponent, FrendComponent, FrendSearchComponent, FrendListComponent
     ],
     entryComponents: [BrickModalComponent],
     imports: [
@@ -84,6 +88,7 @@ export function createTranslateLoader(http: HttpClient) {
         GuardService,
         AuthService,
         UserService,
+        FrendService,
         DatePipe
     ],
     bootstrap: [AppComponent]
