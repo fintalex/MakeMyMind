@@ -1,6 +1,9 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { BrickType } from '../../models/brick-type.model';
+
 import * as _ from 'underscore';
+import { FrendService } from '../../frend/frend.service';
+import { Frend } from '../../models/Frend.model';
 
 @Component({
     selector: 'wall-side-nav',
@@ -13,12 +16,14 @@ export class WallSideNavComponent implements OnInit {
 
     nickName: string;
     visibleBrickTypes: BrickType[];
+    userFrends: Frend[];
+
     private tickBrickType = new EventEmitter();
 
     sideBarExpanded: boolean = false;
     habbitExpanded: boolean = false;
 
-    constructor() { }
+    constructor(private frendService: FrendService) { }
 
     ngOnChanges() {
         if(this.visibleBrickTypes){
@@ -30,6 +35,10 @@ export class WallSideNavComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.frendService.getFrends()   
+            .subscribe(allFrends => {
+                this.userFrends = allFrends;
+            });
     }
 
     toogleSideBar() {

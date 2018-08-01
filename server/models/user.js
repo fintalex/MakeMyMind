@@ -83,6 +83,14 @@ userSchema.statics.addUser = (user, callback) => {
     User.create(user, callback);
 }
 
+userSchema.statics.chechDuplicateEmail = (username, callback) => {
+    User.findOne({'username': username}, callback);
+}
+
+userSchema.statics.chechDuplicateNickname = (nickname, callback) => {
+    User.findOne({'nickname': nickname}, callback);
+}
+
 userSchema.statics.loginUser = (user, callback) => {
     User.findOne({'username': user.email, 'password': user.password}, callback);
 }

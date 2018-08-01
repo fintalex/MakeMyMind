@@ -54,6 +54,9 @@ export class CalendarComponent implements OnInit {
         
         this.brickService.getBricksForMonth(this.curDate, this.curNick, this.filteredHabbits)
             .subscribe(allBricksInMonth => {
+                console.log("this.curDate", this.curDate);
+                console.log("this.curNick", this.curNick);
+                console.log("allBricksInMonth", allBricksInMonth);
                 this.brickInMonth = allBricksInMonth;
 
                 this.getMonthData(allBricksInMonth);

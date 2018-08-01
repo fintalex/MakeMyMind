@@ -33,4 +33,16 @@ router.get('/:id', function(req, res, next){
     });
 });
 
+// DELETE Frend (soft deleting)
+router.delete('/:id', function(req, res) {
+    console.log('Deleting FREND', req.params.id);
+    Frend.findByIdAndRemove(req.params.id, (err, deletedFrend) => {
+        if (err){
+            res.send('Error deleting frend');
+        } else {
+            res.json(deletedFrend);
+        }
+    })
+});
+
 module.exports = router;

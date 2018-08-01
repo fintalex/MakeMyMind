@@ -36,4 +36,17 @@ export class FrendComponent implements OnInit {
                 this.myFrends.push(newFrend);
             });        
     }
+
+    onDeleteFrend(frendId){
+        var deletedId = frendId;
+        var allFrends = this.myFrends;
+        this.frendService.deleteFrend(deletedId)
+            .subscribe(deletedFrend => {
+                for (let i = 0; i < allFrends.length; i++) {
+                    if (allFrends[i]._id === deletedId) {
+                        allFrends.splice(i, 1);
+                    }
+                }
+            });
+    }
 }

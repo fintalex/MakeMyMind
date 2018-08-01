@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Frend } from '../../models/frend.model';
 
 @Component({
     selector: 'frend-list',
     templateUrl: './frend-list.component.html',
     styleUrls: ['./frend-list.component.scss'],
-    inputs: ['frendList']
+    inputs: ['frendList'],
+    outputs: ['deleteFrendEvent']
 })
 export class FrendListComponent implements OnInit {
+
+    private deleteFrendEvent = new EventEmitter();
 
     frendList: Frend[];
 
@@ -16,4 +19,8 @@ export class FrendListComponent implements OnInit {
     ngOnInit() {
     }
 
+    deleteFrend(frend: Frend){
+        // TODO : реализовать подтверждение
+        this.deleteFrendEvent.emit(frend._id);
+    }
 }

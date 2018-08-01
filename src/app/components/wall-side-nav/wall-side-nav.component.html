@@ -76,11 +76,9 @@
                     </mat-panel-description> -->
                 </mat-expansion-panel-header>
                 <ul>
-                    <li>Друг 1</li>
-                    <li>Друг 2</li>
-                    <li>Друг 3</li>
-                    <li>Друг 4</li>
-                    <li>Друг 5</li>
+                    <li *ngFor="let frend of userFrends">
+                        <a routerLink="/wall/{{frend.frendNickname}}">{{frend.frendNickname}}</a>
+                    </li>
                 </ul>
             </mat-expansion-panel>
         

@@ -11,6 +11,11 @@ export class FrendService{
                 private authService: AuthService) {
     }
 
+    getFrends(){
+        return this.http.get('/api/frends/' + this.authService.CurrentUser._id)
+            .map((res: Response) => res.json());
+    }
+
     addFrend(frendId){
         var newFrend = new Frend();
         newFrend.frend = frendId;
@@ -20,8 +25,8 @@ export class FrendService{
             .map((res: Response) => res.json());
     }
 
-    getFrends(){
-        return this.http.get('/api/frends/' + this.authService.CurrentUser._id)
+    deleteFrend(frendId){
+        return this.http.delete('/api/frends/' + frendId)
             .map((res: Response) => res.json());
     }
 

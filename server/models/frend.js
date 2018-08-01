@@ -3,8 +3,9 @@ const mongoose = require('mongoose');
 const frendSchema = mongoose.Schema({
     user:  { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     frend: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    requestStatus: { type: Number, default: 1 }, // 1-RequestIsSent, 2-RequestIsRejected, 3-RequestIsApproved
-    //isRemoved: { type: Boolean, default: false }
+    requestStatus: { type: Number, default: 1 }, 
+    // 1-RequestIsSent, 2-RequestIsRejected, 3-RequestIsApproved
+    
 });
 
 frendSchema.statics.getFrendsByUserId = (userId, callback) => {
@@ -81,14 +82,6 @@ frendSchema.statics.addFrend = (frend, callback) => {
         });
 }
 
-frendSchema.statics.softDeleteCategory = (id, callback) => {
-    Frend.update({'_id': id}, 
-                { $set: 
-                    {
-                        'isRemoved': true
-                    }
-                }, callback);  
-}
 
 // frendSchema.statics.updateFrendRequestStatus = (userId, frendId, statusId, callback) => {
 //     console.log("Frend is -" + frendId + ", and userid is - " + userId);

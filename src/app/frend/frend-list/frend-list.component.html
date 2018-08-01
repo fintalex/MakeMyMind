@@ -4,5 +4,23 @@
         Frend.FrendList
     </div>
     
-    <div *ngFor="let frend of frendList">{{frend.frendNickname + '(' + frend.frendUsername + ')'}}</div>
+    <table class="frend-grid">
+        <tr *ngFor="let frend of frendList">
+            <td> 
+                <a class="auth-link" routerLink="/wall/{{frend.frendNickname}}" translate>
+                    {{frend.frendNickname + ' (' + frend.frendUsername + ')'}} 
+                </a>
+            </td>
+            <td>
+                status
+            </td>
+            <td>            
+                <div>
+                    <button mat-button class="menu" (click)="deleteFrend(frend)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </table>
 </mat-card>

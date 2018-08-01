@@ -5,14 +5,42 @@
             Registration
         </div>
 
+        <span *ngIf="warningMessage" class="warn-span">{{warningMessage}}</span>
+
+        <!-- Email -->
         <mat-form-field>
-            <input type="text" matInput required placeholder="{{'Email' | translate}}" formControlName="username">
+            <input type="text" matInput required placeholder="{{'Email' | translate}}" 
+                formControlName="username">
+            <mat-error *ngIf="regForm.controls.username.errors?.required">
+                Поле обязательное для заполнения
+            </mat-error>
+            <mat-error *ngIf="regForm.controls.username.errors?.email">
+                Не валидный Email
+            </mat-error>
+            <mat-error *ngIf="regForm.controls.username.errors?.duplicateEmail">
+                Такой Email уже используется
+            </mat-error>
         </mat-form-field>
+
+        <!-- Password -->
         <mat-form-field>
-            <input type="password" matInput required placeholder="{{'Password' | translate}}" formControlName="password">
+            <input type="password" matInput required placeholder="{{'Password' | translate}}" 
+                formControlName="password">
+            <mat-error *ngIf="regForm.controls.password.errors?.required">
+                Поле обязательное для заполнения
+            </mat-error>
+            <mat-error *ngIf="regForm.controls.password.errors?.minlength">
+                Пароль должен быть не менее {{regForm.controls.password.errors?.minlength.requiredLength}} символов.
+            </mat-error>
         </mat-form-field>
+
+        <!-- Nickname -->
         <mat-form-field>
-            <input type="nickname" matInput required placeholder="{{'Nickname' | translate}}" formControlName="nickname">
+            <input type="nickname" matInput required placeholder="{{'Nickname' | translate}}" 
+                formControlName="nickname">
+            <mat-error *ngIf="regForm.controls.nickname.errors?.required">
+                Поле обязательное для заполнения
+            </mat-error>
         </mat-form-field>
 
         <button mat-raised-button color="primary" [disabled]="regForm.invalid">

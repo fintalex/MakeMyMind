@@ -34,16 +34,34 @@ router.get('/:id', function(req, res, next){
 router.post('/', (req, res, next) => {
     console.log("YEHA - got the POST User API");
     let response = {success: true};
-    User.addUser(req.body, (err, user) => {
-        if (err) {
-            response.msg = err.msg;
-            res.json(response);
-        } else { 
-            response.success = true;
-            response.msg = "User successfuly created";
+    User.chechDuplicateEmail(req.body.username, (err, userEmail) => {
+        console.log("chechDuplicateEmail", userEmail)
+        if (userEmail == null){
+            User.chechDuplicateNickname(req.body.nickname, (err, userNickname) => {
+                console.log("chechDuplicateNickname", userNickname)
+                if (userNickname == null){
+                    User.addUser(req.body, (err, user) => {
+                        if (err) {
+                            response.msg = err.msg;
+                            res.json(response);
+                        } else { 
+                            response.success = true;
+                            response.msg = "User successfully created";
+                            res.json(response);
+                        }
+                    });
+                } else {
+                    response.success = false;
+                    response.msg = "Nickname is already used"
+                    res.json(response);
+                }
+            });
+        } else {
+            response.success = false;
+            response.msg = "Email is already used"
             res.json(response);
         }
-    });
+    });    
 });
 
 // POST LOGIN method
