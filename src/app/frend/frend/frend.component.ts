@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FrendService } from '../frend.service';
 import { Frend } from '../../models/frend.model';
+import { MatDialog } from '@angular/material';
 
 @Component({
     selector: 'frend',
@@ -11,7 +12,8 @@ export class FrendComponent implements OnInit {
 
     myFrends: Frend[];
 
-    constructor(private frendService: FrendService) { }
+    constructor(private frendService: FrendService,
+                public dialog: MatDialog) { }
 
     ngOnInit() {
         this.frendService.getFrends()   
@@ -29,22 +31,36 @@ export class FrendComponent implements OnInit {
                 newFrend.frendId = createdFrend.frend._id;
                 newFrend.frendNickname = createdFrend.frend.nickname;
                 newFrend.frendUsername = createdFrend.frend.username;
-                newFrend.requestForYou = 0;
-                newFrend.requestStatus = createdFrend.frend.requestStatus;
+                newFrend.requestForYou = false;
+                newFrend.statusId = createdFrend.statusId;
                 newFrend._id = createdFrend._id;
 
                 this.myFrends.push(newFrend);
             });        
     }
 
-    onDeleteFrend(frendId){
-        var deletedId = frendId;
+    // onDeleteFrend(frendId){
+
+    //     var deletedId = frendId;
+    //     var allFrends = this.myFrends;
+    //     this.frendService.deleteFrend(deletedId)
+    //         .subscribe(deletedFrend => {
+    //             for (let i = 0; i < allFrends.length; i++) {
+    //                 if (allFrends[i]._id === deletedId) {
+    //                     allFrends.splice(i, 1);
+    //                 }
+    //             }
+    //         });
+    // }
+
+    onChangeFrendStatus(frend: Frend){
+        var deletedId = frend._id;
         var allFrends = this.myFrends;
-        this.frendService.deleteFrend(deletedId)
-            .subscribe(deletedFrend => {
+        this.frendService.changeFrendStatus(frend)
+            .subscribe(changedFrend => {
                 for (let i = 0; i < allFrends.length; i++) {
                     if (allFrends[i]._id === deletedId) {
-                        allFrends.splice(i, 1);
+                        allFrends[i].statusId = frend.statusId;
                     }
                 }
             });

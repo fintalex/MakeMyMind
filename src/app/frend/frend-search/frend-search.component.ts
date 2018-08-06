@@ -49,7 +49,7 @@ export class FrendSearchComponent implements OnInit {
         
         if (typeof this.searchControl.value === 'object'){
             // var frend = new Frend();
-            // frend.requestStatus = 1;
+            // frend.statusId = 1;
             // frend.frend = this.searchControl.value._id;
             // frend.user = '';
 

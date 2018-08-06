@@ -1,0 +1,17 @@
+<div class="title-container">
+    {{data.title ? data.title : 'Подтвердите удаление'}}
+</div>
+
+<!-- <form [formGroup]="confirmationForm" class="confirm-modal-form" > -->
+    <div class="message-content">
+        {{data.message ? data.message : 'Уверены, что хотите удалить эту запись?'}}
+    </div>
+
+    <div class="button-container">
+        <button mat-raised-button color="primary" 
+                (click)="okButton()">{{data.okButtonTitle ? data.okButtonTitle : 'OK'}}</button>
+        
+        <button mat-raised-button color="warn" 
+                (click)="cancelButton()">{{data.cancelButtonTitle ? data.cancelButtonTitle : 'Отмена'}}</button>
+    </div>
+<!-- </form> -->

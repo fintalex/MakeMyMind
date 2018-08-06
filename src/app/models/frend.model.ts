@@ -2,10 +2,10 @@ export class Frend {
     _id?: string;
     user?: string;
     frend?: string;
-    requestStatus?: number;
+    statusId?: number;
 
     frendId?: string;
     frendNickname?: string;
     frendUsername?: string;
-    requestForYou?: number;
+    requestForYou?: boolean;
 }

@@ -19,6 +19,7 @@ import { AuthService } from './services/auth.service';
 import { BrickService } from './brick/brick.service';
 import { UserService } from './services/user.service';
 import { FrendService } from './frend/frend.service';
+import { DialogService } from './components/dialogs/dialog.service';
 
 // ========================== Component ==============================
 import { AppComponent } from './app.component';
@@ -41,6 +42,7 @@ import { WallSideNavComponent } from './components/wall-side-nav/wall-side-nav.c
 import { FrendComponent } from './frend/frend/frend.component';
 import { FrendSearchComponent } from './frend/frend-search/frend-search.component';
 import { FrendListComponent } from './frend/frend-list/frend-list.component';
+import { ConfirmationModalComponent } from './components/dialogs/confirmation/confirmation.component';
 
 // =============== App Pipes ====================
 import { DateRu } from './pipes/dateru.pipe';
@@ -58,12 +60,12 @@ export function createTranslateLoader(http: HttpClient) {
         RegistrationComponent,
         AuthComponent,
         WallComponent,
-        CategoryListComponent, CategoryDetailsComponent, CategoryCenterComponent, TestComponent, BrickTypeCenterComponent, BrickTypeDetailsComponent, BrickTypeListComponent, CalendarComponent, BrickModalComponent,
+        CategoryListComponent, CategoryDetailsComponent, CategoryCenterComponent, TestComponent, BrickTypeCenterComponent, BrickTypeDetailsComponent, BrickTypeListComponent, CalendarComponent, BrickModalComponent, ConfirmationModalComponent,
 
         // === pipes ====
         DateRu, CapitalizePipe, HomeComponent, LocaleChangeComponent, LogingComponent, HeaderComponent, WallSideNavComponent, FrendComponent, FrendSearchComponent, FrendListComponent
     ],
-    entryComponents: [BrickModalComponent],
+    entryComponents: [BrickModalComponent, ConfirmationModalComponent],
     imports: [
         BrowserModule,
         HttpModule,
@@ -89,6 +91,7 @@ export function createTranslateLoader(http: HttpClient) {
         AuthService,
         UserService,
         FrendService,
+        DialogService,
         DatePipe
     ],
     bootstrap: [AppComponent]

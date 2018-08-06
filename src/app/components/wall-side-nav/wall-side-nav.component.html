@@ -77,7 +77,7 @@
                 </mat-expansion-panel-header>
                 <ul>
                     <li *ngFor="let frend of userFrends">
-                        <a routerLink="/wall/{{frend.frendNickname}}">{{frend.frendNickname}}</a>
+                        <a [routerLink]="['/wall', frend.frendNickname]">{{frend.frendNickname}}</a>
                     </li>
                 </ul>
             </mat-expansion-panel>

@@ -1,26 +1,69 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Frend } from '../../models/frend.model';
+import { DialogService } from '../../components/dialogs/dialog.service';
+import { ModalParams } from '../../models/modal-params.model';
 
 @Component({
     selector: 'frend-list',
     templateUrl: './frend-list.component.html',
     styleUrls: ['./frend-list.component.scss'],
     inputs: ['frendList'],
-    outputs: ['deleteFrendEvent']
+    outputs: ['changeFrendStatus']
 })
 export class FrendListComponent implements OnInit {
 
-    private deleteFrendEvent = new EventEmitter();
+    private changeFrendStatus = new EventEmitter();
 
     frendList: Frend[];
 
-    constructor() { }
+    constructor(private dialogs: DialogService) { }
 
     ngOnInit() {
     }
 
     deleteFrend(frend: Frend){
-        // TODO : реализовать подтверждение
-        this.deleteFrendEvent.emit(frend._id);
+
+        var conf: ModalParams = {
+            width: '300px', 
+            message: 'Уверены, что хотите удалить ' + frend.frendNickname + ' (' + frend.frendUsername + ') из друзей?', 
+            title: 'Удаление из друзей'
+        };
+
+        this.dialogs.showConfirm(conf)
+            .subscribe(result => {
+                if (result == true){
+                    this.changeFrendStatus.emit({'_id': frend._id, 'statusId': 5});
+                }
+            });
+    }
+
+    rejectFrend(frend: Frend){
+        var conf: ModalParams = {
+            width: '300px', 
+            message: 'Уверены, что хотите отклонить заявку ' + frend.frendNickname + ' (' + frend.frendUsername + ')?', 
+            title: 'Отклонение заявки в друзья'
+        };
+
+        this.dialogs.showConfirm(conf)
+            .subscribe(result => {
+                if (result == true){
+                    this.changeFrendStatus.emit({'_id': frend._id, 'statusId': 2});
+                }
+            });
+    }
+
+    addFrend(frend: Frend){
+        var conf: ModalParams = {
+            width: '300px', 
+            message: 'Хотите добавить ' + frend.frendNickname + ' (' + frend.frendUsername + ') в друзья?', 
+            title: 'Добавление в друзья'
+        };
+
+        this.dialogs.showConfirm(conf)
+            .subscribe(result => {
+                if (result == true){
+                    this.changeFrendStatus.emit({'_id': frend._id, 'statusId': 3});
+                }
+            });
     }
 }

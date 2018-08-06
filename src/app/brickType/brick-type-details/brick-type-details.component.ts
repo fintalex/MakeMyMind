@@ -2,6 +2,8 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 import { BrickType } from '../../models/brick-type.model';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Category } from '../../models/category.model';
+import { DialogService } from '../../components/dialogs/dialog.service';
+import { ModalParams } from '../../models/modal-params.model';
 
 @Component({
     selector: 'brick-type-details',
@@ -25,7 +27,7 @@ export class BrickTypeDetailsComponent implements OnInit {
 
     public brickTypeDetailsForm: FormGroup;
 
-    constructor() { }
+    constructor(private dialogs: DialogService) { }
 
     ngOnInit() {
         this.setDefaultFormValues();
@@ -54,9 +56,19 @@ export class BrickTypeDetailsComponent implements OnInit {
     }
 
     public deleteBrickType() {
-        this.deleteBrickTypeEvent.emit(this.brickType._id);
-        this.brickType = null;
-        this.brickTypeDetailsForm.reset();
+        var params: ModalParams = {
+            width: '300px', 
+            message: 'Уверены, что хотите удалить привычку - ' + this.brickType.name + '?'
+        };
+
+        this.dialogs.showConfirm(params)
+            .subscribe(result => {
+                if (result){
+                    this.deleteBrickTypeEvent.emit(this.brickType._id);
+                    this.brickType = null;
+                    this.brickTypeDetailsForm.reset();
+                }
+            });
     }
 
     public updateBrickType() {

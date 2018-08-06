@@ -3,9 +3,11 @@ const mongoose = require('mongoose');
 const frendSchema = mongoose.Schema({
     user:  { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     frend: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    requestStatus: { type: Number, default: 1 }, 
-    // 1-RequestIsSent, 2-RequestIsRejected, 3-RequestIsApproved
-    
+    statusId: { type: Number, default: 1 }, 
+    // 1-RequestIsSent, (Hay, lets get a frendship)
+    // 2-RequestIsRejected, (Reject Frend)
+    // 3-RequestIsApproved (Added To Frend)
+    // 5-Removed (removed from Frend)
 });
 
 frendSchema.statics.getFrendsByUserId = (userId, callback) => {
@@ -50,7 +52,7 @@ frendSchema.statics.getFrendsByUserId = (userId, callback) => {
             },
             {
                 $project: {
-                    'requestStatus': 1,
+                    'statusId': 1,
                     '_id': 1,
                     // 'user._id': 1,
                     // 'user.nickname': 1,
@@ -82,13 +84,22 @@ frendSchema.statics.addFrend = (frend, callback) => {
         });
 }
 
+frendSchema.statics.changeStatus = (frend, callback) => {
+    Frend.update({'_id': frend._id}, 
+        { $set: 
+            {
+                'statusId': frend.statusId
+            }
+        }, callback);
+}
+
 
 // frendSchema.statics.updateFrendRequestStatus = (userId, frendId, statusId, callback) => {
 //     console.log("Frend is -" + frendId + ", and userid is - " + userId);
 //     User.update({'userId': userId, 'frendId': frendId}, 
 //                 { $set: 
 //                     {
-//                         'requestStatus': statusId
+//                         'statusId': statusId
 //                     }
 //                 }, callback);      
 // }

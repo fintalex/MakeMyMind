@@ -20,6 +20,22 @@ router.post('/', (req, res, next) => {
     });
 });
 
+// Change Frend Status
+router.post('/changeStatus', (req, res, next) => {
+    console.log("Change Frend Status", req.body);
+    let response = {success: true};
+    Frend.changeStatus(req.body, (err, frend) => {
+        if (err) {
+            response.msg = err.msg;
+            res.json(response);
+        } else { 
+            response.success = true;
+            response.msg = "frend status successfuly changed";
+            res.json(frend);
+        }
+    });
+});
+
 // GET frends by UserId
 router.get('/:id', function(req, res, next){
     console.log("GET FRENDS by id API -", req.params.id);

@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 /* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
 
+// Here is all Material Icons- https://material.io/tools/icons/?icon=person_add_disabled&style=baseline
+
 @import './custom-theme.scss';
 @import './content/variables';
  
@@ -47,6 +49,15 @@ body {
     padding: 5px 0px;
     margin: 20px;
     text-align: center;
+}
+
+.link-button{
+    color: #ddfaff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.link-button:hover{
+    color: #00788d;
 }
 
 // ================================== MENU ============================

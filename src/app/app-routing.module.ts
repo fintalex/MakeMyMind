@@ -19,7 +19,8 @@ const routes: Routes = [
     { path: 'category', component: CategoryCenterComponent, canActivate: [GuardService] },
     { path: 'brickType', component: BrickTypeCenterComponent, canActivate: [GuardService] },
     { path: 'wall/:nick', component: WallComponent, canActivate: [GuardService] },
-    { path: 'wall', component: WallComponent, canActivate: [GuardService] },
+    //{ path: 'wall',  component: WallComponent, canActivate: [GuardService] },
+    { path: 'wall', redirectTo: 'wall/'}, // just only this ROUT will help me to NOT UPDATE the page when we got from Wall to Wall with parameters.
     { path: 'frends', component: FrendComponent, canActivate: [GuardService] },
 ];
 

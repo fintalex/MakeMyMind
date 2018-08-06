@@ -6,19 +6,59 @@
     
     <table class="frend-grid">
         <tr *ngFor="let frend of frendList">
+            <td>
+                <!-- request -->
+                <!-- record_voice_over -->
+                <mat-icon class="yellow-icon" 
+                    *ngIf="frend.statusId == 1"
+                    matTooltip="Запрос в друзья" matTooltipPosition="right">
+                    accessibility_new
+                </mat-icon>
+
+                <!-- deleted -->
+                <mat-icon class="red-icon" 
+                    *ngIf="frend.statusId == 5"
+                    matTooltip="Удален из друзей" matTooltipPosition="right">
+                    highlight_off
+                </mat-icon>
+
+                <!-- approved -->
+                <mat-icon class="gren-icon" 
+                    *ngIf="frend.statusId == 3"
+                    matTooltip="В друзьях" matTooltipPosition="right">
+                    account_circle
+                </mat-icon>
+
+                <!-- rejected -->
+                <mat-icon class="red-icon" 
+                    *ngIf="frend.statusId == 2"
+                    matTooltip="Запрос отклонен" matTooltipPosition="right">
+                    sentiment_very_dissatisfied
+                    <!-- person_add_disabled -->
+                </mat-icon>
+            </td>
             <td> 
-                <a class="auth-link" routerLink="/wall/{{frend.frendNickname}}" translate>
+                <a class="link-button" routerLink="/wall/{{frend.frendNickname}}" translate>
                     {{frend.frendNickname + ' (' + frend.frendUsername + ')'}} 
                 </a>
             </td>
-            <td>
-                status
-            </td>
             <td>            
                 <div>
-                    <button mat-button class="menu" (click)="deleteFrend(frend)">
-                        <mat-icon>delete</mat-icon>
-                    </button>
+                    <a class="link-button" 
+                        *ngIf="frend.statusId == 3"
+                        (click)="deleteFrend(frend)">
+                        Удалить
+                    </a>
+                    <a class="link-button"  
+                        *ngIf="frend.statusId == 1 && frend.requestForYou"
+                        (click)="rejectFrend(frend)">
+                        Отклонить
+                    </a>
+                    <a class="link-button" 
+                        *ngIf="(frend.statusId == 2 && frend.requestForYou) || frend.statusId == 5"
+                        (click)="addFrend(frend)">
+                        Добавить
+                    </a>
                 </div>
             </td>
         </tr>

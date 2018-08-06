@@ -35,10 +35,16 @@ export class CalendarComponent implements OnInit {
         private brickService: BrickService,
         private route: ActivatedRoute,
         private router: Router,
+        private activeRoute: ActivatedRoute
     ) {}
 
     ngOnInit() {
+        this.activeRoute.params.subscribe(params => {            
+            this.updateWall()
+        });
+    }
 
+    updateWall(){
         this.curNick = this.route.snapshot.paramMap.get('nick');
         this.nicknameForSideBar = this.curNick ? this.curNick : this.authService.CurrentUser.nickname;
 

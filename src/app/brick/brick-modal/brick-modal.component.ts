@@ -6,6 +6,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DatePipe } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
+import { DialogService } from '../../components/dialogs/dialog.service';
+import { ModalParams } from '../../models/modal-params.model';
 
 @Component({
     selector: 'app-brick-modal',
@@ -29,6 +31,7 @@ export class BrickModalComponent implements OnInit {
     constructor(
         private authService: AuthService,
         private brickService: BrickService,
+        private dialogs: DialogService,
         public dialogRef: MatDialogRef<BrickModalComponent>,
         private datePipe: DatePipe,
         @Inject(MAT_DIALOG_DATA) public data: any
@@ -76,10 +79,20 @@ export class BrickModalComponent implements OnInit {
     }
 
     deleteBrick(){
-        this.brickService.deleteBrick(this.data.curBrick._id)
-            .subscribe(deletedBrick => {
-                deletedBrick.status = 3; // deleted
-                this.dialogRef.close(deletedBrick);
+        var params: ModalParams = {
+            width: '300px',
+            message: 'Уверены, что хотите удалить действие?'
+        };
+
+        this.dialogs.showConfirm(params)
+            .subscribe(result => {
+                if (result){
+                    this.brickService.deleteBrick(this.data.curBrick._id)
+                    .subscribe(deletedBrick => {
+                        deletedBrick.status = 3; // deleted
+                        this.dialogRef.close(deletedBrick);
+                    });
+                }
             });
     }
 }

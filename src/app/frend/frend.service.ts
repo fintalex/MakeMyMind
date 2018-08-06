@@ -20,7 +20,7 @@ export class FrendService{
         var newFrend = new Frend();
         newFrend.frend = frendId;
         newFrend.user = this.authService.CurrentUser._id;
-        newFrend.requestStatus = 1;
+        newFrend.statusId = 1;
         return this.http.post('/api/frends', newFrend)
             .map((res: Response) => res.json());
     }
@@ -30,4 +30,8 @@ export class FrendService{
             .map((res: Response) => res.json());
     }
 
+    changeFrendStatus(frend: Frend){
+        return this.http.post('/api/frends/changeStatus', frend)
+            .map((res: Response) => res.json());
+    }
 }
