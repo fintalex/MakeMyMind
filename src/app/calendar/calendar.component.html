@@ -46,7 +46,14 @@
                   <span class="brick-in-calendar text-shadow" 
                         *ngFor="let brick of curday.bricks"
                         [ngStyle]="{'background-color': brick.brickType.category.color}"
-                        (click)="openBrickModal(brick, curday, $event)"> {{brick.brickType.sign}}</span>            
+                        (click)="openBrickModal(brick, curday, $event)"> 
+                            <!-- {{brick.brickType.sign}} -->
+                            <mat-icon *ngIf="brick.brickType.isIcon"
+                                        class="brickIcon">
+                                {{brick.brickType.sign}} 
+                            </mat-icon>
+                            <div *ngIf="!brick.brickType.isIcon">{{brick.brickType.sign}}</div> 
+                    </span>            
             </div>
 
             <span class="day-number">{{curday.day}}</span>

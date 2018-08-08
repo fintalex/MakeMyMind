@@ -10,6 +10,9 @@ const brickTypeSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    isIcon: {
+        type: Boolean
+    },
     ruleDescription: {
         type: String
     }, 

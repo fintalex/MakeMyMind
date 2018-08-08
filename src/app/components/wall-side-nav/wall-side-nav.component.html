@@ -58,7 +58,12 @@
                                 <span class="checkbox-span">{{brickType.name}}</span>
                                 <span class="brick-in-calendar text-shadow float-right brick-in-sidebar" 
                                     [ngStyle]="{'background-color': brickType.category.color}">
-                                    {{brickType.sign}}
+                                    <!-- {{brickType.sign}} -->
+                                    <mat-icon *ngIf="brickType.isIcon"  
+                                                class="brickIcon">
+                                        {{brickType.sign}} 
+                                    </mat-icon>
+                                    <div *ngIf="!brickType.isIcon">{{brickType.sign}}</div> 
                                 </span>
                         </mat-checkbox>
                     </li>

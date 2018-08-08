@@ -12,4 +12,5 @@ export class BrickType {
     isPrivate: Boolean;
 
     ticked: Boolean;
+    isIcon: Boolean;
 }
