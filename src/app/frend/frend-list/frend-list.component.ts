@@ -8,17 +8,34 @@ import { ModalParams } from '../../models/modal-params.model';
     templateUrl: './frend-list.component.html',
     styleUrls: ['./frend-list.component.scss'],
     inputs: ['frendList'],
-    outputs: ['changeFrendStatus']
+    outputs: ['changeFrendStatus', 'deleteFrendEvent']
 })
 export class FrendListComponent implements OnInit {
 
     private changeFrendStatus = new EventEmitter();
+    private deleteFrendEvent = new EventEmitter();
 
     frendList: Frend[];
 
     constructor(private dialogs: DialogService) { }
 
     ngOnInit() {
+    }
+
+    cancelFrend(frend: Frend){
+
+        var conf: ModalParams = {
+            width: '300px', 
+            message: 'Уверены, что хотите отменить заявку в друзья для ' + frend.frendNickname + ' (' + frend.frendUsername + ')?', 
+            title: 'Отмена заявки'
+        };
+
+        this.dialogs.showConfirm(conf)
+            .subscribe(result => {
+                if (result == true){
+                    this.deleteFrendEvent.emit(frend._id);
+                }
+            });
     }
 
     deleteFrend(frend: Frend){

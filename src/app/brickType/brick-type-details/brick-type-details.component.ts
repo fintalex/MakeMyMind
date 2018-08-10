@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { BrickType } from '../../models/brick-type.model';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Category } from '../../models/category.model';
 import { DialogService } from '../../components/dialogs/dialog.service';
 import { ModalParams } from '../../models/modal-params.model';
@@ -56,7 +56,7 @@ export class BrickTypeDetailsComponent implements OnInit {
             this.brickTypeDetailsForm = new FormGroup({
                 name: new FormControl(this.brickType.name),
                 category: new FormControl(this.brickType.category._id),
-                sign: new FormControl(this.brickType.sign),
+                sign: new FormControl(this.brickType.sign,[Validators.required]),
                 ruleDescription: new FormControl(this.brickType.ruleDescription),
                 isPrivate: new FormControl(this.brickType.isPrivate),
                 isIcon: new FormControl(this.brickType.isIcon)
@@ -147,7 +147,7 @@ export class BrickTypeDetailsComponent implements OnInit {
         this.brickTypeDetailsForm = new FormGroup({
             name: new FormControl(),
             category: new FormControl(),
-            sign: new FormControl(),
+            sign: new FormControl(null, [Validators.required]),
             ruleDescription: new FormControl(),
             isPrivate: new FormControl(true),
             isIcon: new FormControl(false)

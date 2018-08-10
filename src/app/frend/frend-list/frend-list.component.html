@@ -11,28 +11,28 @@
                 <!-- record_voice_over -->
                 <mat-icon class="yellow-icon" 
                     *ngIf="frend.statusId == 1"
-                    matTooltip="Запрос в друзья" matTooltipPosition="right">
+                    matTooltip="Запрос в друзья" matTooltipPosition="left">
                     accessibility_new
                 </mat-icon>
 
                 <!-- deleted -->
                 <mat-icon class="red-icon" 
                     *ngIf="frend.statusId == 5"
-                    matTooltip="Удален из друзей" matTooltipPosition="right">
+                    matTooltip="Удален из друзей" matTooltipPosition="left">
                     highlight_off
                 </mat-icon>
 
                 <!-- approved -->
                 <mat-icon class="gren-icon" 
                     *ngIf="frend.statusId == 3"
-                    matTooltip="В друзьях" matTooltipPosition="right">
+                    matTooltip="В друзьях" matTooltipPosition="left">
                     account_circle
                 </mat-icon>
 
                 <!-- rejected -->
-                <mat-icon class="red-icon" 
+                <mat-icon class="plum-icon" 
                     *ngIf="frend.statusId == 2"
-                    matTooltip="Запрос отклонен" matTooltipPosition="right">
+                    matTooltip="Запрос отклонен" matTooltipPosition="left">
                     sentiment_very_dissatisfied
                     <!-- person_add_disabled -->
                 </mat-icon>
@@ -45,6 +45,11 @@
             <td>            
                 <div>
                     <a class="link-button" 
+                        *ngIf="frend.statusId == 1 && !frend.requestForYou"
+                        (click)="cancelFrend(frend)">
+                        Отменить
+                    </a>
+                    <a class="link-button" 
                         *ngIf="frend.statusId == 3"
                         (click)="deleteFrend(frend)">
                         Удалить
@@ -53,6 +58,11 @@
                         *ngIf="frend.statusId == 1 && frend.requestForYou"
                         (click)="rejectFrend(frend)">
                         Отклонить
+                    </a>
+                    <a class="link-button"  
+                        *ngIf="frend.statusId == 1 && frend.requestForYou"
+                        (click)="addFrend(frend)">
+                        Принять
                     </a>
                     <a class="link-button" 
                         *ngIf="(frend.statusId == 2 && frend.requestForYou) || frend.statusId == 5"

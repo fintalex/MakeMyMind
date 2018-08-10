@@ -55,6 +55,7 @@ body {
     color: #ddfaff;
     text-decoration: underline;
     cursor: pointer;
+    padding-right: 5px;
 }
 .link-button:hover{
     color: #00788d;
@@ -115,10 +116,15 @@ body {
         color: $textColor;
     }
 }
+// =============================== MAT - OPTION ==============================
+.mat-option{
+    height: 40px!important;
+    line-height: 40px!important;
+}
 
 // ==================================== LIST WITH SMALL COLOR brick =============================
 .small-brick-type {
-    margin: 14px 25px;
+    //margin: 9px 10px;
     width: 30px;
     height: 20px;
     box-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
@@ -370,6 +376,9 @@ $hexagon-index: 1;
 
 // ======================= BRICK ===========================
 
+.brick-in-option{
+    margin: 9px 10px!important;
+}
 .brick-in-calendar {
     //z-index: 100;
     margin: 5px 4px;
@@ -388,8 +397,37 @@ $hexagon-index: 1;
     box-sizing: border-box;
 }
 
+// ============================================== ICON ====================================
 .brickIcon{
     font-size: 18px;
-    padding-left: 4px;
-    padding-top: 3px;
+    padding-left: 5px;
+    padding-top: 5px;
+    margin-right: 0px!important;
+}
+
+.plum-icon {
+    color: plum;
+}
+
+.red-icon {
+    color: red;
+}
+
+.gren-icon {
+    color: green;
+}
+
+.yellow-icon {
+    color: yellow;
+}
+
+.mat-error-custom{
+    position: absolute;
+    color: #d84315;
+    top: 50px;
+    font-size: 75%;
+    text-align: left;
+    font-weight: 400;
+    line-height: 1.125;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }

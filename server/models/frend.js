@@ -50,6 +50,9 @@ frendSchema.statics.getFrendsByUserId = (userId, callback) => {
                     ]
                 }
             },
+            // {
+            //     $sort: { 'statusId': 1 }
+            // },
             {
                 $project: {
                     'statusId': 1,

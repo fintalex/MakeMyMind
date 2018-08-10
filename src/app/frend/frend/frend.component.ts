@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FrendService } from '../frend.service';
 import { Frend } from '../../models/frend.model';
 import { MatDialog } from '@angular/material';
+import * as _ from 'underscore';
 
 @Component({
     selector: 'frend',
@@ -18,7 +19,18 @@ export class FrendComponent implements OnInit {
     ngOnInit() {
         this.frendService.getFrends()   
             .subscribe(allFrends => {
-                this.myFrends = allFrends;
+
+                // ХИТРАЯ сортировка по определенному списку (1,3,2,5)
+                this.myFrends = _.sortBy(allFrends, (frend)=>{
+                    var rank = {
+                        "1": 1,
+                        "3": 2,
+                        "2": 3,
+                        "5": 4
+                    };
+
+                    return rank[frend.statusId];
+                });
             });
     }
 
@@ -39,19 +51,19 @@ export class FrendComponent implements OnInit {
             });        
     }
 
-    // onDeleteFrend(frendId){
+    onDeleteFrend(frendId){
 
-    //     var deletedId = frendId;
-    //     var allFrends = this.myFrends;
-    //     this.frendService.deleteFrend(deletedId)
-    //         .subscribe(deletedFrend => {
-    //             for (let i = 0; i < allFrends.length; i++) {
-    //                 if (allFrends[i]._id === deletedId) {
-    //                     allFrends.splice(i, 1);
-    //                 }
-    //             }
-    //         });
-    // }
+        var deletedId = frendId;
+        var allFrends = this.myFrends;
+        this.frendService.deleteFrend(deletedId)
+            .subscribe(deletedFrend => {
+                for (let i = 0; i < allFrends.length; i++) {
+                    if (allFrends[i]._id === deletedId) {
+                        allFrends.splice(i, 1);
+                    }
+                }
+            });
+    }
 
     onChangeFrendStatus(frend: Frend){
         var deletedId = frend._id;
