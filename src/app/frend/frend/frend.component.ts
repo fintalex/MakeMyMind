@@ -21,20 +21,26 @@ export class FrendComponent implements OnInit {
             .subscribe(allFrends => {
 
                 // ХИТРАЯ сортировка по определенному списку (1,3,2,5)
-                this.myFrends = _.sortBy(allFrends, (frend)=>{
-                    var rank = {
-                        "1": 1,
-                        "3": 2,
-                        "2": 3,
-                        "5": 4
-                    };
-
-                    return rank[frend.statusId];
-                });
+                this.sortFrends(allFrends);
             });
     }
 
+    sortFrends(allFrends){
+        this.myFrends = _.sortBy(allFrends, (frend)=>{
+            var rank = {
+                "1": 1,
+                "3": 2,
+                "2": 3,
+                "5": 4
+            };
+
+            return rank[frend.statusId];
+        });
+    }
+
     onAddFrend(frendId) {
+        var allFrends = this.myFrends;
+
         this.frendService.addFrend(frendId)
             .subscribe(createdFrend => {
 
@@ -48,6 +54,8 @@ export class FrendComponent implements OnInit {
                 newFrend._id = createdFrend._id;
 
                 this.myFrends.push(newFrend);
+
+                this.sortFrends(allFrends);
             });        
     }
 

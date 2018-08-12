@@ -28,6 +28,8 @@ export class BrickModalComponent implements OnInit {
         date: new FormControl()
     });
 
+    brickTypeFC = new FormControl();
+
     constructor(
         private authService: AuthService,
         private brickService: BrickService,
@@ -43,8 +45,9 @@ export class BrickModalComponent implements OnInit {
         this.curDate = this.datePipe.transform(this.data.curBrick.date, 'dd.MM.yyyy');
         
         if(this.data.curBrick._id){
+            this.brickTypeFC.setValue(this.data.curBrick.brickType);
             this.brickDetailsForm = new FormGroup({
-                brickType: new FormControl(this.data.curBrick.brickType._id),
+                //brickTypeFC: new FormControl(this.data.curBrick.brickType._id),
                 description: new FormControl(this.data.curBrick.description)
             });
         }
@@ -54,7 +57,8 @@ export class BrickModalComponent implements OnInit {
     createBrick() {
         this.brickDetailsForm.value.user = this.authService.CurrentUser._id;
         this.brickDetailsForm.value.date = this.data.curBrick.date;
-        console.log("CreateBrick from Modal - ", this.data.curBrick.date);
+        this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
+        
         this.brickService.createBrick(this.brickDetailsForm.value)
             .subscribe(newBrick => {
                 newBrick.status = 1; // created
@@ -65,11 +69,10 @@ export class BrickModalComponent implements OnInit {
     updateBrick(){
         this.brickDetailsForm.value.user = this.authService.CurrentUser._id;
         this.brickDetailsForm.value.date = this.data.curBrick.date;
-        this.brickDetailsForm.value._id = this.data.curBrick._id;
+        this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
         
-
-        // this.data.curBrick.description = this.brickDetailsForm.value.description;
-        // this.data.curBrick.brickType = this.brickDetailsForm.value.brickType;
+        this.brickDetailsForm.value._id = this.data.curBrick._id;
+        this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
 
         this.brickService.updateBrick(this.brickDetailsForm.value)
             .subscribe(updatedBrick => {
@@ -94,5 +97,9 @@ export class BrickModalComponent implements OnInit {
                     });
                 }
             });
+    }
+    
+    displayFn(brickType: BrickType) {
+        if (brickType) { return brickType.name; }
     }
 }

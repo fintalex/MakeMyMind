@@ -39,7 +39,8 @@ export class CalendarComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.activeRoute.params.subscribe(params => {            
+        this.activeRoute.params.subscribe(params => {     
+            this.filteredHabbits = [];       
             this.updateWall()
         });
     }
@@ -50,7 +51,7 @@ export class CalendarComponent implements OnInit {
 
         this.brickTypeService.getBrickTypes(this.curNick)
             .subscribe(allBrickTypes => {
-                this.existentBrickTypes = allBrickTypes
+                this.existentBrickTypes = allBrickTypes;
             });
             
         this.getBricksAndShowInMonth();
@@ -67,53 +68,6 @@ export class CalendarComponent implements OnInit {
 
                 this.getMonthData(allBricksInMonth);
             });
-    }
-
-    // Month here is 1-indexed (January is 1, February is 2, etc). This is
-    // because we're using 0 as the day so that it returns the last day
-    // of the last month, so you have to add 1 to the month number 
-    // so it returns the correct amount of days
-    daysInMonth (month, year) {
-        return new Date(year, month + 1, 0).getDate();
-    }
-
-    public openBrickModal(brick: Brick, day: any, event: any){
-        if (!brick){
-            brick = new Brick();
-            brick.date = day.date;
-        } else {
-            event.stopPropagation();
-        }
-
-        if (this.curNick || day.disabled){
-            return;
-        }
-
-        var dialogRef = this.dialog.open(BrickModalComponent, {
-            width: '340px',
-            data: { 
-                curBrick: brick,
-                brickTypes: this.existentBrickTypes
-            }
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            if (result.status == 1) {
-                day.bricks.push(result);
-            } else if (result.status == 3) {
-                for (let i = 0; i < day.bricks.length; i++) {
-                    if (day.bricks[i]._id === result._id) {
-                        day.bricks.splice(i, 1);
-                    }
-                }
-            } else if (result.status = 2) {
-                for (let i = 0; i < day.bricks.length; i++) {
-                    if (day.bricks[i]._id === result._id) {
-                        day.bricks[i] = result;;
-                    }
-                }
-            }
-        });
     }
 
     getMonthData = (allBricks) => {
@@ -155,6 +109,67 @@ export class CalendarComponent implements OnInit {
             this.daysArray.unshift(previousDay);
             firstDayInArray = previousDay;
         }
+    }
+
+    // Month here is 1-indexed (January is 1, February is 2, etc). This is
+    // because we're using 0 as the day so that it returns the last day
+    // of the last month, so you have to add 1 to the month number 
+    // so it returns the correct amount of days
+    daysInMonth (month, year) {
+        return new Date(year, month + 1, 0).getDate();
+    }
+
+    public openBrickModal(brick: Brick, day: any, event: any){
+        if (!brick){
+            brick = new Brick();
+            brick.date = day.date;
+        } else {
+            event.stopPropagation();
+        }
+
+        if (this.curNick || day.disabled){
+            return;
+        }
+
+        if(!this.existentBrickTypes){
+            this.brickTypeService.getBrickTypes(this.curNick)
+                .subscribe(allBrickTypes => {
+                    this.existentBrickTypes = allBrickTypes;
+                    this.openModal(brick, day);
+                });
+        } else { 
+            this.openModal(brick, day);
+        }
+
+        
+    }
+
+    openModal(brick: Brick, day: any){
+        var dialogRef = this.dialog.open(BrickModalComponent, {
+            width: '340px',
+            data: { 
+                curBrick: brick,
+                brickTypes: this.existentBrickTypes
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result.status == 1) {
+                day.bricks.push(result);
+            } else if (result.status == 3) {
+                for (let i = 0; i < day.bricks.length; i++) {
+                    if (day.bricks[i]._id === result._id) {
+                        day.bricks.splice(i, 1);
+                    }
+                }
+            } else if (result.status = 2) {
+                for (let i = 0; i < day.bricks.length; i++) {
+                    if (day.bricks[i]._id === result._id) {
+                        day.bricks[i] = result;;
+                    }
+                }
+            }
+        });
     }
 
     filterByHabbit(habbitsList){

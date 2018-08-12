@@ -5,15 +5,32 @@
 <form [formGroup]="brickDetailsForm" class="brick-modal-form" >
 
     <mat-form-field>
-      <mat-select placeholder="Привычка" matInput required formControlName="brickType">
+            <input type="text" placeholder="Привычка" 
+                    matInput [formControl]="brickTypeFC" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let brickType of existentBrickTypes" [value]="brickType">
+                    <div class="color-list-option">
+                        <span class="brick-in-calendar text-shadow brick-in-option" 
+                            [ngStyle]="{'background-color': brickType.category.color}">
+                            <mat-icon *ngIf="brickType.isIcon "  
+                                        class="brickIcon">
+                                {{brickType.sign}} 
+                            </mat-icon>
+                            <div *ngIf="!brickType.isIcon">{{brickType.sign}}</div> 
+                        </span>
+                        <div>{{ brickType.name }}</div>
+                    </div>
+                </mat-option>
+            </mat-autocomplete>
+
+      <!-- <mat-select placeholder="Привычка" 
+            matInput required formControlName="brickType">
         <mat-option *ngFor="let brickType of existentBrickTypes"
-                    [value]="brickType._id">
+                    [value]="brickType._id" >
             <div class="color-list-option">
-                <!-- <div class="small-brick-type" [ngStyle]="{'background-color':brickType.category.color}"></div>
-                <div>{{ brickType.name }}</div>    -->
                 <span class="brick-in-calendar text-shadow brick-in-option" 
                     [ngStyle]="{'background-color': brickType.category.color}">
-                    <mat-icon *ngIf="brickType.isIcon"  
+                    <mat-icon *ngIf="brickType.isIcon "  
                                 class="brickIcon">
                         {{brickType.sign}} 
                     </mat-icon>
@@ -22,7 +39,7 @@
                 <div>{{ brickType.name }}</div>
             </div>
         </mat-option>
-      </mat-select>
+      </mat-select> -->
     </mat-form-field>
   
     <mat-form-field>
