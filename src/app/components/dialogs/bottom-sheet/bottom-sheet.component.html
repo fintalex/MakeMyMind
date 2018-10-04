@@ -1,0 +1,14 @@
+<div class="bottom-sheet-container">
+    <div class="logo-container">
+
+    </div>
+    <div class="advice-container">
+        {{data.message}}
+    </div>
+</div>
+
+
+<button mat-raised-button color="primary" class="float-right bottom-sheet-buttom"
+    (click)="confirmSheet($event)">{{data.okButtonTitle}}</button>
+<button mat-raised-button color="primary" class="float-right bottom-sheet-buttom"
+    (click)="closeSheet($event)">{{data.cancelButtonTitle}}</button>

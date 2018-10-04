@@ -4,4 +4,5 @@ export class ModalParams {
     message?: string;
     okButtonTitle?: string;
     cancelButtonTitle?: string;
+    disableClose?: boolean;
 }

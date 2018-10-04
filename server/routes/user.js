@@ -45,6 +45,7 @@ router.post('/', (req, res, next) => {
                             response.msg = err.msg;
                             res.json(response);
                         } else { 
+                            response.user = user;
                             response.success = true;
                             response.msg = "User successfully created";
                             res.json(response);
@@ -117,6 +118,21 @@ router.post('/updatelocale', function(req, res, next){
         }
     });
 });
+
+// update user helper
+router.post('/updatehelper', function(req, res, next){
+    console.log("updatehelper -", req.body);
+
+    User.updateUserHelper(req.body._id, req.body.helper, (err, user) => {
+        console.log("user after change helper - ", user);
+        if(err){
+            console.log('Error in update user helper');
+        } else {user
+            res.json(user);
+        }
+    });
+});
+
 
 
 module.exports = router;

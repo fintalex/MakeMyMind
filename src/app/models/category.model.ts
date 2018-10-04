@@ -4,4 +4,13 @@ export class Category {
     color: string;
     description: string;
     user?: string;
+    updated?: Date;
+    brickType?: any;
+
+    public constructor(
+        fields?: {
+        // one line per field with name and type
+        }) {
+        if (fields) Object.assign(this, fields);
+    }
 }

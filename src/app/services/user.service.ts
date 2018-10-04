@@ -18,6 +18,13 @@ export class UserService{
             });
     }
 
+    updateUserHelper(user: User) {
+        return this.http.post('/api/users/updatehelper', user)
+            .map((res: Response) => {
+                return res.json();
+            });
+    }
+
     getUserDDL(val: String) {
         return this.http.post('/api/users/getusersddl', { str: val, userId: this.authService.CurrentUser._id })
             .map((res: Response) => {

@@ -1,44 +1,34 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
-import { BrickType } from '../../models/brick-type.model';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Category } from '../../models/category.model';
+import { Component, OnInit, Inject } from '@angular/core';
 import { DialogService } from '../../components/dialogs/dialog.service';
-import { ModalParams } from '../../models/modal-params.model';
+import { BrickType } from '../../models/brick-type.model';
+import { Category } from '../../models/category.model';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
+import { ModalParams } from '../../models/modal-params.model';
 import * as _ from 'underscore';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { ModalBrickTypeResult } from '../../models/dto/modal-brick-type-result';
 
 @Component({
-    selector: 'brick-type-details',
-    templateUrl: './brick-type-details.component.html',
-    styleUrls: ['./brick-type-details.component.scss'],
-    outputs: [
-        'createBrickTypeEvent',
-        'deleteBrickTypeEvent',
-        'updateBrickTypeEvent'
-    ],
-    inputs: ['brickType', 'categoriesList']
+  selector: 'app-brick-type-modal',
+  templateUrl: './brick-type-modal.component.html',
+  styleUrls: ['./brick-type-modal.component.scss']
 })
-export class BrickTypeDetailsComponent implements OnInit {
+export class BrickTypeModalComponent implements OnInit {
 
     brickType: BrickType;
     categoriesList: Category[];
     iconList: String[];
 
-    private createBrickTypeEvent = new EventEmitter();
-    private deleteBrickTypeEvent = new EventEmitter();
-    private updateBrickTypeEvent = new EventEmitter();
-
     public brickTypeDetailsForm: FormGroup;
-    //sign = new FormControl();
     frendsIconListResult: String[];
     selectedIcon: String;
 
-    //displayFn: (icon: String) => String;
+    constructor(
+            private dialogs: DialogService,
+            public dialogRef: MatDialogRef<BrickTypeModalComponent>,
+            @Inject(MAT_DIALOG_DATA) public data: any) { }
 
-    constructor(private dialogs: DialogService) { }
-
-    //public _this = this;
-    
     ngOnInit() {
         this.setIconList();
         this.setDefaultFormValues();
@@ -48,6 +38,23 @@ export class BrickTypeDetailsComponent implements OnInit {
         //     .subscribe(data => {
         //         this.updateFilteredListIcon(data);
         //     });
+
+        if (this.data.existentCategories){
+            this.categoriesList = this.data.existentCategories;
+        }
+
+        if (this.data.curBrickType._id){
+            this.brickType = this.data.curBrickType;
+
+            this.brickTypeDetailsForm = new FormGroup({
+                name: new FormControl(this.data.curBrickType.name),
+                category: new FormControl(this.data.curBrickType.category._id),
+                sign: new FormControl(this.data.curBrickType.sign, [Validators.required]),
+                ruleDescription: new FormControl(this.data.curBrickType.ruleDescription),
+                isPrivate: new FormControl(this.data.curBrickType.isPrivate),
+                isIcon: new FormControl(this.data.curBrickType.isIcon)
+            });
+        }
     }
 
     ngOnChanges() {
@@ -97,7 +104,7 @@ export class BrickTypeDetailsComponent implements OnInit {
     getDisplayFn() {
         return (val) => this.displayFn(val);
     }
-       
+    
     displayFn(icon) {
         if (icon) { 
             if(_.any(this.iconList, (curIcon: String) => icon == curIcon)){                
@@ -109,12 +116,23 @@ export class BrickTypeDetailsComponent implements OnInit {
     }
 
     public createBrickType() {
-        this.createBrickTypeEvent.emit(this.brickTypeDetailsForm.value);
-
-        this.brickTypeDetailsForm.reset();
+        var res: ModalBrickTypeResult = {brickType: this.brickTypeDetailsForm.value, action: 1};
+        this.dialogRef.close(res);
+        //this.brickTypeDetailsForm.reset();
         
-        this.setDefaultFormValues();
-        //this.brickTypeDetailsForm.setValue({isPrivate: true});
+        //this.setDefaultFormValues();
+    }
+
+    public updateBrickType() {
+        this.brickType.name = this.brickTypeDetailsForm.value.name;
+        this.brickType.category = this.brickTypeDetailsForm.value.category;
+        this.brickType.sign = this.brickTypeDetailsForm.value.sign;
+        this.brickType.ruleDescription = this.brickTypeDetailsForm.value.ruleDescription;
+        this.brickType.isPrivate = this.brickTypeDetailsForm.value.isPrivate;
+        this.brickType.isIcon = this.brickTypeDetailsForm.value.isIcon;
+
+        var res: ModalBrickTypeResult = {brickType: this.brickType, action: 2};
+        this.dialogRef.close(res);
     }
 
     public deleteBrickType() {
@@ -126,21 +144,14 @@ export class BrickTypeDetailsComponent implements OnInit {
         this.dialogs.showConfirm(params)
             .subscribe(result => {
                 if (result){
-                    this.deleteBrickTypeEvent.emit(this.brickType._id);
+                    var res: ModalBrickTypeResult = {brickTypeId: this.brickType._id, action: 3};
+
                     this.brickType = null;
                     this.brickTypeDetailsForm.reset();
+                    
+                    this.dialogRef.close(res);
                 }
             });
-    }
-
-    public updateBrickType() {
-        this.brickType.name = this.brickTypeDetailsForm.value.name;
-        this.brickType.category = this.brickTypeDetailsForm.value.category;
-        this.brickType.sign = this.brickTypeDetailsForm.value.sign;
-        this.brickType.ruleDescription = this.brickTypeDetailsForm.value.ruleDescription;
-        this.brickType.isPrivate = this.brickTypeDetailsForm.value.isPrivate;
-        this.brickType.isIcon = this.brickTypeDetailsForm.value.isIcon;
-        this.updateBrickTypeEvent.emit(this.brickType);
     }
 
     private setDefaultFormValues() {

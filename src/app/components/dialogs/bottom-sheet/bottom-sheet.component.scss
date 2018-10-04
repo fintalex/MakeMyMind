@@ -1,0 +1,24 @@
+
+.bottom-sheet-container{
+    display: flex;
+
+}
+
+.logo-container{
+    min-width: 80px;
+    background-image: url(../../../../images/fat-cat.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+}
+
+.advice-container{
+    width: 500px;
+    text-align: justify;
+    padding: 10px;
+}
+
+.bottom-sheet-buttom{
+    margin-left: 16px;
+}

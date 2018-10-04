@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { MatToolbarModule, MatCardModule, MatInputModule, MatButtonModule, MatIconModule, 
     MatGridListModule, MatListModule, MatSelectModule, MatChip, MatChipsModule, 
     MatMenuModule, MatDialogModule, MatTooltipModule, MatCheckboxModule, MatFormFieldModule, 
-    MatAutocompleteModule
+    MatAutocompleteModule, MatRadioModule,
+    MatBottomSheetModule
      } from '@angular/material';
 import {MatExpansionModule} from '@angular/material/expansion';  
 
@@ -13,14 +14,14 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatToolbarModule, MatCardModule, MatInputModule, MatButtonModule, MatIconModule, 
     MatGridListModule, MatListModule, MatSelectModule, MatChipsModule, MatMenuModule, 
     MatDialogModule, MatTooltipModule, MatCheckboxModule, MatFormFieldModule, MatExpansionModule,
-    MatAutocompleteModule
+    MatAutocompleteModule, MatBottomSheetModule, MatRadioModule
   ],
   declarations: [],
   exports: [
     MatToolbarModule, MatCardModule, MatInputModule, MatButtonModule, MatIconModule,
     MatGridListModule, MatListModule, MatSelectModule, MatChipsModule, MatMenuModule, 
     MatDialogModule, MatTooltipModule, MatCheckboxModule, MatFormFieldModule, MatExpansionModule,
-    MatAutocompleteModule
+    MatAutocompleteModule, MatBottomSheetModule, MatRadioModule
   ]
 })
 export class MdModule { }

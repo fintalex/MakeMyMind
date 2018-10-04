@@ -1,0 +1,46 @@
+<div class="brick-type-cards">
+
+    <div class="nav-container">
+        <mat-radio-button>Сортировать</mat-radio-button>
+        <mat-radio-button value="2">Показать удаленные</mat-radio-button>
+    </div>
+    
+    <!-- list of Brick Type -->
+    <div class="brick-type-card"
+        *ngFor="let brickType of existentBrickTypes"
+        (click)="openBrickModal(brickType)">   
+
+        <div class="brick-type-container" 
+            *ngIf="brickType._id"
+            [ngStyle]="{'background-color': brickType.category.color}">        
+            <!-- Category name -->
+            <div class="card-category-name text-shadow">
+                {{brickType.category.name}}
+            </div>
+
+            <!-- Sign -->
+            <div class="card-brick-type-icon text-shadow">
+                <mat-icon *ngIf="brickType.isIcon">{{brickType.sign}} </mat-icon>
+                <div *ngIf="!brickType.isIcon">{{brickType.sign}}</div> 
+            </div>
+
+            <!-- BrickType Name  -->
+            <div class="card-brick-type-name text-shadow">
+                {{brickType.name}}
+            </div>
+        </div>
+
+        <div class="brick-type-container"
+            *ngIf="!brickType._id">
+            <div class="back-new-card">
+                +
+            </div>
+        </div>
+
+        <div class="show-details text-shadow">
+            <div *ngIf="brickType._id">ПОКАЗАТЬ ДЕТАЛИ</div>
+            <div *ngIf="!brickType._id">ДОБАВИТЬ НОВУЮ</div>
+        </div>
+    </div>
+
+</div> 

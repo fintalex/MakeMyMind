@@ -1,0 +1,92 @@
+<div class="title-container">
+    Детали привычки
+</div>
+    
+<form [formGroup]="brickTypeDetailsForm" class="brick-modal-form" >
+
+        <mat-form-field>
+                <input matInput required placeholder="{{'Step2.SkillName' | translate}}" formControlName="name">
+                <mat-error >
+                  Название обязательно для заполнения
+              </mat-error>
+              </mat-form-field>
+          
+              <mat-form-field>
+                  <mat-select placeholder="{{'NameCategory' | translate}}" matInput required formControlName="category">
+                      <mat-option *ngFor="let category of categoriesList"
+                                  [value]="category._id">
+                      <div class="color-list-option">
+                          <div class="small-brick-type brick-in-option" [ngStyle]="{'background-color':category.color}"></div>
+                          <div>{{ category.name }}</div>   
+                      </div>
+                      </mat-option>
+                  </mat-select>
+                  <mat-error >
+                      Сфера влияния обязательна для заполнения
+                  </mat-error>
+              </mat-form-field>
+                  
+              <mat-form-field>
+                      <!-- {{brickTypeDetailsForm.controls.isIcon.value}} -->
+                      <mat-icon *ngIf="brickTypeDetailsForm && brickTypeDetailsForm.controls.isIcon.value">
+                          {{brickTypeDetailsForm.controls.sign.value}}
+                      </mat-icon>
+                      <input type="text" placeholder="{{'Step2.SkillSign' | translate}}"
+                          class="inputIconControl" formControlName="sign" required
+                          matInput  [matAutocomplete]="auto">
+                      <mat-autocomplete #auto="matAutocomplete" [displayWith]="getDisplayFn()">
+                          <mat-option *ngFor="let icon of frendsIconListResult" [value]="icon">
+                              <mat-icon>{{icon}}</mat-icon><span> {{icon}}</span>
+                          </mat-option>
+                      </mat-autocomplete>
+                      
+                      <div class="mat-error-custom" *ngIf="brickTypeDetailsForm.controls && 
+                                      brickTypeDetailsForm.controls.sign.value && 
+                                      !brickTypeDetailsForm.controls.isIcon.value && 
+                                      brickTypeDetailsForm.controls.sign.value.length > 2">
+                          Укажите иконку или 2 символа
+                      </div>
+                      <mat-error >
+                              Выберите иконку или введите не более 2 символов
+                      </mat-error>
+                  <!-- <mat-select placeholder="{{'Step2.SkillSign' | translate}}" matInput required formControlName="signSymbol">
+                      <mat-option *ngFor="let icon of iconList"
+                                  [value]="icon">
+                          <mat-icon>{{icon}}</mat-icon><span> {{icon}}</span>
+                      </mat-option>
+                  </mat-select> -->
+              </mat-form-field>
+              <!-- <mat-form-field>
+                  <input type="sign" matInput required placeholder="{{'Step2.SkillSign' | translate}}" formControlName="sign">
+              </mat-form-field> -->
+            
+              <mat-form-field>
+                  <textarea matInput placeholder="{{'Step2.SkillDescriptionPlaceholder' | translate}}" formControlName="ruleDescription"></textarea>
+              </mat-form-field>
+          
+              
+              <mat-checkbox color="primary" formControlName="isPrivate" >{{'Step2.IsPrivate' | translate}}</mat-checkbox>
+             
+          
+              <div class="button-container">
+                  <button mat-raised-button color="primary" 
+                          [disabled]='brickTypeDetailsForm.invalid ||
+                              (brickTypeDetailsForm.controls && 
+                              brickTypeDetailsForm.controls.sign.value && 
+                              !brickTypeDetailsForm.controls.isIcon.value && 
+                              brickTypeDetailsForm.controls.sign.value.length > 2)'
+                          
+                          (click)="createBrickType()">{{'Add' | translate}}</button>
+                  <button mat-raised-button color="primary" 
+                          *ngIf="brickType && brickType._id"
+                          [disabled]='brickTypeDetailsForm.invalid ||
+                              (brickTypeDetailsForm.controls && 
+                              brickTypeDetailsForm.controls.sign.value && 
+                              !brickTypeDetailsForm.controls.isIcon.value && 
+                              brickTypeDetailsForm.controls.sign.value.length > 2)'
+                          (click)="updateBrickType()">{{'Update' | translate}}</button>
+                  <button mat-raised-button color="warn" 
+                          *ngIf="brickType && brickType._id"
+                          (click)="deleteBrickType()">{{'Delete' | translate}}</button>
+              </div>
+</form>

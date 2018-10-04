@@ -12,11 +12,11 @@ const categorySchema = mongoose.Schema({
     description: {
         type: String
     }, 
-    priority: {
-        type: Date,
-        required: false,
-        default: Date.now()
-    },
+    // priority: {
+    //     type: Date,
+    //     required: false,
+    //     default: Date.now()
+    // },
     updated: {
         type: Date,
         default: Date.now()

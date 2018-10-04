@@ -49,6 +49,9 @@ import { DateRu } from './pipes/dateru.pipe';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { HomeComponent } from './home/home.component';
 import { DatePipe } from '@angular/common';
+import { BottomSheetComponent } from './components/dialogs/bottom-sheet/bottom-sheet.component';
+import { BrickTypeCardsCentreComponent } from './brickTypeCards/brick-type-cards-centre/brick-type-cards-centre.component';
+import { BrickTypeModalComponent } from './brickTypeCards/brick-type-modal/brick-type-modal.component';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -63,9 +66,9 @@ export function createTranslateLoader(http: HttpClient) {
         CategoryListComponent, CategoryDetailsComponent, CategoryCenterComponent, TestComponent, BrickTypeCenterComponent, BrickTypeDetailsComponent, BrickTypeListComponent, CalendarComponent, BrickModalComponent, ConfirmationModalComponent,
 
         // === pipes ====
-        DateRu, CapitalizePipe, HomeComponent, LocaleChangeComponent, LogingComponent, HeaderComponent, WallSideNavComponent, FrendComponent, FrendSearchComponent, FrendListComponent
+        DateRu, CapitalizePipe, HomeComponent, LocaleChangeComponent, LogingComponent, HeaderComponent, WallSideNavComponent, FrendComponent, FrendSearchComponent, FrendListComponent, BottomSheetComponent, BrickTypeCardsCentreComponent, BrickTypeModalComponent
     ],
-    entryComponents: [BrickModalComponent, ConfirmationModalComponent],
+    entryComponents: [BrickModalComponent, BrickTypeModalComponent, ConfirmationModalComponent, BottomSheetComponent],
     imports: [
         BrowserModule,
         HttpModule,

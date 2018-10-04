@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatBottomSheet } from '@angular/material';
 import { BrickModalComponent } from '../brick/brick-modal/brick-modal.component';
 import { BrickTypeService } from '../brickType/brickType.service';
 import { BrickType } from '../models/brick-type.model';
@@ -8,6 +8,10 @@ import { Brick } from '../models/brick.model';
 import * as _ from 'underscore';
 import { RouterStateSnapshot, ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { BottomSheetComponent } from '../components/dialogs/bottom-sheet/bottom-sheet.component';
+import { DialogService } from '../components/dialogs/dialog.service';
+import { ModalParams } from '../models/modal-params.model';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -30,12 +34,15 @@ export class CalendarComponent implements OnInit {
 
     constructor(
         public authService: AuthService,
+        private userService: UserService,
         private dialog: MatDialog,
         private brickTypeService: BrickTypeService, 
         private brickService: BrickService,
         private route: ActivatedRoute,
         private router: Router,
-        private activeRoute: ActivatedRoute
+        private activeRoute: ActivatedRoute,
+        private bottomeSheet: MatBottomSheet,
+        private modalDialogs: DialogService
     ) {}
 
     ngOnInit() {
@@ -43,6 +50,26 @@ export class CalendarComponent implements OnInit {
             this.filteredHabbits = [];       
             this.updateWall()
         });
+
+        if (!this.authService.CurrentUser.helper.calendarMainHelp){
+            var bottomSheetParams: ModalParams = {
+                disableClose: true, 
+                okButtonTitle: "Понял", 
+                cancelButtonTitle: "Пропустить",
+                message: `Календарь для контроля своих привычек. Отмечай свои постоянные привычки, чтобы 
+                    держать их все время на виду. Выкладывай свою стену будущего, так как наши привычки формируют
+                    наши действия, а действия определяют будущее.`
+            };
+
+            this.modalDialogs.showBottomSheet(bottomSheetParams)
+                .subscribe((res)=>{
+                    // here we must save or dismiss Understanding
+                    this.authService.CurrentUser.helper.calendarMainHelp = res;
+                    this.authService.updateCurrentUserInStorage();
+                    this.userService.updateUserHelper(this.authService.CurrentUser)
+                        .subscribe(res => console.log("User helper is updated"));
+                });
+        }
     }
 
     updateWall(){
@@ -119,7 +146,7 @@ export class CalendarComponent implements OnInit {
         return new Date(year, month + 1, 0).getDate();
     }
 
-    public openBrickModal(brick: Brick, day: any, event: any){
+    public openBrickModal(brick: Brick, day: any, event: any){       
         if (!brick){
             brick = new Brick();
             brick.date = day.date;
@@ -139,14 +166,16 @@ export class CalendarComponent implements OnInit {
                 });
         } else { 
             this.openModal(brick, day);
-        }
-
-        
+        }        
     }
 
     openModal(brick: Brick, day: any){
         var dialogRef = this.dialog.open(BrickModalComponent, {
             width: '340px',
+            //disableClose: true,  // use this feature for prevent closing window when we click on the backdrop
+            //backdropClass: string // custom class for the backdrop (maybe for use this to show button in the circle)
+
+
             data: { 
                 curBrick: brick,
                 brickTypes: this.existentBrickTypes

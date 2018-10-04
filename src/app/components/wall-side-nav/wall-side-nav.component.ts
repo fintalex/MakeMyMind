@@ -4,6 +4,8 @@ import { BrickType } from '../../models/brick-type.model';
 import * as _ from 'underscore';
 import { FrendService } from '../../frend/frend.service';
 import { Frend } from '../../models/Frend.model';
+import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
     selector: 'wall-side-nav',
@@ -23,7 +25,10 @@ export class WallSideNavComponent implements OnInit {
     sideBarExpanded: boolean = false;
     habbitExpanded: boolean = false;
 
-    constructor(private frendService: FrendService) { }
+    constructor(
+            private frendService: FrendService,
+            private authService: AuthService, 
+            private userService: UserService) { }
 
     ngOnChanges() {
         if(this.visibleBrickTypes){
@@ -35,6 +40,8 @@ export class WallSideNavComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.sideBarExpanded = this.authService.CurrentUser.helper.wallSideNavShow;
+
         this.frendService.getFrends()   
             .subscribe(allFrends => {
                 this.userFrends = allFrends;
@@ -43,6 +50,11 @@ export class WallSideNavComponent implements OnInit {
 
     toogleSideBar() {
         this.sideBarExpanded = !this.sideBarExpanded;
+
+        this.authService.CurrentUser.helper.wallSideNavShow = this.sideBarExpanded;
+        this.authService.updateCurrentUserInStorage();
+        this.userService.updateUserHelper(this.authService.CurrentUser)
+            .subscribe(res => console.log("User helper is updated"));
     }
 
     toogleHabbitMap() {

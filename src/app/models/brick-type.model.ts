@@ -13,4 +13,11 @@ export class BrickType {
 
     ticked: Boolean;
     isIcon: Boolean;
+
+    public constructor(
+        fields?: {
+        // one line per field with name and type
+        }) {
+        if (fields) Object.assign(this, fields);
+    }
 }

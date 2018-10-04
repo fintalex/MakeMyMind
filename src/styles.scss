@@ -77,6 +77,12 @@ body {
         font-size: 18px;
     }
 }
+// =============================== .mat-bottom-sheet-container ======================
+.mat-bottom-sheet-container{
+    // background: #fffaca!important;
+    background: #fff999!important;
+    color: black;
+}
 
 // ============================== mat-expansion-panel ================
 .mat-expansion-panel{
@@ -172,7 +178,7 @@ h5 {
     line-height: 16px;
 }
 .title-container{
-    margin: 14px 0px;
+    margin: 5px 0px;
     font-size: 18px;
     text-align: center;
     font-weight: bold;

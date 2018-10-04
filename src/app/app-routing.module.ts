@@ -9,6 +9,7 @@ import { BrickTypeCenterComponent } from './brickType/brick-type-center/brick-ty
 import { GuardService } from './services/guard.service';
 import { HomeComponent } from './home/home.component';
 import { FrendComponent } from './frend/frend/frend.component';
+import { BrickTypeCardsCentreComponent } from './brickTypeCards/brick-type-cards-centre/brick-type-cards-centre.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
     { path: 'auth', component: AuthComponent },
     { path: 'category', component: CategoryCenterComponent, canActivate: [GuardService] },
     { path: 'brickType', component: BrickTypeCenterComponent, canActivate: [GuardService] },
+    { path: 'brickTypeCards', component:  BrickTypeCardsCentreComponent, canActivate: [GuardService] },
     { path: 'wall/:nick', component: WallComponent, canActivate: [GuardService] },
     //{ path: 'wall',  component: WallComponent, canActivate: [GuardService] },
     { path: 'wall', redirectTo: 'wall/'}, // just only this ROUT will help me to NOT UPDATE the page when we got from Wall to Wall with parameters.

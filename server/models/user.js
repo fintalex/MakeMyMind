@@ -28,6 +28,12 @@ const userSchema = mongoose.Schema({
     locale: {
         type: String,
         default: 'ru'
+    },
+    helper:  { 
+        calendarMainHelp:  { type: Boolean, default: false },
+        categoryMainHelp:  { type: Boolean, default: false },
+        brickTypeMainHelp:  { type: Boolean, default: false },
+        wallSideNavShow: { type: Boolean, default: true }
     }
 });
 
@@ -101,6 +107,16 @@ userSchema.statics.updateUserLocale = (id, locale, callback) => {
                 { $set: 
                     {
                         'locale': locale
+                    }
+                }, callback);      
+}
+
+userSchema.statics.updateUserHelper = (id, helper, callback) => {
+    console.log("helper is " + helper + ", and Userid is - " + id);
+    User.update({'_id': id}, 
+                { $set: 
+                    {
+                        'helper': helper
                     }
                 }, callback);      
 }

@@ -4,4 +4,10 @@ export class User {
     password: string;
     nickname: string;
     locale: string;
+    helper:  { 
+        calendarMainHelp:  boolean,
+        categoryMainHelp:  boolean,
+        brickTypeMainHelp:  boolean,
+        wallSideNavShow: boolean
+    }
 }
