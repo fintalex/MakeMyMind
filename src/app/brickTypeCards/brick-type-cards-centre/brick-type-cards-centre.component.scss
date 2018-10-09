@@ -3,9 +3,17 @@
     width: 100%;
     border: 1px solid rgb(70, 70, 70);
     padding: 12px;
-    background: rgba(63, 63, 63, 0.712);
+    background-color: rgba(17, 17, 17, 0.527);
+    //background: rgba(63, 63, 63, 0.712);
     color: white;
     font-size: 16px;
+
+    .mat-checkbox{
+        padding: 5px 10px;
+    }
+    .mat-checkbox-frame{
+        border-color: white!important;
+    }
 }
 
 // ------------------------brick-type-cards--------------------

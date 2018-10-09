@@ -11,6 +11,8 @@ import { ModalParams } from '../../models/modal-params.model';
 import { DialogService } from '../../components/dialogs/dialog.service';
 import { UserService } from '../../services/user.service';
 
+import * as _ from 'underscore';
+
 @Component({
     selector: 'brick-type-cards-centre',
     templateUrl: './brick-type-cards-centre.component.html',
@@ -20,6 +22,9 @@ export class BrickTypeCardsCentreComponent implements OnInit {
 
     existentBrickTypes: BrickType[];
     existentCategories: Category[];
+
+    isSortBrickType: boolean = false;
+    isRemovedShown: boolean = false;
 
     constructor(
                 private brickTypeService: BrickTypeService,
@@ -36,8 +41,8 @@ export class BrickTypeCardsCentreComponent implements OnInit {
                 disableClose: true, 
                 okButtonTitle: "Понял", 
                 cancelButtonTitle: "Пропустить",
-                message: `Здесь ты можешь работать над своими привычками. 
-                    Создавай постоянную привычку или цель-привычку.
+                message: `Здесь ты можешь работать над своими <b class="chocolate">привычками</b>. 
+                    Создавай <b class="chocolate">постоянную привычку</b> или <b class="chocolate">цель-привычку</b>.
                     Мы создали 3 постоянные и наиболее распространенные из них, которые 
                     будут важными для любого человека, но про которые мы часто забываем.
                     `
@@ -123,8 +128,21 @@ export class BrickTypeCardsCentreComponent implements OnInit {
         //this.selectedBrickType = null;
     }
 
-    // onSelectBrickType(brickType: BrickType){
-    //     //this.selectedBrickType = brickType;
-    // }
+    sort(){
+        this.existentBrickTypes = _.sortBy(this.existentBrickTypes, (briTyp: BrickType) => { 
+            return this.isSortBrickType ? (briTyp.category ? briTyp.category._id : false) : (briTyp._id);
+        });
+    }
 
+    showRemoved() {
+        //this.isRemovedShown = !this.isRemovedShown;
+    }
+
+    filterBrickType(){
+        var filteredBricksTypes = _.filter(this.existentBrickTypes, (briTyp: BrickType) => { 
+            return !this.isRemovedShown && briTyp.isRemoved ? false : true;
+        });
+
+        return filteredBricksTypes;
+    }
 }

@@ -56,7 +56,8 @@ export class CalendarComponent implements OnInit {
                 disableClose: true, 
                 okButtonTitle: "Понял", 
                 cancelButtonTitle: "Пропустить",
-                message: `Календарь для контроля своих привычек. Отмечай свои постоянные привычки, чтобы 
+                message: `<b class="chocolate">Календарь</b> для контроля своих <b class="chocolate">привычек</b>. 
+                    Отмечай свои <b class="chocolate">постоянные привычки</b>, чтобы 
                     держать их все время на виду. Выкладывай свою стену будущего, так как наши привычки формируют
                     наши действия, а действия определяют будущее.`
             };

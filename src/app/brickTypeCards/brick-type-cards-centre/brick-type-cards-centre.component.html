@@ -1,13 +1,13 @@
 <div class="brick-type-cards">
 
     <div class="nav-container">
-        <mat-radio-button>Сортировать</mat-radio-button>
-        <mat-radio-button value="2">Показать удаленные</mat-radio-button>
+        <mat-checkbox [(ngModel)]="isSortBrickType" (change)="sort()">Сортировать</mat-checkbox>
+        <mat-checkbox [(ngModel)]="isRemovedShown" (change)="showRemoved()">Показать удаленные</mat-checkbox>
     </div>
     
     <!-- list of Brick Type -->
     <div class="brick-type-card"
-        *ngFor="let brickType of existentBrickTypes"
+        *ngFor="let brickType of filterBrickType()"
         (click)="openBrickModal(brickType)">   
 
         <div class="brick-type-container" 
@@ -27,6 +27,9 @@
             <!-- BrickType Name  -->
             <div class="card-brick-type-name text-shadow">
                 {{brickType.name}}
+                <div *ngIf="brickType.isRemoved">
+                    (Удалена)
+                </div>
             </div>
         </div>
 

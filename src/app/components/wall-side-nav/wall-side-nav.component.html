@@ -55,7 +55,8 @@
                             class="checkbox-content"
                             [(ngModel)]="brickType.ticked"
                             (change)="tickHabbit(brickType)">
-                                <span class="checkbox-span">{{brickType.name}}</span>
+                                <span class="checkbox-span">{{brickType.name}}{{brickType.isRemoved ? ' (Удалена)' : ''}}</span>
+                                <!-- <span *ngIf="brickType.isRemoved">(Удалена)</span> -->
                                 <span class="brick-in-calendar text-shadow float-right brick-in-sidebar" 
                                     [ngStyle]="{'background-color': brickType.category.color}">
                                     <!-- {{brickType.sign}} -->
@@ -65,6 +66,7 @@
                                     </mat-icon>
                                     <div *ngIf="!brickType.isIcon">{{brickType.sign}}</div> 
                                 </span>
+                                
                         </mat-checkbox>
                     </li>
                 </ul>

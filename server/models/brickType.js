@@ -33,10 +33,10 @@ brickTypeSchema.statics.getAllBrickTypesByUserId = (userId, callback) => {
     BrickType.find(
         {
             'user': userId, 
-            $or: [
-                {'isRemoved': {$exists: false}}, 
-                {'isRemoved': false}
-            ]
+            // $or: [
+            //     {'isRemoved': {$exists: false}}, 
+            //     {'isRemoved': false}
+            // ]
         }, callback)
         .populate('category');
 };
@@ -70,10 +70,10 @@ brickTypeSchema.statics.getAllBrickTypesByNickname = (nickname, callback) => {
                 $match: {
                     'user.nickname': nickname,
                     'isPrivate': false,
-                    $or: [
-                        {'isRemoved': {$exists: false}}, 
-                        {'isRemoved': false}
-                    ]
+                    // $or: [
+                    //     {'isRemoved': {$exists: false}}, 
+                    //     {'isRemoved': false}
+                    // ]
                 }
             },
             {
