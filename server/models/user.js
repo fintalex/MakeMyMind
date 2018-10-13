@@ -32,6 +32,7 @@ const userSchema = mongoose.Schema({
     helper:  { 
         calendarMainHelp:  { type: Boolean, default: false },
         categoryMainHelp:  { type: Boolean, default: false },
+        frendsMainHelp:  { type: Boolean, default: false },
         brickTypeMainHelp:  { type: Boolean, default: false },
         wallSideNavShow: { type: Boolean, default: true }
     }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatBottomSheet } from '@angular/material';
 import { BrickModalComponent } from '../brick/brick-modal/brick-modal.component';
-import { BrickTypeService } from '../brickType/brickType.service';
+import { BrickTypeService } from '../userSetting/brickType/brickType.service';
 import { BrickType } from '../models/brick-type.model';
 import { BrickService } from '../brick/brick.service';
 import { Brick } from '../models/brick.model';

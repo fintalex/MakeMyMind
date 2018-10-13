@@ -11,14 +11,15 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 
 // ============================== Services  =============================
-import { CategoryService } from './category/category.service';
+import { CategoryService } from './userSetting/category/category.service';
+import { BrickTypeService } from './userSetting//brickType/brickType.service';
+
 import { RegistrationService } from './registration/registration.service';
-import { BrickTypeService } from './brickType/brickType.service';
 import { GuardService } from './services/guard.service';
 import { AuthService } from './services/auth.service';
 import { BrickService } from './brick/brick.service';
 import { UserService } from './services/user.service';
-import { FrendService } from './frend/frend.service';
+import { FrendService } from './userSetting//frend/frend.service';
 import { DialogService } from './components/dialogs/dialog.service';
 
 // ========================== Component ==============================
@@ -26,22 +27,12 @@ import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { AuthComponent } from './auth/auth.component';
 import { WallComponent } from './wall/wall.component';
-import { CategoryListComponent } from './category/category-list/category-list.component';
-import { CategoryDetailsComponent } from './category/category-details/category-details.component';
-import { CategoryCenterComponent } from './category/category-center/category-center.component';
-import { TestComponent } from './test/test.component';
-import { BrickTypeCenterComponent } from './brickType/brick-type-center/brick-type-center.component';
-import { BrickTypeDetailsComponent } from './brickType/brick-type-details/brick-type-details.component';
-import { BrickTypeListComponent } from './brickType/brick-type-list/brick-type-list.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { BrickModalComponent } from './brick/brick-modal/brick-modal.component';
 import { LocaleChangeComponent } from './components/locale-change/locale-change.component';
 import { LogingComponent } from './components/loging/loging.component';
 import { HeaderComponent } from './components/header/header.component';
 import { WallSideNavComponent } from './components/wall-side-nav/wall-side-nav.component';
-import { FrendComponent } from './frend/frend/frend.component';
-import { FrendSearchComponent } from './frend/frend-search/frend-search.component';
-import { FrendListComponent } from './frend/frend-list/frend-list.component';
 import { ConfirmationModalComponent } from './components/dialogs/confirmation/confirmation.component';
 
 // =============== App Pipes ====================
@@ -50,8 +41,6 @@ import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { HomeComponent } from './home/home.component';
 import { DatePipe } from '@angular/common';
 import { BottomSheetComponent } from './components/dialogs/bottom-sheet/bottom-sheet.component';
-import { BrickTypeCardsCentreComponent } from './brickTypeCards/brick-type-cards-centre/brick-type-cards-centre.component';
-import { BrickTypeModalComponent } from './brickTypeCards/brick-type-modal/brick-type-modal.component';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -63,12 +52,23 @@ export function createTranslateLoader(http: HttpClient) {
         RegistrationComponent,
         AuthComponent,
         WallComponent,
-        CategoryListComponent, CategoryDetailsComponent, CategoryCenterComponent, TestComponent, BrickTypeCenterComponent, BrickTypeDetailsComponent, BrickTypeListComponent, CalendarComponent, BrickModalComponent, ConfirmationModalComponent,
+
+        // Relocate it to separate MODULE FOR LAZZY LOADIN (because peoples will often use only calendar)
+        // CategoryListComponent, CategoryDetailsComponent, CategoryCenterComponent, TestComponent, 
+        // BrickTypeCenterComponent, BrickTypeDetailsComponent, BrickTypeListComponent, 
+        // FrendComponent, FrendSearchComponent, FrendListComponent, 
+        // BrickTypeCardsCentreComponent, BrickTypeModalComponent,
+        
+        CalendarComponent, BrickModalComponent, ConfirmationModalComponent,
+        HomeComponent, LocaleChangeComponent, LogingComponent, HeaderComponent, WallSideNavComponent, 
+        BottomSheetComponent, 
 
         // === pipes ====
-        DateRu, CapitalizePipe, HomeComponent, LocaleChangeComponent, LogingComponent, HeaderComponent, WallSideNavComponent, FrendComponent, FrendSearchComponent, FrendListComponent, BottomSheetComponent, BrickTypeCardsCentreComponent, BrickTypeModalComponent
+        DateRu, CapitalizePipe, 
     ],
-    entryComponents: [BrickModalComponent, BrickTypeModalComponent, ConfirmationModalComponent, BottomSheetComponent],
+    entryComponents: [BrickModalComponent, ConfirmationModalComponent, BottomSheetComponent,
+        //BrickTypeModalComponent
+    ],
     imports: [
         BrowserModule,
         HttpModule,

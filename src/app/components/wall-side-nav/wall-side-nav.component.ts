@@ -2,7 +2,7 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 import { BrickType } from '../../models/brick-type.model';
 
 import * as _ from 'underscore';
-import { FrendService } from '../../frend/frend.service';
+import { FrendService } from '../../userSetting/frend/frend.service';
 import { Frend } from '../../models/Frend.model';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';

@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { checkEmailExist } from '../validators/emailExist.validator';
 import { Category } from '../models/category.model';
-import { CategoryService } from '../category/category.service';
-import { BrickTypeService } from '../brickType/brickType.service';
+import { CategoryService } from '../userSetting//category/category.service';
+import { BrickTypeService } from '../userSetting//brickType/brickType.service';
 import { BrickType } from '../models/brick-type.model';
 
 @Component({

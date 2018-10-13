@@ -7,6 +7,7 @@ export class User {
     helper:  { 
         calendarMainHelp:  boolean,
         categoryMainHelp:  boolean,
+        frendsMainHelp:  boolean,
         brickTypeMainHelp:  boolean,
         wallSideNavShow: boolean
     }
