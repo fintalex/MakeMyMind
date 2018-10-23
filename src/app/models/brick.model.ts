@@ -4,4 +4,5 @@ export class Brick {
     description: string;
     date: Date;
     user: string;
+    brickTypeArray: Array<Object>;
 }

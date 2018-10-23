@@ -12,6 +12,7 @@ import { BottomSheetComponent } from '../components/dialogs/bottom-sheet/bottom-
 import { DialogService } from '../components/dialogs/dialog.service';
 import { ModalParams } from '../models/modal-params.model';
 import { UserService } from '../services/user.service';
+import { BrickMultyModalComponent } from '../brick/brick-multy-modal/brick-multy-modal.component';
 
 
 @Component({
@@ -171,7 +172,7 @@ export class CalendarComponent implements OnInit {
     }
 
     openModal(brick: Brick, day: any){
-        var dialogRef = this.dialog.open(BrickModalComponent, {
+        var dialogRef = this.dialog.open(BrickMultyModalComponent, {
             width: '340px',
             //disableClose: true,  // use this feature for prevent closing window when we click on the backdrop
             //backdropClass: string // custom class for the backdrop (maybe for use this to show button in the circle)
@@ -184,8 +185,12 @@ export class CalendarComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe(result => {
+            // status here mean Status of Action: 
+            // ADD, UPDATE, DELETE
             if (result.status == 1) {
-                day.bricks.push(result);
+                result.bricksArray.forEach(curNewBrick => {
+                    day.bricks.push(curNewBrick);
+                });                
             } else if (result.status == 3) {
                 for (let i = 0; i < day.bricks.length; i++) {
                     if (day.bricks[i]._id === result._id) {

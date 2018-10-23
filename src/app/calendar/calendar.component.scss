@@ -82,8 +82,10 @@
 //     border-radius: 3px;
 //     box-sizing: border-box;
 // }
-.brick-in-calendar:hover{
-    border: 1px solid white;
+.brick-in-calendar:hover, .brick-in-calendar-arrow:hover{
+    //border: 1px solid white;
+    transition: all 0.2s ease-in;
+    transform:  scale(1.1);
 }
 
 .nav-container{

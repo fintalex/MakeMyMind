@@ -140,7 +140,7 @@ export class BrickTypeCardsCentreComponent implements OnInit {
 
     filterBrickType(){
         var filteredBricksTypes = _.filter(this.existentBrickTypes, (briTyp: BrickType) => { 
-            return !this.isRemovedShown && briTyp.isRemoved ? false : true;
+            return !this.isRemovedShown && briTyp.status == 2 ? false : true;
         });
 
         return filteredBricksTypes;

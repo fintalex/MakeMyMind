@@ -113,6 +113,7 @@ brickSchema.statics.getAllBricksForMonthByUserId = (userId, date, nick, habbits,
             },
             {
                 $project: {
+                    'brickType.type': 1,
                     'brickType.sign': 1,
                     'brickType.isIcon': 1,
                     'brickType._id': 1,
@@ -140,10 +141,101 @@ brickSchema.statics.addBrick = (brick, callback) => {
             Brick.populate(createdBrick, 
                 { 
                     path: 'brickType', 
-                    select: 'sign name isIcon', 
+                    select: 'sign name isIcon type', 
                     populate: { path: 'category', select: 'color' }
                 }, callback);
         });   
+}
+
+brickSchema.statics.addBrickMulty = (bricks, callback) => {
+    //console.log("------addBrickMulty STARTS  -----", bricks);
+    // HERE WE NEED TO THINK ABOUT MULTY INPUT
+    if (bricks.brickTypeArray && bricks.brickTypeArray.length > 0){
+
+        var resBricksArray = [];
+        function addBricks(newBrick, index){
+            console.log("------ I AM IN addBricks -----", newBrick);
+            resBricksArray.push(newBrick);
+            console.log("------ resBricksArray IS ----- INDEX IS " + index, resBricksArray);
+            if(index >= bricks.brickTypeArray.length -1){
+                console.log("+++++++++++ YEHA!!! I WANT TO CALLBACK IT ++++++++++++++++++++ AND INDEX IS + "+index+" and callBack is " + callback);
+                callback(null, resBricksArray);
+            }else {
+                i++;
+                addNextBrick();
+            }
+        }
+
+        console.log("------ START CREATING MULTY -----");
+        var i=0;
+        addNextBrick();
+
+        function addNextBrick(){
+            // CHANGE ONLY brickTYPE id and ADD IT
+            bricks.brickType = bricks.brickTypeArray[i]._id;
+            Brick.create(bricks)
+                .then((createdBrick)=> { 
+                    console.log("--createdBrick BEFORE POPULATE --------", createdBrick);
+                    Brick.populate(
+                        createdBrick, 
+                        { 
+                            path: 'brickType', 
+                            select: 'sign name isIcon type', 
+                            populate: { path: 'category', select: 'color' }
+                        }, 
+                        (err, populatedBrick)=>{
+                            addBricks(populatedBrick, i);
+                        });
+                        
+                });  
+        }
+
+
+        // var resBricksArray = [];
+        // function addBricks(newBrick, index){
+        //     console.log("------ I AM IN addBricks -----", newBrick);
+        //     resBricksArray.push(newBrick);
+        //     console.log("------ resBricksArray IS -----", resBricksArray);
+        //     if(index == bricks.brickTypeArray.length){
+        //         callback(resBricksArray);
+        //     }
+        // }
+
+        // console.log("------ START CREATING MULTY -----");
+        // for(var i=0; i < bricks.brickTypeArray.length; i++){
+        //     // CHANGE ONLY brickTYPE id and ADD IT
+        //     bricks.brickType = bricks.brickTypeArray[i]._id;
+        //     Brick.create(bricks)
+        //         .then((createdBrick)=> { 
+        //             console.log("--createdBrick BEFORE POPULATE --------", createdBrick);
+        //             Brick.populate(
+        //                 createdBrick, 
+        //                 { 
+        //                     path: 'brickType', 
+        //                     select: 'sign name isIcon type', 
+        //                     populate: { path: 'category', select: 'color' }
+        //                 }, 
+        //                 (err, populatedBrick)=>{
+        //                     addBricks(populatedBrick, i);
+        //                 });
+                        
+        //         });  
+        // }
+
+        // callback(resBricksArray);
+
+    } else {
+        callback();
+        // Brick.create(bricks.brickTypeArray[0])
+        //     .then((createdBrick)=> { 
+        //         Brick.populate(createdBrick, 
+        //             { 
+        //                 path: 'brickType', 
+        //                 select: 'sign name isIcon type', 
+        //                 populate: { path: 'category', select: 'color' }
+        //             }, callback);
+        //     }); 
+    }  
 }
 
 brickSchema.statics.updateBrick = (id, brick, callback) => {
@@ -152,7 +244,7 @@ brickSchema.statics.updateBrick = (id, brick, callback) => {
             Brick.populate(updatedBrick, 
                 { 
                     path: 'brickType', 
-                    select: 'sign name isIcon', populate: 
+                    select: 'sign name isIcon type', populate: 
                     { path: 'category', select: 'color' }
                 }, callback);
         }); 

@@ -30,6 +30,11 @@ export class BrickService {
             .map((res: Response) => res.json());
     }
 
+    createMultyBrick(brick: Brick) {
+        return this.http.post('/api/bricks/createMulty', brick)
+            .map((res: Response) => res.json());
+    }
+
     updateBrick(brick: Brick) {
         return this.http.put('/api/bricks', brick)
             .map((res: Response) => res.json());

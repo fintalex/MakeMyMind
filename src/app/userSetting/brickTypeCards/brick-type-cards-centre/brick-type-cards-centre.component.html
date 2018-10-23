@@ -27,7 +27,7 @@
             <!-- BrickType Name  -->
             <div class="card-brick-type-name text-shadow">
                 {{brickType.name}}
-                <div *ngIf="brickType.isRemoved">
+                <div *ngIf="brickType.status == 2">
                     (Удалена)
                 </div>
             </div>

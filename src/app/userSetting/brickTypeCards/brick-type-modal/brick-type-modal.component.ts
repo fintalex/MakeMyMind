@@ -52,7 +52,10 @@ export class BrickTypeModalComponent implements OnInit {
                 sign: new FormControl(this.data.curBrickType.sign, [Validators.required]),
                 ruleDescription: new FormControl(this.data.curBrickType.ruleDescription),
                 isPrivate: new FormControl(this.data.curBrickType.isPrivate),
-                isIcon: new FormControl(this.data.curBrickType.isIcon)
+                isIcon: new FormControl(this.data.curBrickType.isIcon),
+                type: new FormControl(this.data.curBrickType.type),
+                neededDays: new FormControl(this.data.curBrickType.neededDays, [Validators.min(3)]),
+                allowedSkipDays: new FormControl(this.data.curBrickType.allowedSkipDays, [Validators.min(0)]),
             });
         }
     }
@@ -66,7 +69,10 @@ export class BrickTypeModalComponent implements OnInit {
                 sign: new FormControl(this.brickType.sign,[Validators.required]),
                 ruleDescription: new FormControl(this.brickType.ruleDescription),
                 isPrivate: new FormControl(this.brickType.isPrivate),
-                isIcon: new FormControl(this.brickType.isIcon)
+                isIcon: new FormControl(this.brickType.isIcon),
+                type: new FormControl(this.brickType.type),
+                neededDays: new FormControl(this.brickType.neededDays, [Validators.min(3)]),
+                allowedSkipDays: new FormControl(this.brickType.allowedSkipDays, [Validators.min(0)]),
             });
             this.setValueChangesToSign();
         }
@@ -115,12 +121,19 @@ export class BrickTypeModalComponent implements OnInit {
         }
     }
 
+    typeChanged(){
+        if(this.brickTypeDetailsForm.value.type == 1){
+            this.brickTypeDetailsForm.controls.allowedSkipDays.setValue(this.brickTypeDetailsForm.value.allowedSkipDays ? this.brickTypeDetailsForm.value.allowedSkipDays : 0);
+            this.brickTypeDetailsForm.controls.neededDays.setValue(this.brickTypeDetailsForm.value.neededDays ? this.brickTypeDetailsForm.value.neededDays : 0);
+        } else {
+            this.brickTypeDetailsForm.controls.allowedSkipDays.setValue(this.brickTypeDetailsForm.value.allowedSkipDays != 0 ? this.brickTypeDetailsForm.value.allowedSkipDays : 3);
+            this.brickTypeDetailsForm.controls.neededDays.setValue(this.brickTypeDetailsForm.value.neededDays != 0 ? this.brickTypeDetailsForm.value.neededDays : 21);
+        }
+    }
+
     public createBrickType() {
         var res: ModalBrickTypeResult = {brickType: this.brickTypeDetailsForm.value, action: 1};
         this.dialogRef.close(res);
-        //this.brickTypeDetailsForm.reset();
-        
-        //this.setDefaultFormValues();
     }
 
     public updateBrickType() {
@@ -130,6 +143,9 @@ export class BrickTypeModalComponent implements OnInit {
         this.brickType.ruleDescription = this.brickTypeDetailsForm.value.ruleDescription;
         this.brickType.isPrivate = this.brickTypeDetailsForm.value.isPrivate;
         this.brickType.isIcon = this.brickTypeDetailsForm.value.isIcon;
+        this.brickType.type = this.brickTypeDetailsForm.value.type;
+        this.brickType.allowedSkipDays = this.brickTypeDetailsForm.value.allowedSkipDays;
+        this.brickType.neededDays = this.brickTypeDetailsForm.value.neededDays;
 
         var res: ModalBrickTypeResult = {brickType: this.brickType, action: 2};
         this.dialogRef.close(res);
@@ -162,7 +178,10 @@ export class BrickTypeModalComponent implements OnInit {
             sign: new FormControl(null, [Validators.required]),
             ruleDescription: new FormControl(),
             isPrivate: new FormControl(true),
-            isIcon: new FormControl(false)
+            isIcon: new FormControl(false),
+            type: new FormControl(1),
+            neededDays: new FormControl(21, [Validators.min(3)]),
+            allowedSkipDays: new FormControl(3, [Validators.min(0)]),
         });
         this.setValueChangesToSign();
     }

@@ -45,6 +45,19 @@ router.post('/', (req, res, next) => {
     });
 });
 
+router.post('/createMulty', (req, res, next) => {
+    let response = {success: true};
+    console.log('Brick body MULTY - ', req.body);
+    Brick.addBrickMulty(req.body, (err, bricks) => {
+        console.log('MULTY Bricks = ', bricks);
+        if (err){
+            console.log('Error posting bricks -', err);
+        } else {
+            res.json(bricks);
+        }
+    });
+});
+
 // PUT update Brick
 router.put('/', (req, res, next) => {
     console.log("YEHA - got the PUT Brick API");

@@ -1,0 +1,78 @@
+<div class="title-container">
+    Твои действия - {{data.curBrick.date | date:'dd.MM.yyyy'}}
+</div>
+
+<form [formGroup]="brickDetailsForm" class="brick-modal-form" >
+    <mat-form-field>
+       
+            <mat-select placeholder="Привычка2" formControlName="brickTypeArray" multiple>
+                <mat-select-trigger *ngIf="brickDetailsForm.value.brickTypeArray && brickDetailsForm.value.brickTypeArray?.length > 0">   
+                    <div class="bricks-container" >
+                        <span class="text-shadow"
+                            *ngFor="let curSelBrick of brickDetailsForm.value.brickTypeArray"
+                            [ngClass]="{'brick-in-calendar': !curSelBrick.type || curSelBrick.type == 1, 'brick-in-calendar-arrow': curSelBrick.type == 2}"
+                            [ngStyle]="{'background-color': curSelBrick.category.color}">
+                            <mat-icon *ngIf="curSelBrick.isIcon "  
+                                        class="brickIcon">
+                                {{curSelBrick.sign}} 
+                            </mat-icon>
+                            <div *ngIf="!curSelBrick.isIcon">{{curSelBrick.sign}}</div> 
+                        </span>
+                    </div>
+                </mat-select-trigger>
+                <mat-option *ngFor="let brityp of existentBrickTypes" [value]="brityp">
+                    <div class="color-list-option">
+                        <span class="text-shadow brick-in-option" 
+                            [ngClass]="{'brick-in-calendar': !brityp.type || brityp.type == 1, 'brick-in-calendar-arrow': brityp.type == 2}"
+                            [ngStyle]="{'background-color': brityp.category.color}">
+                            <mat-icon *ngIf="brityp.isIcon "  
+                                        class="brickIcon">
+                                {{brityp.sign}} 
+                            </mat-icon>
+                            <div *ngIf="!brityp.isIcon">{{brityp.sign}}</div> 
+                        </span>
+                        <div>{{ brityp.name }}</div>
+                    </div>
+                </mat-option>
+            </mat-select>
+
+        <!-- <mat-select placeholder="Привычка" matInput required formControlName="brickTypeArray" multiple >
+            <mat-option *ngFor="let brickType of existentBrickTypes" 
+                        [value]="brickType">
+                <div class="color-list-option">
+                    <span class="text-shadow brick-in-option" 
+                        [ngClass]="{'brick-in-calendar': !brickType.type || brickType.type == 1, 'brick-in-calendar-arrow': brickType.type == 2}"
+                        [ngStyle]="{'background-color': brickType.category.color}">
+                        <mat-icon *ngIf="brickType.isIcon "  
+                                    class="brickIcon">
+                            {{brickType.sign}} 
+                        </mat-icon>
+                        <div *ngIf="!brickType.isIcon">{{brickType.sign}}</div> 
+                    </span>
+                    <div>{{ brickType.name }}</div>
+                </div>
+            </mat-option>
+        </mat-select> -->
+        <mat-error >
+            Обязательнаое поле для заполнения
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="Описание" rows="5" formControlName="description"></textarea>
+    </mat-form-field>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" 
+              [disabled]='brickDetailsForm.invalid'
+              *ngIf="!data.curBrick || !data.curBrick._id"
+              (click)="createBricks()">{{'Add' | translate}}</button>
+      <button mat-raised-button color="primary" 
+              *ngIf="data.curBrick && data.curBrick._id"
+              [disabled]='brickDetailsForm.invalid'
+              (click)="updateBrick()">{{'Update' | translate}}</button>
+      <button mat-raised-button color="warn" 
+              *ngIf="data.curBrick && data.curBrick._id"
+              (click)="deleteBrick()">{{'Delete' | translate}}</button>
+    </div>
+</form>

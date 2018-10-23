@@ -78,7 +78,7 @@ body {
     }
 }
 // ================================== mat-checkbox ==================================
-.mat-checkbox-frame{
+.mat-checkbox-frame, .mat-option-pseudo-checkbox{
     border-color: white!important;
 }
 // =============================== .mat-bottom-sheet-container ======================
@@ -117,6 +117,16 @@ body {
         color: #ffffff;
     }
     padding: 3px;
+}
+// ============================== Mat-PANEL ====================================
+.mat-select-panel{
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.562), 0 6px 20px 0 rgba(255, 255, 255, 0.534)!important;
+    width: 270px!important;
+    height: 250px!important;
+    min-width: 100%!important;
+}
+.cdk-overlay-pane{
+    transform: none!important;
 }
 // ============================== Mat-Context ====================================
 .mat-menu-content, .mat-dialog-container, .mat-select-content, .mat-autocomplete-panel{
@@ -393,6 +403,7 @@ $hexagon-index: 1;
 .brick-in-option{
     margin: 9px 10px!important;
 }
+
 .brick-in-calendar {
     //z-index: 100;
     margin: 5px 4px;
@@ -409,7 +420,98 @@ $hexagon-index: 1;
     //border: 1px solid black;
     border-radius: 3px;
     box-sizing: border-box;
+    transition: 0.4s ease-out;
 }
+
+// .brick-in-calendar-arrow {
+//     //z-index: 100;
+//     margin: 5px 4px;
+//     font-size: 14px;
+//     width: 33px;
+//     height: 20px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     color: white;
+//     font-weight: bold;
+//     //text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+//     // text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+//     //border: 1px solid black;
+//     border-radius: 15px 0px 15px 0px; //HERE BRICK WILL BE LIKE LEAF
+//     box-sizing: border-box;
+//     position: relative;
+//     transition: 0.4s ease-out;
+// }
+
+.brick-in-calendar-arrow {
+    //z-index: 100;
+    margin: 5px 4px;
+    font-size: 14px;
+    width: 33px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    //text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    // text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+    //border: 1px solid black;
+    //// border-radius: 0px 20px 20px 0px; //HERE BRICK WILL BE LIKE LEAF
+    box-sizing: border-box;
+    position: relative;
+    transition: 0.4s ease-out;
+}
+.brick-in-calendar-arrow::before{
+    right: 23px;
+    content: " ";
+    position: absolute;
+    border-width: 10px;
+    border-style: solid;
+    border-color: white transparent;
+    transform: scale(0.5, 1);
+}
+.brick-in-calendar-arrow::after{
+    left: 28px;
+    content: " ";
+    position: absolute;
+    border-width: 10px;
+    border-style: solid;
+    background-color: inherit tr;
+    border-color: transparent transparent transparent white;
+    transform: scale(0.5, 1);
+}
+// .brick-in-calendar::after{
+//     content: " ";
+//     position: absolute;
+//     top: 8px;
+//     right: -7px;
+//     margin-top: -5px;
+//     border-width: 0px;
+//     background: inherit;
+//     width: 13px;
+//     height: 14px;
+//     -webkit-transform: scale(0.4, 1) rotate(45deg);
+//     transform: scale(0.4, 1) rotate(45deg);
+// }
+// .brick-in-calendar::before{
+//     content: " ";
+//     position: absolute;
+//     top: 8px;
+//     left: -7px;
+//     margin-top: -5px;
+//     border-width: 0px;
+//     background: inherit;
+//     width: 13px;
+//     height: 14px;
+//     -webkit-transform: scale(0.4, 1) rotate(45deg);
+//     transform: scale(0.4, 1) rotate(45deg);
+// }
+
+// .brick-in-calendar:hover{
+//     //border: 1px solid white;
+//     transition: all 0.6s ease-in;
+// }
 
 // ============================================== ICON ====================================
 .brickIcon{

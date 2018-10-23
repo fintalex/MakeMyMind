@@ -43,8 +43,9 @@
                   [innerHTML]="getDayTooltip(curday)"></span>
 
             <div class="bricks-container" *ngIf="curday.bricks">          
-                  <span class="brick-in-calendar text-shadow" 
+                  <span class="text-shadow"
                         *ngFor="let brick of curday.bricks"
+                        [ngClass]="{'brick-in-calendar': !brick.brickType.type || brick.brickType.type == 1, 'brick-in-calendar-arrow': brick.brickType.type == 2}"
                         [ngStyle]="{'background-color': brick.brickType.category.color}"
                         (click)="openBrickModal(brick, curday, $event)"> 
                             <!-- {{brick.brickType.sign}} -->

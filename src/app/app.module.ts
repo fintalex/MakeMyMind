@@ -29,6 +29,7 @@ import { AuthComponent } from './auth/auth.component';
 import { WallComponent } from './wall/wall.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { BrickModalComponent } from './brick/brick-modal/brick-modal.component';
+import { BrickMultyModalComponent } from './brick/brick-multy-modal/brick-multy-modal.component';
 import { LocaleChangeComponent } from './components/locale-change/locale-change.component';
 import { LogingComponent } from './components/loging/loging.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -61,12 +62,12 @@ export function createTranslateLoader(http: HttpClient) {
         
         CalendarComponent, BrickModalComponent, ConfirmationModalComponent,
         HomeComponent, LocaleChangeComponent, LogingComponent, HeaderComponent, WallSideNavComponent, 
-        BottomSheetComponent, 
+        BottomSheetComponent, BrickMultyModalComponent,
 
         // === pipes ====
-        DateRu, CapitalizePipe, 
+        DateRu, CapitalizePipe,
     ],
-    entryComponents: [BrickModalComponent, ConfirmationModalComponent, BottomSheetComponent,
+    entryComponents: [BrickModalComponent, BrickMultyModalComponent, ConfirmationModalComponent, BottomSheetComponent,
         //BrickTypeModalComponent
     ],
     imports: [

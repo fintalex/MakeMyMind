@@ -10,19 +10,11 @@ import { DialogService } from '../../components/dialogs/dialog.service';
 import { ModalParams } from '../../models/modal-params.model';
 
 @Component({
-    selector: 'app-brick-modal',
-    templateUrl: './brick-modal.component.html',
-    styleUrls: ['./brick-modal.component.scss']
+  selector: 'brick-multy-modal',
+  templateUrl: './brick-multy-modal.component.html',
+  styleUrls: ['./brick-multy-modal.component.scss']
 })
-export class BrickModalComponent implements OnInit {
-
-
-    // toppings = new FormControl();
-
-    // toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
-
-
-
+export class BrickMultyModalComponent implements OnInit {
 
     existentBrickTypes: BrickType[];
 
@@ -31,56 +23,54 @@ export class BrickModalComponent implements OnInit {
     curBrick: Brick;
 
     public brickDetailsForm: FormGroup = new FormGroup({
-        brickType: new FormControl(),
+        brickTypeArray: new FormControl(),
         description: new FormControl(),
         date: new FormControl()
     });
-
-    brickTypeFC = new FormControl();
 
     constructor(
         private authService: AuthService,
         private brickService: BrickService,
         private dialogs: DialogService,
-        public dialogRef: MatDialogRef<BrickModalComponent>,
+        public dialogRef: MatDialogRef<BrickMultyModalComponent>,
         private datePipe: DatePipe,
-        @Inject(MAT_DIALOG_DATA) public data: any
-    ) { }
-
-    
+        @Inject(MAT_DIALOG_DATA) public data: any) { }
 
     ngOnInit() {
         this.curDate = this.datePipe.transform(this.data.curBrick.date, 'dd.MM.yyyy');
         
-        if(this.data.curBrick._id){
-            this.brickTypeFC.setValue(this.data.curBrick.brickType);
-            this.brickDetailsForm = new FormGroup({
-                //brickTypeFC: new FormControl(this.data.curBrick.brickType._id),
-                description: new FormControl(this.data.curBrick.description)
-            });
-        }
+        // if(this.data.curBrick._id){
+        //     this.brickTypeFC.setValue(this.data.curBrick.brickType);
+        //     this.brickDetailsForm = new FormGroup({
+        //         //brickTypeFC: new FormControl(this.data.curBrick.brickType._id),
+        //         description: new FormControl(this.data.curBrick.description)
+        //     });
+        // }
         this.existentBrickTypes = this.data.brickTypes;
     }
 
-    createBrick() {
+    createBricks() {
         this.brickDetailsForm.value.user = this.authService.CurrentUser._id;
         this.brickDetailsForm.value.date = this.data.curBrick.date;
-        this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
+        // this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
         
-        this.brickService.createBrick(this.brickDetailsForm.value)
-            .subscribe(newBrick => {
-                newBrick.status = 1; // created
-                this.dialogRef.close(newBrick);
+        this.brickService.createMultyBrick(this.brickDetailsForm.value)
+            .subscribe(createdBrickArray => {
+                var res = {
+                    status: 1,
+                    bricksArray: createdBrickArray
+                };
+                this.dialogRef.close(res);
             });
     }
 
     updateBrick(){
         this.brickDetailsForm.value.user = this.authService.CurrentUser._id;
         this.brickDetailsForm.value.date = this.data.curBrick.date;
-        this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
+        // this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
         
         this.brickDetailsForm.value._id = this.data.curBrick._id;
-        this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
+        // this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
 
         this.brickService.updateBrick(this.brickDetailsForm.value)
             .subscribe(updatedBrick => {
@@ -106,8 +96,5 @@ export class BrickModalComponent implements OnInit {
                 }
             });
     }
-    
-    displayFn(brickType: BrickType) {
-        if (brickType) { return brickType.name; }
-    }
+
 }

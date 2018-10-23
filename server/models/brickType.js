@@ -22,11 +22,17 @@ const brickTypeSchema = mongoose.Schema({
         type: Date,
         default: Date.now()
     },
-    isRemoved: {
-        type: Boolean,
-        default: false
-    },
-    isPrivate: { type: Boolean, default: true }
+    // isRemoved: {
+    //     type: Boolean,
+    //     default: false
+    // },
+    isPrivate: { type: Boolean, default: true },
+    type: { type: Number, default: 1 }, // 1- permanent, 2- for period.
+    status: { type: Number, default: 1 }, // 1- active, 2- closed (for permanent), 3- successed (for period), 4- failed (for period)
+    neededDays: { type: Number },
+    countMarked: { type: Number },
+    allowedSkipDays: { type: Number },
+    skippedDays: { type: Number }
 });
 
 brickTypeSchema.statics.getAllBrickTypesByUserId = (userId, callback) => {        
@@ -111,7 +117,7 @@ brickTypeSchema.statics.softDeleteBrickType = (id, callback) => {
     BrickType.update({'_id': id}, 
                 { $set: 
                     {
-                        'isRemoved': true
+                        'status': 2
                     }
                 }, callback);  
 }
