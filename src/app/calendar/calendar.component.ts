@@ -13,6 +13,7 @@ import { DialogService } from '../components/dialogs/dialog.service';
 import { ModalParams } from '../models/modal-params.model';
 import { UserService } from '../services/user.service';
 import { BrickMultyModalComponent } from '../brick/brick-multy-modal/brick-multy-modal.component';
+import { ComponentType } from '@angular/cdk/portal';
 
 
 @Component({
@@ -172,12 +173,13 @@ export class CalendarComponent implements OnInit {
     }
 
     openModal(brick: Brick, day: any){
-        var dialogRef = this.dialog.open(BrickMultyModalComponent, {
+
+        var modalComponent: any = brick._id ? BrickModalComponent : BrickMultyModalComponent;
+        
+        var dialogRef = this.dialog.open(modalComponent, {
             width: '340px',
             //disableClose: true,  // use this feature for prevent closing window when we click on the backdrop
             //backdropClass: string // custom class for the backdrop (maybe for use this to show button in the circle)
-
-
             data: { 
                 curBrick: brick,
                 brickTypes: this.existentBrickTypes

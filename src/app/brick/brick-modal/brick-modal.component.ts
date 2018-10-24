@@ -8,21 +8,14 @@ import { DatePipe } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { DialogService } from '../../components/dialogs/dialog.service';
 import { ModalParams } from '../../models/modal-params.model';
+import * as _ from 'underscore';
 
 @Component({
     selector: 'app-brick-modal',
     templateUrl: './brick-modal.component.html',
     styleUrls: ['./brick-modal.component.scss']
 })
-export class BrickModalComponent implements OnInit {
-
-
-    // toppings = new FormControl();
-
-    // toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
-
-
-
+export class BrickModalComponent implements OnInit{
 
     existentBrickTypes: BrickType[];
 
@@ -36,7 +29,7 @@ export class BrickModalComponent implements OnInit {
         date: new FormControl()
     });
 
-    brickTypeFC = new FormControl();
+    //brickTypeFC = new FormControl();
 
     constructor(
         private authService: AuthService,
@@ -47,40 +40,43 @@ export class BrickModalComponent implements OnInit {
         @Inject(MAT_DIALOG_DATA) public data: any
     ) { }
 
-    
-
     ngOnInit() {
         this.curDate = this.datePipe.transform(this.data.curBrick.date, 'dd.MM.yyyy');
         
+        this.existentBrickTypes = this.data.brickTypes;
+
         if(this.data.curBrick._id){
-            this.brickTypeFC.setValue(this.data.curBrick.brickType);
+            //this.brickTypeFC.setValue(this.data.curBrick.brickType);
+            var curBrickInExistent = _.find(this.existentBrickTypes, (br:any) => { 
+                return br._id == this.data.curBrick.brickType._id;
+            });
+
             this.brickDetailsForm = new FormGroup({
-                //brickTypeFC: new FormControl(this.data.curBrick.brickType._id),
+                brickType: new FormControl(curBrickInExistent),
                 description: new FormControl(this.data.curBrick.description)
             });
         }
-        this.existentBrickTypes = this.data.brickTypes;
     }
 
-    createBrick() {
-        this.brickDetailsForm.value.user = this.authService.CurrentUser._id;
-        this.brickDetailsForm.value.date = this.data.curBrick.date;
-        this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
+    // createBrick() {
+    //     this.brickDetailsForm.value.user = this.authService.CurrentUser._id;
+    //     this.brickDetailsForm.value.date = this.data.curBrick.date;
+    //     //this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
         
-        this.brickService.createBrick(this.brickDetailsForm.value)
-            .subscribe(newBrick => {
-                newBrick.status = 1; // created
-                this.dialogRef.close(newBrick);
-            });
-    }
+    //     this.brickService.createBrick(this.brickDetailsForm.value)
+    //         .subscribe(newBrick => {
+    //             newBrick.status = 1; // created
+    //             this.dialogRef.close(newBrick);
+    //         });
+    // }
 
     updateBrick(){
         this.brickDetailsForm.value.user = this.authService.CurrentUser._id;
         this.brickDetailsForm.value.date = this.data.curBrick.date;
-        this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
+        //this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
         
         this.brickDetailsForm.value._id = this.data.curBrick._id;
-        this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
+       // this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
 
         this.brickService.updateBrick(this.brickDetailsForm.value)
             .subscribe(updatedBrick => {

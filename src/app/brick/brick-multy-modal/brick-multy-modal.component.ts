@@ -8,6 +8,7 @@ import { DatePipe } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { DialogService } from '../../components/dialogs/dialog.service';
 import { ModalParams } from '../../models/modal-params.model';
+import * as _ from 'underscore';
 
 @Component({
   selector: 'brick-multy-modal',
@@ -38,21 +39,28 @@ export class BrickMultyModalComponent implements OnInit {
 
     ngOnInit() {
         this.curDate = this.datePipe.transform(this.data.curBrick.date, 'dd.MM.yyyy');
-        
-        // if(this.data.curBrick._id){
-        //     this.brickTypeFC.setValue(this.data.curBrick.brickType);
-        //     this.brickDetailsForm = new FormGroup({
-        //         //brickTypeFC: new FormControl(this.data.curBrick.brickType._id),
-        //         description: new FormControl(this.data.curBrick.description)
-        //     });
-        // }
+
         this.existentBrickTypes = this.data.brickTypes;
+        
+        if(this.data.curBrick._id){
+            var curBrickInExistent = _.find(this.existentBrickTypes, (br:any) => { 
+                return br._id == this.data.curBrick.brickType._id;
+            });
+
+            this.brickDetailsForm = new FormGroup({
+                brickTypeArray: new FormControl([curBrickInExistent]),
+                description: new FormControl(this.data.curBrick.description)
+            });
+        }
     }
 
     createBricks() {
         this.brickDetailsForm.value.user = this.authService.CurrentUser._id;
         this.brickDetailsForm.value.date = this.data.curBrick.date;
-        // this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
+
+        if (this.brickDetailsForm.value.brickTypeArray.length > 1) {
+            this.brickDetailsForm.value.description = '';
+        }
         
         this.brickService.createMultyBrick(this.brickDetailsForm.value)
             .subscribe(createdBrickArray => {
@@ -64,37 +72,37 @@ export class BrickMultyModalComponent implements OnInit {
             });
     }
 
-    updateBrick(){
-        this.brickDetailsForm.value.user = this.authService.CurrentUser._id;
-        this.brickDetailsForm.value.date = this.data.curBrick.date;
-        // this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
+    // updateBrick(){
+    //     this.brickDetailsForm.value.user = this.authService.CurrentUser._id;
+    //     this.brickDetailsForm.value.date = this.data.curBrick.date;
+    //     // this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
         
-        this.brickDetailsForm.value._id = this.data.curBrick._id;
-        // this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
+    //     this.brickDetailsForm.value._id = this.data.curBrick._id;
+    //     // this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
 
-        this.brickService.updateBrick(this.brickDetailsForm.value)
-            .subscribe(updatedBrick => {
-                updatedBrick.status = 2; // updated
-                this.dialogRef.close(updatedBrick);
-            });
-    }
+    //     this.brickService.updateBrick(this.brickDetailsForm.value)
+    //         .subscribe(updatedBrick => {
+    //             updatedBrick.status = 2; // updated
+    //             this.dialogRef.close(updatedBrick);
+    //         });
+    // }
 
-    deleteBrick(){
-        var params: ModalParams = {
-            width: '300px',
-            message: 'Уверены, что хотите удалить действие?'
-        };
+    // deleteBrick(){
+    //     var params: ModalParams = {
+    //         width: '300px',
+    //         message: 'Уверены, что хотите удалить действие?'
+    //     };
 
-        this.dialogs.showConfirm(params)
-            .subscribe(result => {
-                if (result){
-                    this.brickService.deleteBrick(this.data.curBrick._id)
-                    .subscribe(deletedBrick => {
-                        deletedBrick.status = 3; // deleted
-                        this.dialogRef.close(deletedBrick);
-                    });
-                }
-            });
-    }
+    //     this.dialogs.showConfirm(params)
+    //         .subscribe(result => {
+    //             if (result){
+    //                 this.brickService.deleteBrick(this.data.curBrick._id)
+    //                 .subscribe(deletedBrick => {
+    //                     deletedBrick.status = 3; // deleted
+    //                     this.dialogRef.close(deletedBrick);
+    //                 });
+    //             }
+    //         });
+    // }
 
 }
