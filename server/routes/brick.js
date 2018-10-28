@@ -45,6 +45,7 @@ router.post('/', (req, res, next) => {
     });
 });
 
+// ======= ADD BRICK MULTY =======================
 router.post('/createMulty', (req, res, next) => {
     let response = {success: true};
     console.log('Brick body MULTY - ', req.body);
@@ -73,8 +74,8 @@ router.put('/', (req, res, next) => {
 });
 
 router.delete('/:id', function(req, res) {
-    console.log('Deleting brick');
-    Brick.findByIdAndRemove(req.params.id, (err, deletedBrick) => {
+    console.log('Deleting brick', req.params);
+    Brick.deleteBrickType(req.params.id, (err, deletedBrick) => {
         if (err){
             res.send('Error deleting brick');
         } else {

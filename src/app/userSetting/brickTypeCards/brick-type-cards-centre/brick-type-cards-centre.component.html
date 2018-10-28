@@ -12,11 +12,21 @@
 
         <div class="brick-type-container" 
             *ngIf="brickType._id"
-            [ngStyle]="{'background-color': brickType.category.color}">        
-            <!-- Category name -->
-            <div class="card-category-name text-shadow">
-                {{brickType.category.name}}
+            [ngStyle]="{'background-color': brickType.category.color}">
+            <!-- BrickType Name  -->
+            <div class="card-brick-type-name text-shadow">
+                {{brickType.name}}
+                <!-- Category name -->
+                <div class="card-category-name text-shadow">
+                    {{brickType.category.name}}
+                </div>
+                <!-- <div *ngIf="brickType.status == 2">
+                    статус хотел сделать в виде иконки
+                    (Удалена)
+                </div> -->
             </div>
+
+            
 
             <!-- Sign -->
             <div class="card-brick-type-icon text-shadow">
@@ -24,12 +34,32 @@
                 <div *ngIf="!brickType.isIcon">{{brickType.sign}}</div> 
             </div>
 
-            <!-- BrickType Name  -->
-            <div class="card-brick-type-name text-shadow">
-                {{brickType.name}}
-                <div *ngIf="brickType.status == 2">
-                    (Удалена)
+            <!-- Details -->
+            <div class="card-brick-type-details ">
+                <div>
+                    <span class="text-shadow brick-type-type"
+                        [ngClass]="{'brick-in-calendar': brickType && brickType.type && brickType.type == 1, 'brick-in-calendar-arrow': brickType && brickType.type && brickType.type == 2}">      
+                        <div class="brick-type-counts">                 
+                            <div class="marked-days">
+                                {{brickType && brickType.type && brickType.type == 2 ? (brickType.countMarked + '/' + brickType.neededDays) : (brickType.countMarked)}}
+                            </div>         
+                            <div class="skipped-days">
+                                {{brickType && brickType.type && brickType.type == 2 ? (brickType.skippedDays + '/' + brickType.allowedSkipDays) : ''}}
+                            </div>
+                        </div> 
+                    </span>
                 </div>
+                <div>Статус</div>
+                <div>
+                    <span class="text-shadow brick-type-type"
+                        [ngClass]="{'brick-in-calendar': brickType && brickType.type && brickType.type == 1, 'brick-in-calendar-arrow': brickType && brickType.type && brickType.type == 2}">
+                        {{ brickType && brickType.type && brickType.type == 1 ? 'PER' : 'LIM'}}
+                    </span>
+                </div>
+            </div>
+
+            <div class="card-brick-type-desc" >
+                {{brickType.ruleDescription}}
             </div>
         </div>
 

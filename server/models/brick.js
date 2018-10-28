@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const _ = require('underscore');
+const BrickType = require('./brickType');
 
 const brickSchema = mongoose.Schema({
     description: {
@@ -176,6 +177,12 @@ brickSchema.statics.addBrickMulty = (bricks, callback) => {
             Brick.create(bricks)
                 .then((createdBrick)=> { 
                     console.log("--createdBrick BEFORE POPULATE --------", createdBrick);
+
+                    // HERE MUST BE a function for INCREMENTING COUNT for BrickType.countMarked
+                    BrickType.updateCountMarked(createdBrick.brickType, 1, (err, updateBrickType)=> {
+                        console.log("!!!!!!!!!!!!!!!!!!! HEY I INCREMENTED HIM !!!!!!!!!!!!!!!!!!!!!", updateBrickType);
+                    });
+
                     Brick.populate(
                         createdBrick, 
                         { 
@@ -239,8 +246,16 @@ brickSchema.statics.addBrickMulty = (bricks, callback) => {
 }
 
 brickSchema.statics.updateBrick = (id, brick, callback) => {
+
+    updateCountMarkedForBrickType(id, -1);
+
     Brick.findByIdAndUpdate(id, brick, { new: true})
         .then((updatedBrick)=> { 
+
+            BrickType.updateCountMarked(updatedBrick.brickType, 1, (err, updateBrickType)=> {
+                console.log("!!!!!!!!!!!!!!!!!!! HEY I inc HIM !!!!!!!!!!!!!!!!!!!!!", updateBrickType);
+            });
+
             Brick.populate(updatedBrick, 
                 { 
                     path: 'brickType', 
@@ -248,6 +263,30 @@ brickSchema.statics.updateBrick = (id, brick, callback) => {
                     { path: 'category', select: 'color' }
                 }, callback);
         }); 
+}
+
+brickSchema.static.updateCountMarkedByBrickId = (id, count) => {
+    updateCountMarkedForBrickType(id,count);
+}
+
+var updateCountMarkedForBrickType = (id, count)=> {
+    Brick.findOne({'_id': id})
+        .exec()
+        .then((curBrick)=>{
+            BrickType.updateCountMarked(curBrick.brickType, count, (err, updateBrickType)=> {
+                console.log("Count is changed", updateBrickType);
+            });
+        });
+}
+
+brickSchema.statics.deleteBrickType = (id, callback) => {
+    console.log("DELETING - ", id);
+    Brick.findByIdAndRemove(id, (err, deletedBrick) => {
+        BrickType.updateCountMarked(deletedBrick.brickType, -1, (err, updateBrickType)=> {
+            console.log("!!!!!!!!!!!!!!!!!!! HEY I DECREMENTED HIM !!!!!!!!!!!!!!!!!!!!!", updateBrickType);
+        });
+        callback(err, deletedBrick);
+    });
 }
 
 const Brick = mongoose.model('Brick', brickSchema, 'Bricks');

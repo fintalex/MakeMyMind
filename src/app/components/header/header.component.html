@@ -12,7 +12,7 @@
             <mat-menu #navButtons="matMenu" class="nav-menu">
                 <button mat-menu-item routerLink="/wall" *ngIf="authService.CurrentUser">{{'Wall' | translate}}</button>
                 <button mat-menu-item routerLink="/userSetting/category" *ngIf="authService.CurrentUser">{{'Category' | translate}}</button>
-                <button mat-menu-item routerLink="/userSetting/brickType" *ngIf="authService.CurrentUser">{{'Goals' | translate}}</button>
+                <button mat-menu-item routerLink="/userSetting/brickTypeCards" *ngIf="authService.CurrentUser">{{'Goals' | translate}}</button>
                 <button mat-menu-item routerLink="/userSetting/frends" *ngIf="authService.CurrentUser">{{'Друзья' | translate}}</button>
             </mat-menu>
 

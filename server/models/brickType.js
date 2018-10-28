@@ -30,9 +30,9 @@ const brickTypeSchema = mongoose.Schema({
     type: { type: Number, default: 1 }, // 1- permanent, 2- for period.
     status: { type: Number, default: 1 }, // 1- active, 2- closed (for permanent), 3- successed (for period), 4- failed (for period)
     neededDays: { type: Number },
-    countMarked: { type: Number },
+    countMarked: { type: Number, default: 0  },
     allowedSkipDays: { type: Number },
-    skippedDays: { type: Number }
+    skippedDays: { type: Number, default: 0  }
 });
 
 brickTypeSchema.statics.getAllBrickTypesByUserId = (userId, callback) => {        
@@ -118,6 +118,17 @@ brickTypeSchema.statics.softDeleteBrickType = (id, callback) => {
                 { $set: 
                     {
                         'status': 2
+                    }
+                }, callback);  
+}
+
+/// HERE in the count we can pass 1 or -1 if we want to INCREMENT or DECREMENT 
+brickTypeSchema.statics.updateCountMarked = (id, count, callback) => {
+    console.log("----- HEY INCREMENTING --- ID = " + id + " and COUNT = " + count);
+    BrickType.update({'_id': id}, 
+                { $inc: 
+                    {
+                        'countMarked': count
                     }
                 }, callback);  
 }

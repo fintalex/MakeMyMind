@@ -43,18 +43,18 @@
                   [innerHTML]="getDayTooltip(curday)"></span>
 
             <div class="bricks-container" *ngIf="curday.bricks">          
-                  <span class="text-shadow"
-                        *ngFor="let brick of curday.bricks"
-                        [ngClass]="{'brick-in-calendar': !brick.brickType.type || brick.brickType.type == 1, 'brick-in-calendar-arrow': brick.brickType.type == 2}"
-                        [ngStyle]="{'background-color': brick.brickType.category.color}"
-                        (click)="openBrickModal(brick, curday, $event)"> 
-                            <!-- {{brick.brickType.sign}} -->
-                            <mat-icon *ngIf="brick.brickType.isIcon"
-                                        class="brickIcon">
-                                {{brick.brickType.sign}} 
-                            </mat-icon>
-                            <div *ngIf="!brick.brickType.isIcon">{{brick.brickType.sign}}</div> 
-                    </span>            
+                <span class="text-shadow"
+                    *ngFor="let brick of curday.bricks"
+                    [ngClass]="{'brick-in-calendar': !brick.brickType.type || brick.brickType.type == 1, 'brick-in-calendar-arrow': brick.brickType.type == 2}"
+                    [ngStyle]="{'background-color': brick.brickType.category.color}"
+                    (click)="openBrickModal(brick, curday, $event)"> 
+                        <!-- {{brick.brickType.sign}} -->
+                        <mat-icon *ngIf="brick.brickType.isIcon"
+                                    class="brickIcon">
+                            {{brick.brickType.sign}} 
+                        </mat-icon>
+                        <div *ngIf="!brick.brickType.isIcon">{{brick.brickType.sign}}</div> 
+                </span>            
             </div>
 
             <span class="day-number">{{curday.day}}</span>
