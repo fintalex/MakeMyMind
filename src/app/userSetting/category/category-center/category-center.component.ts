@@ -55,7 +55,7 @@ export class CategoryCenterComponent implements OnInit {
         }
 
         this.categoryService.getCategories()
-            .subscribe(allCategories => {
+            .subscribe((allCategories: any) => {
                 this.existentCategories = allCategories
             });
 
@@ -79,7 +79,7 @@ export class CategoryCenterComponent implements OnInit {
     onCreateCategory(category: Category) {
         category.user = this.authService.CurrentUser._id;
         this.categoryService.createCategory(category)
-            .subscribe(newCategory => {
+            .subscribe((newCategory: any) => {
                 this.existentCategories.push(newCategory);
             });
     }

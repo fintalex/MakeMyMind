@@ -40,7 +40,7 @@ export class RegistrationComponent implements OnInit {
 
         this.regForm.value.locale = this.authService.curLocale; 
 
-        this.registrationService.register(this.regForm.value).subscribe((res) => {
+        this.registrationService.register(this.regForm.value).subscribe(res => {
             if(res.success){
 
                 // here need to create Category and Habit by Default
@@ -77,7 +77,7 @@ export class RegistrationComponent implements OnInit {
 
         categoryArray.forEach(catByDefault => {
             this.categoryService.createCategory(catByDefault)
-                .subscribe(newCat => {
+                .subscribe((newCat: any) => {
                     if(catByDefault.brickType){
                         catByDefault.brickType.category = newCat._id;
                         this.bricktypeService.createBrickType(catByDefault.brickType)

@@ -1,0 +1,6 @@
+<div class="list">
+    <category-item *ngFor="let category of categories"
+        [category]="category"
+        (select)="select.emit($event)">
+    </category-item>
+</div>

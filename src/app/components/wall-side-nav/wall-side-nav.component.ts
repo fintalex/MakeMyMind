@@ -43,7 +43,7 @@ export class WallSideNavComponent implements OnInit {
         this.sideBarExpanded = this.authService.CurrentUser.helper.wallSideNavShow;
 
         this.frendService.getFrends()   
-            .subscribe(allFrends => {
+            .subscribe((allFrends: any) => {
                 this.userFrends = allFrends;
             });
     }

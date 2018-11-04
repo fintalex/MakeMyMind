@@ -17,10 +17,18 @@ import { BrickTypeDetailsComponent } from './brickType/brick-type-details/brick-
 import { BrickTypeListComponent } from './brickType/brick-type-list/brick-type-list.component';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { createTranslateLoader } from '../app.module';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 import { HttpClient } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CategoriesListComponent } from './categoryNew/categories-list/categories-list.component';
+import { CategoryItemComponent } from './categoryNew/category-item/category-item.component';
+import { CategorySelectedComponent } from './categoryNew/category-selected/category-selected.component';
+import { CategoryContainerComponent } from './categoryNew/category-container/category-container.component';
+
+export function createTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http, './../assets/i18n/', '.json');
+}
 
 @NgModule({
     imports: [
@@ -40,7 +48,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
         CategoryListComponent, CategoryDetailsComponent, CategoryCenterComponent, TestComponent, 
         BrickTypeCenterComponent, BrickTypeDetailsComponent, BrickTypeListComponent, 
         FrendComponent, FrendSearchComponent, FrendListComponent, 
-        BrickTypeCardsCentreComponent, BrickTypeModalComponent,
+        BrickTypeCardsCentreComponent, BrickTypeModalComponent, 
+        CategoriesListComponent, 
+        CategoryItemComponent, 
+        CategorySelectedComponent, 
+        CategoryContainerComponent,
     ],
     entryComponents: [
         BrickTypeModalComponent

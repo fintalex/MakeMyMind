@@ -59,14 +59,14 @@ export class BrickTypeCardsCentreComponent implements OnInit {
         }
 
         this.brickTypeService.getBrickTypes()
-            .subscribe(allBrickTypes => { 
+            .subscribe((allBrickTypes: any) => { 
                 this.existentBrickTypes = allBrickTypes;
                 var newBrickType = new BrickType();
                 this.existentBrickTypes.push(newBrickType);                
             });
 
         this.categoryService.getCategories()
-            .subscribe(allCategories => { 
+            .subscribe((allCategories: any) => { 
                 this.existentCategories = allCategories;
             });
     }
@@ -96,7 +96,7 @@ export class BrickTypeCardsCentreComponent implements OnInit {
     onCreateBrickType(brickType: BrickType){
         brickType.user = this.authService.CurrentUser._id;
         this.brickTypeService.createBrickType(brickType)
-            .subscribe(newBrickType => {
+            .subscribe((newBrickType: any) => {
                 //this.existentBrickTypes.push(newBrickType);
                 this.existentBrickTypes.splice(this.existentBrickTypes.length - 1, 0, newBrickType);
             });
@@ -105,7 +105,7 @@ export class BrickTypeCardsCentreComponent implements OnInit {
     onUpdateBrickType(brickType: BrickType){
         var allBrickTypes = this.existentBrickTypes;
         this.brickTypeService.updateBrickType(brickType)
-            .subscribe(updatedBrickType => {
+            .subscribe((updatedBrickType: any) => {
                 for(let i = 0; i < allBrickTypes.length; i++){
                     if(allBrickTypes[i]._id === updatedBrickType._id){
                         allBrickTypes[i] = updatedBrickType;;

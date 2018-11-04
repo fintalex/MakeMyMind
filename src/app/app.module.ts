@@ -43,6 +43,10 @@ import { HomeComponent } from './home/home.component';
 import { DatePipe } from '@angular/common';
 import { BottomSheetComponent } from './components/dialogs/bottom-sheet/bottom-sheet.component';
 
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './store/reducers';
+//import { UserSettingModule } from './userSetting/user-setting.module';
+
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -73,7 +77,12 @@ export function createTranslateLoader(http: HttpClient) {
     imports: [
         BrowserModule,
         HttpModule,
-        HttpClientModule,
+        HttpClientModule,        
+        BrowserAnimationsModule,       
+        FormsModule, ReactiveFormsModule,
+        SharedModule, 
+        StoreModule.forRoot(reducers, {metaReducers}),
+        AppRoutingModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -81,10 +90,6 @@ export function createTranslateLoader(http: HttpClient) {
                 deps: [HttpClient]
             }
         }),
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        FormsModule, ReactiveFormsModule,
-        SharedModule
     ],
     providers: [
         RegistrationService,

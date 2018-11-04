@@ -1,0 +1,13 @@
+<div>
+    <category-list
+        [categories]="films$ | async"
+        (select)="onSelect($event)">
+    </category-list>
+
+    <br>
+
+    <category-selected 
+        [category]="selected$ | async">
+    </category-selected>
+</div>
+

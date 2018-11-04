@@ -80,7 +80,7 @@ export class CalendarComponent implements OnInit {
         this.nicknameForSideBar = this.curNick ? this.curNick : this.authService.CurrentUser.nickname;
 
         this.brickTypeService.getBrickTypes(this.curNick)
-            .subscribe(allBrickTypes => {
+            .subscribe((allBrickTypes: any) => {
                 this.existentBrickTypes = allBrickTypes;
             });
             
@@ -90,7 +90,7 @@ export class CalendarComponent implements OnInit {
     getBricksAndShowInMonth(){  
         
         this.brickService.getBricksForMonth(this.curDate, this.curNick, this.filteredHabbits)
-            .subscribe(allBricksInMonth => {
+            .subscribe((allBricksInMonth: any) => {
                 console.log("this.curDate", this.curDate);
                 console.log("this.curNick", this.curNick);
                 console.log("allBricksInMonth", allBricksInMonth);
@@ -163,7 +163,7 @@ export class CalendarComponent implements OnInit {
 
         if(!this.existentBrickTypes){
             this.brickTypeService.getBrickTypes(this.curNick)
-                .subscribe(allBrickTypes => {
+                .subscribe((allBrickTypes: any) => {
                     this.existentBrickTypes = allBrickTypes;
                     this.openModal(brick, day);
                 });

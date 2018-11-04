@@ -72,7 +72,7 @@ export class FrendComponent implements OnInit {
         var allFrends = this.myFrends;
 
         this.frendService.addFrend(frendId)
-            .subscribe(createdFrend => {
+            .subscribe((createdFrend: any) => {
 
                 var newFrend = new Frend();
               

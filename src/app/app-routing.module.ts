@@ -5,6 +5,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AuthComponent } from './auth/auth.component';
 import { GuardService } from './services/guard.service';
 import { HomeComponent } from './home/home.component';
+//import { CategoryContainerComponent } from './userSetting/categoryNew/category-container/category-container.component';
+import { UserSettingModule } from './userSetting/user-setting.module';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -16,7 +18,12 @@ const routes: Routes = [
     { path: 'wall', redirectTo: 'wall/'}, // just only this ROUT will help me to NOT UPDATE the page when we got from Wall to Wall with parameters.
 
     //// LAZY LOADIN for part UsertSetting (https://www.youtube.com/watch?v=WQZq07ecohk)
-    { path: 'userSetting', loadChildren: './userSetting/user-setting.module#UserSettingModule'}
+    
+    // LoadChildren always throw an error "Can not find module" after updating to Angular 7 on 1.11.2018
+    // { path: 'userSetting', loadChildren: './userSetting/user-setting.module#UserSettingModule'},
+    // I think i need to move in this way (work only with next)
+    { path: 'userSetting', loadChildren: () => UserSettingModule},
+
 ];
 
 @NgModule({

@@ -8,6 +8,7 @@ import { DatePipe } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { DialogService } from '../../components/dialogs/dialog.service';
 import { ModalParams } from '../../models/modal-params.model';
+//import * as _ from 'underscore';
 import * as _ from 'underscore';
 
 @Component({

@@ -29,7 +29,7 @@ export class LocaleChangeComponent implements OnInit {
             this.authService.CurrentUser.locale = language;
             this.authService.curLocale = language;
             this.userService.updateUserLocale(this.authService.CurrentUser)
-                .subscribe((res) => {
+                .subscribe((res: any) => {
                     console.log("Locale changed to - " + res.locale);
                     this.authService.updateCurrentUserInStorage();
                 });

@@ -28,9 +28,9 @@ export class FrendSearchComponent implements OnInit {
 
         this.filteredOptions = this.searchControl.valueChanges
             .pipe(debounceTime(500))
-            .subscribe(data => {
+            .subscribe((data: any) => {
                 if (data && data.length > 1){
-                    this.userService.getUserDDL(data).subscribe(userList =>{
+                    this.userService.getUserDDL(data).subscribe((userList: any) =>{
                         this.frendsResult = userList
                     })
                 }

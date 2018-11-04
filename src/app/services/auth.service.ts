@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/map';
+//import { Http, Response } from '@angular/http';
+//import 'rxjs/add/operator/map';
 import { User } from '../models/user.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class AuthService{
@@ -9,7 +10,7 @@ export class AuthService{
     CurrentUser: User = null;
     curLocale: string = 'ru';
     
-    constructor(private http: Http) {
+    constructor(private http: HttpClient) {
         var userInStorage = localStorage.getItem('currentUser');
         if (userInStorage) {
             this.CurrentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -21,9 +22,9 @@ export class AuthService{
     }
 
     login(email: string, password: string){
-        return this.http.post('/api/users/login', { email: email, password: password })
+        return this.http.post<any>('/api/users/login', { email: email, password: password })
             .map((res: Response) => {
-                let response = res.json();
+                let response: any = res;
                 console.log(response.msg);
                 let user = response.user;
                 if (user && response.success){
