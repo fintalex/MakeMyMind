@@ -14,12 +14,14 @@
                 <button mat-menu-item routerLink="/userSetting/category" *ngIf="authService.CurrentUser">{{'Category' | translate}}</button>
                 <button mat-menu-item routerLink="/userSetting/brickTypeCards" *ngIf="authService.CurrentUser">{{'Goals' | translate}}</button>
                 <button mat-menu-item routerLink="/userSetting/frends" *ngIf="authService.CurrentUser">{{'Друзья' | translate}}</button>
+                <button mat-menu-item routerLink="/userSetting/categoryContainer" *ngIf="authService.CurrentUser">{{'Category New' | translate}}</button>
             </mat-menu>
 
             <button mat-button class="nav-button" routerLink="/wall" *ngIf="authService.CurrentUser">{{'Wall' | translate}}</button>
             <button mat-button class="nav-button" routerLink="/userSetting/category" *ngIf="authService.CurrentUser">{{'Category' | translate}}</button>
             <button mat-button class="nav-button" routerLink="/userSetting/brickTypeCards" *ngIf="authService.CurrentUser">{{'Goals' | translate}}</button>
             <button mat-button class="nav-button" routerLink="/userSetting/frends" *ngIf="authService.CurrentUser">{{'Друзья' | translate}}</button>
+            <button mat-button class="nav-button" routerLink="/userSetting/categoryContainer" *ngIf="authService.CurrentUser">{{'Category New' | translate}}</button>
         </div>
     </div>
 
