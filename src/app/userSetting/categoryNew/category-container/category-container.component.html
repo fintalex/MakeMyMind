@@ -1,8 +1,8 @@
 <div>
-    <category-list
+    <categories-new-list *ngIf="categories$"
         [categories]="categories$ | async"
         (select)="onSelect($event)">
-    </category-list>
+    </categories-new-list>
 
     <br>
 

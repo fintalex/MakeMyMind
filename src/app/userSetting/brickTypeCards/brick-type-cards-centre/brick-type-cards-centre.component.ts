@@ -12,6 +12,11 @@ import { DialogService } from '../../../components/dialogs/dialog.service';
 import { UserService } from '../../../services/user.service';
 
 import * as _ from 'underscore';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import * as fromBrickTypeSelectors from '../../../store/selectors/brickType.selectors';
+import * as brickTypeAction from '../../../store/actions/brickTypes';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
     selector: 'brick-type-cards-centre',
@@ -23,6 +28,10 @@ export class BrickTypeCardsCentreComponent implements OnInit {
     existentBrickTypes: BrickType[];
     existentCategories: Category[];
 
+    //newBrickType: BrickType = new BrickType();
+
+    brickTypes$: Observable<BrickType[]>; 
+
     isSortBrickType: boolean = false;
     isRemovedShown: boolean = false;
 
@@ -32,10 +41,14 @@ export class BrickTypeCardsCentreComponent implements OnInit {
                 private authService: AuthService,
                 private dialog: MatDialog,
                 private modalDialogs: DialogService,
-                private userService: UserService
+                private userService: UserService,
+
+                private store: Store<fromBrickTypeSelectors.State>
             ) { }
 
     ngOnInit() {
+        this.brickTypes$ = this.store.pipe(select(fromBrickTypeSelectors.getBrickTypes));
+
         if (!this.authService.CurrentUser.helper.brickTypeMainHelp){
             var bottomSheetParams: ModalParams = {
                 disableClose: true, 
@@ -95,54 +108,65 @@ export class BrickTypeCardsCentreComponent implements OnInit {
 
     onCreateBrickType(brickType: BrickType){
         brickType.user = this.authService.CurrentUser._id;
-        this.brickTypeService.createBrickType(brickType)
-            .subscribe((newBrickType: any) => {
-                //this.existentBrickTypes.push(newBrickType);
-                this.existentBrickTypes.splice(this.existentBrickTypes.length - 1, 0, newBrickType);
-            });
+        this.store.dispatch(new brickTypeAction.AddBrickType(brickType));
+        // brickType.user = this.authService.CurrentUser._id;
+        // this.brickTypeService.createBrickType(brickType)
+        //     .subscribe((newBrickType: any) => {
+        //         //this.existentBrickTypes.push(newBrickType);
+        //         this.existentBrickTypes.splice(this.existentBrickTypes.length - 1, 0, newBrickType);
+        //     });
     }
 
     onUpdateBrickType(brickType: BrickType){
-        var allBrickTypes = this.existentBrickTypes;
-        this.brickTypeService.updateBrickType(brickType)
-            .subscribe((updatedBrickType: any) => {
-                for(let i = 0; i < allBrickTypes.length; i++){
-                    if(allBrickTypes[i]._id === updatedBrickType._id){
-                        allBrickTypes[i] = updatedBrickType;;
-                    }
-                }
-            })
+        this.store.dispatch(new brickTypeAction.UpdateBrickType(brickType))
+        // var allBrickTypes = this.existentBrickTypes;
+        // this.brickTypeService.updateBrickType(brickType)
+        //     .subscribe((updatedBrickType: any) => {
+        //         for(let i = 0; i < allBrickTypes.length; i++){
+        //             if(allBrickTypes[i]._id === updatedBrickType._id){
+        //                 allBrickTypes[i] = updatedBrickType;;
+        //             }
+        //         }
+        //     })
     }
 
     onDeleteBrickType(id){
-        var deletedId = id;
-        var allBrickTypes = this.existentBrickTypes;
-        this.brickTypeService.deleteBrickType(id)
-            .subscribe(deletedBrickType => {
-                for(let i = 0; i < allBrickTypes.length; i++){
-                    if(allBrickTypes[i]._id === deletedId){
-                    allBrickTypes.splice(i,1);
-                    }
-                }
-            });
-        //this.selectedBrickType = null;
+        this.store.dispatch(new brickTypeAction.RemoveBrickType(id));
+        // var deletedId = id;
+        // var allBrickTypes = this.existentBrickTypes;
+        // this.brickTypeService.deleteBrickType(id)
+        //     .subscribe(deletedBrickType => {
+        //         for(let i = 0; i < allBrickTypes.length; i++){
+        //             if(allBrickTypes[i]._id === deletedId){
+        //             allBrickTypes.splice(i,1);
+        //             }
+        //         }
+        //     });
     }
 
-    sort(){
-        this.existentBrickTypes = _.sortBy(this.existentBrickTypes, (briTyp: BrickType) => { 
-            return this.isSortBrickType ? (briTyp.category ? briTyp.category._id : false) : (briTyp._id);
-        });
-    }
+    // sort(): Observable<BrickType[]>{
+    //     // this.existentBrickTypes = _.sortBy(this.existentBrickTypes, (briTyp: BrickType) => { 
+    //     //     return this.isSortBrickType ? (briTyp.category ? briTyp.category._id : false) : (briTyp._id);
+    //     // });
+    // }
 
-    showRemoved() {
-        //this.isRemovedShown = !this.isRemovedShown;
-    }
+    // showRemoved() {
+    //     //this.isRemovedShown = !this.isRemovedShown;
+    // }
 
-    filterBrickType(){
-        var filteredBricksTypes = _.filter(this.existentBrickTypes, (briTyp: BrickType) => { 
-            return !this.isRemovedShown && briTyp.status == 2 ? false : true;
-        });
+    filterBrickType(): Observable<BrickType[]>{
+        return this.brickTypes$
+            .pipe( 
+                map(brickTypes => {
+                    var filteredBrickTypes = brickTypes
+                        .sort((x,y) => this.isSortBrickType ? (x.category._id < y.category._id ? -1 : 1) : (x._id < y._id ? -1 : 1))
+                        .filter((briTyp: BrickType) => !this.isRemovedShown && briTyp.status == 2 ? false : true);
 
-        return filteredBricksTypes;
+
+                    var newBrickType = new BrickType();
+                    filteredBrickTypes.push(newBrickType); 
+                    return filteredBrickTypes;
+                })
+            );
     }
 }

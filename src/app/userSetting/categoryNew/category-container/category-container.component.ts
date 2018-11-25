@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../../../models/category.model';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import * as fromRoot from '../../../store/reducers';
+import * as fromSelectors from '../../../store/selectors/category.selectors';
 import * as categoryAction from '../../../store/actions/categories';
 
 @Component({
@@ -16,9 +16,10 @@ export class CategoryContainerComponent implements OnInit {
     categories$: Observable<Category[]>;
     selected$: Observable<any>;
 
-    constructor(private store: Store<fromRoot.State>) { 
-        this.categories$ = store.select(fromRoot.getAllCategories);
-        this.selected$ = store.select(fromRoot.getSelected);
+    constructor(private store: Store<fromSelectors.State>) {
+        this.categories$ = this.store.pipe(select(fromSelectors.getAllCategories));
+
+        this.selected$ = this.store.select(fromSelectors.getSelectedCategory);
     }
 
     onSelect(id: number){
@@ -26,7 +27,7 @@ export class CategoryContainerComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log("HELLO DUDE");
+        
     }
 
 }

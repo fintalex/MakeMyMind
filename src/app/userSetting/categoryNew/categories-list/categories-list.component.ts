@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Category } from '../../../models/category.model';
 
 @Component({
-  selector: 'categories-list',
+  selector: 'categories-new-list',
   templateUrl: './categories-list.component.html',
   styleUrls: ['./categories-list.component.scss']
 })
@@ -14,7 +14,7 @@ export class CategoriesListComponent implements OnInit {
     constructor() { }
 
     ngOnInit() { 
-        console.log("sdf");
+        //console.log("sdf");
     }
 
 }

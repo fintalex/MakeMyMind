@@ -5,9 +5,9 @@
         <mat-checkbox [(ngModel)]="isRemovedShown" (change)="showRemoved()">Показать удаленные</mat-checkbox>
     </div>
     
-    <!-- list of Brick Type -->
+    <!-- LIST of BRICK TYPE-->
     <div class="brick-type-card"
-        *ngFor="let brickType of filterBrickType()"
+        *ngFor="let brickType of filterBrickType() | async"
         (click)="openBrickModal(brickType)">   
 
         <div class="brick-type-container" 

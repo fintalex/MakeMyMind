@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
+import { EffectsModule } from '@ngrx/effects';
 
 // ============================== Services  =============================
 import { CategoryService } from './userSetting/category/category.service';
@@ -44,8 +45,9 @@ import { DatePipe } from '@angular/common';
 import { BottomSheetComponent } from './components/dialogs/bottom-sheet/bottom-sheet.component';
 
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './store/reducers';
-//import { UserSettingModule } from './userSetting/user-setting.module';
+// import * as fromStore from './store/index';
+import { effects, reducers, } from './store/index';
+//import { reducers, metaReducers } from './store/reducers';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -69,7 +71,7 @@ export function createTranslateLoader(http: HttpClient) {
         BottomSheetComponent, BrickMultyModalComponent,
 
         // === pipes ====
-        DateRu, CapitalizePipe,
+        DateRu, CapitalizePipe
     ],
     entryComponents: [BrickModalComponent, BrickMultyModalComponent, ConfirmationModalComponent, BottomSheetComponent,
         //BrickTypeModalComponent
@@ -81,7 +83,10 @@ export function createTranslateLoader(http: HttpClient) {
         BrowserAnimationsModule,       
         FormsModule, ReactiveFormsModule,
         SharedModule, 
-        StoreModule.forRoot(reducers, {metaReducers}),
+        
+        StoreModule.forRoot(reducers),
+        EffectsModule.forRoot(effects),
+
         AppRoutingModule,
         TranslateModule.forRoot({
             loader: {

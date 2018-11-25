@@ -42,7 +42,8 @@ export function createTranslateLoader(http: HttpClient) {
             }
         }),
         FormsModule, ReactiveFormsModule,
-        SharedModule
+        SharedModule,
+        //EffectsModule.forRoot([CategoryEffects])
     ],  
     declarations: [
         CategoryListComponent, CategoryDetailsComponent, CategoryCenterComponent, TestComponent, 

@@ -1,4 +1,5 @@
-<div class="list">
+<div class="list" *ngIf="categories">
+        category-item
     <category-item *ngFor="let category of categories"
         [category]="category"
         (select)="select.emit($event)">

@@ -14,34 +14,32 @@
 
     <div *ngIf="sideBarExpanded">
         <div class="side-bar-body" >
+            <!-- Сферы влияния -->
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         Сферы влияния
                     </mat-panel-title>
-                    <!-- <mat-panel-description>
-                        Type your name and age
-                    </mat-panel-description> -->
                 </mat-expansion-panel-header>
             
-                <ul>
-                    <li>Readin</li>
-                    <li>Gym</li>
-                    <li>Health</li>
-                    <li>Family</li>
-                    <li>Wife</li>
-                    <li>Proper mill</li>
-                    <li>Swit</li>
+                <ul class="side-bar-list"
+                    *ngIf="categories$ | async as categories">
+                    <!-- <li *ngFor="let category of categories">{{category.name}}</li> -->
+                    <li *ngFor="let category of categories">
+                        <mat-checkbox 
+                            class="checkbox-content"
+                            [(ngModel)]="category.ticked"
+                            (change)="tickCategory(category)">
+                                <span class="checkbox-span">{{category.name}}</span>
+                                <span class="brick-in-calendar text-shadow float-right brick-in-sidebar" 
+                                    [ngStyle]="{'background-color': category.color}">                                      
+                                </span>                                    
+                        </mat-checkbox>
+                    </li>
                 </ul>
-                <!-- <mat-form-field>
-                    <input matInput placeholder="First name">
-                </mat-form-field>
-            
-                <mat-form-field>
-                    <input matInput placeholder="Age">
-                </mat-form-field> -->
             </mat-expansion-panel>
 
+            <!-- Привычки -->
             <mat-expansion-panel (opened)="panelOpenState = true"
                                 (closed)="panelOpenState = false">
                 <mat-expansion-panel-header>
@@ -50,7 +48,7 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <ul class="side-bar-list">
-                    <li *ngFor="let brickType of visibleBrickTypes">
+                    <li *ngFor="let brickType of brickTypes$ | async">
                         <mat-checkbox 
                             class="checkbox-content"
                             [(ngModel)]="brickType.ticked"
@@ -72,6 +70,7 @@
                 </ul>
             </mat-expansion-panel>
 
+            <!-- Друзья -->
             <mat-expansion-panel (opened)="panelOpenState = true"
                                 (closed)="panelOpenState = false">
                 <mat-expansion-panel-header>
