@@ -37,7 +37,7 @@ export function createTranslateLoader(http: HttpClient) {
         TranslateModule.forChild({
             loader: {
                 provide: TranslateLoader,
-                useFactory: (createTranslateLoader),
+                useFactory: createTranslateLoader,
                 deps: [HttpClient]
             }
         }),
@@ -58,5 +58,8 @@ export function createTranslateLoader(http: HttpClient) {
     entryComponents: [
         BrickTypeModalComponent
     ],
+    exports: [
+        TranslateModule
+    ]
 })
 export class UserSettingModule { }

@@ -142,7 +142,7 @@ export class BrickTypeCardsCentreComponent implements OnInit {
         //             }
         //         }
         //     });
-    }
+    } 
 
     // sort(): Observable<BrickType[]>{
     //     // this.existentBrickTypes = _.sortBy(this.existentBrickTypes, (briTyp: BrickType) => { 

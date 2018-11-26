@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule, MatCardModule, MatInputModule, MatButtonModule, MatIconModule, 
     MatGridListModule, MatListModule, MatSelectModule, MatChip, MatChipsModule, 
-    MatMenuModule, MatDialogModule, MatTooltipModule, MatCheckboxModule, MatFormFieldModule, 
+    MatMenuModule, MatDialogModule, MatCheckboxModule, MatFormFieldModule, 
     MatAutocompleteModule, MatRadioModule,
     MatBottomSheetModule
      } from '@angular/material';
@@ -13,14 +13,14 @@ import {MatExpansionModule} from '@angular/material/expansion';
     CommonModule,
     MatToolbarModule, MatCardModule, MatInputModule, MatButtonModule, MatIconModule, 
     MatGridListModule, MatListModule, MatSelectModule, MatChipsModule, MatMenuModule, 
-    MatDialogModule, MatTooltipModule, MatCheckboxModule, MatFormFieldModule, MatExpansionModule,
+    MatDialogModule, MatCheckboxModule, MatFormFieldModule, MatExpansionModule,
     MatAutocompleteModule, MatBottomSheetModule, MatRadioModule
   ],
   declarations: [],
   exports: [
     MatToolbarModule, MatCardModule, MatInputModule, MatButtonModule, MatIconModule,
     MatGridListModule, MatListModule, MatSelectModule, MatChipsModule, MatMenuModule, 
-    MatDialogModule, MatTooltipModule, MatCheckboxModule, MatFormFieldModule, MatExpansionModule,
+    MatDialogModule,  MatCheckboxModule, MatFormFieldModule, MatExpansionModule,
     MatAutocompleteModule, MatBottomSheetModule, MatRadioModule
   ]
 })

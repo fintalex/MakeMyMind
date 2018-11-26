@@ -9,7 +9,7 @@
 
         <!-- Email -->
         <mat-form-field>
-            <input type="text" matInput required placeholder="{{'Email' | translate}}" 
+            <input type="text" matInput required placeholder="{{'Email'}}" 
                 formControlName="username">
             <mat-error *ngIf="regForm.controls.username.errors?.required">
                 Поле обязательное для заполнения
@@ -24,7 +24,7 @@
 
         <!-- Password -->
         <mat-form-field>
-            <input type="password" matInput required placeholder="{{'Password' | translate}}" 
+            <input type="password" matInput required placeholder="{{'Password'}}" 
                 formControlName="password">
             <mat-error *ngIf="regForm.controls.password.errors?.required">
                 Поле обязательное для заполнения
@@ -36,7 +36,7 @@
 
         <!-- Nickname -->
         <mat-form-field>
-            <input type="nickname" matInput required placeholder="{{'Nickname' | translate}}" 
+            <input type="nickname" matInput required placeholder="{{'Nickname'}}" 
                 formControlName="nickname">
             <mat-error *ngIf="regForm.controls.nickname.errors?.required">
                 Поле обязательное для заполнения
@@ -44,7 +44,7 @@
         </mat-form-field>
 
         <button mat-raised-button color="primary" [disabled]="regForm.invalid">
-                {{'CreateAccount' | translate}}
+                {{'CreateAccount'}}
         </button>
 
     </form>

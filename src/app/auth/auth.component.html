@@ -9,16 +9,16 @@
             <span *ngIf="warningMessage" class="warn-span">{{warningMessage}}</span>
 
             <mat-form-field>
-                <input required placeholder="{{'Email' | translate}}" matInput formControlName="username">
+                <input required placeholder="{{'Email'}}" matInput formControlName="username">
             </mat-form-field>
 
             <mat-form-field>
-                <input required type="password" placeholder="{{'Password' | translate}}" matInput formControlName="password">
+                <input required type="password" placeholder="{{'Password'}}" matInput formControlName="password">
             </mat-form-field>
 
             <div class="button-footer">
                 <button color="primary" mat-raised-button [disabled]="loginForm.invalid" translate>
-                        {{'Log in' | translate}} 
+                        {{'Log in'}} 
                 </button>
 
                 <a class="auth-link" routerLink="/registration" translate>Registration</a>
