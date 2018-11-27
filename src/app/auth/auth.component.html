@@ -6,19 +6,19 @@
                 SignIn
             </div>            
 
-            <span *ngIf="warningMessage" class="warn-span">{{warningMessage}}</span>
+            <span *ngIf="warningMessage" class="warn-span">{{'warningMessage' | translate}}</span>
 
             <mat-form-field>
-                <input required placeholder="{{'Email'}}" matInput formControlName="username">
+                <input required placeholder="{{'Email' | translate}}" matInput formControlName="username">
             </mat-form-field>
 
             <mat-form-field>
-                <input required type="password" placeholder="{{'Password'}}" matInput formControlName="password">
+                <input required type="password" placeholder="{{'Password' | translate}}" matInput formControlName="password">
             </mat-form-field>
 
             <div class="button-footer">
                 <button color="primary" mat-raised-button [disabled]="loginForm.invalid" translate>
-                        {{'Log in'}} 
+                        {{'Log in' | translate}} 
                 </button>
 
                 <a class="auth-link" routerLink="/registration" translate>Registration</a>

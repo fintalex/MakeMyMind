@@ -49,6 +49,26 @@ import { StoreModule } from '@ngrx/store';
 import { effects, reducers, } from './store/index';
 //import { reducers, metaReducers } from './store/reducers';
 
+
+import { BrickTypeCardsCentreComponent } from './userSetting/brickTypeCards/brick-type-cards-centre/brick-type-cards-centre.component';
+import { BrickTypeModalComponent } from './userSetting/brickTypeCards/brick-type-modal/brick-type-modal.component';
+import { FrendComponent } from './userSetting/frend/frend/frend.component';
+import { FrendSearchComponent } from './userSetting/frend/frend-search/frend-search.component';
+import { FrendListComponent } from './userSetting/frend/frend-list/frend-list.component';
+import { CategoryListComponent } from './userSetting/category/category-list/category-list.component';
+import { CategoryDetailsComponent } from './userSetting/category/category-details/category-details.component';
+import { CategoryCenterComponent } from './userSetting/category/category-center/category-center.component';
+import { TestComponent } from './userSetting/test/test.component';
+import { BrickTypeCenterComponent } from './userSetting/brickType/brick-type-center/brick-type-center.component';
+import { BrickTypeDetailsComponent } from './userSetting/brickType/brick-type-details/brick-type-details.component';
+import { BrickTypeListComponent } from './userSetting/brickType/brick-type-list/brick-type-list.component';
+
+
+import { CategoriesListComponent } from './userSetting/categoryNew/categories-list/categories-list.component';
+import { CategoryItemComponent } from './userSetting/categoryNew/category-item/category-item.component';
+import { CategorySelectedComponent } from './userSetting/categoryNew/category-selected/category-selected.component';
+import { CategoryContainerComponent } from './userSetting/categoryNew/category-container/category-container.component';
+
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -69,6 +89,18 @@ export function createTranslateLoader(http: HttpClient) {
         CalendarComponent, BrickModalComponent, ConfirmationModalComponent,
         HomeComponent, LocaleChangeComponent, LogingComponent, HeaderComponent, WallSideNavComponent, 
         BottomSheetComponent, BrickMultyModalComponent,
+
+
+
+
+        CategoryListComponent, CategoryDetailsComponent, CategoryCenterComponent, TestComponent, 
+        BrickTypeCenterComponent, BrickTypeDetailsComponent, BrickTypeListComponent, 
+        FrendComponent, FrendSearchComponent, FrendListComponent, 
+        BrickTypeCardsCentreComponent, BrickTypeModalComponent, 
+        CategoriesListComponent, 
+        CategoryItemComponent, 
+        CategorySelectedComponent, 
+        CategoryContainerComponent,
 
         // === pipes ====
         DateRu, CapitalizePipe
