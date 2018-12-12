@@ -168,4 +168,27 @@
         color: #fc9f9f;
         font-size: 9px;
     }
+
+    // =============== STATUS ===========================
+    .status-on-card{
+        margin: 0px 4px;
+        font-size: 14px;
+        width: 90px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        box-sizing: border-box;
+        color: cornsilk;
+        border-radius: 5px;
+    }
+
+    // .active-status, .closed-status, .successed-status, .failed-status {
+    //     font-size: 20px;
+    // }
+    .active-status    {background-color: #4265ff;}
+    .closed-status    {background-color: #575757;}
+    .successed-status {background-color: #3eff5f;}
+    .failed-status    {background-color: #c90000;}
 }

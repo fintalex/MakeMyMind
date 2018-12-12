@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const category = require('./category');
 
+
+
 const brickTypeSchema = mongoose.Schema({
     name: {
         type: String,
@@ -131,7 +133,73 @@ brickTypeSchema.statics.updateCountMarked = (id, count, callback) => {
                         'countMarked': count
                     }
                 }, callback);  
+} 
+
+/// HERE we must update all skippedDays for ALL BrickTypes (in the future it may take many time, and need to refactor it method)
+brickTypeSchema.statics.updateSkippeDays = () => {
+
+    console.log("I am in updateSkippeDays in ROUTER");
+
+    BrickType.find(
+        {
+            'status': 1,
+            'type': 2,
+            '$or': [   
+                {'$and': [
+                    { 'allowedSkipDays': {$exists: true} },
+                    { 'skippedDays': {$exists: false} }
+                ]},                
+                { $where: "this.allowedSkipDays > this.skippedDays" }
+            ]
+        }
+    )
+    .then(brickTypesForUpdating => {
+
+        console.log("found a few SKIPPED - ", brickTypesForUpdating.length);
+        
+        brickTypesForUpdating.forEach((brickType)=>{
+            var yesterday = new Date();
+            yesterday = new Date(yesterday.getFullYear(), yesterday.getMonth(), yesterday.getDate() - 1);
+            yesterday.setHours(0,0,0,0);
+            console.log(" yesterday = ", yesterday);
+
+            var yesterday23 = new Date();
+            yesterday23 = new Date(yesterday23.getFullYear(), yesterday23.getMonth(), yesterday23.getDate() - 1);
+            yesterday23.setHours(23,59,59,0);
+            console.log(" yesterday23 = ", yesterday23);
+
+            console.log("---------------------------------- CURRENT BRICK TYPE is "+brickType.name+"-------- allowed days is "+brickType.allowedSkipDays+"------------skipped days is "+brickType.skippedDays+"-----------")
+
+            /// HERE WE NEED TO CHECK WHETHER THE USER MARK THIS brickType yesterday.
+            Brick.find(
+                {
+                    'brickType': brickType._id,
+                    'date': {
+                        '$gte': yesterday, 
+                        '$lt': yesterday23 
+                    },
+                }
+            )
+            .then(yesterdaysBrick => {
+                console.log("  +++++++++++++++ yesterdaysBrick +++++++++++++++++", yesterdaysBrick);
+
+                if(!yesterdaysBrick || yesterdaysBrick.length == 0){
+                    if (brickType.skippedDays + 1 >= brickType.allowedSkipDays){
+                        BrickType.update({'_id': brickType._id}, {'status': 4}, (err, updateBrickType) => {
+                            console.log("!!!!!!!!!!!!!!!!!!! HEY I CHANGE STATUS FOR IT !!!!!!!!!!!!!!!!!!!!!", updateBrickType);
+                        }); 
+                    }
+                    BrickType.update({'_id': brickType._id},{ $inc:{'skippedDays': 1}}, (err, updateBrickType) => {
+                        console.log("!!!!!!!!!!!!!!!!!!! HEY I inc HIM !!!!!!!!!!!!!!!!!!!!!", updateBrickType);
+                    }); 
+                }
+            });
+        });
+         
+    });
 }
 
 const BrickType = mongoose.model('BrickType', brickTypeSchema, 'BrickTypes');
-module.exports = BrickType;
+module.exports = BrickType; 
+
+const Brick = require('./brick');

@@ -5,8 +5,9 @@
         <mat-checkbox [(ngModel)]="isRemovedShown" (change)="showRemoved()">Показать удаленные</mat-checkbox> -->
         <mat-checkbox [(ngModel)]="isSortBrickType" >Сортировать</mat-checkbox>
         <mat-checkbox [(ngModel)]="isRemovedShown" >Показать удаленные</mat-checkbox>
+        
     </div>
-    
+    <!-- <div (click)="updateSkippedDaysForPeriod()">RECOUNT SKIPP DAYS</div> -->
     <!-- LIST of BRICK TYPE-->
     <div class="brick-type-card"
         *ngFor="let brickType of filterBrickType() | async"
@@ -51,7 +52,12 @@
                         </div> 
                     </span>
                 </div>
-                <div>Статус</div>
+                <div class="status-on-card text-shadow hard-box-shadow" [ngClass]="{'active-status': brickType.status == 1, 'closed-status': brickType.status == 2, 'successed-status': brickType.status == 3, 'failed-status': brickType.status == 4 }">
+                    <div *ngIf="brickType.status == 1" class="active-status">Active</div>
+                    <div *ngIf="brickType.status == 2" class="closed-status">Closed</div>
+                    <div *ngIf="brickType.status == 3" class="successed-status">Successed</div>
+                    <div *ngIf="brickType.status == 4" class="failed-status">Failed</div>
+                </div>
                 <div>
                     <span class="text-shadow brick-type-type"
                         [ngClass]="{'brick-in-calendar': brickType && brickType.type && brickType.type == 1, 'brick-in-calendar-arrow': brickType && brickType.type && brickType.type == 2}">

@@ -169,4 +169,14 @@ export class BrickTypeCardsCentreComponent implements OnInit {
                 })
             );
     }
+
+    // here just only for test 
+    updateSkippedDaysForPeriod(){
+        debugger;
+        this.brickTypeService.updateSkippedDays()
+            .subscribe((results: any)=> {
+                debugger;
+                console.log(results);
+            });
+    }
 }

@@ -61,7 +61,7 @@ export function reducer(
 
 export const getIds = (state: State) => state.ids;
 export const getCategories = (state: State) => {
-    debugger;
+    //debugger;
     return state.categories;
 }
 export const getSelected = (state: State) => state.selected;

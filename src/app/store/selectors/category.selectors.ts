@@ -86,7 +86,7 @@ export const getSelectedCategory = createSelector(
 export const getAllCategories = createSelector(
     getCategoryStore,
     (categoryStore: fromCategories.State) => {
-        debugger;
+        //debugger;
         console.log("************ I AM IN SELECTOR getAllCategories ********************")
         return Object.values(categoryStore.categories);
     }

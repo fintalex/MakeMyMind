@@ -71,6 +71,7 @@ router.put('/', (req, res, next) => {
     });
 });
 
+// DELETE BrickType
 router.delete('/:id', function(req, res) {
     console.log('Deleting BrickType');
     BrickType.softDeleteBrickType(req.params.id, (err, deletedBrickType) => {
@@ -80,6 +81,21 @@ router.delete('/:id', function(req, res) {
             res.json(deletedBrickType);
         }
     })
+});
+
+// POST update SkippedDays for ALL BRICK TYPES
+router.post('/updateskippeddays', (req, res, next) => {
+    let response = {success: true};
+
+    console.log("updateskippeddays HERE");
+
+    BrickType.updateSkippeDays((err, result) => {
+        if (err){
+            console.log('Error posting brickType -', err);
+        } else {
+            res.json(result);
+        }
+    });
 });
 
 

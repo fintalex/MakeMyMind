@@ -106,7 +106,7 @@ export function createTranslateLoader(http: HttpClient) {
         DateRu, CapitalizePipe
     ],
     entryComponents: [BrickModalComponent, BrickMultyModalComponent, ConfirmationModalComponent, BottomSheetComponent,
-        //BrickTypeModalComponent
+        BrickTypeModalComponent
     ],
     imports: [
         BrowserModule,

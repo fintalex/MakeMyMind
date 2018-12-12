@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const _ = require('underscore');
-const BrickType = require('./brickType');
+
 
 const brickSchema = mongoose.Schema({
     description: {
@@ -178,6 +178,7 @@ brickSchema.statics.addBrickMulty = (bricks, callback) => {
                 .then((createdBrick)=> { 
                     console.log("--createdBrick BEFORE POPULATE --------", createdBrick);
 
+                    console.log("BrickType is - ", BrickType);
                     // HERE MUST BE a function for INCREMENTING COUNT for BrickType.countMarked
                     BrickType.updateCountMarked(createdBrick.brickType, 1, (err, updateBrickType)=> {
                         console.log("!!!!!!!!!!!!!!!!!!! HEY I INCREMENTED HIM !!!!!!!!!!!!!!!!!!!!!", updateBrickType);
@@ -291,3 +292,5 @@ brickSchema.statics.deleteBrickType = (id, callback) => {
 
 const Brick = mongoose.model('Brick', brickSchema, 'Bricks');
 module.exports = Brick;
+
+const BrickType = require('./brickType');

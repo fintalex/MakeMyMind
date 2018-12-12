@@ -37,4 +37,8 @@ export class BrickTypeService {
             //.map((res: Response) => res.json());
     }
 
+    // this method we need to start once a day in the night (at 00:00)
+    updateSkippedDays(){
+        return this.http.post<any>('/api/brickTypes/updateskippeddays', {});
+    }
 }
