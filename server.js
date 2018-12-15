@@ -7,13 +7,14 @@ var http = require('http');
 var brickType = require('./server/models/brickType');
 var schedule = require('node-schedule');
 
-var j = schedule.scheduleJob('0 0 5 * * *', ()=>{
-    console.log("LOG every 1 minute when 30 second is");
-    brickType.updateSkippeDays((err, result) => {
-        if (err){
-            console.log('Error posting brickType -', err);
-        } 
-    });
+var j = schedule.scheduleJob('30 * * * * *', (fireDate) => {
+    //console.log("LOG every 1 minute when 30 second is");
+    console.log('This job was supposed to run at ' + fireDate + ', but actually ran at ' + new Date());
+    // brickType.updateSkippeDays((err, result) => {
+    //     if (err){
+    //         console.log('Error posting brickType -', err);
+    //     } 
+    // });
 });
 // var j = schedule.scheduleJob('30 * * * * *', function(){
 //     console.log('The answer to life, the universe, and everything!');
