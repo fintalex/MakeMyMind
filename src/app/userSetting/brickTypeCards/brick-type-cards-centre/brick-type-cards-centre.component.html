@@ -55,7 +55,7 @@
                 <div class="status-on-card text-shadow hard-box-shadow" [ngClass]="{'active-status': brickType.status == 1, 'closed-status': brickType.status == 2, 'successed-status': brickType.status == 3, 'failed-status': brickType.status == 4 }">
                     <div *ngIf="brickType.status == 1" class="active-status">Active</div>
                     <div *ngIf="brickType.status == 2" class="closed-status">Closed</div>
-                    <div *ngIf="brickType.status == 3" class="successed-status">Successed</div>
+                    <div *ngIf="brickType.status == 3" class="successed-status">Win</div>
                     <div *ngIf="brickType.status == 4" class="failed-status">Failed</div>
                 </div>
                 <div>

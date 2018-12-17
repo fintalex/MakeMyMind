@@ -124,12 +124,13 @@ body {
     width: 270px!important;
     height: 250px!important;
     min-width: 100%!important;
+    background: $contextBackground;
 }
 .cdk-overlay-pane{
     transform: none!important;
 }
 // ============================== Mat-Context ====================================
-.mat-menu-content, .mat-dialog-container, .mat-select-content, .mat-autocomplete-panel{
+.mat-menu-content, .mat-dialog-container, .mat-select-content, .mat-autocomplete-panel, .mat-select-panel{
     background: $contextBackground;
     color: $textColor;
     span, button{
