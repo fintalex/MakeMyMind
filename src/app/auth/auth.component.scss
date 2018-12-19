@@ -1,7 +1,12 @@
     
-.auth-form {
-    width: 700px;
+.auth-container{
+    max-width: 360px;
+    max-width: 700px;
     margin: 10px auto;
+}
+
+.auth-form {
+    margin: 10px;
     form{
         margin: 10px;
         display: flex;

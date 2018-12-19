@@ -41,7 +41,7 @@ export class BrickMultyModalComponent implements OnInit {
     ngOnInit() {
         this.curDate = this.datePipe.transform(this.data.curBrick.date, 'dd.MM.yyyy');
 
-        this.existentBrickTypes = this.data.brickTypes;
+        this.existentBrickTypes = _.filter(this.data.brickTypes, (brickType: any) => brickType.status == 1);
         
         if(this.data.curBrick._id){
             var curBrickInExistent = _.find(this.existentBrickTypes, (br:any) => { 

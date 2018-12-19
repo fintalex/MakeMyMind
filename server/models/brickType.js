@@ -126,13 +126,37 @@ brickTypeSchema.statics.softDeleteBrickType = (id, callback) => {
 
 /// HERE in the count we can pass 1 or -1 if we want to INCREMENT or DECREMENT 
 brickTypeSchema.statics.updateCountMarked = (id, count, callback) => {
-    console.log("----- HEY INCREMENTING --- ID = " + id + " and COUNT = " + count);
-    BrickType.update({'_id': id}, 
-                { $inc: 
-                    {
-                        'countMarked': count
-                    }
-                }, callback);  
+    
+    BrickType.findOne({'_id': id})
+        .then(brickTypesForUpdating => {
+
+            console.log("+++++++++++++++++++brickTypesForUpdating+++++++++++++",brickTypesForUpdating);
+
+
+            var updateCondition = { $inc: 
+                {
+                    'countMarked': count
+                }
+            };
+
+            console.log("bbrickTypesForUpdating.countMarked + 1 = ", brickTypesForUpdating.countMarked + 1);
+            console.log("brickTypesForUpdating.neededDays = ", brickTypesForUpdating.neededDays);
+            console.log("brickTypesForUpdating.countMarked + 1 >= brickTypesForUpdating.neededDays = ", brickTypesForUpdating.countMarked + 1 >= brickTypesForUpdating.neededDays);
+            
+            if (brickTypesForUpdating.countMarked + count >= brickTypesForUpdating.neededDays){
+                
+                updateCondition.$set =
+                {
+                    'status': 3
+                };
+            }
+
+            console.log(" _________________updateCondition______________", updateCondition);
+            
+
+            BrickType.update({'_id': id}, 
+                updateCondition, callback);  
+        });
 } 
 
 /// HERE we must update all skippedDays for ALL BrickTypes (in the future it may take many time, and need to refactor it method)
