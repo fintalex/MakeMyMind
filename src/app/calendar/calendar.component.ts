@@ -15,6 +15,9 @@ import { UserService } from '../services/user.service';
 import { BrickMultyModalComponent } from '../brick/brick-multy-modal/brick-multy-modal.component';
 import { ComponentType } from '@angular/cdk/portal';
 
+import { Store, select } from '@ngrx/store';
+import * as fromBrickTypeSelectors from '../store/selectors/brickType.selectors';
+import * as brickTypeAction from '../store/actions/brickTypes';
 
 @Component({
     selector: 'calendar',
@@ -28,6 +31,7 @@ export class CalendarComponent implements OnInit {
     brickInMonth: Brick[];
     curDate: Date = new Date();
     filteredHabbits = [];
+    filteredCategories = [];
 
     curNick: string;
     nicknameForSideBar: string;
@@ -44,12 +48,14 @@ export class CalendarComponent implements OnInit {
         private router: Router,
         private activeRoute: ActivatedRoute,
         private bottomeSheet: MatBottomSheet,
-        private modalDialogs: DialogService
+        private modalDialogs: DialogService,
+        private store: Store<fromBrickTypeSelectors.State>
     ) {}
 
     ngOnInit() {
         this.activeRoute.params.subscribe(params => {     
-            this.filteredHabbits = [];       
+            this.filteredHabbits = []; 
+            this.filteredCategories = [];      
             this.updateWall()
         });
 
@@ -89,7 +95,7 @@ export class CalendarComponent implements OnInit {
 
     getBricksAndShowInMonth(){  
         
-        this.brickService.getBricksForMonth(this.curDate, this.curNick, this.filteredHabbits)
+        this.brickService.getBricksForMonth(this.curDate, this.curNick, this.filteredHabbits, this.filteredCategories)
             .subscribe((allBricksInMonth: any) => {
                 console.log("this.curDate", this.curDate);
                 console.log("this.curNick", this.curNick);
@@ -174,6 +180,8 @@ export class CalendarComponent implements OnInit {
 
     openModal(brick: Brick, day: any){
 
+        //var initialBrickTypeId = brick.brickType._id;
+
         var modalComponent: any = brick._id ? BrickModalComponent : BrickMultyModalComponent;
         
         var dialogRef = this.dialog.open(modalComponent, {
@@ -192,17 +200,21 @@ export class CalendarComponent implements OnInit {
             if (result.status == 1) {
                 result.bricksArray.forEach(curNewBrick => {
                     day.bricks.push(curNewBrick);
+                    this.store.dispatch(new brickTypeAction.UpdateBrickTypeInStore(curNewBrick.brickType._id));
                 });                
             } else if (result.status == 3) {
                 for (let i = 0; i < day.bricks.length; i++) {
                     if (day.bricks[i]._id === result._id) {
                         day.bricks.splice(i, 1);
+                        this.store.dispatch(new brickTypeAction.UpdateBrickTypeInStore(result.brickType));
                     }
                 }
             } else if (result.status = 2) {
+                this.store.dispatch(new brickTypeAction.UpdateBrickTypeInStore(brick.brickType._id));
                 for (let i = 0; i < day.bricks.length; i++) {
                     if (day.bricks[i]._id === result._id) {
-                        day.bricks[i] = result;;
+                        day.bricks[i] = result;
+                        this.store.dispatch(new brickTypeAction.UpdateBrickTypeInStore(result.brickType._id));
                     }
                 }
             }
@@ -210,8 +222,12 @@ export class CalendarComponent implements OnInit {
     }
 
     filterByHabbit(habbitsList){
-        console.log("LIST of HABBITS", habbitsList);
         this.filteredHabbits = habbitsList;
+        this.getBricksAndShowInMonth();
+    }
+
+    filterByCategory(categoryList){
+        this.filteredCategories = categoryList;
         this.getBricksAndShowInMonth();
     }
 

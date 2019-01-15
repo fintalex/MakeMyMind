@@ -2,16 +2,18 @@ import { Action } from '@ngrx/store';
 import { BrickType } from '../../models/brick-type.model';
 
 export enum BrickTypeActionTypes {
-    brickTypeSelect        = '[BrickTypes] Select',
-    brickTypeAdd           = '[BrickTypes] Add',
-    brickTypeAddSuccess    = '[BrickTypes] Add Success',
-    brickTypeLoad          = '[BrickTypes] Load',
-    brickTypeLoadSuccess   = '[BrickTypes] Load success', 
-    brickTypeRemove        = '[BrickTypes] Remove',
-    brickTypeRemoveSuccess = '[BrickTypes] Remove Success',
-    brickTypeUpdate        = '[BrickTypes] Update',
-    brickTypeUpdateSuccess = '[BrickTypes] Update Success',
-    brickTypeError         = '[BrickTypes] Error',
+    brickTypeSelect          = '[BrickTypes] Select',
+    brickTypeAdd             = '[BrickTypes] Add',
+    brickTypeAddSuccess      = '[BrickTypes] Add Success',
+    brickTypeLoad            = '[BrickTypes] Load',
+    brickTypeLoadAfterReload = '[BrickTypes] After ReLoad',
+    brickTypeLoadSuccess     = '[BrickTypes] Load success', 
+    brickTypeRemove          = '[BrickTypes] Remove',
+    brickTypeRemoveSuccess   = '[BrickTypes] Remove Success',
+    brickTypeUpdate          = '[BrickTypes] Update',
+    brickTypeUpdateInStore   = '[BrickTypes] Update In Store',
+    brickTypeUpdateSuccess   = '[BrickTypes] Update Success',
+    brickTypeError           = '[BrickTypes] Error',
 }
 
 // SELECT
@@ -31,8 +33,13 @@ export class AddBrickTypeSuccess implements Action {
 }
 
 // LOAD
+export class LoadBrickTypesAfterReload implements Action {
+    readonly type = BrickTypeActionTypes.brickTypeLoadAfterReload;
+    constructor() {}
+}
 export class LoadBrickTypes implements Action {
     readonly type = BrickTypeActionTypes.brickTypeLoad;
+    constructor() {}
 }
 export class LoadBrickTypesSuccess implements Action {
     readonly type = BrickTypeActionTypes.brickTypeLoadSuccess;
@@ -58,6 +65,13 @@ export class UpdateBrickTypeSuccess implements Action {
     readonly type = BrickTypeActionTypes.brickTypeUpdateSuccess;
     constructor(public brickType: BrickType) { }
 }
+export class UpdateBrickTypeInStore implements Action {
+    readonly type = BrickTypeActionTypes.brickTypeUpdateInStore;
+    
+    constructor(public id: string) { 
+        debugger;
+    }
+}
 
 // ERROR
 export class ErrorBrickType implements Action {
@@ -70,6 +84,7 @@ export type Action =
    | AddBrickTypeSuccess
    | Select 
    | LoadBrickTypes 
+   | LoadBrickTypesAfterReload
    | LoadBrickTypesSuccess
    | RemoveBrickType
    | RemoveBrickTypeSuccess

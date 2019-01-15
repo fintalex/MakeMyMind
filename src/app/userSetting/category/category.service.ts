@@ -15,6 +15,10 @@ export class CategoryService {
 
     
     getCategories(){
+        debugger;
+        if (!this.authService.CurrentUser){
+            return;
+        }
         return this.http.get<any>('/api/categories/getByUserId/' + this.authService.CurrentUser._id);
             // .map((res: Response) => {
             //     return res.json();

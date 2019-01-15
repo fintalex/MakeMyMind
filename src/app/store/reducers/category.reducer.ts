@@ -40,7 +40,7 @@ export function reducer(
             return {
                 categories: categories,
                 selected: null,
-                loaded: false,
+                loaded: true,
                 loading: false,
                 ids: categories.map(cat => cat._id)
             };

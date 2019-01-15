@@ -118,7 +118,7 @@ export class BrickTypeCardsCentreComponent implements OnInit {
     }
 
     onUpdateBrickType(brickType: BrickType){
-        this.store.dispatch(new brickTypeAction.UpdateBrickType(brickType))
+        this.store.dispatch(new brickTypeAction.UpdateBrickType(brickType));
         // var allBrickTypes = this.existentBrickTypes;
         // this.brickTypeService.updateBrickType(brickType)
         //     .subscribe((updatedBrickType: any) => {

@@ -94,5 +94,8 @@ export const getAllCategories = createSelector(
 
 export const getCategoriesLoaded = createSelector(
     getCategoryStore,
-    (categoryStore: fromCategories.State) => categoryStore.loaded
+    (categoryStore: fromCategories.State) => {
+        debugger;
+        return categoryStore.loaded;
+    }
 );

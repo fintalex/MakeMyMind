@@ -29,7 +29,7 @@
                         <mat-checkbox 
                             class="checkbox-content"
                             [(ngModel)]="category.ticked"
-                            (change)="tickCategory(category)">
+                            (change)="tickCategoryCheckBox(category)">
                                 <span class="checkbox-span">{{category.name}}</span>
                                 <span class="brick-in-calendar text-shadow float-right brick-in-sidebar" 
                                     [ngStyle]="{'background-color': category.color}">                                      
@@ -88,15 +88,12 @@
                 </ul>
             </mat-expansion-panel>
         
-            <mat-expansion-panel (opened)="panelOpenState = true"
+            <!-- <mat-expansion-panel (opened)="panelOpenState = true"
                                 (closed)="panelOpenState = false">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         Логи
                     </mat-panel-title>
-                    <!-- <mat-panel-description>
-                        Currently I am {{panelOpenState ? 'open' : 'closed'}}
-                    </mat-panel-description> -->
                 </mat-expansion-panel-header>
                 <ul>
                     <li>Лог 1</li>
@@ -105,7 +102,7 @@
                     <li>Лог 4</li>
                     <li>Лог 5</li>
                 </ul>
-            </mat-expansion-panel>
+            </mat-expansion-panel> -->
         </div>
     </div>
 </div>

@@ -26,6 +26,7 @@ export function reducer(
 {
     switch (action.type){
         // Load Start for All Brick Types (for User)
+        case BrickTypeActions.BrickTypeActionTypes.brickTypeLoadAfterReload:
         case BrickTypeActions.BrickTypeActionTypes.brickTypeLoad: {
             /// maybe we need here to load our brickTypes from our common service
             /// but all of these must pure function
@@ -42,7 +43,7 @@ export function reducer(
             return {
                 brickTypes: brickTypes,
                 selected: null,
-                loaded: false,
+                loaded: true,
                 loading: false,
                 ids: brickTypes.map(cat => cat._id)
             };
@@ -88,7 +89,7 @@ export function reducer(
             };
         }
 
-        // Add Brick Type Success
+        // Update Brick Type Success
         case BrickTypeActions.BrickTypeActionTypes.brickTypeUpdateSuccess: {
             const updatedBrickType = action.brickType;
             

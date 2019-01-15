@@ -13,12 +13,13 @@ export class BrickService {
         private authService: AuthService
     ) { }
 
-    getBricksForMonth(date: any, nick: string, filteredHabbits: any[]) {
+    getBricksForMonth(date: any, nick: string, filteredHabbits: any[], filteredCategories: any[]) {
         var dto = {
             userId: this.authService.CurrentUser._id,
             date: date,
             nick: nick,
-            habbits: (filteredHabbits && filteredHabbits.length > 0) ? filteredHabbits : null
+            habbits: (filteredHabbits && filteredHabbits.length > 0) ? filteredHabbits : null,
+            categories: (filteredCategories && filteredCategories.length > 0) ? filteredCategories : null
         };
         return this.http.post<any>('/api/bricks/getForMonth', dto);
             // .map((res: Response) => {

@@ -1,6 +1,6 @@
 export class Brick {
     _id: string;
-    brickType: string;
+    brickType: any;
     description: string;
     date: Date;
     user: string;

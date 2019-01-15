@@ -33,7 +33,9 @@ router.get('/getByNickname/:nickname', function(req, res, next){
 // GET BrickType by id 
 router.get('/:id', function(req, res, next){
     //console.log("GET BrickType by id API");
+    console.log("GET brickType API", req.params.id);
     BrickType.getBrickTypeById(req.params.id, (err, brickType) => {
+        console.log("GET brickType result", brickType);
         if (err){
             console.log('Error getting BrickType by id');
         } else {

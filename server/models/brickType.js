@@ -41,10 +41,6 @@ brickTypeSchema.statics.getAllBrickTypesByUserId = (userId, callback) => {
     BrickType.find(
         {
             'user': userId, 
-            // $or: [
-            //     {'isRemoved': {$exists: false}}, 
-            //     {'isRemoved': false}
-            // ]
         }, callback)
         .populate('category');
 };
@@ -97,8 +93,12 @@ brickTypeSchema.statics.getAllBrickTypesByNickname = (nickname, callback) => {
         .exec(callback);
 };
 
-brickTypeSchema.statics.getBrickTypeById = (brickTypeId, calllback) => {
-    BrickType.find({'_id': brickTypeId}, calllback);
+brickTypeSchema.statics.getBrickTypeById = (brickTypeId, callback) => {
+        BrickType.findOne(
+            {
+                '_id': brickTypeId
+            }, callback)
+            .populate('category');
 };
 
 brickTypeSchema.statics.addBrickType = (brickType, callback) => {

@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs/observable/of';
-import { map, switchMap, catchError, startWith } from 'rxjs/operators';
+import { map, switchMap, catchError, startWith, mergeMap } from 'rxjs/operators';
 
-import { BrickTypeActionTypes, LoadBrickTypesSuccess, ErrorBrickType, LoadBrickTypes, 
-    RemoveBrickType, AddBrickType, AddBrickTypeSuccess, RemoveBrickTypeSuccess, UpdateBrickType, UpdateBrickTypeSuccess} from '../../store/actions/brickTypes';
+import { BrickTypeActionTypes, LoadBrickTypesSuccess, ErrorBrickType, LoadBrickTypes, LoadBrickTypesAfterReload,
+    RemoveBrickType, AddBrickType, AddBrickTypeSuccess, RemoveBrickTypeSuccess, UpdateBrickTypeInStore, UpdateBrickType, UpdateBrickTypeSuccess} from '../../store/actions/brickTypes';
 import { BrickTypeService } from '../../userSetting/brickType/brickType.service';
 
 @Injectable()
@@ -18,19 +18,26 @@ export class BrickTypeEffects {
     @Effect()
     loadBrickType$ = this.actions$.pipe(
         ofType(BrickTypeActionTypes.brickTypeLoad),
-        startWith(new LoadBrickTypes()),
-        switchMap(() => {
-            return this.brickTypeService
-                .getBrickTypes()
-                .pipe(
-                    map(brickTypes => {
-                        return new LoadBrickTypesSuccess(brickTypes);
-                    }),
-                    catchError(error => of(new ErrorBrickType(error)))
-                );
-            }
-        )
+        switchMap((action: LoadBrickTypes) => this.loadBrickTypes())
     );
+
+    loadBrickTypeAfterReload$ = this.actions$.pipe(
+        ofType(BrickTypeActionTypes.brickTypeLoadAfterReload),
+        startWith(new LoadBrickTypesAfterReload()),
+        switchMap(() => this.loadBrickTypes())
+    );
+
+    loadBrickTypes() {
+        return this.brickTypeService
+            .getBrickTypes()
+            .pipe(
+                map(brickTypes => {
+                    debugger;
+                    return new LoadBrickTypesSuccess(brickTypes);
+                }),
+                catchError(error => of(new ErrorBrickType(error)))
+            );
+        }    
 
     @Effect()
     removeBrickType$ = this.actions$.pipe(
@@ -72,6 +79,23 @@ export class BrickTypeEffects {
                     map(updatedBrickType => {
                         console.log("IN EFFECTS - ", updatedBrickType);
                         return new UpdateBrickTypeSuccess(updatedBrickType);
+                    })
+                )
+            )
+    );
+
+    // defenetly we don't need to use here - switchMap
+    @Effect()
+    updateBrickTypeInStore$ = this.actions$.pipe(
+        ofType(BrickTypeActionTypes.brickTypeUpdateInStore),
+        mergeMap((action: UpdateBrickTypeInStore) => 
+            this.brickTypeService
+                .getBrickType(action.id)
+                .pipe(
+                    map(brickType => {
+                        debugger;
+                        console.log("IN EFFECTS - UpdateBrickTypeInStore -", brickType);
+                        return new UpdateBrickTypeSuccess(brickType);
                     })
                 )
             )

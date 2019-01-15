@@ -17,13 +17,13 @@ export class CategoryEffects {
     @Effect()
     loadCategories$ = this.actions$.pipe(
         ofType(CategoryActionTypes.categoryLoad),
-        startWith(new LoadCategories()),
-        switchMap(() => {
+        //startWith(new LoadCategories()),
+        switchMap((action: LoadCategories) => {
             return this.categoryService
                 .getCategories()
                 .pipe(
                     map(categories => {
-                        console.log("***************** I AM IN LOAD CATEGORIES EFFECT ****************")
+                        debugger;
                         return new LoadCategoriesSuccess(categories);
                     }),
                     catchError(error => of(new ErrorCategory(error)))

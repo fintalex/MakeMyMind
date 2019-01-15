@@ -3,10 +3,12 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 
 import { Observable ,  of } from 'rxjs';
 import { switchMap, catchError, tap, filter, take } from 'rxjs/operators';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import * as fromReducers from './../store/reducers';
-import * as fromSelectors from './../store/selectors/category.selectors';
+import * as fromCategorySelectors from './../store/selectors/category.selectors';
+import * as fromBrickTypeSelectors from './../store/selectors/brickType.selectors';
 import { LoadCategories } from './../store/actions/categories';
+import { LoadBrickTypes } from '../store/actions/brickTypes';
 
 @Injectable()
 export class GuardService implements CanActivate {
@@ -20,6 +22,7 @@ export class GuardService implements CanActivate {
         // here we must implement it with Services
         if (localStorage.getItem('currentUser')) {
             // logged in so return true
+            this.checkStore();
             return true;
             // return this.checkStore().pipe(
             //     switchMap(() => of(true)),
@@ -34,16 +37,19 @@ export class GuardService implements CanActivate {
         return false;    
     }
 
-    checkStore(): Observable<boolean> {
-        return this.store.select(fromSelectors.getCategoriesLoaded).pipe(
-            tap(loaded => {
+    checkStore() {
+        this.store.select(fromCategorySelectors.getCategoriesLoaded)
+            .subscribe((loaded)=> {
                 if (!loaded) {
-                    debugger;
                     this.store.dispatch(new LoadCategories());
                 }
-            }),
-            filter(loaded => loaded),
-            take(1)
-        );
+            });
+
+        this.store.select(fromBrickTypeSelectors.getBrickTypesLoaded)
+            .subscribe((loaded)=> {
+                if (!loaded) {
+                    this.store.dispatch(new LoadBrickTypes());
+                }
+            });
     }
 }

@@ -14,11 +14,20 @@ export class BrickTypeService {
     ) { }
 
     getBrickTypes(curNick?){
-        
+        debugger;
+        if (!this.authService.CurrentUser){
+            return;
+        }
         var apiString = curNick ? ('/api/brickTypes/getByNickname/' + curNick) 
                                 : ('/api/brickTypes/getByUserId/' + this.authService.CurrentUser._id);
 
         return this.http.get<any>(apiString);
+            //.map((res: Response) => res.json());
+    }
+
+    getBrickType(id){
+        debugger;
+        return this.http.get<any>('/api/brickTypes/' + id);
             //.map((res: Response) => res.json());
     }
 

@@ -77,6 +77,16 @@ body {
         font-size: 18px;
     }
 }
+// =================================== BUTTONS =================================
+.navigate-btn{
+    background: #0097a7;
+    //padding: 3px 16px;
+    line-height: 26px!important;
+    height: 26px;
+}
+.navigate-btn:hover{
+    background: #007380;
+}
 // ================================== mat-checkbox ==================================
 .mat-checkbox-frame, .mat-option-pseudo-checkbox{
     border-color: white!important;

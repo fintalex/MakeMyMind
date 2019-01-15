@@ -6,6 +6,7 @@ export class Category {
     user?: string;
     updated?: Date;
     brickType?: any;
+    ticked?: boolean;
 
     public constructor(
         fields?: {

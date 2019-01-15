@@ -18,7 +18,7 @@ function daysInMonth (month, year) {
     return new Date(year, month + 1, 0).getDate();
 }
 
-brickSchema.statics.getAllBricksForMonthByUserId = (userId, date, nick, habbits, callback) => {
+brickSchema.statics.getAllBricksForMonthByUserId = (userId, date, nick, habbits, categories, callback) => {
     console.log("Date is = ", date);
     var firstDayInMonth = (new Date(date));
     firstDayInMonth.setDate(0);
@@ -70,6 +70,15 @@ brickSchema.statics.getAllBricksForMonthByUserId = (userId, date, nick, habbits,
         });
 
         matchCondition['brickType._id'] = {$in: mongList};
+    }
+
+    if(categories && categories.length > 0){
+        var mongList = [];
+        _.forEach(categories, (cat)=>{
+            mongList.push(mongoose.Types.ObjectId(cat));
+        });
+
+        matchCondition['category._id'] = {$in: mongList};
     }
 
     console.log("MATHC CONDITION - ", matchCondition);

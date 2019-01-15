@@ -59,13 +59,13 @@ export class BrickTypeCenterComponent implements OnInit {
         var deletedId = id;
         var allBrickTypes = this.existentBrickTypes;
         this.brickTypeService.deleteBrickType(id)
-        .subscribe(deletedBrickType => {
-            for(let i = 0; i < allBrickTypes.length; i++){
-            if(allBrickTypes[i]._id === deletedId){
-                allBrickTypes.splice(i,1);
-            }
-            }
-        });
+            .subscribe(deletedBrickType => {
+                for(let i = 0; i < allBrickTypes.length; i++){
+                    if(allBrickTypes[i]._id === deletedId){
+                        allBrickTypes.splice(i,1);
+                    }
+                }
+            });
         this.selectedBrickType = null;
     }
 

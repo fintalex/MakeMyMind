@@ -21,7 +21,7 @@ import * as brickTypeAction from '../../store/actions/brickTypes';
     templateUrl: './wall-side-nav.component.html',
     styleUrls: ['./wall-side-nav.component.scss'],
     inputs: ['visibleBrickTypes', 'nickName'],
-    outputs: ['tickBrickType']
+    outputs: ['tickBrickType', 'tickCategory']
 })
 export class WallSideNavComponent implements OnInit {
 
@@ -30,6 +30,7 @@ export class WallSideNavComponent implements OnInit {
     userFrends: Frend[];
 
     private tickBrickType = new EventEmitter();
+    private tickCategory = new EventEmitter();
 
     sideBarExpanded: boolean = false;
     habbitExpanded: boolean = false;
@@ -81,11 +82,6 @@ export class WallSideNavComponent implements OnInit {
     }
 
     tickHabbit(habbit: BrickType){
-        // here we need to generate event for parrent component
-        
-        // TODO: before send event we need: 
-        // to MAP only ids of Ticked Habbits.
-        // also need to Untick
 
         var filteredHabbits = [];
        
@@ -119,8 +115,27 @@ export class WallSideNavComponent implements OnInit {
         this.tickBrickType.emit(filteredHabbits);
     }
 
-    tickCategory(category: Category){
+    tickCategoryCheckBox(category: Category){
         // Honestly Ideally, here we need to perform Action for Store - TickCategory
         // And in the store save ticked Category.
+
+        var filteredCategories = [];
+
+        this.categories$
+            .subscribe((categories: Category[]) => {
+                _.forEach(categories, (cat: Category) => {
+                    if(!category._id && cat._id){
+                        cat.ticked = false;
+                    } else if (category._id && !cat._id){
+                        cat.ticked = false;
+                    }
+        
+                    if (cat.ticked && cat._id){
+                        filteredCategories.push(cat._id);
+                    }
+                });
+            });
+
+        this.tickCategory.emit(filteredCategories);
     }
 }

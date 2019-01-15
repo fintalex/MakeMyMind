@@ -8,7 +8,7 @@ var Brick = require('../models/brick');
 router.post('/getForMonth', function(req, res, next){
     console.log("GET all bricks API for Month -", req.body);
 
-    Brick.getAllBricksForMonthByUserId(req.body.userId, req.body.date, req.body.nick, req.body.habbits, (err, bricks) => {
+    Brick.getAllBricksForMonthByUserId(req.body.userId, req.body.date, req.body.nick, req.body.habbits, req.body.categories, (err, bricks) => {
         console.log("Bricks - ", bricks);
         if(err){
             console.log('Error ret bricks');
