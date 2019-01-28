@@ -3,16 +3,24 @@ import { BrickType } from '../../models/brick-type.model';
 
 export enum BrickTypeActionTypes {
     brickTypeSelect          = '[BrickTypes] Select',
+
     brickTypeAdd             = '[BrickTypes] Add',
     brickTypeAddSuccess      = '[BrickTypes] Add Success',
+
+    brickTypeActivate        = '[BrickTypes] Activate',
+    brickTypeActivateSuccess = '[BrickTypes] Activate Success',
+
     brickTypeLoad            = '[BrickTypes] Load',
     brickTypeLoadAfterReload = '[BrickTypes] After ReLoad',
     brickTypeLoadSuccess     = '[BrickTypes] Load success', 
+
     brickTypeRemove          = '[BrickTypes] Remove',
     brickTypeRemoveSuccess   = '[BrickTypes] Remove Success',
+
     brickTypeUpdate          = '[BrickTypes] Update',
     brickTypeUpdateInStore   = '[BrickTypes] Update In Store',
     brickTypeUpdateSuccess   = '[BrickTypes] Update Success',
+
     brickTypeError           = '[BrickTypes] Error',
 }
 
@@ -29,6 +37,16 @@ export class AddBrickType implements Action {
 }
 export class AddBrickTypeSuccess implements Action {
     readonly type = BrickTypeActionTypes.brickTypeAddSuccess;
+    constructor(public payload: BrickType) { }
+}
+
+// Activate 
+export class ActivateBrickType implements Action {
+    readonly type = BrickTypeActionTypes.brickTypeActivate;
+    constructor(public payload: BrickType) { }
+}
+export class ActivateBrickTypeSuccess implements Action {
+    readonly type = BrickTypeActionTypes.brickTypeActivateSuccess;
     constructor(public payload: BrickType) { }
 }
 
@@ -90,4 +108,6 @@ export type Action =
    | RemoveBrickTypeSuccess
    | UpdateBrickType
    | UpdateBrickTypeSuccess
+   | ActivateBrickType
+   | ActivateBrickTypeSuccess
    | ErrorBrickType;

@@ -98,16 +98,32 @@
     </mat-form-field>
 
     <div class="button-container">
-        <button mat-raised-button color="primary" [disabled]='brickTypeDetailsForm.invalid ||
+        <button mat-raised-button color="primary" 
+            *ngIf="brickType && (brickType.status == 4 || brickType.status == 2)"  
+            [disabled]='brickTypeDetailsForm.invalid ||
+              (brickTypeDetailsForm.controls && 
+              brickTypeDetailsForm.controls.sign.value && 
+              !brickTypeDetailsForm.controls.isIcon.value && 
+              brickTypeDetailsForm.controls.sign.value.length > 2)' 
+            (click)="activateBrickType()">{{'Activate' | translate}}</button>
+
+        <button mat-raised-button color="primary" 
+                            *ngIf="!brickType || !brickType._id"  
+                            [disabled]='brickTypeDetailsForm.invalid ||
                               (brickTypeDetailsForm.controls && 
                               brickTypeDetailsForm.controls.sign.value && 
                               !brickTypeDetailsForm.controls.isIcon.value && 
-                              brickTypeDetailsForm.controls.sign.value.length > 2)' (click)="createBrickType()">{{'Add' | translate}}</button>
-        <button mat-raised-button color="primary" *ngIf="brickType && brickType._id" [disabled]='brickTypeDetailsForm.invalid ||
+                              brickTypeDetailsForm.controls.sign.value.length > 2)' 
+                              (click)="createBrickType()">{{'Add' | translate}}</button>
+
+        <button mat-raised-button color="primary" *ngIf="brickType && brickType._id && brickType.status != 4 && brickType.status != 2" [disabled]='brickTypeDetailsForm.invalid ||
                               (brickTypeDetailsForm.controls && 
                               brickTypeDetailsForm.controls.sign.value && 
                               !brickTypeDetailsForm.controls.isIcon.value && 
-                              brickTypeDetailsForm.controls.sign.value.length > 2)' (click)="updateBrickType()">{{'Update' | translate}}</button>
-        <button mat-raised-button color="warn" *ngIf="brickType && brickType._id" (click)="deleteBrickType()">{{'Delete' | translate}}</button>
+                              brickTypeDetailsForm.controls.sign.value.length > 2)' 
+                              (click)="updateBrickType()">{{'Update' | translate}}</button>
+
+        <button mat-raised-button color="warn" *ngIf="brickType && brickType._id && brickType.status != 4 && brickType.status != 2" 
+                (click)="deleteBrickType()">{{'Delete' | translate}}</button>
     </div>
 </form>

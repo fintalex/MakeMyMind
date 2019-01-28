@@ -71,6 +71,36 @@
 
     <section class="section section-dark">
         <h1 class="how-to-work">Как с нами работать?</h1>
+        <mat-carousel
+            maxWidth="1000px"
+            [hideArrows]="false"
+            [hideIndicators]="false"
+            slides="2">
+            <mat-carousel-slide>
+                <div class="step-container white-shadow" routerLink="/category">
+                    <div class="step-header">ШАГ 1:</div>
+                    <div class="step-description">Определи свои сферы влияния</div>
+                    <div class="step-image step-image-category blue-shadow"></div>
+                </div>
+            </mat-carousel-slide>
+
+            <mat-carousel-slide>
+                <div class="step-container white-shadow" routerLink="/bricktype">
+                    <div class="step-header">ШАГ 2:</div>
+                    <div class="step-description">Поставь цели и задай привычки</div>
+                    <div class="step-image step-image-bricktype blue-shadow"></div>
+                </div>
+            </mat-carousel-slide>
+
+            <mat-carousel-slide>
+                <div class="step-container white-shadow" routerLink="/wall">
+                    <div class="step-header">ШАГ 3:</div>
+                    <div class="step-description">Строй свою стену будущего</div>
+                    <div class="step-image step-image-wall blue-shadow"></div>
+                </div>
+            </mat-carousel-slide>
+        </mat-carousel>
+        <!-- 
         <div class="all-steps-container">
             <div class="step-container white-shadow" routerLink="/category">
                 <div class="step-header">ШАГ 1:</div>
@@ -87,22 +117,15 @@
                 <div class="step-description">Строй свою стену будущего</div>
                 <div class="step-image step-image-wall blue-shadow"></div>
             </div>
-        </div>
-        <!-- <h2>Section One</h2>
-        <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus libero rerum dolorem nulla, earum ullam odio tenetur sint. 
-            Illo dolorem commodi maiores iusto a ratione molestiae maxime, veritatis animi officiis obcaecati nisi iure! Tempora nostrum illo dolore 
-            corporis nam autem fuga eligendi sequi blanditiis magnam, eveniet a dolor. Labore tempore voluptatem consequuntur! Neque facere corporis quisquam? 
-            Praesentium nemo, veniam sapiente voluptate hic sit dolore obcaecati porro debitis aspernatur laboriosam nulla quisquam nobis dolor est inventore 
-            deserunt tempora expedita culpa? Optio exercitationem beatae reprehenderit eveniet labore magni distinctio, dignissimos, minus alias autem sed sint nihil, omnis et quas odit dolorum! Deleniti.
-        </p> -->
+        </div> -->
+       
     </section>
     
     <div class="pimg2-container">
         <div class="inspire-words">
             <div class="left-fast">
                 <span class="border">
-                    Ставь цели
+                    Создай привычки
                 </span>
             </div>
             <div class="center-to-right">
@@ -112,7 +135,7 @@
             </div>
             <div class="center-fix">
                 <span class="border">
-                    Распиши план
+                    Отмечай выполненные
                 </span>
             </div>
             <div class="center-to-up">

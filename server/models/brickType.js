@@ -115,6 +115,19 @@ brickTypeSchema.statics.updateBrickType = (id, brickType, callback) => {
         });        
 }
 
+brickTypeSchema.statics.activateBrickType = (id, brickType, callback) => {
+    console.log("I AM IN MODELS activateBrickType - id ", id);
+    brickType.status = 1;
+    brickType.countMarked = 0;
+    brickType.skippedDays = 0;
+    console.log("I AM IN MODELS activateBrickType", brickType);
+    BrickType.findByIdAndUpdate(id, brickType, { new: true})
+        .then((activatedBrickType)=> { 
+            console.log("----------I finished activateBrickType", activatedBrickType);
+            BrickType.populate(activatedBrickType, { path: 'category', model: 'Category' }, callback);
+        });      
+}
+
 brickTypeSchema.statics.softDeleteBrickType = (id, callback) => {
     BrickType.update({'_id': id}, 
                 { $set: 

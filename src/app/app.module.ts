@@ -10,6 +10,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 import { EffectsModule } from '@ngrx/effects';
+import { MatCarouselModule } from '@ngmodule/material-carousel'
 
 // ============================== Services  =============================
 import { CategoryService } from './userSetting/category/category.service';
@@ -115,6 +116,7 @@ export function createTranslateLoader(http: HttpClient) {
         BrowserAnimationsModule,       
         FormsModule, ReactiveFormsModule,
         SharedModule, 
+        MatCarouselModule,
         
         StoreModule.forRoot(reducers),
         EffectsModule.forRoot(effects),

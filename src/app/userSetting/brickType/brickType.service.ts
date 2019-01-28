@@ -41,6 +41,10 @@ export class BrickTypeService {
             //.map((res: Response) => res.json());
     }
 
+    activateBrickType(brickType: BrickType){
+        return this.http.put<any>('/api/brickTypes/activate', brickType);
+    }
+
     deleteBrickType(id){
         return this.http.delete<any>('/api/brickTypes/' + id);
             //.map((res: Response) => res.json());

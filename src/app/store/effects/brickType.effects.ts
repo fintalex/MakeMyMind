@@ -5,7 +5,7 @@ import { of } from 'rxjs/observable/of';
 import { map, switchMap, catchError, startWith, mergeMap } from 'rxjs/operators';
 
 import { BrickTypeActionTypes, LoadBrickTypesSuccess, ErrorBrickType, LoadBrickTypes, LoadBrickTypesAfterReload,
-    RemoveBrickType, AddBrickType, AddBrickTypeSuccess, RemoveBrickTypeSuccess, UpdateBrickTypeInStore, UpdateBrickType, UpdateBrickTypeSuccess} from '../../store/actions/brickTypes';
+    RemoveBrickType, AddBrickType, AddBrickTypeSuccess, RemoveBrickTypeSuccess, UpdateBrickTypeInStore, UpdateBrickType, UpdateBrickTypeSuccess, ActivateBrickType, ActivateBrickTypeSuccess} from '../../store/actions/brickTypes';
 import { BrickTypeService } from '../../userSetting/brickType/brickType.service';
 
 @Injectable()
@@ -79,6 +79,20 @@ export class BrickTypeEffects {
                     map(updatedBrickType => {
                         console.log("IN EFFECTS - ", updatedBrickType);
                         return new UpdateBrickTypeSuccess(updatedBrickType);
+                    })
+                )
+            )
+    );
+
+    @Effect()
+    activateBrickType$ = this.actions$.pipe(
+        ofType(BrickTypeActionTypes.brickTypeActivate),
+        switchMap((action: ActivateBrickType) => 
+            this.brickTypeService
+                .activateBrickType(action.payload)
+                .pipe(
+                    map(activatedBrickType => {
+                        return new ActivateBrickTypeSuccess(activatedBrickType);
                     })
                 )
             )

@@ -17,6 +17,7 @@ import { Store, select } from '@ngrx/store';
 import * as fromBrickTypeSelectors from '../../../store/selectors/brickType.selectors';
 import * as brickTypeAction from '../../../store/actions/brickTypes';
 import { filter, map } from 'rxjs/operators';
+import { CloseBrickTypeResult } from '../../../models/close-brick-type-action';
 
 @Component({
     selector: 'brick-type-cards-centre',
@@ -96,14 +97,20 @@ export class BrickTypeCardsCentreComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe((result: ModalBrickTypeResult) => {
-            if (result.action == 1){
+            if (result.action == CloseBrickTypeResult.Create){
                 this.onCreateBrickType(result.brickType);
-            } else if (result.action == 2){
+            } else if (result.action == CloseBrickTypeResult.Update){
                 this.onUpdateBrickType(result.brickType);
-            } else if (result.action == 3){
+            } else if (result.action == CloseBrickTypeResult.Delete){
                 this.onDeleteBrickType(result.brickTypeId);
+            } else if (result.action == CloseBrickTypeResult.Activate){
+                this.onActivateBrickType(result.brickType);
             }
         });
+    }
+
+    onActivateBrickType(brickType: BrickType){
+        this.store.dispatch(new brickTypeAction.ActivateBrickType(brickType));
     }
 
     onCreateBrickType(brickType: BrickType){

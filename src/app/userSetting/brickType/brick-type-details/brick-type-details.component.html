@@ -70,9 +70,9 @@
                     (brickTypeDetailsForm.controls && 
                     brickTypeDetailsForm.controls.sign.value && 
                     !brickTypeDetailsForm.controls.isIcon.value && 
-                    brickTypeDetailsForm.controls.sign.value.length > 2)'
-                
+                    brickTypeDetailsForm.controls.sign.value.length > 2)'                
                 (click)="createBrickType()">{{'Add' | translate}}</button>
+
         <button mat-raised-button color="primary" 
                 *ngIf="brickType && brickType._id"
                 [disabled]='brickTypeDetailsForm.invalid ||
@@ -81,6 +81,7 @@
                     !brickTypeDetailsForm.controls.isIcon.value && 
                     brickTypeDetailsForm.controls.sign.value.length > 2)'
                 (click)="updateBrickType()">{{'Update' | translate}}</button>
+                
         <button mat-raised-button color="warn" 
                 *ngIf="brickType && brickType._id"
                 (click)="deleteBrickType()">{{'Delete' | translate}}</button>

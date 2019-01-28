@@ -106,6 +106,24 @@ export function reducer(
                 brickTypes: allBrickTypes,
             };
         }
+
+        // Activate Brick Type Success
+        case BrickTypeActions.BrickTypeActionTypes.brickTypeActivateSuccess: {
+            const updatedBrickType = action.payload;
+            
+            var allBrickTypes: BrickType[] = state.brickTypes;
+
+            for(let i = 0; i < allBrickTypes.length; i++){
+                if(allBrickTypes[i]._id === updatedBrickType._id){
+                    allBrickTypes[i] = updatedBrickType;;
+                }
+            }
+            
+            return {
+                ...state,
+                brickTypes: allBrickTypes,
+            };
+        }
         
         default: 
             return state;        

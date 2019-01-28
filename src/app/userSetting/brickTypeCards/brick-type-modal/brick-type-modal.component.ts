@@ -8,6 +8,7 @@ import { ModalParams } from '../../../models/modal-params.model';
 import * as _ from 'underscore';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ModalBrickTypeResult } from '../../../models/dto/modal-brick-type-result';
+import { CloseBrickTypeResult } from '../../../models/close-brick-type-action';
 
 @Component({
   selector: 'app-brick-type-modal',
@@ -131,8 +132,23 @@ export class BrickTypeModalComponent implements OnInit {
         }
     }
 
+    public activateBrickType() {
+        this.brickType.name = this.brickTypeDetailsForm.value.name;
+        this.brickType.category = this.brickTypeDetailsForm.value.category;
+        this.brickType.sign = this.brickTypeDetailsForm.value.sign;
+        this.brickType.ruleDescription = this.brickTypeDetailsForm.value.ruleDescription;
+        this.brickType.isPrivate = this.brickTypeDetailsForm.value.isPrivate;
+        this.brickType.isIcon = this.brickTypeDetailsForm.value.isIcon;
+        this.brickType.type = this.brickTypeDetailsForm.value.type;
+        this.brickType.allowedSkipDays = this.brickTypeDetailsForm.value.allowedSkipDays;
+        this.brickType.neededDays = this.brickTypeDetailsForm.value.neededDays;
+
+        var res: ModalBrickTypeResult = {brickType: this.brickType, action: CloseBrickTypeResult.Activate};
+        this.dialogRef.close(res);
+    }
+
     public createBrickType() {
-        var res: ModalBrickTypeResult = {brickType: this.brickTypeDetailsForm.value, action: 1};
+        var res: ModalBrickTypeResult = {brickType: this.brickTypeDetailsForm.value, action: CloseBrickTypeResult.Create};
         this.dialogRef.close(res);
     }
 
@@ -147,7 +163,7 @@ export class BrickTypeModalComponent implements OnInit {
         this.brickType.allowedSkipDays = this.brickTypeDetailsForm.value.allowedSkipDays;
         this.brickType.neededDays = this.brickTypeDetailsForm.value.neededDays;
 
-        var res: ModalBrickTypeResult = {brickType: this.brickType, action: 2};
+        var res: ModalBrickTypeResult = {brickType: this.brickType, action: CloseBrickTypeResult.Update};
         this.dialogRef.close(res);
     }
 
@@ -160,7 +176,7 @@ export class BrickTypeModalComponent implements OnInit {
         this.dialogs.showConfirm(params)
             .subscribe(result => {
                 if (result){
-                    var res: ModalBrickTypeResult = {brickTypeId: this.brickType._id, action: 3};
+                    var res: ModalBrickTypeResult = {brickTypeId: this.brickType._id, action: CloseBrickTypeResult.Delete};
 
                     this.brickType = null;
                     this.brickTypeDetailsForm.reset();

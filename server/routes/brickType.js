@@ -100,5 +100,20 @@ router.post('/updateskippeddays', (req, res, next) => {
     });
 });
 
+// POST activate BRICK TYPES
+router.put('/activate', (req, res, next) => {
+    let response = {success: true};
+
+    console.log("activate HERE");
+
+    BrickType.activateBrickType(req.body._id, req.body, (err, brickType) => {
+        if (err){
+            console.log('Error activating brickType -', err);
+        } else {
+            res.json(brickType);
+        }
+    });
+});
+
 
 module.exports = router;
