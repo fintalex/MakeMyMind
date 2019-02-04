@@ -5,6 +5,7 @@
 
 @import './custom-theme.scss';
 @import './content/variables';
+@import './content/primeng-styles';
  
 html{
     height: 100%;
@@ -566,3 +567,5 @@ $hexagon-index: 1;
 .chocolate{
     color: chocolate;
 }
+
+

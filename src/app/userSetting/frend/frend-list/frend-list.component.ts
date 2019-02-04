@@ -17,9 +17,18 @@ export class FrendListComponent implements OnInit {
 
     frendList: Frend[];
 
+    cars: any[];
+
     constructor(private dialogs: DialogService) { }
 
     ngOnInit() {
+        this.cars = [
+            {'brand': 'Wolcs', 'year': '2000', 'color': 'red'},
+            {'brand': 'Pego', 'year': '1999', 'color': 'green'},
+            {'brand': 'Nissan', 'year': '1893', 'color': 'red'},
+            {'brand': 'Mazda', 'year': '1989', 'color': 'blackred'},
+            {'brand': 'Porshe', 'year': '1993', 'color': 'yelow'},
+        ];
     }
 
     cancelFrend(frend: Frend){

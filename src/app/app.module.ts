@@ -70,6 +70,12 @@ import { CategoryItemComponent } from './userSetting/categoryNew/category-item/c
 import { CategorySelectedComponent } from './userSetting/categoryNew/category-selected/category-selected.component';
 import { CategoryContainerComponent } from './userSetting/categoryNew/category-container/category-container.component';
 
+import { TableModule } from 'primeng/table';
+import { CarouselModule } from 'primeng/carousel';
+import { OrderListModule } from 'primeng/orderlist';
+import { ButtonModule } from 'primeng/button';
+import { PanelModule } from 'primeng/panel';
+
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -111,6 +117,7 @@ export function createTranslateLoader(http: HttpClient) {
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         HttpModule,
         HttpClientModule,        
         BrowserAnimationsModule,       
@@ -120,6 +127,8 @@ export function createTranslateLoader(http: HttpClient) {
         
         StoreModule.forRoot(reducers),
         EffectsModule.forRoot(effects),
+
+        TableModule,CarouselModule,OrderListModule,ButtonModule,PanelModule,
 
         AppRoutingModule,
         TranslateModule.forRoot({

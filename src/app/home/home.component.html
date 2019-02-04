@@ -71,7 +71,26 @@
 
     <section class="section section-dark">
         <h1 class="how-to-work">Как с нами работать?</h1>
-        <mat-carousel
+
+
+
+        <p-carousel 
+            [value]="slides"
+            headerText="Выполни следующие шаги:"   
+            numVisible="2"            
+            easing="easeOutStrong"
+            circular="circular" 
+            autoplayInterval="8000">
+            <ng-template let-slide pTemplate="slide">
+                <div class="step-container white-shadow" routerLink="{{slide.routerLink}}">
+                    <div class="step-header">{{slide.headerText}}</div>
+                    <div class="step-description">{{slide.description}}</div>
+                    <div class="step-image blue-shadow" [ngClass]="slide.class"></div>
+                </div>
+            </ng-template>
+        </p-carousel>
+
+        <!-- <mat-carousel
             maxWidth="1000px"
             [hideArrows]="false"
             [hideIndicators]="false"
@@ -99,9 +118,9 @@
                     <div class="step-image step-image-wall blue-shadow"></div>
                 </div>
             </mat-carousel-slide>
-        </mat-carousel>
-        <!-- 
-        <div class="all-steps-container">
+        </mat-carousel> -->
+        
+        <!-- <div class="all-steps-container">
             <div class="step-container white-shadow" routerLink="/category">
                 <div class="step-header">ШАГ 1:</div>
                 <div class="step-description">Определи свои сферы влияния</div>

@@ -72,4 +72,45 @@
             </td>
         </tr>
     </table>
+
+    <p-table [value]="frendList">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>_id</th>
+                <th>frendNickname</th>
+                <th>frendUsername</th>
+                <th>statusId</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-frend>
+            <tr>
+                <td>{{frend._id}}</td>
+                <td>{{frend.frendNickname}}</td>
+                <td>{{frend.frendUsername}}</td>
+                <td>{{frend.statusId}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-orderList [value]="cars">
+        <ng-template let-car pTemplate="item">
+            <div class="ui-helper-clearfix">
+                <img src="assets/showcase/images/demo/car/{{car.brand}}.png" style="display:inline-block;margin:2px 0 2px 2px" width="48">
+                <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{car.brand}} - {{car.year}} - {{car.color}}</div>
+            </div>
+        </ng-template>
+    </p-orderList>
+
+    <p-panel>
+        <p-header>
+            <div>
+                Registration Form
+                <button type="button" pButton icon="fa-plus" style="float:right" label="Add">
+                </button>
+                <p-button label="Click" icon="pi pi-check" iconPos="left"></p-button>
+            </div>
+        </p-header>
+    </p-panel>
+
+
 </mat-card>
