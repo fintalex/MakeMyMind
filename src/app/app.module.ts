@@ -117,7 +117,6 @@ export function createTranslateLoader(http: HttpClient) {
     ],
     imports: [
         BrowserModule,
-        BrowserAnimationsModule,
         HttpModule,
         HttpClientModule,        
         BrowserAnimationsModule,       
