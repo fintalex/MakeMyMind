@@ -7,9 +7,12 @@
             <input matInput required placeholder="{{'NameCategory' | translate}}" formControlName="name">
         </mat-form-field>
 
-        <mat-form-field>
-            <input type="color" matInput required placeholder="{{'SetColorForCategory' | translate}}" formControlName="color">
-        </mat-form-field>
+        <!--<mat-form-field>
+             <input type="color" matInput required placeholder="{{'SetColorForCategory' | translate}}" formControlName="color"> -->
+            <p-colorPicker required  matInput
+                [inline]="true"
+                formControlName="color"></p-colorPicker>
+        <!-- </mat-form-field> -->
     </div>
   
     <div class="second-col">

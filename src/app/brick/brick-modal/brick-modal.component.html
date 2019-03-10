@@ -5,44 +5,7 @@
 <form [formGroup]="brickDetailsForm" class="brick-modal-form" >
 
     <mat-form-field>
-            <!-- <input type="text" placeholder="Привычка" 
-                    matInput [formControl]="brickTypeFC" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" >
-                <mat-option *ngFor="let brickType of existentBrickTypes" [value]="brickType">
-                    <div class="color-list-option">
-                        <span class="text-shadow brick-in-option" 
-                            [ngClass]="{'brick-in-calendar': !brickType.type || brickType.type == 1, 'brick-in-calendar-arrow': brickType.type == 2}"
-                            [ngStyle]="{'background-color': brickType.category.color}">
-                            <mat-icon *ngIf="brickType.isIcon "  
-                                        class="brickIcon">
-                                {{brickType.sign}} 
-                            </mat-icon>
-                            <div *ngIf="!brickType.isIcon">{{brickType.sign}}</div> 
-                        </span>
-                        <div>{{ brickType.name }}</div>
-                    </div>
-                </mat-option>
-            </mat-autocomplete> -->
 
-        <!-- <mat-select placeholder="Привычка" 
-                matInput required formControlName="brickType">
-            <mat-option *ngFor="let brickType of existentBrickTypes"
-                        [value]="brickType._id" >
-                <div class="color-list-option">
-                    <span class="brick-in-calendar text-shadow brick-in-option" 
-                        [ngStyle]="{'background-color': brickType.category.color}">
-                        <mat-icon *ngIf="brickType.isIcon "  
-                                    class="brickIcon">
-                            {{brickType.sign}} 
-                        </mat-icon>
-                        <div *ngIf="!brickType.isIcon">{{brickType.sign}}</div> 
-                    </span>
-                    <div>{{ brickType.name }}</div>
-                </div>
-            </mat-option>
-        </mat-select> -->
-
-        
             <mat-select placeholder="Привычка" formControlName="brickType">
                 <mat-select-trigger *ngIf="brickDetailsForm.value.brickType">   
                     <div class="bricks-container" >
@@ -72,17 +35,6 @@
                     </div>
                 </mat-option>
             </mat-select>
-
-          
-                <!-- <mat-select placeholder="Toppings" [formControl]="toppings">
-                  <mat-select-trigger>
-                    {{toppings.value ? toppings.value[0] : ''}}
-                    <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
-                      (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
-                    </span>
-                  </mat-select-trigger>
-                  <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-                </mat-select> -->
           
 
     </mat-form-field>

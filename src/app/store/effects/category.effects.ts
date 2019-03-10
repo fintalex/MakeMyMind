@@ -23,7 +23,7 @@ export class CategoryEffects {
                 .getCategories()
                 .pipe(
                     map(categories => {
-                        debugger;
+                        //debugger;
                         return new LoadCategoriesSuccess(categories);
                     }),
                     catchError(error => of(new ErrorCategory(error)))

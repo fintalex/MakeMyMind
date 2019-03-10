@@ -1,0 +1,28 @@
+.goal-container{
+    max-width: 960px;
+    margin: 10px auto;
+}
+
+.goal-form {
+    margin: 10px;
+    form{
+        margin: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        mat-form-field, .form-field { 
+            width: 60%;
+            margin: 0 10px;
+        }
+        .button-footer{
+            width: 60%;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
+
+.conditionDDL{
+    width: 100%;
+}

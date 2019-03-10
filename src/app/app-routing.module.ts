@@ -14,6 +14,9 @@ import { BrickTypeCenterComponent } from './userSetting/brickType/brick-type-cen
 import { BrickTypeCardsCentreComponent } from './userSetting/brickTypeCards/brick-type-cards-centre/brick-type-cards-centre.component';
 import { FrendComponent } from './userSetting/frend/frend/frend.component';
 import { CategoryContainerComponent } from './userSetting/categoryNew/category-container/category-container.component';
+import { BrickTypePageComponent } from './userSetting/brickTypeCards/brick-type-page/brick-type-page.component';
+import { GoalCenterComponent } from './userSetting/goal/goal-center/goal-center.component';
+import { GoalDetailsPageComponent } from './userSetting/goal/goal-details-page/goal-details-page.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -38,7 +41,9 @@ const routes: Routes = [
     { path: 'brickTypeCards', component:  BrickTypeCardsCentreComponent, canActivate: [GuardService] },
     { path: 'frends', component: FrendComponent, canActivate: [GuardService] },
     { path: 'categoryContainer', component: CategoryContainerComponent, canActivate: [GuardService] },
-
+    { path: 'brickTypePage', component: BrickTypePageComponent, canActivate: [GuardService]}, 
+    { path: 'goals', component: GoalCenterComponent, canActivate: [GuardService]},
+    { path: 'goals/:id', component: GoalDetailsPageComponent, canActivate: [GuardService] },
 ];
 
 @NgModule({

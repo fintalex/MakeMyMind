@@ -14,7 +14,7 @@ export class BrickTypeService {
     ) { }
 
     getBrickTypes(curNick?){
-        debugger;
+        //debugger;
         if (!this.authService.CurrentUser){
             return;
         }
@@ -26,7 +26,7 @@ export class BrickTypeService {
     }
 
     getBrickType(id){
-        debugger;
+        //debugger;
         return this.http.get<any>('/api/brickTypes/' + id);
             //.map((res: Response) => res.json());
     }

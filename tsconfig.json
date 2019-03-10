@@ -14,7 +14,11 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "baseUrl": "src",
+    "paths": {
+      "@testing/*": ["testing/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableIvy": false

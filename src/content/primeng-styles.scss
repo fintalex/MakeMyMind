@@ -1,12 +1,16 @@
 // ======================= .ui-widget-content =========================
-.ui-widget-content, .ui-widget-header{
-    border: none!important;
-    background-color: transparent!important;
+.carousel-container{
+    .ui-widget-content, .ui-widget-header{
+        border: none!important;
+        background-color: transparent!important;
+    }
 }
 
-// .ui-carousel-button, .ui-carousel-page-link{
-//     width: 10px;
-//     height: 10px;
-//     border: 1px solid white;
-//     border-radius: 50%;
+.ui-inputtext{
+    //background-color: !important;
+    color: black;
+}
+
+// .ui-widget, .ui-widget * {
+//     box-sizing: 
 // }

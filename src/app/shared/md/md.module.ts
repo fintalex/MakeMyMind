@@ -6,7 +6,7 @@ import { MatToolbarModule, MatCardModule, MatInputModule, MatButtonModule, MatIc
     MatAutocompleteModule, MatRadioModule,
     MatBottomSheetModule, MatTooltipModule
      } from '@angular/material';
-import {MatExpansionModule} from '@angular/material/expansion';  
+import { MatExpansionModule } from '@angular/material/expansion';  
 
 @NgModule({
   imports: [
@@ -15,6 +15,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatGridListModule, MatListModule, MatSelectModule, MatChipsModule, MatMenuModule, 
     MatDialogModule, MatCheckboxModule, MatFormFieldModule, MatExpansionModule,
     MatAutocompleteModule, MatBottomSheetModule, MatRadioModule, MatTooltipModule
+    
   ],
   declarations: [],
   exports: [
@@ -22,6 +23,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatGridListModule, MatListModule, MatSelectModule, MatChipsModule, MatMenuModule, 
     MatDialogModule,  MatCheckboxModule, MatFormFieldModule, MatExpansionModule,
     MatAutocompleteModule, MatBottomSheetModule, MatRadioModule, MatTooltipModule
+    
   ]
 })
 export class MdModule { }

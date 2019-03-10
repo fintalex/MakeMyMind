@@ -14,23 +14,14 @@ export class UserService{
 
     updateUserLocale(user: User) {
         return this.http.post<any>('/api/users/updatelocale', user);
-            // .map((res: Response) => {
-            //     return res.json();
-            // });
     }
 
     updateUserHelper(user: User) {
         return this.http.post<any>('/api/users/updatehelper', user);
-            // .map((res: Response) => {
-            //     return res.json();
-            // });
     }
 
     getUserDDL(val: String) {
         return this.http.post<any>('/api/users/getusersddl', { str: val, userId: this.authService.CurrentUser._id });
-            // .map((res: Response) => {
-            //     return res.json();
-            // });
     }
 
 }

@@ -1,0 +1,8 @@
+
+
+<span class="text-shadow" 
+    [ngClass]="{'brick-in-calendar': type == 1, 'brick-in-calendar-arrow': type == 2}"
+    [ngStyle]="{'background-color': color}">
+    <mat-icon *ngIf="isIcon" class="brickIcon">{{sign}}</mat-icon>
+    <div *ngIf="!isIcon">{{sign}}</div> 
+</span>

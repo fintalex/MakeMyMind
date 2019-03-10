@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const _ = require('underscore');
 
-
 const brickSchema = mongoose.Schema({
     description: {
         type: String
@@ -193,6 +192,10 @@ brickSchema.statics.addBrickMulty = (bricks, callback) => {
                         console.log("!!!!!!!!!!!!!!!!!!! HEY I INCREMENTED HIM !!!!!!!!!!!!!!!!!!!!!", updateBrickType);
                     });
 
+                    Goal.updateMarkedCount(createdBrick.brickType, 1, (err, updatedGoal)=> {
+                        console.log("!!!!!!!!!!!!!!!!!!! HEY I INCREMENTED Goal Condition !!!!!!!!!!!!!!!!!!!!!", updatedGoal);
+                    });
+
                     Brick.populate(
                         createdBrick, 
                         { 
@@ -303,3 +306,4 @@ const Brick = mongoose.model('Brick', brickSchema, 'Bricks');
 module.exports = Brick;
 
 const BrickType = require('./brickType');
+const Goal = require('./../services/goal');

@@ -87,7 +87,7 @@ export class UpdateBrickTypeInStore implements Action {
     readonly type = BrickTypeActionTypes.brickTypeUpdateInStore;
     
     constructor(public id: string) { 
-        debugger;
+        //debugger;
     }
 }
 

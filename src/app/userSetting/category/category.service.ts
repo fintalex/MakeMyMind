@@ -15,7 +15,7 @@ export class CategoryService {
 
     
     getCategories(){
-        debugger;
+        //debugger;
         if (!this.authService.CurrentUser){
             return;
         }

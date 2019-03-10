@@ -23,7 +23,7 @@ export class AuthComponent implements OnInit {
         username: new FormControl(),
         password: new FormControl()
     });
-    public nameControl: FormControl = new FormControl();
+    //public nameControl: FormControl = new FormControl();
 
     constructor(
         private authService: AuthService, 

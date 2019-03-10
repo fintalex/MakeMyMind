@@ -134,22 +134,6 @@
         border-bottom-left-radius: 0;
     }
 }
-// ============================ SCROLLBAR ======================
-.bricks-container::-webkit-scrollbar{
-    width: 8px;
-} 
-.bricks-container::-webkit-scrollbar-thumb{
-    background-color:#0097a7;
-    border-radius:4px;
-    border:1px solid #464646;
-}
-.bricks-container::-webkit-scrollbar-thumb:hover{
-    background-color:#02707c;
-}
-.bricks-container::-webkit-scrollbar-thumb:active{
-    background-color:#01636e;
-} 
-
 // ======================= MEDIA =====================
 @media screen and(max-width: 930px){
     .one-day { 

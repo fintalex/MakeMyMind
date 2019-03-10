@@ -33,7 +33,7 @@ export class WallSideNavComponent implements OnInit {
     private tickCategory = new EventEmitter();
 
     sideBarExpanded: boolean = false;
-    habbitExpanded: boolean = false;
+    //habbitExpanded: boolean = false;
 
     categories$: Observable<Category[]>;
     brickTypes$: Observable<BrickType[]>;
@@ -57,15 +57,16 @@ export class WallSideNavComponent implements OnInit {
 
     ngOnInit() {
 
-        this.categories$ = this.store.pipe(select(categorySelectors.getAllCategories));
-        this.brickTypes$ = this.store.pipe(select(brickTypeSelectors.getBrickTypes));
-
-        this.sideBarExpanded = this.authService.CurrentUser.helper.wallSideNavShow;
-
         this.frendService.getFrends()   
             .subscribe((allFrends: any) => {
                 this.userFrends = allFrends;
-            });
+            });      
+
+        //this.sideBarExpanded = this.authService.CurrentUser.helper.wallSideNavShow;      
+
+        this.categories$ = this.store.select(categorySelectors.getAllCategories);
+        this.brickTypes$ = this.store.pipe(select(brickTypeSelectors.getBrickTypes));
+        //this.brickTypes$ = this.store.select(brickTypeSelectors.getBrickTypes);
     }
 
     toogleSideBar() {
@@ -77,9 +78,9 @@ export class WallSideNavComponent implements OnInit {
             .subscribe(res => console.log("User helper is updated"));
     }
 
-    toogleHabbitMap() {
-        this.habbitExpanded = !this.habbitExpanded;
-    }
+    // toogleHabbitMap() {
+    //     this.habbitExpanded = !this.habbitExpanded;
+    // }
 
     tickHabbit(habbit: BrickType){
 

@@ -1,0 +1,20 @@
+<p-panel>
+    <p-header>
+        <div class="ui-helper-clearfix">
+            <span class="ui-panel-title">{{goal.name}}</span>
+            <button mat-raised-button class="navigate-btn float-right" (click)="goToCard(goal._id)">Детали</button>
+        </div>
+    </p-header>
+
+    <div class="flex-space-between">
+        <div>
+            {{goal.createdDate | date:'dd.MM.yyyy'}} 
+        </div>
+        <div class="float-right">
+            {{goal.finishDate | date:'dd.MM.yyyy'}}
+        </div>
+    </div>
+
+    <goal-condition *ngFor="let condition of goal.conditions" [condition]="condition"></goal-condition>
+
+</p-panel>

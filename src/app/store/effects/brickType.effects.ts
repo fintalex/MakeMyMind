@@ -32,7 +32,7 @@ export class BrickTypeEffects {
             .getBrickTypes()
             .pipe(
                 map(brickTypes => {
-                    debugger;
+                    //debugger;
                     return new LoadBrickTypesSuccess(brickTypes);
                 }),
                 catchError(error => of(new ErrorBrickType(error)))
@@ -107,7 +107,7 @@ export class BrickTypeEffects {
                 .getBrickType(action.id)
                 .pipe(
                     map(brickType => {
-                        debugger;
+                        //debugger;
                         console.log("IN EFFECTS - UpdateBrickTypeInStore -", brickType);
                         return new UpdateBrickTypeSuccess(brickType);
                     })

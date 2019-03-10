@@ -11,6 +11,7 @@ import { FrendComponent } from './frend/frend/frend.component';
 import { BrickTypeCardsCentreComponent } from './brickTypeCards/brick-type-cards-centre/brick-type-cards-centre.component';
 import { GuardService } from '../services/guard.service';
 import { CategoryContainerComponent } from './categoryNew/category-container/category-container.component';
+import { BrickTypePageComponent } from './brickTypeCards/brick-type-page/brick-type-page.component';
 
 const routes: Routes = [
     { 
@@ -23,6 +24,7 @@ const routes: Routes = [
             { path: 'brickTypeCards', component:  BrickTypeCardsCentreComponent, canActivate: [GuardService] },
             { path: 'frends', component: FrendComponent, canActivate: [GuardService] },
             { path: 'categoryContainer', component: CategoryContainerComponent, canActivate: [GuardService] },
+            { path: 'brickTypePage', component: BrickTypePageComponent, canActivate: [GuardService]}
         ]
     }
 ];

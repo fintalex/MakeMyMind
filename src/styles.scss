@@ -150,8 +150,8 @@ body {
 }
 // =============================== MAT - OPTION ==============================
 .mat-option{
-    height: 40px!important;
-    line-height: 40px!important;
+    height: 30px!important;
+    line-height: 30px!important;
 }
 
 .mat-selected{
@@ -417,7 +417,7 @@ $hexagon-index: 1;
 // ======================= BRICK ===========================
 
 .brick-in-option{
-    margin: 9px 10px!important;
+    margin: 5px 10px!important;
 }
 
 .brick-in-calendar {
@@ -435,7 +435,7 @@ $hexagon-index: 1;
     // text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
     //border: 1px solid black;
     border-radius: 3px;
-    box-sizing: border-box;
+    box-sizing: border-box!important;
     transition: 0.4s ease-out;
 }
 
@@ -535,6 +535,7 @@ $hexagon-index: 1;
     padding-left: 5px;
     padding-top: 5px;
     margin-right: 0px!important;
+    box-sizing: initial!important;
 }
 
 .plum-icon {
@@ -569,3 +570,45 @@ $hexagon-index: 1;
 }
 
 
+// ========================= PRIME NG ===================
+.ui-dropdown-label{
+    .brick-in-option {
+        margin: 0px 10px !important;
+    }
+    .mat-option {
+        height: 23px !important;
+        line-height: 23px !important;
+    }
+}
+
+.margin-vertical-auto{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.text-allign-right{
+    text-align: right;
+}
+
+// ================================  FLEX ===========================
+.flex-space-between{
+    display: flex;
+    justify-content: space-between;
+}
+
+// ============================ SCROLLBAR ======================
+.scroll-container::-webkit-scrollbar{
+    width: 8px;
+    height: 8px;
+} 
+.scroll-container::-webkit-scrollbar-thumb{
+    background-color:#0097a7;
+    border-radius:4px;
+    border:1px solid #464646;
+}
+.scroll-container::-webkit-scrollbar-thumb:hover{
+    background-color:#02707c;
+}
+.scroll-container::-webkit-scrollbar-thumb:active{
+    background-color:#01636e;
+} 

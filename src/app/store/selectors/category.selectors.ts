@@ -65,7 +65,7 @@ export const getSelectedCategory = createSelector(
     getSelected,
     getCategories,
     (selectedId, categories) => {
-        debugger;
+        //debugger;
         // var selectedCategory = {
         //     ...categories[selectedId]
         // };
@@ -95,7 +95,7 @@ export const getAllCategories = createSelector(
 export const getCategoriesLoaded = createSelector(
     getCategoryStore,
     (categoryStore: fromCategories.State) => {
-        debugger;
+        //debugger;
         return categoryStore.loaded;
     }
 );

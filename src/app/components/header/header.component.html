@@ -12,16 +12,18 @@
             <mat-menu #navButtons="matMenu" class="nav-menu">
                 <button mat-menu-item routerLink="/wall" *ngIf="authService.CurrentUser">{{'Wall' | translate}}</button>
                 <button mat-menu-item routerLink="/category" *ngIf="authService.CurrentUser">{{'Category' | translate}}</button>
-                <button mat-menu-item routerLink="/brickTypeCards" *ngIf="authService.CurrentUser">{{'Goals' | translate}}</button>
+                <button mat-menu-item routerLink="/brickTypeCards" *ngIf="authService.CurrentUser">{{'Habits' | translate}}</button>
                 <button mat-menu-item routerLink="/frends" *ngIf="authService.CurrentUser">{{'Друзья' | translate}}</button>
-                <button mat-menu-item routerLink="/categoryContainer" *ngIf="authService.CurrentUser">{{'Category New' | translate}}</button>
+                <button mat-menu-item routerLink="/goals" *ngIf="authService.CurrentUser">{{'Цели' | translate}}</button>
+                <!-- <button mat-menu-item routerLink="/categoryContainer" *ngIf="authService.CurrentUser">{{'Category New' | translate}}</button> -->
             </mat-menu>
 
             <button mat-button class="nav-button" routerLink="/wall" *ngIf="authService.CurrentUser">{{'Wall' | translate}}</button>
             <button mat-button class="nav-button" routerLink="/category" *ngIf="authService.CurrentUser">{{'Category' | translate}}</button>
-            <button mat-button class="nav-button" routerLink="/brickTypeCards" *ngIf="authService.CurrentUser">{{'Goals' | translate}}</button>
+            <button mat-button class="nav-button" routerLink="/brickTypeCards" *ngIf="authService.CurrentUser">{{'Habits' | translate}}</button>
             <button mat-button class="nav-button" routerLink="/frends" *ngIf="authService.CurrentUser">{{'Друзья' | translate}}</button>
-            <button mat-button class="nav-button" routerLink="/categoryContainer" *ngIf="authService.CurrentUser">{{'Category New' | translate}}</button>
+            <button mat-button class="nav-button" routerLink="/goals" *ngIf="authService.CurrentUser">{{'Цели' | translate}}</button>
+            <!-- <button mat-button class="nav-button" routerLink="/categoryContainer" *ngIf="authService.CurrentUser">{{'Category New' | translate}}</button> -->
         </div>
     </div>
 

@@ -37,6 +37,7 @@ import { LogingComponent } from './components/loging/loging.component';
 import { HeaderComponent } from './components/header/header.component';
 import { WallSideNavComponent } from './components/wall-side-nav/wall-side-nav.component';
 import { ConfirmationModalComponent } from './components/dialogs/confirmation/confirmation.component';
+import { GoalConditionComponent } from './userSetting/goal/goal-condition/goal-condition.component';
 
 // =============== App Pipes ====================
 import { DateRu } from './pipes/dateru.pipe';
@@ -63,18 +64,29 @@ import { TestComponent } from './userSetting/test/test.component';
 import { BrickTypeCenterComponent } from './userSetting/brickType/brick-type-center/brick-type-center.component';
 import { BrickTypeDetailsComponent } from './userSetting/brickType/brick-type-details/brick-type-details.component';
 import { BrickTypeListComponent } from './userSetting/brickType/brick-type-list/brick-type-list.component';
-
+import { BrickTypePageComponent } from './userSetting/brickTypeCards/brick-type-page/brick-type-page.component';
 
 import { CategoriesListComponent } from './userSetting/categoryNew/categories-list/categories-list.component';
 import { CategoryItemComponent } from './userSetting/categoryNew/category-item/category-item.component';
 import { CategorySelectedComponent } from './userSetting/categoryNew/category-selected/category-selected.component';
 import { CategoryContainerComponent } from './userSetting/categoryNew/category-container/category-container.component';
 
+import { GoalCenterComponent } from './userSetting/goal/goal-center/goal-center.component';
+import { GoalDetailsPageComponent } from './userSetting/goal/goal-details-page/goal-details-page.component';
+import { GoalCardComponent } from './userSetting/goal/goal-card/goal-card.component';
+
+
 import { TableModule } from 'primeng/table';
 import { CarouselModule } from 'primeng/carousel';
 import { OrderListModule } from 'primeng/orderlist';
 import { ButtonModule } from 'primeng/button';
 import { PanelModule } from 'primeng/panel';
+import { AccordionModule } from 'primeng/accordion';
+import { ColorPickerModule } from 'primeng/colorpicker';
+import { CalendarModule } from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+import { BrickComponent } from './components/brick/brick.component';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -95,22 +107,21 @@ export function createTranslateLoader(http: HttpClient) {
         
         CalendarComponent, BrickModalComponent, ConfirmationModalComponent,
         HomeComponent, LocaleChangeComponent, LogingComponent, HeaderComponent, WallSideNavComponent, 
-        BottomSheetComponent, BrickMultyModalComponent,
+        BottomSheetComponent, BrickMultyModalComponent, GoalConditionComponent,
 
-
-
+        GoalCenterComponent,GoalDetailsPageComponent,GoalCardComponent,
 
         CategoryListComponent, CategoryDetailsComponent, CategoryCenterComponent, TestComponent, 
         BrickTypeCenterComponent, BrickTypeDetailsComponent, BrickTypeListComponent, 
         FrendComponent, FrendSearchComponent, FrendListComponent, 
-        BrickTypeCardsCentreComponent, BrickTypeModalComponent, 
+        BrickTypeCardsCentreComponent, BrickTypeModalComponent, BrickTypePageComponent,
         CategoriesListComponent, 
         CategoryItemComponent, 
         CategorySelectedComponent, 
         CategoryContainerComponent,
 
         // === pipes ====
-        DateRu, CapitalizePipe
+        DateRu, CapitalizePipe, BrickComponent
     ],
     entryComponents: [BrickModalComponent, BrickMultyModalComponent, ConfirmationModalComponent, BottomSheetComponent,
         BrickTypeModalComponent
@@ -127,7 +138,7 @@ export function createTranslateLoader(http: HttpClient) {
         StoreModule.forRoot(reducers),
         EffectsModule.forRoot(effects),
 
-        TableModule,CarouselModule,OrderListModule,ButtonModule,PanelModule,
+        TableModule,CarouselModule,OrderListModule,ButtonModule,PanelModule,AccordionModule,ColorPickerModule,CalendarModule,DropdownModule,InputTextModule,
 
         AppRoutingModule,
         TranslateModule.forRoot({

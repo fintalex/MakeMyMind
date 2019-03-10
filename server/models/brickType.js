@@ -142,20 +142,11 @@ brickTypeSchema.statics.updateCountMarked = (id, count, callback) => {
     
     BrickType.findOne({'_id': id})
         .then(brickTypesForUpdating => {
-
-            console.log("+++++++++++++++++++brickTypesForUpdating+++++++++++++",brickTypesForUpdating);
-
-
             var updateCondition = { $inc: 
                 {
                     'countMarked': count
                 }
-            };
-
-            console.log("bbrickTypesForUpdating.countMarked + 1 = ", brickTypesForUpdating.countMarked + 1);
-            console.log("brickTypesForUpdating.neededDays = ", brickTypesForUpdating.neededDays);
-            console.log("brickTypesForUpdating.countMarked + 1 >= brickTypesForUpdating.neededDays = ", brickTypesForUpdating.countMarked + 1 >= brickTypesForUpdating.neededDays);
-            
+            }; 
             if (brickTypesForUpdating.countMarked + count >= brickTypesForUpdating.neededDays){
                 
                 updateCondition.$set =
@@ -163,10 +154,6 @@ brickTypeSchema.statics.updateCountMarked = (id, count, callback) => {
                     'status': 3
                 };
             }
-
-            console.log(" _________________updateCondition______________", updateCondition);
-            
-
             BrickType.update({'_id': id}, 
                 updateCondition, callback);  
         });

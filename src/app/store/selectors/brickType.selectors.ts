@@ -48,7 +48,7 @@ export const getSelectedBrickType = createSelector(
     getSelected,
     getBrickTypes,
     (selectedId, brickTypes) => {
-        debugger;
+        //debugger;
         var selectedBrickType = _.find(brickTypes, (cat:any) => cat._id == selectedId);
         
         return  selectedBrickType;

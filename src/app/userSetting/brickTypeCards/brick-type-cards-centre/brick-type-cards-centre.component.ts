@@ -18,6 +18,7 @@ import * as fromBrickTypeSelectors from '../../../store/selectors/brickType.sele
 import * as brickTypeAction from '../../../store/actions/brickTypes';
 import { filter, map } from 'rxjs/operators';
 import { CloseBrickTypeResult } from '../../../models/close-brick-type-action';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'brick-type-cards-centre',
@@ -43,7 +44,7 @@ export class BrickTypeCardsCentreComponent implements OnInit {
                 private dialog: MatDialog,
                 private modalDialogs: DialogService,
                 private userService: UserService,
-
+                private router: Router,
                 private store: Store<fromBrickTypeSelectors.State>
             ) { }
 
@@ -86,6 +87,10 @@ export class BrickTypeCardsCentreComponent implements OnInit {
     }
 
     openBrickModal(brickType: BrickType){
+        this.router.navigate(['/brickTypePage']);
+    }
+
+    openBrickModal32(brickType: BrickType){
         var dialogRef = this.dialog.open(BrickTypeModalComponent, {
             width: '340px',
             //disableClose: true,  // use this feature for prevent closing window when we click on the backdrop
@@ -179,10 +184,10 @@ export class BrickTypeCardsCentreComponent implements OnInit {
 
     // here just only for test 
     updateSkippedDaysForPeriod(){
-        debugger;
+        //debugger;
         this.brickTypeService.updateSkippedDays()
             .subscribe((results: any)=> {
-                debugger;
+                //debugger;
                 console.log(results);
             });
     }

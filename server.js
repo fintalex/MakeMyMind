@@ -55,6 +55,7 @@ var categoryRoutes = require('./server/routes/category');
 var brickTypeRoutes = require('./server/routes/brickType');
 var brickRoutes = require('./server/routes/brick');
 var frendRoutes = require('./server/routes/frend');
+var goalRoutes = require('./server/routes/goal');
 
 initMongo();
 
@@ -70,6 +71,7 @@ app.use('/api/categories', categoryRoutes);
 app.use('/api/brickTypes', brickTypeRoutes);
 app.use('/api/bricks', brickRoutes);
 app.use('/api/frends', frendRoutes);
+app.use('/api/goals', goalRoutes);
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));

@@ -8,22 +8,22 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 })
 export class ConfirmationModalComponent implements OnInit {
 
-  constructor(
-      public dialogRef: MatDialogRef<ConfirmationModalComponent>,
-      @Inject(MAT_DIALOG_DATA) public data: any) { }
+    constructor(
+        public dialogRef: MatDialogRef<ConfirmationModalComponent>,
+        @Inject(MAT_DIALOG_DATA) public data: any) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+    onNoClick(): void {
+        this.dialogRef.close();
+    }
 
-  okButton() {
-    this.dialogRef.close(true);
-  }
+    okButton() {
+        this.dialogRef.close(true);
+    }
 
-  cancelButton(){
-    this.dialogRef.close(false);
-  }
+    cancelButton(){
+        this.dialogRef.close(false);
+    }
 }

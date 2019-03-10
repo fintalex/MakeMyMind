@@ -43,7 +43,7 @@
                 *ngIf="curday.bricks && curday.bricks.length > 0"
                 [innerHTML]="getDayTooltip(curday)"></span>
 
-        <div class="bricks-container" *ngIf="curday.bricks">          
+        <div class="bricks-container scroll-container" *ngIf="curday.bricks">          
             <span class="text-shadow"
                 *ngFor="let brick of curday.bricks"
                 [ngClass]="{'brick-in-calendar': !brick.brickType.type || brick.brickType.type == 1, 'brick-in-calendar-arrow': brick.brickType.type == 2}"

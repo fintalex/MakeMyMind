@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 
     // "styles": [
     //     "node_modules/primeicons/primeicons.css",
-    //     "node_modules/primeng/resources/themes/nova-light/theme.css",
+    //     "node_modules/primeng/resources/themes/cruze/theme.css",
     //     "node_modules/primeng/resources/primeng.min.css",
     //     //...
     //   ],
