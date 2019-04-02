@@ -3,6 +3,8 @@ import { AuthService } from '../../services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Goal } from '../../models/goal.model';
 
+// New feature in ANGULAR 6
+// {providedIn: 'root'}  parameter means that we don't need to specify it in Providers in app.module.
 @Injectable({
     providedIn: 'root'
 })

@@ -11,8 +11,5 @@ export class RegistrationService {
     register(user){
         //no need to use map and res.json in this case
         return this.http.post<any>('/api/users', user);
-            // .map((res: Response) => {
-            //     res.json();
-            // });
     }
 }

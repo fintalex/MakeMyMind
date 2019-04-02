@@ -30,11 +30,7 @@ export class AuthComponent implements OnInit {
         private router: Router,
         private store: Store<fromBrickTypeSelectors.State>) { }
 
-    ngOnInit(
-    ) { 
-        console.log("AHY");
-        console.log(0.1 + 0.2);        
-    }
+    ngOnInit() {}
 
     public login() {
         this.authService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe(res => {

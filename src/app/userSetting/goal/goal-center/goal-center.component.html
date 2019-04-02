@@ -13,7 +13,7 @@
             <p-accordionTab header="Текущие">
                 <div  class="goal-container">
                     <goal-card class="goal-card" 
-                        *ngFor="let curGoal of goals" 
+                        *ngFor="let curGoal of goals | async" 
                         (goToCardEvent)="goToGoalDetails(curGoal._id)"
                         [goal]="curGoal"></goal-card> 
                 </div>

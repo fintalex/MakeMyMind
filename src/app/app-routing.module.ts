@@ -42,6 +42,7 @@ const routes: Routes = [
     { path: 'frends', component: FrendComponent, canActivate: [GuardService] },
     { path: 'categoryContainer', component: CategoryContainerComponent, canActivate: [GuardService] },
     { path: 'brickTypePage', component: BrickTypePageComponent, canActivate: [GuardService]}, 
+    { path: 'brickTypePage/:id', component: BrickTypePageComponent, canActivate: [GuardService]}, 
     { path: 'goals', component: GoalCenterComponent, canActivate: [GuardService]},
     { path: 'goals/:id', component: GoalDetailsPageComponent, canActivate: [GuardService] },
 ];

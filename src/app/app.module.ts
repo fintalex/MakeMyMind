@@ -87,6 +87,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { BrickComponent } from './components/brick/brick.component';
+import { UserDetailsComponent } from './userSetting/user/user-details/user-details.component';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -121,7 +122,7 @@ export function createTranslateLoader(http: HttpClient) {
         CategoryContainerComponent,
 
         // === pipes ====
-        DateRu, CapitalizePipe, BrickComponent
+        DateRu, CapitalizePipe, BrickComponent, UserDetailsComponent
     ],
     entryComponents: [BrickModalComponent, BrickMultyModalComponent, ConfirmationModalComponent, BottomSheetComponent,
         BrickTypeModalComponent

@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class UserService{
@@ -21,7 +22,14 @@ export class UserService{
     }
 
     getUserDDL(val: String) {
-        return this.http.post<any>('/api/users/getusersddl', { str: val, userId: this.authService.CurrentUser._id });
+        return this.http.post<any>('/api/users/getusersddl', { str: val});
     }
 
+    getUserById(id: String){
+        return this.http.get<User>('/api/users/getUserById/'+ id);
+    }
+
+    updateUser(user: User){
+        return this.http.put<any>('/api/users/', user);
+    }
 }

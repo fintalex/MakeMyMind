@@ -6,10 +6,15 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import { ModalParams } from '../../../models/modal-params.model';
 import * as _ from 'underscore';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ModalBrickTypeResult } from '../../../models/dto/modal-brick-type-result';
 import { CloseBrickTypeResult } from '../../../models/close-brick-type-action';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Store, select } from '@ngrx/store';
+import * as categorySelector from '../../../store/selectors/category.selectors';
+import { Observable } from 'rxjs';
+import * as brickTypeAction from '../../../store/actions/brickTypes';
+import { AuthService } from 'app/services/auth.service';
+import { BrickTypeService } from 'app/userSetting/brickType/brickType.service';
 
 @Component({
   selector: 'brick-type-page',
@@ -19,18 +24,20 @@ import { Router } from '@angular/router';
 export class BrickTypePageComponent implements OnInit {
 
     brickType: BrickType;
-    categoriesList: Category[];
+    categoriesList: Observable<Category[]>;
     iconList: String[];
 
     public brickTypeDetailsForm: FormGroup;
     frendsIconListResult: String[];
     selectedIcon: String;
 
-    data: any;
-
     constructor(
             private dialogs: DialogService,
-            private router: Router) { }
+            private router: Router,
+            private route: ActivatedRoute,
+            private store: Store<categorySelector.State>,
+            private authService: AuthService,
+            private bricktypeService: BrickTypeService) { }
 
     ngOnInit() {
         this.setIconList();
@@ -42,24 +49,16 @@ export class BrickTypePageComponent implements OnInit {
         //         this.updateFilteredListIcon(data);
         //     });
 
-        if (this.data.existentCategories){
-            this.categoriesList = this.data.existentCategories;
-        }
+        this.categoriesList = this.store.pipe(select(categorySelector.getAllCategories));
 
-        if (this.data.curBrickType._id){
-            this.brickType = this.data.curBrickType;
+        var brickTypeId = this.route.snapshot.paramMap.get('id');
 
-            this.brickTypeDetailsForm = new FormGroup({
-                name: new FormControl(this.data.curBrickType.name),
-                category: new FormControl(this.data.curBrickType.category._id),
-                sign: new FormControl(this.data.curBrickType.sign, [Validators.required]),
-                ruleDescription: new FormControl(this.data.curBrickType.ruleDescription),
-                isPrivate: new FormControl(this.data.curBrickType.isPrivate),
-                isIcon: new FormControl(this.data.curBrickType.isIcon),
-                type: new FormControl(this.data.curBrickType.type),
-                neededDays: new FormControl(this.data.curBrickType.neededDays, [Validators.min(3)]),
-                allowedSkipDays: new FormControl(this.data.curBrickType.allowedSkipDays, [Validators.min(0)]),
-            });
+        if(brickTypeId){
+            this.bricktypeService.getBrickType(brickTypeId)
+                .subscribe(brType => {
+                    this.brickType = brType;
+                    this.ngOnChanges();
+                });
         }
     }
 
@@ -135,40 +134,21 @@ export class BrickTypePageComponent implements OnInit {
     }
 
     public activateBrickType() {
-        this.brickType.name = this.brickTypeDetailsForm.value.name;
-        this.brickType.category = this.brickTypeDetailsForm.value.category;
-        this.brickType.sign = this.brickTypeDetailsForm.value.sign;
-        this.brickType.ruleDescription = this.brickTypeDetailsForm.value.ruleDescription;
-        this.brickType.isPrivate = this.brickTypeDetailsForm.value.isPrivate;
-        this.brickType.isIcon = this.brickTypeDetailsForm.value.isIcon;
-        this.brickType.type = this.brickTypeDetailsForm.value.type;
-        this.brickType.allowedSkipDays = this.brickTypeDetailsForm.value.allowedSkipDays;
-        this.brickType.neededDays = this.brickTypeDetailsForm.value.neededDays;
-
-        var res: ModalBrickTypeResult = {brickType: this.brickType, action: CloseBrickTypeResult.Activate};
-        //this.dialogRef.close(res);
+        this.setBrickTypeFormValue();
+        this.store.dispatch(new brickTypeAction.ActivateBrickType(this.brickType));
         this.router.navigate(['/brickTypeCards']);
     }
 
     public createBrickType() {
-        var res: ModalBrickTypeResult = {brickType: this.brickTypeDetailsForm.value, action: CloseBrickTypeResult.Create};
-        //this.dialogRef.close(res);
+        this.setBrickTypeFormValue();
+        this.brickType.user = this.authService.CurrentUser._id;
+        this.store.dispatch(new brickTypeAction.AddBrickType(this.brickType));
         this.router.navigate(['/brickTypeCards']);
     }
 
     public updateBrickType() {
-        this.brickType.name = this.brickTypeDetailsForm.value.name;
-        this.brickType.category = this.brickTypeDetailsForm.value.category;
-        this.brickType.sign = this.brickTypeDetailsForm.value.sign;
-        this.brickType.ruleDescription = this.brickTypeDetailsForm.value.ruleDescription;
-        this.brickType.isPrivate = this.brickTypeDetailsForm.value.isPrivate;
-        this.brickType.isIcon = this.brickTypeDetailsForm.value.isIcon;
-        this.brickType.type = this.brickTypeDetailsForm.value.type;
-        this.brickType.allowedSkipDays = this.brickTypeDetailsForm.value.allowedSkipDays;
-        this.brickType.neededDays = this.brickTypeDetailsForm.value.neededDays;
-
-        var res: ModalBrickTypeResult = {brickType: this.brickType, action: CloseBrickTypeResult.Update};
-        //this.dialogRef.close(res);
+        this.setBrickTypeFormValue();
+        this.store.dispatch(new brickTypeAction.UpdateBrickType(this.brickType));        
         this.router.navigate(['/brickTypeCards']);
     }
 
@@ -180,16 +160,26 @@ export class BrickTypePageComponent implements OnInit {
 
         this.dialogs.showConfirm(params)
             .subscribe(result => {
-                if (result){
-                    var res: ModalBrickTypeResult = {brickTypeId: this.brickType._id, action: CloseBrickTypeResult.Delete};
-
-                    this.brickType = null;
-                    this.brickTypeDetailsForm.reset();
-                    
-                    //this.dialogRef.close(res);
+                if (result){                    
+                    this.store.dispatch(new brickTypeAction.RemoveBrickType(this.brickType._id));
                     this.router.navigate(['/brickTypeCards']);
                 }
             });
+    }
+
+    setBrickTypeFormValue() {
+        if (!this.brickType) {
+            this.brickType = new BrickType();
+        }
+        this.brickType.name = this.brickTypeDetailsForm.value.name;
+        this.brickType.category = this.brickTypeDetailsForm.value.category;
+        this.brickType.sign = this.brickTypeDetailsForm.value.sign;
+        this.brickType.ruleDescription = this.brickTypeDetailsForm.value.ruleDescription;
+        this.brickType.isPrivate = this.brickTypeDetailsForm.value.isPrivate;
+        this.brickType.isIcon = this.brickTypeDetailsForm.value.isIcon;
+        this.brickType.type = this.brickTypeDetailsForm.value.type;
+        this.brickType.allowedSkipDays = this.brickTypeDetailsForm.value.allowedSkipDays;
+        this.brickType.neededDays = this.brickTypeDetailsForm.value.neededDays;
     }
 
     private setDefaultFormValues() {

@@ -15,28 +15,21 @@ export class CategoryService {
 
     
     getCategories(){
-        //debugger;
         if (!this.authService.CurrentUser){
             return;
         }
         return this.http.get<any>('/api/categories/getByUserId/' + this.authService.CurrentUser._id);
-            // .map((res: Response) => {
-            //     return res.json();
-            // });
     }
 
     createCategory(category: Category){
         return this.http.post<any>('/api/categories', category);
-            // .map((res: Response) => res.json());
     }
 
     updateCategory(category: Category){
         return this.http.put<any>('/api/categories', category);
-            // .map((res: Response) => res.json());
     }
 
     deleteCategory(id){
         return this.http.delete<any>('/api/categories/' + id);
-            //.map((res: Response) => res.json());
     }
 }

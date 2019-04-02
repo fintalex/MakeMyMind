@@ -10,11 +10,13 @@ import { Category } from '../../models/category.model';
 export enum CategoryActionTypes {
     categorySelect        = '[Categories] Select',
     categoryAdd           = '[Categories] Add',
+
     categoryLoad          = '[Categories] Load',
-    categoryLoadSuccess   = '[Categories] Load success', 
+    categoryLoadSuccess   = '[Categories] Load success',
+    LoadCategoriesFail    = '[Categories] Load Fail',
+
     categoryRemove        = '[Categories] Remove',
-    categoryUpdate        = '[Categories] Update',
-    categoryError         = '[Categories] Error',
+    categoryUpdate        = '[Categories] Update'
 }
 
 
@@ -28,13 +30,18 @@ export class AddCategory implements Action {
     constructor(public payload: Category) { }
 }
 
+// ACTIONS for LOAD
 export class LoadCategories implements Action {
     readonly type = CategoryActionTypes.categoryLoad;
 }
 export class LoadCategoriesSuccess implements Action {
     readonly type = CategoryActionTypes.categoryLoadSuccess;
     constructor(public payload: Category[]) {}
-  }
+}
+export class LoadCategoriesFail implements Action {
+    readonly type = CategoryActionTypes.LoadCategoriesFail;
+    constructor(public payload: string){}
+}
 
 export class RemoveCategory implements Action {
     readonly type = CategoryActionTypes.categoryRemove;
@@ -46,16 +53,13 @@ export class UpdateCategory implements Action {
     constructor(public id: number, public category: Category) { }
 }
 
-export class ErrorCategory implements Action {
-    readonly type = CategoryActionTypes.categoryError;
-    constructor(public payload: any) {}
-  }
-
 export type Action = 
    | AddCategory 
    | Select 
+
    | LoadCategories 
    | LoadCategoriesSuccess
+   | LoadCategoriesFail
+
    | RemoveCategory 
-   | UpdateCategory
-   | ErrorCategory;
+   | UpdateCategory;

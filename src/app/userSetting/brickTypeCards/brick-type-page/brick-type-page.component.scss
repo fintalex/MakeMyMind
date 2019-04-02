@@ -1,16 +1,7 @@
-.brick-details-page{
-    max-width: 600px;
-    min-width: 270px;
-    margin: auto;
-    padding: 10px;
-    //display: flex;
-    //flex-direction: row;
-    //justify-content: space-between;
-}
 
-.frend-container{
-    width: 600px;
-    margin: auto;
+.brick-type-page-container{
+    max-width: 700px;
+    margin: 10px auto;
 }
 
 
@@ -19,4 +10,25 @@ mat-form-field{
 }
 mat-radio-button{
     padding-right: 10px;
+}
+
+
+.brick-details-page {
+    margin: 10px;
+    form{
+        margin: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        mat-form-field { 
+            width: 60%;
+            margin: 0 10px;
+        }
+        .button-footer{
+            width: 60%;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
 }
