@@ -26,8 +26,6 @@ export function reducer(
     switch (action.type){
 
         case CategoryActions.CategoryActionTypes.categoryLoad: {
-            /// maybe we need here to load our Categories from our common service
-            /// but all of these must pure function
             return {
                 ...state,
                 loading: true

@@ -16,7 +16,6 @@ export class GoalConditionComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        //console.log(" GoalConditionComponent. Condidtion is : ", this.condition);
         for(let i = 1; i<= this.condition.neededCount; i++){
             var step = {
                 index: i,

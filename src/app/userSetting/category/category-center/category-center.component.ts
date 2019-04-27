@@ -7,6 +7,9 @@ import { ModalParams } from '../../../models/modal-params.model';
 import { MatDialog } from '@angular/material';
 import { DialogService } from '../../../components/dialogs/dialog.service';
 import { UserService } from '../../../services/user.service';
+import { Store } from '@ngrx/store';
+import * as categorySelectors from '../../../store/selectors/category.selectors';
+import { LoadCategories } from 'app/store/actions/categories';
 
 @Component({
     selector: 'category-center',
@@ -28,7 +31,8 @@ export class CategoryCenterComponent implements OnInit {
         private translateService: TranslateService,
         private dialog: MatDialog,
         private modalDialogs: DialogService,
-        private userService: UserService
+        private userService: UserService,
+        private store: Store<categorySelectors.State>
     ) { }
 
     ngOnInit() {
@@ -81,13 +85,14 @@ export class CategoryCenterComponent implements OnInit {
         this.categoryService.createCategory(category)
             .subscribe((newCategory: any) => {
                 this.existentCategories.push(newCategory);
+                this.store.dispatch(new LoadCategories());
             });
     }
 
     onUpdateCategory(category: Category) {
         this.categoryService.updateCategory(category)
             .subscribe(updatedCategory => {
-                //this.selectedCategory = updatedCategory;
+                this.store.dispatch(new LoadCategories());
             })
     }
 
@@ -101,6 +106,7 @@ export class CategoryCenterComponent implements OnInit {
                         allCategories.splice(i, 1);
                     }
                 }
+                this.store.dispatch(new LoadCategories());
             });
         this.selectedCategory = null;
     }

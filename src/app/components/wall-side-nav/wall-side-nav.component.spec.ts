@@ -72,23 +72,6 @@ describe('WallSideNavComponent', () => {
         ];
         spy = spyOn(frendService, 'getFrends').and.returnValues(Observable.of(mockFrends));
 
-        // authService = fixture.debugElement.injector.get(AuthService);
-        // var mockCurrentUser: User = {
-        //     _id: '3523',
-        //     username: 'Alex',
-        //     password: '12345',
-        //     nickname: 'AlexNick',
-        //     locale: 'RU',
-        //     helper:  { 
-        //         calendarMainHelp:  true,
-        //         categoryMainHelp:  true,
-        //         frendsMainHelp:  true,
-        //         brickTypeMainHelp:  true,
-        //         wallSideNavShow: true
-        //     }
-        // }
-        // spy = spyOn(authService, 'CurrentUser').and.returnValue(mockCurrentUser);
-
         fixture.detectChanges();
     }));
 

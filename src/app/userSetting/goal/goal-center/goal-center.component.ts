@@ -21,9 +21,6 @@ export class GoalCenterComponent implements OnInit {
     
     ngOnInit() {
         this.goals = this.goalService.getGoals();
-            // .subscribe(usersGoals => {
-            //     this.goals = usersGoals;
-            // });
     }
 
     goToGoalDetails(id){

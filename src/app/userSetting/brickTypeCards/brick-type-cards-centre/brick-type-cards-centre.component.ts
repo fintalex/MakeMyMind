@@ -80,7 +80,11 @@ export class BrickTypeCardsCentreComponent implements OnInit {
     }
 
     openBrickModal(brickType: BrickType){
-        this.router.navigate([`/brickTypePage/${brickType._id}`]);
+        if (brickType) {
+            this.router.navigate([`/brickTypePage/${brickType._id}`]);
+        } else {
+            this.router.navigate([`/brickTypePage`]);
+        }
     }
 
     filterBrickType(): Observable<BrickType[]>{
