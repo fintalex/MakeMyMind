@@ -13,11 +13,12 @@
     <mat-icon>menu</mat-icon>
 </button>
 
-<mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+<mat-sidenav-container class="example-sidenav-container" [hasBackdrop]="'false'">
     <mat-sidenav #snav 
         [mode]="mobileQuery.matches ? 'over' : 'side'" 
         [opened]="sideBarExpanded"
-        [fixedInViewport]="mobileQuery.matches"
+        [fixedInViewport]="true"
+        
         fixedTopGap="56">
         <wall-side-nav 
             [nickName]="nicknameForSideBar"
