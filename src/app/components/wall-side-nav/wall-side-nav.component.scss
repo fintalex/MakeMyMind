@@ -3,27 +3,29 @@
 
 
 .wall-side-nav{
-    position: absolute;
-    z-index: 10;
-    overflow: hidden;
-    right: 0px;
-    top: 68px;
+    font-size: 16px;
+    color: white;
+    height: 100%;
     background: $mainBackground;
-    width: 60px;
-    height: 60px;
-    border-bottom: 3px solid $primaryColor;
-    border-top: 3px solid $primaryColor;
-    border-left: 3px solid $primaryColor;
-    border-radius: 10px 0 0 10px;
+    // position: absolute;
+    // z-index: 10;
+    // overflow: hidden;
+    // right: 0px;
+    // top: 168px;
+    // width: 60px;
+    // height: 60px;
+    // border-bottom: 3px solid $primaryColor;
+    // border-top: 3px solid $primaryColor;
+    // border-left: 3px solid $primaryColor;
+    // border-radius: 10px 0 0 10px;
     //display: flex;
     //justify-content: center;
     //align-items: center;
-    font-size: 16px;
     //padding: 15px;
-    box-sizing: border-box;
+    //box-sizing: border-box;
     //transition: 0.4s ease-out;
-    animation-name: collapsBar;
-    animation-duration: 0.4s;
+    //animation-name: collapsBar;
+    //animation-duration: 0.4s;
 }
 
 .side-bar-expanded{

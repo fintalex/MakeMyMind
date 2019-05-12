@@ -21,7 +21,7 @@ import * as brickTypeAction from '../../store/actions/brickTypes';
     templateUrl: './wall-side-nav.component.html',
     styleUrls: ['./wall-side-nav.component.scss'],
     inputs: ['visibleBrickTypes', 'nickName'],
-    outputs: ['tickBrickType', 'tickCategory']
+    outputs: ['tickBrickType', 'tickCategory', 'toogleSideBarEvent']
 })
 export class WallSideNavComponent implements OnInit {
 
@@ -31,8 +31,9 @@ export class WallSideNavComponent implements OnInit {
 
     private tickBrickType = new EventEmitter();
     private tickCategory = new EventEmitter();
+    private toogleSideBarEvent = new EventEmitter();
 
-    sideBarExpanded: boolean = false;
+    // sideBarExpanded: boolean = true;
     //habbitExpanded: boolean = false;
 
     categories$: Observable<Category[]>;
@@ -70,12 +71,14 @@ export class WallSideNavComponent implements OnInit {
     }
 
     toogleSideBar() {
-        this.sideBarExpanded = !this.sideBarExpanded;
+        // this.sideBarExpanded = !this.sideBarExpanded;
 
-        this.authService.CurrentUser.helper.wallSideNavShow = this.sideBarExpanded;
-        this.authService.updateCurrentUserInStorage();
-        this.userService.updateUserHelper(this.authService.CurrentUser)
-            .subscribe(res => console.log("User helper is updated"));
+        // this.authService.CurrentUser.helper.wallSideNavShow = this.sideBarExpanded;
+        // this.authService.updateCurrentUserInStorage();
+        // this.userService.updateUserHelper(this.authService.CurrentUser)
+        //     .subscribe(res => console.log("User helper is updated"));
+
+        this.toogleSideBarEvent.emit(false);
     }
 
     // toogleHabbitMap() {

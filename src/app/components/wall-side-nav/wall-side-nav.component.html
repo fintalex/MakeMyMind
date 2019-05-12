@@ -1,18 +1,23 @@
 <div class="wall-side-nav" 
     [ngClass]="{ 'side-bar-expanded': sideBarExpanded }">
+    <!-- [ngClass]="{ 'side-bar-expanded': sideBarExpanded }"> -->
 
     <div class="side-bar-title" 
         (click)="toogleSideBar()">
 
         <span *ngIf="!sideBarExpanded" class="arrow-spin"><mat-icon>keyboard_arrow_left</mat-icon></span> 
-        <span *ngIf="sideBarExpanded" class="arrow-spin"><mat-icon>keyboard_arrow_right</mat-icon></span> 
+        <!-- <span *ngIf="sideBarExpanded" class="arrow-spin"><mat-icon>keyboard_arrow_right</mat-icon></span>  -->
     
-        <div *ngIf="sideBarExpanded" class="side-bar-title-text">
-            <div class="title-container">Карта {{nickName}}</div>
+        <!-- <div *ngIf="sideBarExpanded" class="side-bar-title-text">
+            <div class="title-container">Стена {{nickName}}</div>
+        </div> -->
+        <div class="side-bar-title-text">
+            <div class="title-container">Стена {{nickName}}</div>
         </div>
     </div>
 
-    <div *ngIf="sideBarExpanded">
+    <!-- <div *ngIf="sideBarExpanded"></div> -->
+    <div>
         <div class="side-bar-body" >
             <!-- Сферы влияния -->
             <mat-expansion-panel>
@@ -87,22 +92,8 @@
                     </li>
                 </ul>
             </mat-expansion-panel>
-        
-            <!-- <mat-expansion-panel (opened)="panelOpenState = true"
-                                (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Логи
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <ul>
-                    <li>Лог 1</li>
-                    <li>Лог 2</li>
-                    <li>Лог 3</li>
-                    <li>Лог 4</li>
-                    <li>Лог 5</li>
-                </ul>
-            </mat-expansion-panel> -->
         </div>
     </div>
 </div>
+
+

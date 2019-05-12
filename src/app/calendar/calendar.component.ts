@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatBottomSheet } from '@angular/material';
 import { BrickModalComponent } from '../brick/brick-modal/brick-modal.component';
 import { BrickTypeService } from '../userSetting/brickType/brickType.service';
@@ -18,6 +18,7 @@ import { ComponentType } from '@angular/cdk/portal';
 import { Store, select } from '@ngrx/store';
 import * as fromBrickTypeSelectors from '../store/selectors/brickType.selectors';
 import * as brickTypeAction from '../store/actions/brickTypes';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
     selector: 'calendar',
@@ -37,6 +38,10 @@ export class CalendarComponent implements OnInit {
     nicknameForSideBar: string;
 
     testTooltip: "here will be two rows";
+    sideBarExpanded: boolean = false;
+
+    mobileQuery: MediaQueryList;
+    private _mobileQueryListener: () => void;
 
     constructor(
         public authService: AuthService,
@@ -49,10 +54,20 @@ export class CalendarComponent implements OnInit {
         private activeRoute: ActivatedRoute,
         private bottomeSheet: MatBottomSheet,
         private modalDialogs: DialogService,
-        private store: Store<fromBrickTypeSelectors.State>
-    ) {}
+        private store: Store<fromBrickTypeSelectors.State>,
+        changeDetectorRef: ChangeDetectorRef, media: MediaMatcher
+    ) {
+        this.mobileQuery = media.matchMedia('(max-width: 600px)');
+        this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+        this.mobileQuery.addListener(this._mobileQueryListener);
+    }
+
+    ngOnDestroy(): void {
+        this.mobileQuery.removeListener(this._mobileQueryListener);
+    }
 
     ngOnInit() {
+        
         this.activeRoute.params.subscribe(params => {     
             this.filteredHabbits = []; 
             this.filteredCategories = [];      
@@ -270,5 +285,14 @@ export class CalendarComponent implements OnInit {
         this.curDate = currentDateTime
         console.log("CUR DATE =", this.curDate);
         this.getBricksAndShowInMonth();
+    }
+
+    toogleSideBar(value){
+        this.sideBarExpanded = value;
+
+        this.authService.CurrentUser.helper.wallSideNavShow = this.sideBarExpanded;
+        this.authService.updateCurrentUserInStorage();
+        this.userService.updateUserHelper(this.authService.CurrentUser)
+            .subscribe(res => console.log("User helper is updated"));
     }
 }

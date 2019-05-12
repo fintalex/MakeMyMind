@@ -1,12 +1,96 @@
          
-<wall-side-nav 
+<!-- <wall-side-nav 
     [nickName]="nicknameForSideBar"
     [visibleBrickTypes]="existentBrickTypes"
     (tickBrickType)="filterByHabbit($event)"
     (tickCategory)="filterByCategory($event)">
         Wall Side Nav
-</wall-side-nav>
+</wall-side-nav> -->
+<button mat-icon-button 
+    class="side-bar-button"
+    *ngIf="!sideBarExpanded"
+    (click)="toogleSideBar(true)">
+    <mat-icon>menu</mat-icon>
+</button>
 
+<mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav 
+        [mode]="mobileQuery.matches ? 'over' : 'side'" 
+        [opened]="sideBarExpanded"
+        [fixedInViewport]="mobileQuery.matches"
+        fixedTopGap="56">
+        <wall-side-nav 
+            [nickName]="nicknameForSideBar"
+            [visibleBrickTypes]="existentBrickTypes"
+            (tickBrickType)="filterByHabbit($event)"
+            (tickCategory)="filterByCategory($event)"
+            (toogleSideBarEvent)="toogleSideBar($event)">
+                Wall Side Nav
+        </wall-side-nav>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <!-- <p *ngFor="let content of fillerContent">{{content}}</p> -->
+                
+        <div class="calendar">
+
+            <div class="nav-container">
+                <div class="calendar-buttons" >
+                    <div class="prev-next-container">
+                        <button mat-raised-button class="navigate-btn first-btn" (click)="prevMonth()">&lt;</button>
+                        <button mat-raised-button class="navigate-btn second-btn" (click)="nextMonth()">&gt;</button>
+                    </div>
+                    <div>
+                        <button mat-raised-button class="navigate-btn today-btn" (click)="todayMonth()" >{{'Today' | translate}}</button>
+                    </div>
+                    <div class="today-data">
+                        {{this.curDate | dateru:'MMMM YYYY' | capitalize  }}
+                    </div>
+                    <div></div>
+                </div>
+
+                <div class="week-nav">
+                    <div class="week-text" translate>Mon</div>
+                    <div class="week-text" translate>Tue</div>
+                    <div class="week-text" translate>Wed</div>
+                    <div class="week-text" translate>Thu</div>
+                    <div class="week-text" translate>Fri</div>
+                    <div class="week-text" translate>Sat</div>
+                    <div class="week-text" translate>Sun</div>
+                </div>        
+            </div>
+            
+            <div class="one-day tooltip" [ngClass]="{'day-weekend': curday.isWeekend, 'day-today': curday.today, 'day-disabled': curday.disabled, 'day-pointer': !curday.disabled && !curNick}"
+                *ngFor="let curday of daysArray"
+                (click)="openBrickModal(brick, curday, $event)">
+
+                <span class="tooltiptext" 
+                        *ngIf="curday.bricks && curday.bricks.length > 0"
+                        [innerHTML]="getDayTooltip(curday)"></span>
+
+                <div class="bricks-container scroll-container" *ngIf="curday.bricks">          
+                    <span class="text-shadow"
+                        *ngFor="let brick of curday.bricks"
+                        [ngClass]="{'brick-in-calendar': !brick.brickType.type || brick.brickType.type == 1, 'brick-in-calendar-arrow': brick.brickType.type == 2}"
+                        [ngStyle]="{'background-color': brick.brickType.category.color}"
+                        (click)="openBrickModal(brick, curday, $event)"> 
+                            <mat-icon *ngIf="brick.brickType.isIcon"
+                                        class="brickIcon">
+                                {{brick.brickType.sign}} 
+                            </mat-icon>
+                            <div *ngIf="!brick.brickType.isIcon">{{brick.brickType.sign}}</div> 
+                    </span>            
+                </div>
+
+                <span class="day-number">{{curday.day}}</span>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+<!-- 
 <div class="calendar">
 
     <div class="nav-container">
@@ -49,7 +133,6 @@
                 [ngClass]="{'brick-in-calendar': !brick.brickType.type || brick.brickType.type == 1, 'brick-in-calendar-arrow': brick.brickType.type == 2}"
                 [ngStyle]="{'background-color': brick.brickType.category.color}"
                 (click)="openBrickModal(brick, curday, $event)"> 
-                    <!-- {{brick.brickType.sign}} -->
                     <mat-icon *ngIf="brick.brickType.isIcon"
                                 class="brickIcon">
                         {{brick.brickType.sign}} 
@@ -60,4 +143,4 @@
 
         <span class="day-number">{{curday.day}}</span>
     </div>
-</div>
+</div> -->

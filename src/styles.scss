@@ -612,3 +612,7 @@ $hexagon-index: 1;
 .scroll-container::-webkit-scrollbar-thumb:active{
     background-color:#01636e;
 } 
+// ========================== MAT SIDE NAV ===================== 
+.mat-drawer-container, .mat-drawer{
+    background-color: transparent!important;
+}
