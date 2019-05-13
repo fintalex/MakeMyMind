@@ -2,7 +2,7 @@
     <div class="left-area-menu">
         <button mat-button routerLink="/home" class="logo">
             <mat-icon>home</mat-icon>
-            <span class="logo">Make my mind</span>
+            <span class="logo nav-button" >Make my mind</span>
         </button>
         <div class="icon-menu">
             <button mat-button [matMenuTriggerFor]="navButtons" *ngIf="authService.CurrentUser" class="menu">
@@ -14,26 +14,31 @@
                 <button mat-menu-item routerLink="/category" *ngIf="authService.CurrentUser">{{'Category' | translate}}</button>
                 <button mat-menu-item routerLink="/brickTypeCards" *ngIf="authService.CurrentUser">{{'Habits' | translate}}</button>
                 <button mat-menu-item routerLink="/frends" *ngIf="authService.CurrentUser">{{'Друзья' | translate}}</button>
-                <button mat-menu-item routerLink="/goals" *ngIf="authService.CurrentUser">{{'Цели' | translate}}</button>
-                <!-- <button mat-menu-item routerLink="/categoryContainer" *ngIf="authService.CurrentUser">{{'Category New' | translate}}</button> -->
+                <button mat-menu-item routerLink="/goals" *ngIf="authService.CurrentUser">{{'Цели' | translate}}</button>                
+
+                <button mat-menu-item [matMenuTriggerFor]="userinfo" *ngIf="authService.CurrentUser">{{authService.CurrentUser.username}}</button>
             </mat-menu>
 
             <button mat-button class="nav-button" routerLink="/wall" *ngIf="authService.CurrentUser">{{'Wall' | translate}}</button>
             <button mat-button class="nav-button" routerLink="/category" *ngIf="authService.CurrentUser">{{'Category' | translate}}</button>
             <button mat-button class="nav-button" routerLink="/brickTypeCards" *ngIf="authService.CurrentUser">{{'Habits' | translate}}</button>
             <button mat-button class="nav-button" routerLink="/frends" *ngIf="authService.CurrentUser">{{'Друзья' | translate}}</button>
-            <button mat-button class="nav-button" routerLink="/goals" *ngIf="authService.CurrentUser">{{'Цели' | translate}}</button>
-            <!-- <button mat-button class="nav-button" routerLink="/categoryContainer" *ngIf="authService.CurrentUser">{{'Category New' | translate}}</button> -->
+            <button mat-button class="nav-button" routerLink="/goals" *ngIf="authService.CurrentUser">{{'Цели' | translate}}</button>            
         </div>
     </div>
 
     <div class="rigth-area-menu">
 
-        <button mat-button [matMenuTriggerFor]="userinfo" *ngIf="authService.CurrentUser">{{authService.CurrentUser.username}}</button>
+        <!-- <button mat-button [matMenuTriggerFor]="userinfo" *ngIf="authService.CurrentUser">{{authService.CurrentUser.username}}</button>
         <mat-menu #userinfo="matMenu">
             <button mat-menu-item *ngIf="authService.CurrentUser">{{authService.CurrentUser.nickname}}</button>
-            <button mat-menu-item *ngIf="authService.CurrentUser">{{authService.CurrentUser.created}}</button>
-        </mat-menu>
+            <button mat-menu-item *ngIf="authService.CurrentUser">{{authService.CurrentUser.created | dateru:'MMMM YYYY' | capitalize }}</button>
+        </mat-menu> -->
+        <!-- <user-info class="nav-button"></user-info> -->
+
+        <button mat-button class="nav-button"
+            [matMenuTriggerFor]="userinfo" 
+            *ngIf="authService.CurrentUser">{{authService.CurrentUser.username}}</button>
 
         <locale-change></locale-change>
 
@@ -41,3 +46,9 @@
 
     </div>
 </div>
+
+
+<mat-menu #userinfo="matMenu">
+    <button mat-menu-item *ngIf="authService.CurrentUser">{{authService.CurrentUser.nickname}}</button>
+    <button mat-menu-item *ngIf="authService.CurrentUser">{{authService.CurrentUser.created | dateru:'MMMM YYYY' | capitalize }}</button>
+</mat-menu>

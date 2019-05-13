@@ -1,0 +1,7 @@
+
+
+<button mat-button [matMenuTriggerFor]="userinfo" *ngIf="authService.CurrentUser">{{authService.CurrentUser.username}}</button>
+<mat-menu #userinfo="matMenu">
+    <button mat-menu-item *ngIf="authService.CurrentUser">{{authService.CurrentUser.nickname}}</button>
+    <button mat-menu-item *ngIf="authService.CurrentUser">{{authService.CurrentUser.created | dateru:'MMMM YYYY' | capitalize }}</button>
+</mat-menu>
