@@ -47,6 +47,7 @@ import { DatePipe } from '@angular/common';
 import { BottomSheetComponent } from './components/dialogs/bottom-sheet/bottom-sheet.component';
 
 import { StoreModule } from '@ngrx/store';
+// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 // import * as fromStore from './store/index';
 import { effects, reducers, } from './store/index';
 //import { reducers, metaReducers } from './store/reducers';
@@ -139,6 +140,7 @@ export function createTranslateLoader(http: HttpClient) {
         
         StoreModule.forRoot(reducers),
         EffectsModule.forRoot(effects),
+        
 
         TableModule,CarouselModule,OrderListModule,ButtonModule,PanelModule,AccordionModule,ColorPickerModule,CalendarModule,DropdownModule,InputTextModule,
 

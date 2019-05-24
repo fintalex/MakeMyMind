@@ -147,7 +147,7 @@ brickTypeSchema.statics.updateCountMarked = (id, count, callback) => {
                     'countMarked': count
                 }
             }; 
-            if (brickTypesForUpdating.countMarked + count >= brickTypesForUpdating.neededDays){
+            if (brickTypesForUpdating.countMarked + count > brickTypesForUpdating.neededDays){
                 
                 updateCondition.$set =
                 {
