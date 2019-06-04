@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import { AuthService } from '../services/auth.service';
 
-//import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
