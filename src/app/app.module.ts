@@ -77,7 +77,7 @@ import { GoalDetailsPageComponent } from './userSetting/goal/goal-details-page/g
 import { GoalCardComponent } from './userSetting/goal/goal-card/goal-card.component';
 
 
-import { TableModule } from 'primeng/table';
+//import { TableModule } from 'primeng/table';
 import { CarouselModule } from 'primeng/carousel';
 import { OrderListModule } from 'primeng/orderlist';
 import { ButtonModule } from 'primeng/button';
@@ -142,7 +142,8 @@ export function createTranslateLoader(http: HttpClient) {
         EffectsModule.forRoot(effects),
         
 
-        TableModule,CarouselModule,OrderListModule,ButtonModule,PanelModule,AccordionModule,ColorPickerModule,CalendarModule,DropdownModule,InputTextModule,
+        //TableModule,
+        CarouselModule,OrderListModule,ButtonModule,PanelModule,AccordionModule,ColorPickerModule,CalendarModule,DropdownModule,InputTextModule,
 
         AppRoutingModule,
         TranslateModule.forRoot({

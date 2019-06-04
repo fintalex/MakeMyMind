@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed, inject, tick, fakeAsync, flush } from '@angular/core/testing';
 import { DebugElement } from '@angular/core'; 
-import { By } from '@angular/platform-browser';
-import 'rxjs/add/observable/of';
+//import { By } from '@angular/platform-browser';
+//import 'rxjs/add/observable/of';
 
 import { WallSideNavComponent } from './wall-side-nav.component';
 import { SharedModule } from '../../shared/shared.module';
@@ -17,7 +17,7 @@ import { TestStore } from '@testing/utils';
 import * as categorySelectors from '../../store/selectors/category.selectors';
 import { Store } from '@ngrx/store';
 import { Category } from '../../models/category.model';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { User } from 'app/models/user.model';
 import { Frend } from 'app/models/frend.model';
 
@@ -70,7 +70,7 @@ describe('WallSideNavComponent', () => {
         var mockFrends: Frend[] = [
             {_id: '1', frendId: '2343', user: 'sdf'}
         ];
-        spy = spyOn(frendService, 'getFrends').and.returnValues(Observable.of(mockFrends));
+        spy = spyOn(frendService, 'getFrends').and.returnValues(of(mockFrends));
 
         fixture.detectChanges();
     }));

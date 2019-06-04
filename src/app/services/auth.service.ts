@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 //import 'rxjs/add/operator/map';
 import { User } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService{
@@ -22,8 +23,8 @@ export class AuthService{
     }
 
     login(email: string, password: string){
-        return this.http.post<any>('/api/users/login', { email: email, password: password })
-            .map((res: Response) => {
+        return this.http.post<any>('/api/users/login', { email: email, password: password }).pipe(
+            map((res: Response) => {
                 let response: any = res;
                 console.log(response.msg);
                 let user = response.user;
@@ -33,7 +34,7 @@ export class AuthService{
                     this.CurrentUser = user;
                 } 
                 return response;
-            });
+            }));
     }
 
     logout() {

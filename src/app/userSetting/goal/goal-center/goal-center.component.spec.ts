@@ -5,7 +5,7 @@ import { GoalService } from '../goal.service';
 import { CUSTOM_ELEMENTS_SCHEMA, Injector } from '@angular/core';
 import { cold } from 'jasmine-marbles';
 import { Goal } from 'app/models/goal.model';
-import { Observable, from } from 'rxjs';
+import { Observable, from, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AuthService } from 'app/services/auth.service';
@@ -57,7 +57,7 @@ describe('Goal Centre', ()=>{
         ];
 
         // action
-        spyOn(goalService, 'getGoals').and.returnValue(Observable.of(someGoals));
+        spyOn(goalService, 'getGoals').and.returnValue(of(someGoals));
 
         // spyOn(this.goalService, 'getGoals').and.callFake(() => {
         //     return from(someGoals);
@@ -80,7 +80,7 @@ describe('Goal Centre', ()=>{
         // resolveMock<GoalService>(GoalService, TestBed.get(Injector))
         //     .setup(inst=>inst.getGoals())
         //     .returns(cold('r', {r: someGoals}));
-        let spy = spyOn(goalService, 'getGoals').and.returnValue(Observable.of(someGoals2));
+        let spy = spyOn(goalService, 'getGoals').and.returnValue(of(someGoals2));
         
         fixture.detectChanges();
 

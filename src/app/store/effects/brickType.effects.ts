@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { of } from 'rxjs/observable/of';
+//import { of } from 'rxjs/observable/of';
 import { map, switchMap, catchError, startWith, mergeMap } from 'rxjs/operators';
 
 import { BrickTypeActionTypes, LoadBrickTypesSuccess, ErrorBrickType, LoadBrickTypes, LoadBrickTypesAfterReload,
     RemoveBrickType, AddBrickType, AddBrickTypeSuccess, RemoveBrickTypeSuccess, UpdateBrickTypeInStore, UpdateBrickType, UpdateBrickTypeSuccess, ActivateBrickType, ActivateBrickTypeSuccess} from '../../store/actions/brickTypes';
 import { BrickTypeService } from '../../userSetting/brickType/brickType.service';
+import { of } from 'rxjs';
 
 @Injectable()
 export class BrickTypeEffects {

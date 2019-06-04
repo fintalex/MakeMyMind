@@ -1,12 +1,12 @@
 import { Injectable, InjectionToken } from '@angular/core';
 
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { of } from 'rxjs/observable/of';
+//import { of } from 'rxjs/observable/of';
 import { map, switchMap, catchError, startWith } from 'rxjs/operators';
 
 import { CategoryActionTypes, LoadCategoriesSuccess, LoadCategoriesFail, LoadCategories } from '../../store/actions/categories';
 import { CategoryService } from '../../userSetting/category/category.service';
-import { Scheduler } from 'rxjs';
+import { Scheduler, of } from 'rxjs';
 
 export const DEBOUNCE = new InjectionToken<number>('Test Debounce');
 export const SCHEDULER = new InjectionToken<Scheduler>('Test Scheduler');
