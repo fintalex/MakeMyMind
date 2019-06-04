@@ -88,18 +88,6 @@ export class WallSideNavComponent implements OnInit {
     tickHabbit(habbit: BrickType){
 
         var filteredHabbits = [];
-       
-        // _.forEach(this.brickTypes$.forEach, (hab: BrickType) => {
-        //     if(!habbit._id && hab._id){
-        //         hab.ticked = false;
-        //     } else if (habbit._id && !hab._id){
-        //         hab.ticked = false;
-        //     }
-
-        //     if (hab.ticked && hab._id){
-        //         filteredHabbits.push(hab._id);
-        //     }
-        // });
 
         this.brickTypes$
             .subscribe((brickTypes: BrickType[]) => {
