@@ -6,6 +6,9 @@
 /tmp
 /out-tsc
 
+# database
+/mongodb
+
 # dependencies
 /node_modules
 
