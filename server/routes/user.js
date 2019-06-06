@@ -91,13 +91,15 @@ router.post('/login', (req, res, next) => {
 
 // PUT update user
 router.put('/', (req, res, next) => {
-    console.log("YEHA - got the POST User API");
+    console.log("YEHA - got the PUT User API", req.body);
     let response = {success: true};
-    User.findByIdAndUpdate(req.body, (err, user) => {
+    User.findByIdAndUpdate(req.body._id, req.body, (err, user) => {
         if (err) {
+            console.log("err - ", err);
             response.msg = err.msg;
             res.json(response);
         } else { 
+            console.log("PUT USER SUCCESS", response);
             response.success = true;
             response.msg = "User successfuly updated";
             res.json(response);

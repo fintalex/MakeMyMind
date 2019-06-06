@@ -26,7 +26,7 @@ export class UserService{
     }
 
     getUserById(id: String){
-        return this.http.get<User>('/api/users/getUserById/'+ id);
+        return this.http.get<User>('/api/users/'+ id);
     }
 
     updateUser(user: User){

@@ -83,7 +83,7 @@ userSchema.statics.getNewUsersForDDL = (str, userId, callback) => {
 }
 
 userSchema.statics.getUserById = (userId, calllback) => {
-    User.find({'_id': userId}, calllback);
+    User.findOne({'_id': userId}, calllback);
 };
 
 userSchema.statics.addUser = (user, callback) => {

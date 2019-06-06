@@ -17,6 +17,7 @@ import { CategoryContainerComponent } from './userSetting/categoryNew/category-c
 import { BrickTypePageComponent } from './userSetting/brickTypeCards/brick-type-page/brick-type-page.component';
 import { GoalCenterComponent } from './userSetting/goal/goal-center/goal-center.component';
 import { GoalDetailsPageComponent } from './userSetting/goal/goal-details-page/goal-details-page.component';
+import { UserDetailsComponent } from './userSetting/user/user-details/user-details.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -45,6 +46,7 @@ const routes: Routes = [
     { path: 'brickTypePage/:id', component: BrickTypePageComponent, canActivate: [GuardService]}, 
     { path: 'goals', component: GoalCenterComponent, canActivate: [GuardService]},
     { path: 'goals/:id', component: GoalDetailsPageComponent, canActivate: [GuardService] },
+    { path: 'user-details', component: UserDetailsComponent, canActivate: [GuardService]}
 ];
 
 @NgModule({

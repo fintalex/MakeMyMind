@@ -1,3 +1,54 @@
-<p>
-  user-details works!
-</p>
+<div class="title-header my-card">
+    <div class="title-page-container" translate>
+        Настройки пользователя
+    </div>
+</div>
+
+<div class="user-setting-center">
+    <mat-card class="user-form" *ngIf="user$ | async as user">
+        <form [formGroup]="userForm" novalidate (submit)="updateUser()">
+            <!-- nick -->
+            <div class="ui-g ui-fluid">   
+                <div class="ui-md-3 ui-sm-2 margin-vertical-auto text-allign-right">
+                    Ник:
+                </div>
+                <div class="ui-md-6 ui-sm-10">
+                    <input type="text" pInputText required placeholder="Имя пользователя" formControlName="nickname" [(ngModel)]="user.nickname" >                      
+                    <mat-error *ngIf="userForm.controls.nickname.errors?.required">
+                        Поле обязательное для заполнения
+                    </mat-error>
+                </div>
+            </div>
+
+            <!-- email -->
+            <div class="ui-g ui-fluid">     
+                <div class="ui-md-3 ui-sm-2 margin-vertical-auto text-allign-right">
+                    Email:
+                </div>
+                <div class="ui-md-6 ui-sm-10">
+                    <input type="text" pInputText required placeholder="Email пользователя" formControlName="username" [(ngModel)]="user.username" >  
+                    <mat-error *ngIf="userForm.controls.username.errors?.required">
+                        Поле обязательное для заполнения
+                    </mat-error>
+                    <mat-error *ngIf="regForm.controls.username.errors?.email">
+                        Не валидный Email
+                    </mat-error>
+                    <mat-error *ngIf="regForm.controls.username.errors?.duplicateEmail">
+                        Такой Email уже используется
+                    </mat-error>
+                </div>
+            </div>
+
+
+
+            <div class="button-footer">
+                <button color="primary" 
+                    mat-raised-button 
+                    translate>
+                        Сохранить 
+                </button>
+            </div>
+        </form>
+
+    </mat-card>
+</div>

@@ -16,7 +16,8 @@
                 <button mat-menu-item routerLink="/frends" *ngIf="authService.CurrentUser">{{'Друзья' | translate}}</button>
                 <button mat-menu-item routerLink="/goals" *ngIf="authService.CurrentUser">{{'Цели' | translate}}</button>                
 
-                <button mat-menu-item [matMenuTriggerFor]="userinfo" *ngIf="authService.CurrentUser">{{authService.CurrentUser.username}}</button>
+                <!-- <button mat-menu-item [matMenuTriggerFor]="userinfo" *ngIf="authService.CurrentUser">{{authService.CurrentUser.username}}</button> -->
+                <button mat-button class="nav-button" routerLink="/user-details" *ngIf="authService.CurrentUser">{{authService.CurrentUser.nickname}}</button>  
             </mat-menu>
 
             <button mat-button class="nav-button" routerLink="/wall" *ngIf="authService.CurrentUser">{{'Wall' | translate}}</button>
@@ -36,10 +37,7 @@
         </mat-menu> -->
         <!-- <user-info class="nav-button"></user-info> -->
 
-        <button mat-button class="nav-button"
-            [matMenuTriggerFor]="userinfo" 
-            *ngIf="authService.CurrentUser">{{authService.CurrentUser.username}}</button>
-
+        <button mat-button class="nav-button" routerLink="/user-details" *ngIf="authService.CurrentUser">{{authService.CurrentUser.nickname}}</button>  
         <locale-change></locale-change>
 
         <loging></loging>
@@ -47,8 +45,8 @@
     </div>
 </div>
 
-
+<!-- 
 <mat-menu #userinfo="matMenu">
     <button mat-menu-item *ngIf="authService.CurrentUser">{{authService.CurrentUser.nickname}}</button>
     <button mat-menu-item *ngIf="authService.CurrentUser">{{authService.CurrentUser.created | dateru:'MMMM YYYY' | capitalize }}</button>
-</mat-menu>
+</mat-menu> -->
