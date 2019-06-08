@@ -7,6 +7,8 @@ import { MatToolbarModule, MatCardModule, MatInputModule, MatButtonModule, MatIc
     MatBottomSheetModule, MatTooltipModule, MatSidenavModule
      } from '@angular/material';
 import { MatExpansionModule } from '@angular/material/expansion';  
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   imports: [
@@ -15,7 +17,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatGridListModule, MatListModule, MatSelectModule, MatChipsModule, MatMenuModule, 
     MatDialogModule, MatCheckboxModule, MatFormFieldModule, MatExpansionModule,
     MatAutocompleteModule, MatBottomSheetModule, MatRadioModule, MatTooltipModule,
-    MatSidenavModule
+    MatSidenavModule, MatSnackBarModule, MatSlideToggleModule
   ],
   declarations: [],
   exports: [
@@ -23,7 +25,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatGridListModule, MatListModule, MatSelectModule, MatChipsModule, MatMenuModule, 
     MatDialogModule,  MatCheckboxModule, MatFormFieldModule, MatExpansionModule,
     MatAutocompleteModule, MatBottomSheetModule, MatRadioModule, MatTooltipModule,
-    MatSidenavModule
+    MatSidenavModule, MatSnackBarModule, MatSlideToggleModule
   ]
 })
 export class MdModule { }

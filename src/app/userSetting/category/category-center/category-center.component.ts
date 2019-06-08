@@ -36,7 +36,7 @@ export class CategoryCenterComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        if (!this.authService.CurrentUser.helper.categoryMainHelp){
+        if (this.authService.CurrentUser.helper.categoryMainHelp && this.authService.CurrentUser.showHelpers){
             var bottomSheetParams: ModalParams = {
                 disableClose: true, 
                 okButtonTitle: "Понял", 

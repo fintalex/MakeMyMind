@@ -29,11 +29,12 @@ const userSchema = mongoose.Schema({
         type: String,
         default: 'ru'
     },
+    showHelpers:{ type: Boolean, default: true },
     helper:  { 
-        calendarMainHelp:  { type: Boolean, default: false },
-        categoryMainHelp:  { type: Boolean, default: false },
-        frendsMainHelp:  { type: Boolean, default: false },
-        brickTypeMainHelp:  { type: Boolean, default: false },
+        calendarMainHelp:  { type: Boolean, default: true },
+        categoryMainHelp:  { type: Boolean, default: true },
+        frendsMainHelp:  { type: Boolean, default: true },
+        brickTypeMainHelp:  { type: Boolean, default: true },
         wallSideNavShow: { type: Boolean, default: true }
     }
 });

@@ -44,7 +44,7 @@ export class BrickTypeCardsCentreComponent implements OnInit {
     ngOnInit() {
         this.brickTypes$ = this.store.pipe(select(fromBrickTypeSelectors.getBrickTypes));
 
-        if (!this.authService.CurrentUser.helper.brickTypeMainHelp){
+        if (this.authService.CurrentUser.helper.brickTypeMainHelp && this.authService.CurrentUser.showHelpers){
             var bottomSheetParams: ModalParams = {
                 disableClose: true, 
                 okButtonTitle: "Понял", 

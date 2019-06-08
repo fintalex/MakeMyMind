@@ -25,7 +25,7 @@ export class FrendComponent implements OnInit {
         private userService: UserService) { }
 
     ngOnInit() {
-        if (!this.authService.CurrentUser.helper.frendsMainHelp){
+        if (this.authService.CurrentUser.helper.frendsMainHelp && this.authService.CurrentUser.showHelpers){
             var bottomSheetParams: ModalParams = {
                 disableClose: true, 
                 okButtonTitle: "Понял", 

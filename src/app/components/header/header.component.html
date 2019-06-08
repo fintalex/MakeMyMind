@@ -17,7 +17,8 @@
                 <button mat-menu-item routerLink="/goals" *ngIf="authService.CurrentUser">{{'Цели' | translate}}</button>                
 
                 <!-- <button mat-menu-item [matMenuTriggerFor]="userinfo" *ngIf="authService.CurrentUser">{{authService.CurrentUser.username}}</button> -->
-                <button mat-button class="nav-button" routerLink="/user-details" *ngIf="authService.CurrentUser">{{authService.CurrentUser.nickname}}</button>  
+                <mat-divider></mat-divider>
+                <button mat-menu-item routerLink="/user-details" *ngIf="authService.CurrentUser">{{authService.CurrentUser.nickname}}</button>  
             </mat-menu>
 
             <button mat-button class="nav-button" routerLink="/wall" *ngIf="authService.CurrentUser">{{'Wall' | translate}}</button>

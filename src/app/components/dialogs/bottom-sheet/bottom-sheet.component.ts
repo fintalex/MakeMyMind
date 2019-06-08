@@ -16,12 +16,12 @@ export class BottomSheetComponent implements OnInit {
     }
 
     closeSheet(event: MouseEvent): void {
-        this.bottomSheetRef.dismiss(false);
+        this.bottomSheetRef.dismiss(true);
         event.preventDefault();
     }
 
     confirmSheet(event: MouseEvent){
-        this.bottomSheetRef.dismiss(true);
+        this.bottomSheetRef.dismiss(false);
         event.preventDefault();
     }
 }

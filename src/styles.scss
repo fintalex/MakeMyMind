@@ -581,15 +581,6 @@ $hexagon-index: 1;
     }
 }
 
-.margin-vertical-auto{
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-.text-allign-right{
-    text-align: right;
-}
-
 // ================================  FLEX ===========================
 .flex-space-between{
     display: flex;
@@ -615,4 +606,26 @@ $hexagon-index: 1;
 // ========================== MAT SIDE NAV ===================== 
 .mat-drawer-container, .mat-drawer{
     background-color: transparent!important;
+}
+
+// ========================== mat-slide-toggle =================
+.mat-slide-toggle{
+    vertical-align: middle;
+}
+// ========================== BUTTONS ==========================
+.ui-button, .ui-togglebutton{
+    width: 150px;
+    height: 38px;
+}
+// ========================== ALIGN ITEMS ======================
+.text-allign-center{
+    text-align: center;
+}
+.margin-vertical-auto{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.text-allign-right{
+    text-align: right;
 }

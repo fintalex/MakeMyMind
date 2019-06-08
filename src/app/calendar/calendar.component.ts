@@ -74,7 +74,7 @@ export class CalendarComponent implements OnInit {
             this.updateWall()
         });
 
-        if (!this.authService.CurrentUser.helper.calendarMainHelp){
+        if (this.authService.CurrentUser.helper.calendarMainHelp && this.authService.CurrentUser.showHelpers){
             var bottomSheetParams: ModalParams = {
                 disableClose: true, 
                 okButtonTitle: "Понял", 

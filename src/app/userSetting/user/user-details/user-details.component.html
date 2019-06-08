@@ -30,25 +30,47 @@
                     <mat-error *ngIf="userForm.controls.username.errors?.required">
                         Поле обязательное для заполнения
                     </mat-error>
-                    <mat-error *ngIf="regForm.controls.username.errors?.email">
+                    <mat-error *ngIf="userForm.controls.username.errors?.email">
                         Не валидный Email
                     </mat-error>
-                    <mat-error *ngIf="regForm.controls.username.errors?.duplicateEmail">
+                    <mat-error *ngIf="userForm.controls.username.errors?.duplicateEmail">
                         Такой Email уже используется
                     </mat-error>
                 </div>
             </div>
 
+            <!-- Helpers -->
+            <div class="ui-g">     
+                <div class="ui-md-3 ui-sm-2 margin-vertical-auto text-allign-right">
+                    Подсказки:
+                </div>
+                <div class="ui-md-6 ui-sm-10 ">
+                    <mat-slide-toggle
+                        class="mat-slide"
+                        formControlName="showHelpers"
+                        [(ngModel)]="user.showHelpers">
+                        Показывать
+                    </mat-slide-toggle>
+
+                    <button color="primary" 
+                        mat-raised-button 
+                        (click)="activateHelpers()"
+                        [disabled]="!user.showHelpers"
+                        translate>
+                            Сбросить 
+                    </button>
+                </div>
+            </div>
 
 
-            <div class="button-footer">
+            <div class="button-footer text-allign-right ui-md-9 ui-sm-12">
                 <button color="primary" 
+                    [disabled]="userForm.invalid"
                     mat-raised-button 
                     translate>
                         Сохранить 
                 </button>
             </div>
         </form>
-
-    </mat-card>
+    </mat-card>    
 </div>

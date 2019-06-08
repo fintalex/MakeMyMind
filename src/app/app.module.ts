@@ -86,9 +86,11 @@ import { ColorPickerModule } from 'primeng/colorpicker';
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
+
 import { BrickComponent } from './components/brick/brick.component';
 import { UserDetailsComponent } from './userSetting/user/user-details/user-details.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -121,12 +123,13 @@ export function createTranslateLoader(http: HttpClient) {
         CategoryItemComponent, 
         CategorySelectedComponent, 
         CategoryContainerComponent,
+        SnackBarComponent,
 
         // === pipes ====
         DateRu, CapitalizePipe, BrickComponent, UserDetailsComponent, UserInfoComponent
     ],
     entryComponents: [BrickModalComponent, BrickMultyModalComponent, ConfirmationModalComponent, BottomSheetComponent,
-        BrickTypeModalComponent
+        BrickTypeModalComponent, SnackBarComponent
     ],
     imports: [
         BrowserModule,

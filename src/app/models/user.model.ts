@@ -4,6 +4,7 @@ export class User {
     password: string;
     nickname: string;
     locale: string;
+    showHelpers: boolean;
     helper:  { 
         calendarMainHelp:  boolean,
         categoryMainHelp:  boolean,
