@@ -9,10 +9,10 @@
         <form [formGroup]="userForm" novalidate (submit)="updateUser()">
             <!-- nick -->
             <div class="ui-g ui-fluid">   
-                <div class="ui-md-3 ui-sm-2 margin-vertical-auto text-allign-right">
+                <div class="ui-md-3 ui-sm-4 margin-vertical-auto text-allign-right">
                     Ник:
                 </div>
-                <div class="ui-md-6 ui-sm-10">
+                <div class="ui-md-6 ui-sm-8">
                     <input type="text" pInputText required placeholder="Имя пользователя" formControlName="nickname" [(ngModel)]="user.nickname" >                      
                     <mat-error *ngIf="userForm.controls.nickname.errors?.required">
                         Поле обязательное для заполнения
@@ -22,10 +22,10 @@
 
             <!-- email -->
             <div class="ui-g ui-fluid">     
-                <div class="ui-md-3 ui-sm-2 margin-vertical-auto text-allign-right">
+                <div class="ui-md-3 ui-sm-4 margin-vertical-auto text-allign-right">
                     Email:
                 </div>
-                <div class="ui-md-6 ui-sm-10">
+                <div class="ui-md-6 ui-sm-8">
                     <input type="text" pInputText required placeholder="Email пользователя" formControlName="username" [(ngModel)]="user.username" >  
                     <mat-error *ngIf="userForm.controls.username.errors?.required">
                         Поле обязательное для заполнения
@@ -41,15 +41,15 @@
 
             <!-- Helpers -->
             <div class="ui-g">     
-                <div class="ui-md-3 ui-sm-2 margin-vertical-auto text-allign-right">
+                <div class="ui-md-3 ui-sm-4 margin-vertical-auto text-allign-right">
                     Подсказки:
                 </div>
-                <div class="ui-md-6 ui-sm-10 ">
+                <div class="ui-md-6 ui-sm-8 flex-space-between">
                     <mat-slide-toggle
                         class="mat-slide"
                         formControlName="showHelpers"
                         [(ngModel)]="user.showHelpers">
-                        Показывать
+                        <div class="toogle-label">Показывать</div> 
                     </mat-slide-toggle>
 
                     <button color="primary" 
@@ -63,7 +63,7 @@
             </div>
 
 
-            <div class="button-footer text-allign-right ui-md-9 ui-sm-12">
+            <div class="button-footer text-allign-center">
                 <button color="primary" 
                     [disabled]="userForm.invalid"
                     mat-raised-button 

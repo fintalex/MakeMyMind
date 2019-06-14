@@ -26,4 +26,5 @@ export class GoalCenterComponent implements OnInit {
     goToGoalDetails(id){
         this.router.navigate([`/goals/${id}`]);
     }
+    
 }

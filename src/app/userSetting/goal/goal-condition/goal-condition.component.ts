@@ -1,17 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Condition } from '../../../models/condition';
 
 @Component({
     selector: 'goal-condition',
     templateUrl: './goal-condition.component.html',
     styleUrls: ['./goal-condition.component.scss'],
-    inputs: ['condition']
+    inputs: ['condition', 'editable'],
+    outputs: ['removeConditionEvent']
 })
 export class GoalConditionComponent implements OnInit {
 
     condition: Condition;
 
     conditionSteps: any[] = [];
+
+    editable: boolean = false;
+    private removeConditionEvent = new EventEmitter();
     
     constructor() { }
 
@@ -23,6 +27,10 @@ export class GoalConditionComponent implements OnInit {
             };
             this.conditionSteps.push(step);
         }
+    }
+
+    removeCondition(id){
+        this.removeConditionEvent.emit(id);
     }
 
 }

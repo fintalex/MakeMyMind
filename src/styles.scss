@@ -586,6 +586,10 @@ $hexagon-index: 1;
     display: flex;
     justify-content: space-between;
 }
+.flex-space-around{
+    display: flex;
+    justify-content: space-around;
+}
 
 // ============================ SCROLLBAR ======================
 .scroll-container::-webkit-scrollbar{
@@ -616,6 +620,10 @@ $hexagon-index: 1;
 .ui-button, .ui-togglebutton{
     width: 150px;
     height: 38px;
+}
+.mat-icon-button{
+    height: 30px!important;
+    line-height: 30px!important;
 }
 // ========================== ALIGN ITEMS ======================
 .text-allign-center{

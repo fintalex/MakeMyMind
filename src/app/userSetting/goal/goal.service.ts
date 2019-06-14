@@ -17,11 +17,10 @@ export class GoalService {
     ) { }
 
     getGoals(): Observable<any>{
-        return new Observable();
-        // if (!this.authService.CurrentUser){
-        //     return;
-        // }
-        // return this.http.get<any>('/api/goals/getByUserId/' + this.authService.CurrentUser._id);
+        if (!this.authService.CurrentUser){
+            return;
+        }
+        return this.http.get<any>('/api/goals/getByUserId/' + this.authService.CurrentUser._id);
     }
 
     getGoalById(goalId){

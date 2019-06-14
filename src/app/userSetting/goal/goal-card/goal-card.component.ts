@@ -5,14 +5,16 @@ import { Goal } from '../../../models/goal.model';
   selector: 'goal-card',
   templateUrl: './goal-card.component.html',
   styleUrls: ['./goal-card.component.scss'],
-  inputs: ['goal'],
-  outputs: ['goToCardEvent']
+  inputs: ['goal', 'editable'],
+  outputs: ['removeConditionEvent']
 })
 export class GoalCardComponent implements OnInit {
 
     goal: Goal;
+    editable: boolean = false;
 
-    private goToCardEvent = new EventEmitter();
+    //private goToCardEvent = new EventEmitter();
+    private removeConditionEvent = new EventEmitter();
 
     constructor() { }
 
@@ -20,8 +22,11 @@ export class GoalCardComponent implements OnInit {
         console.log(this.goal);
     }
 
-    goToCard(id) {
-        this.goToCardEvent.emit(id);
-    }
+    // goToCard(id) {
+    //     this.goToCardEvent.emit(id);
+    // }
 
+    removeCondition(id){
+        this.removeConditionEvent.emit(id);
+    }
 }

@@ -9,30 +9,18 @@ const goalService  = require('./../services/goal');
 
 //var Frend = require('../models/frend');
 
-// Http://localhost:5015/api/getByUserId (GET)
+// Http://localhost:5015/api (GET)
 router.get('/', async (req, res) => {
     const goals = await Goal.find({});
 
     res.status(200).json(goals);
 });
 
+// Http://localhost:5015/api/getByUserId/234234 (GET)
 router.get('/getByUserId/:userId', goalService.getGoalsByUser);
 
-// router.get('/getByUserId/:userId', async (req, res, next) => {
-    
-//     // console.log("GET all Goals by user id API. PARAMS are : ", req.params);
-
-//     // const goals = await Goal.find({'user': req.params.userId});
-
-//     // res.status(200).json(goals);
-// });
-
-router.get('/getGoalById/:goalId', async (req, res) => {
-
-    const curGoal = await Goal.findOne({'_id': req.params.goalId});
-
-    res.status(200).json(curGoal);
-});
+// Http://localhost:5015/api/getGoalById/67856 (GET)
+router.get('/getGoalById/:goalId', goalService.getGoalById);
 
 // Http://localhost:5015/api/goal (POST)
 router.post('/', async (req, res) => {
@@ -40,6 +28,15 @@ router.post('/', async (req, res) => {
     const goal = new Goal(req.body);
 
     await goal.save();
+
+    res.status(201).json(goal);
+});
+
+// Http://localhost:5015/api/goal (PUT)
+router.put('/', async (req, res) => {
+    console.log("PUT goal, ", req.body);
+
+    await Goal.update({_id: req.body._id}, req.body);
 
     res.status(201).json(goal);
 });

@@ -26,6 +26,32 @@ getGoalsByUser = async (req, res, next) => {
     }
 }
 
+getGoalById = async (req, res, next) => {
+    console.log("We are in getGoalById");
+    var goalId = req.params.goalId;
+    if (!goalId){
+        return res.status(500).json({ error: 'Goal is not found'});
+    }
+    try {
+        const goals = await Goal.findOne({'_id': goalId})
+            .populate(
+                { 
+                    path: "conditions.brickType", 
+                    select: 'isIcon name sign type',
+                    //model: "BrickType", (not necessary)
+                    populate: {
+                        path: "category", 
+                        select: "color",
+                        model: "Category"
+                    }
+                });
+        return res.status(200).json(goals);
+
+    } catch (error){
+        return res.status(500).json(error);
+    }
+}
+
 /// HERE in the count we can pass 1 or -1 if we want to INCREMENT or DECREMENT 
 updateMarkedCount = (brickTypeId, count, callback) => {
     console.log("!!!!!!!!!!!!!!!!!!! HEY I AM IN GOAL SERVICE - updateMarkedCount !!!!!!!!!!!!!!!!!!!!!", brickTypeId);
@@ -56,6 +82,7 @@ updateMarkedCount = (brickTypeId, count, callback) => {
 
 module.exports = { 
     getGoalsByUser: getGoalsByUser,
-    updateMarkedCount: updateMarkedCount
+    updateMarkedCount: updateMarkedCount,
+    getGoalById: getGoalById
 };
 

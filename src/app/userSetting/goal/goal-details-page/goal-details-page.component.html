@@ -5,7 +5,7 @@
 </div>
 
 <div class="goal-container">
-    <mat-card class="goal-form">
+    <mat-card class="goal-form" *ngIf="curGoal">
         
         <div class="title-page-container" translate>
             Создание/обновление цели 
@@ -14,23 +14,21 @@
         <!-- name -->
         <div class="ui-g ui-fluid">     
 
-            <div class="ui-md-3 ui-sm-2 margin-vertical-auto text-allign-right">
+            <div class="ui-md-3 ui-sm-4 margin-vertical-auto text-allign-right">
                 Название:
             </div>
-            <div class="ui-md-8 ui-sm-9">
-                <input type="text" pInputText required placeholder="Укажите кол-во дней" [(ngModel)]="curName" >  
+            <div class="ui-md-6 ui-sm-8">
+                <input type="text" pInputText required placeholder="Укажите кол-во дней" [(ngModel)]="curGoal.name" >  
             </div>
         </div>
-
-        <!-- <span *ngIf="warningMessage" class="warn-span">{{'warningMessage' | translate}}</span> -->            
-
+        <!-- StartDate -->
         <div class="ui-g ui-fluid">
-            <div class="ui-md-3 ui-sm-2 margin-vertical-auto text-allign-right">
+            <div class="ui-md-3 ui-sm-4 margin-vertical-auto text-allign-right">
                 Дата старта:
             </div>  
-            <div class="ui-md-8 ui-sm-9">
+            <div class="ui-md-6 ui-sm-8">
                 <p-calendar
-                    [(ngModel)]="dateStart" 
+                    [(ngModel)]="curGoal.createdDate" 
                     placeholder="Введите дату старта"
                     dateFormat="dd.mm.yy"
                     [minDate]="minDateValue"
@@ -38,14 +36,14 @@
                     [showIcon]="true"></p-calendar>
             </div>
         </div>
-        
+        <!-- EndDate -->
         <div class="ui-g ui-fluid">
-            <div class="ui-md-3 ui-sm-2 margin-vertical-auto text-allign-right">
+            <div class="ui-md-3 ui-sm-4 margin-vertical-auto text-allign-right">
                 Дата завершения:
             </div>  
-            <div class="ui-md-8 ui-sm-9">
+            <div class="ui-md-6 ui-sm-8">
                 <p-calendar 
-                    [(ngModel)]="dateEnd"
+                    [(ngModel)]="curGoal.finishDate"
                     placeholder="Введите дату завершения"                
                     dateFormat="dd.mm.yy"
                     [minDate]="minDateValue"
@@ -54,72 +52,94 @@
             </div>
         </div>         
         
-        <div class="conditions form-field ui-md-12">
-            
-            <p-button label="Добавить условие" (click)="addNewCondition()"></p-button>
 
-            <div class="ui-g ui-fluid" *ngFor="let condition of conditionals">
-                <div class="ui-md-3 margin-vertical-auto text-allign-right">
-                    Действие:
-                </div>
-                <div class="ui-md-3">
-                    <p-dropdown 
-                        class="conditionDDL"
-                        [style]="{'width':'100%'}"
-                        [options]="existedBrickTypes" 
-                        [(ngModel)]="condition.brickType" >
-                        <ng-template let-item pTemplate="selectedItem"> 
-                            <div class="color-list-option">
-                                <span class="text-shadow brick-in-option" 
-                                    [ngClass]="{'brick-in-calendar': !item.value.type || item.value.type == 1, 'brick-in-calendar-arrow': item.value.type == 2}"
-                                    [ngStyle]="{'background-color': item.value.category.color}">
-                                    <mat-icon *ngIf="item.value.isIcon "  
-                                                class="brickIcon">
-                                        {{item.value.sign}} 
-                                    </mat-icon>
-                                    <div *ngIf="!item.value.isIcon">{{item.value.sign}}</div> 
-                                </span>
-                                <div class="mat-option" style="position: relative;height: 25px;">{{ item.value.name }}</div>
-                            </div>
-                        </ng-template> 
-
-                        <ng-template let-brityp pTemplate="item">                            
-                            <div class="color-list-option">
-                                <span class="text-shadow brick-in-option" 
-                                    [ngClass]="{'brick-in-calendar': !brityp.value.type || brityp.value.type == 1, 'brick-in-calendar-arrow': brityp.value.type == 2}"
-                                    [ngStyle]="{'background-color': brityp.value.category.color}">
-                                    <mat-icon *ngIf="brityp.value.isIcon "  
-                                                class="brickIcon">
-                                        {{brityp.value.sign}} 
-                                    </mat-icon>
-                                    <div *ngIf="!brityp.value.isIcon">{{brityp.value.sign}}</div> 
-                                </span>
-                                <div class="mat-option" style="position: relative;height: 25px;">{{ brityp.value.name }}</div>
-                            </div>
-                        </ng-template>
-                    </p-dropdown>
-                </div>  
-                <div class="ui-md-1 margin-vertical-auto text-allign-right">
-                    Дни:
-                </div>
-                <div class="ui-md-1">
-                    <input type="text" pInputText placeholder="Укажите кол-во дней" [(ngModel)]="condition.days" >       
-                </div>
-            </div>
-
+        <!--  =============================== Conditions ====================================-->
+        <div class="title-container">
+            Условия достижения цели
         </div>
 
+        <div class="ui-g ui-fluid" >
+            <div class="ui-md-3 ui-sm-4 margin-vertical-auto text-allign-right">
+                Действие:
+            </div>
+            <div class="ui-md-3 ui-sm-8">
+                <p-dropdown 
+                    class="conditionDDL"
+                    [style]="{'width':'100%'}"
+                    [options]="existedBrickTypes" 
+                    [(ngModel)]="curHabbit" >
+                    <ng-template let-item pTemplate="selectedItem"> 
+                        <div class="color-list-option">
+                            <span class="text-shadow brick-in-option" 
+                                [ngClass]="{'brick-in-calendar': !item.value.type || item.value.type == 1, 'brick-in-calendar-arrow': item.value.type == 2}"
+                                [ngStyle]="{'background-color': item.value.category.color}">
+                                <mat-icon *ngIf="item.value.isIcon "  
+                                            class="brickIcon">
+                                    {{item.value.sign}} 
+                                </mat-icon>
+                                <div *ngIf="!item.value.isIcon">{{item.value.sign}}</div> 
+                            </span>
+                            <div class="mat-option" style="position: relative;height: 25px;">{{ item.value.name }}</div>
+                        </div>
+                    </ng-template> 
 
+                    <ng-template let-brityp pTemplate="item">                            
+                        <div class="color-list-option">
+                            <span class="text-shadow brick-in-option" 
+                                [ngClass]="{'brick-in-calendar': !brityp.value.type || brityp.value.type == 1, 'brick-in-calendar-arrow': brityp.value.type == 2}"
+                                [ngStyle]="{'background-color': brityp.value.category.color}">
+                                <mat-icon *ngIf="brityp.value.isIcon "  
+                                            class="brickIcon">
+                                    {{brityp.value.sign}} 
+                                </mat-icon>
+                                <div *ngIf="!brityp.value.isIcon">{{brityp.value.sign}}</div> 
+                            </span>
+                            <div class="mat-option" style="position: relative;height: 25px;">{{ brityp.value.name }}</div>
+                        </div>
+                    </ng-template>
+                </p-dropdown>
+            </div>  
+            <div class="ui-md-1 ui-sm-4 margin-vertical-auto text-allign-right">
+                Дни:
+            </div>
+            <div class="ui-md-1 ui-sm-7">
+                <input type="number" min="1" pInputText 
+                    placeholder="Кол-во дней" 
+                    [(ngModel)]="conditionDays" >       
+            </div>
+            <div class="ui-md-1 ui-sm-1"> 
+                <button mat-icon-button color="primary"
+                    (click)="addCondition()">
+                    <mat-icon  matTooltip="Добавить условие" matTooltipPosition="right" color="primary">add_box</mat-icon>
+                </button>
+            </div>
+        </div>
 
+        <!-- ========================== goal-card ======================    -->
+        <goal-card class="goal-card"             
+            (removeConditionEvent)="removeCondition($event)"
+            [editable]="true"
+            [goal]="curGoal"></goal-card> 
 
-
+        <!--  ========================= Footer ========================== -->
 
         <div class="button-footer">
             <button color="primary" 
+                *ngIf="!curGoal._id"
                 (click)="createNewGoal()"
+                [disabled]="!curGoal.conditions || curGoal.conditions.length < 1"
                 mat-raised-button 
                 translate>
                     Создать 
+            </button>
+
+            <button color="primary" 
+                *ngIf="curGoal._id"
+                (click)="updateGoal()"
+                [disabled]="!curGoal.conditions || curGoal.conditions.length < 1"
+                mat-raised-button 
+                translate>
+                    Обновить 
             </button>
 
             <button color="primary" 

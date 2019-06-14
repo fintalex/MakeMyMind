@@ -12,4 +12,11 @@
                 {{step.index}}
         </div>
     </div>
+
+    <div>
+        <button mat-icon-button color="warn" *ngIf="editable"
+            (click)="removeCondition(condition.brickType._id)">
+            <mat-icon  matTooltip="Удалить условие" matTooltipPosition="right" color="warn">delete</mat-icon>
+        </button>
+    </div>
 </div>

@@ -14,8 +14,9 @@
                 <div  class="goal-container">
                     <goal-card class="goal-card" 
                         *ngFor="let curGoal of goals | async" 
-                        (goToCardEvent)="goToGoalDetails(curGoal._id)"
-                        [goal]="curGoal"></goal-card> 
+                        [goal]="curGoal">                        
+                        <button mat-raised-button class="navigate-btn float-right" (click)="goToGoalDetails(curGoal._id)">Детали</button>
+                    </goal-card> 
                 </div>
             </p-accordionTab>
             <p-accordionTab header="Завершенные">

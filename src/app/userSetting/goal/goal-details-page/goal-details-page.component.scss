@@ -5,6 +5,9 @@
 
 .goal-form {
     margin: 10px;
+    div{
+        box-sizing: border-box;
+    }
     form{
         margin: 10px;
         display: flex;

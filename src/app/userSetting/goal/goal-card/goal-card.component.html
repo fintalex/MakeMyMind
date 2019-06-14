@@ -2,7 +2,8 @@
     <p-header>
         <div class="ui-helper-clearfix">
             <span class="ui-panel-title">{{goal.name}}</span>
-            <button mat-raised-button class="navigate-btn float-right" (click)="goToCard(goal._id)">Детали</button>
+            <!-- <button mat-raised-button class="navigate-btn float-right" (click)="goToCard(goal._id)">Детали</button> -->
+            <ng-content></ng-content>
         </div>
     </p-header>
 
@@ -15,6 +16,9 @@
         </div>
     </div>
 
-    <goal-condition *ngFor="let condition of goal.conditions" [condition]="condition"></goal-condition>
+    <goal-condition *ngFor="let condition of goal.conditions" 
+        (removeConditionEvent)="removeCondition($event)"
+        [condition]="condition" 
+        [editable]="editable"></goal-condition>
 
 </p-panel>

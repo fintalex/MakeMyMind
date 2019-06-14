@@ -30,10 +30,12 @@ export class GoalDetailsPageComponent implements OnInit {
     //brickTypes$: Observable<BrickType[]>;
     existedBrickTypes: SelectItem[];
     selectedBrickType: any = {}; // important to set DEF value
-    curName: string;
-    dateStart: Date;
-    dateEnd: Date;
-    conditionals: any[];
+    // curName: string;
+    // dateStart: Date;
+    // dateEnd: Date;
+    //conditionals: any[];
+    conditionDays: any;
+    curHabbit: any;
 
     public goalForm: FormGroup = new FormGroup({
         name: new FormControl(),
@@ -52,31 +54,33 @@ export class GoalDetailsPageComponent implements OnInit {
 
     ngOnInit() {
 
-        this.conditionals = [];
-
         //this.brickTypes$ = this.store.pipe(select(fromBrickTypeSelectors.getBrickTypes));
 
         this.store.pipe(select(fromBrickTypeSelectors.getBrickTypes)).subscribe(brickTypes => {
-            this.existedBrickTypes = brickTypes.map(brt=> { return {label: brt.name, value: brt }});
+
+            this.existedBrickTypes = brickTypes.map(brt=> { 
+                if (!this.curHabbit){
+                    this.curHabbit = brt;
+                }
+                return {label: brt.name, value: brt }
+            });
+            //this.curHabbit = this.existedBrickTypes[0].value;
+            this.conditionDays = 3;
 
             this.goalId = this.route.snapshot.paramMap.get('id');
 
             if (this.goalId != '0'){
                 this.goalService.getGoalById(this.goalId)
+                    .map((goal: Goal) => {
+                        goal.createdDate = new Date(goal.createdDate);
+                        goal.finishDate = new Date(goal.finishDate);
+                        return goal;
+                    })
                     .subscribe((goal: Goal) => {
-                        this.curGoal = goal;
-    
-                        this.curName = goal.name;
-                        this.dateStart = new Date(goal.createdDate);
-                        this.dateEnd = new Date(goal.finishDate);
-    
-                        this.conditionals = goal.conditions.map(g=> 
-                            { 
-                                var brt = _.find(brickTypes, (brType: any) => { return brType._id == g.brickType });
-                                return { days: g.neededCount, brickType: brt };
-                            });
-    
+                        this.curGoal = goal;    
                     });
+            } else {
+                this.curGoal = new Goal();
             }
         });
 
@@ -116,24 +120,11 @@ export class GoalDetailsPageComponent implements OnInit {
     }
 
     createNewGoal() {
-        console.log("selectedBrickType", this.selectedBrickType);
+        if (this.curGoal.name && this.curGoal.createdDate && this.curGoal.finishDate && this.curGoal.conditions &&  this.curGoal.conditions.length > 0){
+            this.curGoal.status = 1;
+            this.curGoal.user = this.authService.CurrentUser._id;
 
-        if (this.curName && this.dateStart && this.dateEnd){
-
-            var curGoal: Goal = {
-                name: this.curName,
-                status: 1,
-                user: this.authService.CurrentUser._id,
-                createdDate: this.dateStart,
-                finishDate: this.dateEnd,
-                conditions: this.conditionals.map(cond => { 
-                    return  { 
-                        brickType: cond.brickType._id, 
-                        neededCount: cond.days }
-                })
-            };
-
-            this.goalService.createGoal(curGoal)
+            this.goalService.createGoal(this.curGoal)
                 .subscribe(result => {
                     console.log(result);
                 });
@@ -143,8 +134,37 @@ export class GoalDetailsPageComponent implements OnInit {
         }
     }
 
-    addNewCondition(){
-        this.conditionals.push({'brickType': '', 'days': 1});
+    updateGoal(){
+        if (this.curGoal.name && this.curGoal.createdDate && this.curGoal.finishDate && this.curGoal.conditions &&  this.curGoal.conditions.length > 0){
+            this.goalService.updateGoal(this.curGoal)
+                .subscribe(result => {
+                    console.log(result);
+                });
+
+        } else {
+            // show warnings
+        }
+    }
+
+    addCondition(){
+        // this.conditionals.push({'brickType': this.existedBrickTypes[0].value, 'days': 1});
+        // this.existedBrickTypes.splice(0, 1);
+
+        var newCondition = {
+            brickType: this.curHabbit,
+            markedCount: 0,
+            neededCount: this.conditionDays
+        } as Condition;
+
+        this.curGoal.conditions.push(newCondition);
+    }
+
+    removeCondition(conditionBrickTypeId){
+        for(let i = 0; i < this.curGoal.conditions.length; i++){
+            if(this.curGoal.conditions[i].brickType._id == conditionBrickTypeId){
+                this.curGoal.conditions.splice(i, 1);
+            }
+        }
     }
 
     goBack(){
