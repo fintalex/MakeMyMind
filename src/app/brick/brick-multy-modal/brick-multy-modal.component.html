@@ -47,9 +47,9 @@
 
     <div class="button-container">
       <button mat-raised-button color="primary" 
-              [disabled]='!brickDetailsForm.value.brickTypeArray || brickDetailsForm.value.brickTypeArray.length == 0'
+              [disabled]='!brickDetailsForm.value.brickTypeArray || brickDetailsForm.value.brickTypeArray.length == 0 || clicked'
               *ngIf="!data.curBrick || !data.curBrick._id"
-              (click)="createBricks()">{{'Add' | translate}}</button>
+              (click)="createBricks(); clicked = true;">{{'Add' | translate}}</button>
       <!-- <button mat-raised-button color="primary" 
               *ngIf="data.curBrick && data.curBrick._id"
               [disabled]='brickDetailsForm.invalid'

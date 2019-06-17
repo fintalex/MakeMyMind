@@ -1,3 +1,5 @@
+@import './variables';
+
 // ======================= .ui-widget-content =========================
 .carousel-container{
     .ui-widget-content, .ui-widget-header{
@@ -11,6 +13,20 @@
     color: black;
 }
 
-// .ui-widget, .ui-widget * {
-//     box-sizing: 
-// }
+// ======================== NG PRIME CALENDAR =================
+.ui-state-highlight{
+    background-color: $contextBackground!important;
+}
+.ui-state-active{
+    background-color: $primaryColor!important;
+}
+
+.primeng-btn{
+    background: #0097a7;
+    line-height: 32px!important;
+    height: 32px;
+    min-width: 10px!important;
+}
+.primeng-btn:hover{
+    background: #007380;
+}

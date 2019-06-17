@@ -24,6 +24,8 @@ export class BrickMultyModalComponent implements OnInit {
 
     curBrick: Brick;
 
+    clicked = false;
+
     public brickDetailsForm: FormGroup = new FormGroup({
         brickTypeArray: new FormControl(),
         description: new FormControl(),
@@ -59,6 +61,7 @@ export class BrickMultyModalComponent implements OnInit {
     }
 
     createBricks() {
+        console.log('CREATE BRICKS');
         this.brickDetailsForm.value.user = this.authService.CurrentUser._id;
         this.brickDetailsForm.value.date = this.data.curBrick.date;
 

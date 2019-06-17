@@ -102,16 +102,13 @@
             <div class="ui-md-1 ui-sm-4 margin-vertical-auto text-allign-right">
                 Дни:
             </div>
-            <div class="ui-md-1 ui-sm-7">
+            <div class="ui-md-1 ui-sm-5">
                 <input type="number" min="1" pInputText 
                     placeholder="Кол-во дней" 
                     [(ngModel)]="conditionDays" >       
             </div>
-            <div class="ui-md-1 ui-sm-1"> 
-                <button mat-icon-button color="primary"
-                    (click)="addCondition()">
-                    <mat-icon  matTooltip="Добавить условие" matTooltipPosition="right" color="primary">add_box</mat-icon>
-                </button>
+            <div class="ui-md-1 ui-sm-3"> 
+                <button mat-raised-button class="primeng-btn" (click)="addCondition()">+</button>
             </div>
         </div>
 
