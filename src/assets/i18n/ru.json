@@ -76,5 +76,9 @@
         "SearchOfFrends": "Поиск Друзей",
         "FrendList": "Твои Друзья",
         "SearchControlPlaceholder": "Введите часть имени пользователя или email"
+    },
+
+    "Warnings":{
+        "WrongEmailOrPassword": "Некорректный Email или пароль"
     }
 }

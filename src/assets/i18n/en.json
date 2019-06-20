@@ -76,5 +76,9 @@
         "SearchOfFrends": "Frends Search",
         "FrendList": "Your Frends",
         "SearchControlPlaceholder": "Input part of user's Nickname or Email"
+    },
+
+    "Warnings":{
+        "WrongEmailOrPassword": "Wrong Email or password"
     }
 }

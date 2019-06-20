@@ -100,8 +100,8 @@ body {
 }
 
 // ============================== mat-expansion-panel ================
-.mat-expansion-panel{
-    background: none;
+.mat-expansion-panel, .mat-expansion-panel-header{
+    background: none!important;
     .mat-expansion-panel-header-title, .mat-expansion-panel-header-description, .mat-expansion-panel-header-description, .mat-expansion-indicator::after, ul, li, span, p {
         color: #fff!important;
     }
