@@ -12,6 +12,7 @@ import { GoalService } from '../goal.service';
 import { AuthService } from '../../../services/auth.service';
 import { Goal } from '../../../models/goal.model';
 import { Condition } from '../../../models/condition';
+import { SnackBarService } from 'app/services/snack-bar.service';
 
 @Component({
     selector: 'goal-details-page',
@@ -49,6 +50,7 @@ export class GoalDetailsPageComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private datePipe: DatePipe,
+        private snackSvc: SnackBarService,
         private store: Store<fromBrickTypeSelectors.State>
     ) { }
 
@@ -149,6 +151,10 @@ export class GoalDetailsPageComponent implements OnInit {
     addCondition(){
         // this.conditionals.push({'brickType': this.existedBrickTypes[0].value, 'days': 1});
         // this.existedBrickTypes.splice(0, 1);
+        if (this.conditionDays < 1){
+            this.snackSvc.showWarning({data: {message: "Дней не может быть < 1"}});
+            return;
+        }
 
         var newCondition = {
             brickType: this.curHabbit,

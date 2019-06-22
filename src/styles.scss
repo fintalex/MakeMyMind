@@ -106,6 +106,9 @@ body {
         color: #fff!important;
     }
 }
+.ui-panel{
+    padding: 0px!important;
+}
 
 // =-========================== Mat-Card ==========================
 .mat-form-field-label-wrapper{
@@ -128,6 +131,10 @@ body {
         color: #ffffff;
     }
     padding: 3px;
+}
+.goal-card{
+    //background-color: $lighterBackground;
+    margin: 5px;
 }
 // ============================== Mat-PANEL ====================================
 .mat-select-panel{
@@ -580,6 +587,12 @@ $hexagon-index: 1;
         line-height: 23px !important;
     }
 }
+.ui-dropdown-items-wrapper{
+    background-color: $contextBackground!important;
+    .mat-option{
+        color: white!important;
+    }
+}
 
 // ================================  FLEX ===========================
 .flex-space-between{
@@ -608,8 +621,12 @@ $hexagon-index: 1;
     background-color:#01636e;
 } 
 // ========================== MAT SIDE NAV ===================== 
-.mat-drawer-container, .mat-drawer{
+.mat-drawer-container, .mat-drawer, .ui-widget-content{
     background-color: transparent!important;
+}
+.ui-widget-header{
+    background-color: $lightBackground!important;
+    border: 0px!important;
 }
 
 // ========================== mat-slide-toggle =================
@@ -637,3 +654,19 @@ $hexagon-index: 1;
 .text-allign-right{
     text-align: right;
 }
+
+// ========================= SNACK BAR COLORS ====================
+.error-class{
+    background-color: #fa5e5b;
+}
+.warning-class{
+    background-color: #ff9f31;
+    color: grey;
+}
+.info-class{
+    background-color: #297cbb;
+}
+.success-class{
+    background-color: #00695c;
+}
+

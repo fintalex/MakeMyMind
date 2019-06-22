@@ -10,7 +10,7 @@
         <button mat-raised-button class="navigate-btn" (click)="goToGoalDetails('0')">Добавить Новую</button>
 
         <p-accordion [multiple]="true">
-            <p-accordionTab header="Текущие">
+            <p-accordionTab header="Текущие" [selected]="true">
                 <div  class="goal-container">
                     <goal-card class="goal-card" 
                         *ngFor="let curGoal of goals | async" 
@@ -27,6 +27,15 @@
                 Saepe, laboriosam maiores dicta qui debitis id et perspiciatis at, tempore placeat ea quasi vero corporis praesentium ipsa porro itaque temporibus accusantium est adipisci possimus nisi culpa recusandae. Autem, dolorem.
             </p-accordionTab>
             <p-accordionTab header="Проваленные">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam vel earum sequi molestiae quasi quae tempora asperiores, sed laboriosam. Sint tenetur aspernatur accusamus adipisci quae soluta repellendus repudiandae officia quos!
+                Neque laboriosam quidem rerum, quod nam impedit nihil maiores velit qui illo voluptatibus repudiandae? Repellat vel distinctio quis quam officia excepturi qui veniam sed consequuntur, tenetur laborum beatae, earum possimus?
+                Aut quas odio ad consectetur nobis maiores temporibus, placeat cum aliquid, quidem eum corporis itaque maxime. Doloremque dolore blanditiis placeat, et necessitatibus quod qui obcaecati aspernatur. Minima error unde suscipit.
+                Numquam tenetur sit ad nulla, explicabo quos voluptas totam nostrum quasi minus dolorem optio incidunt obcaecati. Itaque, iure non ex veniam reiciendis maiores sit at sed, molestias voluptatum harum inventore.
+                Accusantium soluta quos ut nisi aliquam qui laborum doloribus facilis eos fuga tenetur porro quaerat architecto in suscipit dicta et nihil neque, quam doloremque numquam magnam ab? Rem, quibusdam aliquid!
+                Eius labore repellendus harum rerum at tempora velit odio sunt deleniti. Doloribus, dolor necessitatibus, eaque accusamus numquam laborum molestiae ducimus eos laudantium velit aperiam corrupti vitae dicta ad similique est.
+                Odio illum aliquam dolorum ad repellendus deserunt adipisci aspernatur deleniti dolore iure voluptas suscipit modi laudantium maxime cupiditate alias cum repudiandae, nihil vitae officia commodi neque accusamus libero reprehenderit? Praesentium?  
+            </p-accordionTab>
+            <p-accordionTab header="Удаленные">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam vel earum sequi molestiae quasi quae tempora asperiores, sed laboriosam. Sint tenetur aspernatur accusamus adipisci quae soluta repellendus repudiandae officia quos!
                 Neque laboriosam quidem rerum, quod nam impedit nihil maiores velit qui illo voluptatibus repudiandae? Repellat vel distinctio quis quam officia excepturi qui veniam sed consequuntur, tenetur laborum beatae, earum possimus?
                 Aut quas odio ad consectetur nobis maiores temporibus, placeat cum aliquid, quidem eum corporis itaque maxime. Doloremque dolore blanditiis placeat, et necessitatibus quod qui obcaecati aspernatur. Minima error unde suscipit.

@@ -56,10 +56,10 @@
     background: rgba(34, 34, 34, 0.712);
 }
 .day-weekend{
-    background: rgba(114, 73, 73, 0.712);
+    background: $weakendBackgroun;
 }
 .day-disabled{
-    background:  rgba(109, 109, 109, 0.712);
+    background: $disabledBackground;
     cursor: default!important;
 }
 .bricks-container{
