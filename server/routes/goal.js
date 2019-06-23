@@ -42,11 +42,6 @@ router.put('/', async (req, res) => {
 });
 
 // Http://localhost:5015/api/goal/23 (DELETE)
-router.delete('/:id', async (req, res) => {
-    await Goal.remove({_id: req.params.id});
-    res.status(200).json({
-        message: 'Deleted'
-    });
-});
+router.delete('/:goalId', goalService.deleteGoal);
 
 module.exports = router;

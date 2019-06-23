@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from 'app/models/user.model';
 import { AuthService } from 'app/services/auth.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { SnackBarService } from 'app/services/snack-bar.service';
+import { SnackBarService } from 'app/components/snack-bar/snack-bar.service';
 
 @Component({
     selector: 'user-details',

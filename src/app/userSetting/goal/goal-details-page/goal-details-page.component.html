@@ -124,7 +124,7 @@
 
         <div class="button-footer">
             <button color="primary" 
-                *ngIf="!curGoal._id"
+                *ngIf="!curGoal._id && curGoal.status != 2"
                 (click)="createNewGoal()"
                 [disabled]="!curGoal.conditions || curGoal.conditions.length < 1"
                 mat-raised-button 
@@ -133,12 +133,21 @@
             </button>
 
             <button color="primary" 
-                *ngIf="curGoal._id"
+                *ngIf="curGoal._id &&  curGoal.status != 2"
                 (click)="updateGoal()"
                 [disabled]="!curGoal.conditions || curGoal.conditions.length < 1"
                 mat-raised-button 
                 translate>
                     Обновить 
+            </button>
+            
+            <button color="warn" 
+                class="padding"
+                *ngIf="curGoal._id && curGoal.status != 2"
+                (click)="deleteGoal()"
+                mat-raised-button 
+                translate>
+                    Удалить 
             </button>
 
             <button color="primary" 

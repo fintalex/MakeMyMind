@@ -670,3 +670,10 @@ $hexagon-index: 1;
     background-color: #00695c;
 }
 
+// ============================ FOOTER ===========================
+.button-footer{
+    overflow: hidden;
+    button{
+        margin-right: 5px;
+    }
+}

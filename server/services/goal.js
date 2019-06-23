@@ -80,9 +80,39 @@ updateMarkedCount = (brickTypeId, count, callback) => {
         });
 } 
 
+deleteGoal = async (req, res) => {
+    var goalId = req.params.goalId;
+
+    console.log("ИЩЕМ ЦЕЛЬ Э" , goalId);
+
+    try{
+        await Goal.findOne({'_id': goalId})
+            .then(goal =>{
+                if (goal){
+                    console.log("УДАЛЯЕМ ЦЕЛЬ Э" , goal._id);
+                    Goal.updateOne({'_id': goal._id}, 
+                        {$set: {
+                            'status': 2
+                        }},
+                        () => res.status(200).json(true));
+                } else {
+                    return res.status(500).json("Ну удалось найти цель")
+                }
+            });
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+    // Goal.updateOne({'_id': goalId}, 
+    //             {$set: {
+    //                 'status': 2
+    //             }},
+    //             res.status(200).json(true));
+}
+
 module.exports = { 
     getGoalsByUser: getGoalsByUser,
     updateMarkedCount: updateMarkedCount,
-    getGoalById: getGoalById
+    getGoalById: getGoalById,
+    deleteGoal: deleteGoal
 };
 

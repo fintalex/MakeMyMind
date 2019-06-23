@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
-import { SelectItem, SelectItemGroup, DialogService } from 'primeng/api';
+import { SelectItem, SelectItemGroup } from 'primeng/api';
 import { BrickType } from '../../../models/brick-type.model';
 import { DatePipe } from '@angular/common';
 import * as _ from 'underscore';
@@ -12,7 +12,9 @@ import { GoalService } from '../goal.service';
 import { AuthService } from '../../../services/auth.service';
 import { Goal } from '../../../models/goal.model';
 import { Condition } from '../../../models/condition';
-import { SnackBarService } from 'app/services/snack-bar.service';
+import { SnackBarService } from 'app/components/snack-bar/snack-bar.service';
+import { DialogService } from 'app/components/dialogs/dialog.service';
+import { ModalParams } from 'app/models/modal-params.model';
 
 @Component({
     selector: 'goal-details-page',
@@ -51,6 +53,7 @@ export class GoalDetailsPageComponent implements OnInit {
         private router: Router,
         private datePipe: DatePipe,
         private snackSvc: SnackBarService,
+        private dialogSvc: DialogService,
         private store: Store<fromBrickTypeSelectors.State>
     ) { }
 
@@ -128,11 +131,11 @@ export class GoalDetailsPageComponent implements OnInit {
 
             this.goalService.createGoal(this.curGoal)
                 .subscribe(result => {
-                    console.log(result);
+                    this.snackSvc.showSuccess({data: {message: "Цель успешно создана"}});
                 });
 
         } else {
-            // show warnings
+            this.snackSvc.showWarning({data: {message: "Заполните все необходимые поля"}});
         }
     }
 
@@ -144,8 +147,27 @@ export class GoalDetailsPageComponent implements OnInit {
                 });
 
         } else {
-            // show warnings
+            this.snackSvc.showWarning({data: {message: "Заполните все необходимые поля"}});
         }
+    }
+
+    deleteGoal(){
+        this.dialogSvc.showConfirm({message: "Уверены что хотите удалить цель?", title: "Подтвердите удаление" })
+            .subscribe(result => {
+                if (result){
+                    this.goalService.deleteGoal(this.curGoal._id)
+                        .subscribe(res=>{
+                            if (res) {
+                                this.snackSvc.showSuccess({data: {message: "Цель удалена"}});
+                                this.router.navigate(['/goals']);
+                            } else {
+                                this.snackSvc.showError({data: {message: "Не удалось удалить цель"}});
+                            }
+                        }, error => {
+                            this.snackSvc.showError({data: {message: "Произошла ошибка при удалении"}});
+                        });
+                }
+            });
     }
 
     addCondition(){
