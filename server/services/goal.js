@@ -1,13 +1,14 @@
 
 const Goal = require('./../models/goal');
 
-getGoalsByUser = async (req, res, next) => {
-    var userId = req.params.userId
+getGoalsByUserAndStatus = async (req, res, next) => {
+    var userId = req.params.userId;
+    var status = req.params.status;
     if (!userId){
         return res.status(500).json({ error: 'Username is not found'});
     }
     try {
-        const goals = await Goal.find({'user': userId})
+        const goals = await Goal.find({'user': userId, 'status': status})
             .populate(
                 { 
                     path: "conditions.brickType", 
@@ -110,7 +111,7 @@ deleteGoal = async (req, res) => {
 }
 
 module.exports = { 
-    getGoalsByUser: getGoalsByUser,
+    getGoalsByUserAndStatus: getGoalsByUserAndStatus,
     updateMarkedCount: updateMarkedCount,
     getGoalById: getGoalById,
     deleteGoal: deleteGoal

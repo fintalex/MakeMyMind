@@ -8,7 +8,7 @@ import { ModalParams } from '../../../models/modal-params.model';
 import * as _ from 'underscore';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ModalBrickTypeResult } from '../../../models/dto/modal-brick-type-result';
-import { CloseBrickTypeResult } from '../../../models/close-brick-type-action';
+import { CloseBrickTypeResult } from '../../../models/enums/close-brick-type-action';
 import { DataSvc } from 'app/services/data.service';
 
 @Component({

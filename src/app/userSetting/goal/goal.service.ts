@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Goal } from '../../models/goal.model';
 import { Observable, observable } from 'rxjs';
+import { GoalStatus } from 'app/models/enums/goals-status';
 
 // New feature in ANGULAR 6
 // {providedIn: 'root'}  parameter means that we don't need to specify it in Providers in app.module.
@@ -16,11 +17,11 @@ export class GoalService {
         private authService: AuthService
     ) { }
 
-    getGoals(): Observable<any>{
+    getMyGoals(status: GoalStatus): Observable<any>{
         if (!this.authService.CurrentUser){
             return;
         }
-        return this.http.get<any>('/api/goals/getByUserId/' + this.authService.CurrentUser._id);
+        return this.http.get<any>(`/api/goals/getGoalsByUserAndStatus/${this.authService.CurrentUser._id}/${status}`);
     }
 
     getGoalById(goalId){

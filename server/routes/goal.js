@@ -16,8 +16,8 @@ router.get('/', async (req, res) => {
     res.status(200).json(goals);
 });
 
-// Http://localhost:5015/api/getByUserId/234234 (GET)
-router.get('/getByUserId/:userId', goalService.getGoalsByUser);
+// Http://localhost:5015/api/getGoalsByUserAndStatus/234234 (GET)
+router.get('/getGoalsByUserAndStatus/:userId/:status', goalService.getGoalsByUserAndStatus);
 
 // Http://localhost:5015/api/getGoalById/67856 (GET)
 router.get('/getGoalById/:goalId', goalService.getGoalById);
