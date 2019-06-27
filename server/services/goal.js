@@ -2,10 +2,13 @@
 const Goal = require('./../models/goal');
 
 getGoalsByUserAndStatus = async (req, res, next) => {
+
     var userId = req.params.userId;
     var status = req.params.status;
+
+    console.log("GETTING GOALS BY ", status);
     if (!userId){
-        return res.status(500).json({ error: 'Username is not found'});
+        return res.status(500).json({ error: 'User is not found'});
     }
     try {
         const goals = await Goal.find({'user': userId, 'status': status})
@@ -21,6 +24,26 @@ getGoalsByUserAndStatus = async (req, res, next) => {
                     }
                 });
         return res.status(200).json(goals);
+
+    } catch (error){
+        return res.status(500).json(error);
+    }
+}
+
+getMyGoalsCount = async (req, res, next) => {
+
+    var userId = req.params.userId;
+    var status = req.params.status;
+
+    console.log("We are in getting goals COUNT", userId, status);
+
+    if (!userId){
+        return res.status(500).json({ error: 'User is not found'});
+    }
+    try {
+        const goalsCount = await Goal.find({'user': userId, 'status': status})
+           .count();
+        return res.status(200).json(goalsCount);
 
     } catch (error){
         return res.status(500).json(error);
@@ -112,6 +135,7 @@ deleteGoal = async (req, res) => {
 
 module.exports = { 
     getGoalsByUserAndStatus: getGoalsByUserAndStatus,
+    getMyGoalsCount: getMyGoalsCount,
     updateMarkedCount: updateMarkedCount,
     getGoalById: getGoalById,
     deleteGoal: deleteGoal

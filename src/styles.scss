@@ -593,6 +593,9 @@ $hexagon-index: 1;
         color: white!important;
     }
 }
+.ui-accordion-content-wrapper{
+    width: 100%;
+}
 
 // ================================  FLEX ===========================
 .flex-space-between{
@@ -676,4 +679,17 @@ $hexagon-index: 1;
     button{
         margin-right: 5px;
     }
+}
+
+// ============================ BADGE =============================
+.my-badge{
+    width: 22px;
+    height: 22px;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #000;
+    font-size: 12px;
+    font-weight: 800;
+    text-align: center;
+    line-height: 1.8;
 }

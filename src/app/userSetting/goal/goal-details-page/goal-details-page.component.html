@@ -133,7 +133,7 @@
             </button>
 
             <button color="primary" 
-                *ngIf="curGoal._id &&  curGoal.status != 2"
+                *ngIf="curGoal._id &&  curGoal.status == 1"
                 (click)="updateGoal()"
                 [disabled]="!curGoal.conditions || curGoal.conditions.length < 1"
                 mat-raised-button 
@@ -143,7 +143,7 @@
             
             <button color="warn" 
                 class="padding"
-                *ngIf="curGoal._id && curGoal.status != 2"
+                *ngIf="curGoal._id && curGoal.status == 1"
                 (click)="deleteGoal()"
                 mat-raised-button 
                 translate>

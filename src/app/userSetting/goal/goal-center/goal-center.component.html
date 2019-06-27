@@ -6,45 +6,87 @@
 
 <div class="goal-center">
     <mat-card>
-        <!-- <p-button label="Добавить Новую" class="navigate-btn" icon="pi pi-add" iconPos="right"></p-button> -->
-        <button mat-raised-button class="navigate-btn" (click)="goToGoalDetails('0')">Добавить Новую</button>
+        <div class="header-button-container">            
+            <button color="primary" 
+                    (click)="goToGoalDetails('0')"
+                    mat-raised-button 
+                    translate>
+                    Добавить Новую 
+            </button>
+        </div>
 
-        <p-accordion [multiple]="true">
+        <p-accordion [multiple]="false" #currentSelected>
+            <!-- Текущие -->
             <p-accordionTab header="Текущие" [selected]="true">
-                <div  class="goal-container">
+                <p-header>
+                        Текущие
+                        <div class="my-badge float-right">{{goalsCount$ | async}}</div>
+                </p-header>
+                <div  class="goal-container" *ngIf="(goals$ | async) as curGoals; else currentLoading;">
                     <goal-card class="goal-card" 
-                        *ngFor="let curGoal of goals | async" 
+                        *ngFor="let curGoal of curGoals" 
                         [goal]="curGoal">                        
                         <button mat-raised-button class="navigate-btn float-right" (click)="goToGoalDetails(curGoal._id)">Детали</button>
                     </goal-card> 
                 </div>
+                <ng-template #currentLoading>
+                    Загрузка активных целей...
+                    <i class="pi pi-spin pi-spinner" style="font-size: 20px"></i>
+                </ng-template>
             </p-accordionTab>
-            <p-accordionTab header="Завершенные">
-                <div  class="goal-container">
+            <!-- Завершенные -->
+            <p-accordionTab header="Завершенные" (click)="finishedLoaded = true">
+                <p-header>
+                        Завершенные
+                        <div class="my-badge float-right">{{goalsFinishedCount$ | async}}</div>
+                </p-header>
+                <div  class="goal-container" *ngIf="finishedLoaded && goalsFinished$ | async; else finishedLoading; let finishedGoals">
                     <goal-card class="goal-card" 
-                        *ngFor="let curGoal of goalsFinished | async" 
+                        *ngFor="let curGoal of finishedGoals" 
                         [goal]="curGoal">                        
                         <button mat-raised-button class="navigate-btn float-right" (click)="goToGoalDetails(curGoal._id)">Детали</button>
                     </goal-card> 
                 </div>
+                <ng-template #finishedLoading>
+                    Загрузка завершенных целей...
+                    <i class="pi pi-spin pi-spinner" style="font-size: 20px"></i>
+                </ng-template>
             </p-accordionTab>
-            <p-accordionTab header="Проваленные">
-                <div  class="goal-container">
+            <!-- Проваленные -->
+            <p-accordionTab header="Проваленные" (click)="failedLoaded = true">
+                    <p-header>
+                            Проваленные
+                            <div class="my-badge float-right">{{goalsFailedCount$ | async}}</div>
+                    </p-header>
+                <div  class="goal-container" *ngIf="failedLoaded && goalsFailed$ | async; else failedLoading; let failedGoals;">
                     <goal-card class="goal-card" 
-                        *ngFor="let curGoal of goalsFailed | async" 
+                        *ngFor="let curGoal of failedGoals" 
                         [goal]="curGoal">                        
                         <button mat-raised-button class="navigate-btn float-right" (click)="goToGoalDetails(curGoal._id)">Детали</button>
                     </goal-card> 
                 </div> 
+                <ng-template #failedLoading>
+                    Загрузка проваленных целей...
+                    <i class="pi pi-spin pi-spinner" style="font-size: 20px"></i>
+                </ng-template>
             </p-accordionTab>
-            <p-accordionTab header="Удаленные">
-                <div  class="goal-container">
+            <!-- Удаленные -->
+            <p-accordionTab header="Удаленные" (click)="deletedLoaded = true" >
+                <p-header>
+                        Удаленные
+                        <div class="my-badge float-right">{{goalsDeletedCount$ | async}}</div>
+                </p-header>
+                <div  class="goal-container" *ngIf="deletedLoaded && goalsDeleted$ | async; else deletedLoading; let deletedGoals;">
                     <goal-card class="goal-card" 
-                        *ngFor="let curGoal of goalsDeleted | async" 
+                        *ngFor="let curGoal of deletedGoals" 
                         [goal]="curGoal">                        
                         <button mat-raised-button class="navigate-btn float-right" (click)="goToGoalDetails(curGoal._id)">Детали</button>
                     </goal-card> 
                 </div>
+                <ng-template #deletedLoading>
+                    Загрузка удаленных целей...
+                    <i class="pi pi-spin pi-spinner" style="font-size: 20px"></i>
+                </ng-template>
             </p-accordionTab>
         </p-accordion>
     </mat-card>
