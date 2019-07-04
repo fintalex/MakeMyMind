@@ -15,6 +15,7 @@ import { Condition } from '../../../models/condition';
 import { SnackBarService } from 'app/components/snack-bar/snack-bar.service';
 import { DialogService } from 'app/components/dialogs/dialog.service';
 import { ModalParams } from 'app/models/modal-params.model';
+import { map } from 'rxjs/operators';
 
 @Component({
     selector: 'goal-details-page',
@@ -76,11 +77,13 @@ export class GoalDetailsPageComponent implements OnInit {
 
             if (this.goalId != '0'){
                 this.goalService.getGoalById(this.goalId)
-                    .map((goal: Goal) => {
-                        goal.createdDate = new Date(goal.createdDate);
-                        goal.finishDate = new Date(goal.finishDate);
-                        return goal;
-                    })
+                    .pipe(
+                        map((goal: Goal) => {
+                            goal.createdDate = new Date(goal.createdDate);
+                            goal.finishDate = new Date(goal.finishDate);
+                            return goal;
+                        })
+                    )
                     .subscribe((goal: Goal) => {
                         this.curGoal = goal;    
                     });
