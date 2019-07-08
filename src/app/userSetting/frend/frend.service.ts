@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-// import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/map';
 import { Frend } from '../../models/frend.model';
 import { AuthService } from './../../services/auth.service';
 import { HttpClient } from '@angular/common/http';

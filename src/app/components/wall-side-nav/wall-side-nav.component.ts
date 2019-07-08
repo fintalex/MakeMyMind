@@ -5,7 +5,7 @@ import { Category } from '../../models/category.model';
 
 import * as _ from 'underscore';
 import { FrendService } from '../../userSetting/frend/frend.service';
-import { Frend } from '../../models/Frend.model';
+import { Frend } from '../../models/frend.model';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { Store, select } from '@ngrx/store';
