@@ -136,31 +136,31 @@ server.listen(config.server.port, () => console.log(`Running on :${config.server
 //     console.log(JSON.stringify(results, null, 4));
 // })
 
-const nodemailer = require('nodemailer');
+// const nodemailer = require('nodemailer');
 
-// Step 1
-let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'kharchenko.lyokha@yandex.ru',
-        pass: 'Ramss01071989'
-    }
-});
+// // Step 1
+// let transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//         user: 'kharchenko.lyokha@yandex.ru',
+//         pass: 'Ramss01071989'
+//     }
+// });
 
-// Step 2
-let mailOptions = {
-    to: 'fintalex@mail.ru',
-    from: 'fintalex1989@gmail.com',
-    subject: 'Testing',
-    text: 'IT Works'
-};
+// // Step 2
+// let mailOptions = {
+//     to: 'fintalex@mail.ru',
+//     from: 'fintalex1989@gmail.com',
+//     subject: 'Testing',
+//     text: 'IT Works'
+// };
 
-// Step 3
-transporter.sendMail(mailOptions, function(err, data){
-    if (err){
-        console.log('Error Occurs', err);
-    } else {
-        console.log('Email sent!!!');
-    }
-})
+// // Step 3
+// transporter.sendMail(mailOptions, function(err, data){
+//     if (err){
+//         console.log('Error Occurs', err);
+//     } else {
+//         console.log('Email sent!!!');
+//     }
+// })
 
