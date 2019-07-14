@@ -36,7 +36,8 @@ export class GoalService {
     }
     
     getMyGoalsCount(status: GoalStatus){
-        return this.http.get<number>(`/api/goals/getMyGoalsCount/${this.authService.CurrentUser._id}/${status}`);
+        return this.http.get<number>(`/api/goals/getMyGoalsCount/${this.authService.CurrentUser._id}/${status}`)
+            .pipe(delay(3000));
     }
 
     // POST

@@ -3,7 +3,7 @@
     <div>
         <brick [color]="condition.brickType.category.color" [isIcon]="condition.brickType.isIcon" [type]="condition.brickType.type" [sign]="condition.brickType.sign"></brick>
     </div>
-    <!-- <div>{{condition.brickType.name}}</div> -->
+    
     <div class="condition-values flex-space-between scroll-container">
         <div class="background-arrow"></div>
         <div *ngFor="let step of conditionSteps" 

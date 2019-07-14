@@ -20,7 +20,11 @@
             <p-accordionTab header="Текущие" [selected]="true">
                 <p-header>
                         Текущие
-                        <div class="my-badge float-right">{{goalsCount$ | async}}</div>
+                        <div class="my-badge float-right">
+                            <div *ngIf="(goalsCount$ | async) as goalsCount; else goalsCountLoading;">
+                                {{goalsCount}}
+                            </div>                           
+                        </div>
                 </p-header>
                 <div  class="goal-container" *ngIf="(goals$ | async) as curGoals; else currentLoading;">
                     <goal-card class="goal-card" 
@@ -31,14 +35,18 @@
                 </div>
                 <ng-template #currentLoading>
                     Загрузка активных целей...
-                    <i class="pi pi-spin pi-spinner" style="font-size: 20px"></i>
+                    <i class="pi pi-spin pi-spinner" style="font-size: 22px"></i>
                 </ng-template>
             </p-accordionTab>
             <!-- Завершенные -->
             <p-accordionTab header="Завершенные" (click)="finishedLoaded = true">
                 <p-header>
-                        Завершенные
-                        <div class="my-badge float-right">{{goalsFinishedCount$ | async}}</div>
+                    Завершенные
+                    <div class="my-badge float-right">
+                        <div *ngIf="(goalsFinishedCount$ | async) as goalsFinishedCount; else goalsCountLoading;">
+                            {{goalsFinishedCount}}
+                        </div> 
+                    </div>
                 </p-header>
                 <div  class="goal-container" *ngIf="finishedLoaded && goalsFinished$ | async; else finishedLoading; let finishedGoals">
                     <goal-card class="goal-card" 
@@ -49,15 +57,20 @@
                 </div>
                 <ng-template #finishedLoading>
                     Загрузка завершенных целей...
-                    <i class="pi pi-spin pi-spinner" style="font-size: 20px"></i>
+                    <i class="pi pi-spin pi-spinner" style="font-size: 22px"></i>
                 </ng-template>
             </p-accordionTab>
+
             <!-- Проваленные -->
             <p-accordionTab header="Проваленные" (click)="failedLoaded = true">
-                    <p-header>
-                            Проваленные
-                            <div class="my-badge float-right">{{goalsFailedCount$ | async}}</div>
-                    </p-header>
+                <p-header>
+                        Проваленные
+                        <div class="my-badge float-right">
+                            <div *ngIf="(goalsFailedCount$ | async) as goalsFailedCount; else goalsCountLoading;">
+                                {{goalsFailedCount}}
+                            </div> 
+                        </div>
+                </p-header>
                 <div  class="goal-container" *ngIf="failedLoaded && goalsFailed$ | async; else failedLoading; let failedGoals;">
                     <goal-card class="goal-card" 
                         *ngFor="let curGoal of failedGoals" 
@@ -67,14 +80,19 @@
                 </div> 
                 <ng-template #failedLoading>
                     Загрузка проваленных целей...
-                    <i class="pi pi-spin pi-spinner" style="font-size: 20px"></i>
+                    <i class="pi pi-spin pi-spinner" style="font-size: 22px"></i>
                 </ng-template>
             </p-accordionTab>
+
             <!-- Удаленные -->
             <p-accordionTab header="Удаленные" (click)="deletedLoaded = true" >
                 <p-header>
-                        Удаленные
-                        <div class="my-badge float-right">{{goalsDeletedCount$ | async}}</div>
+                    Удаленные
+                    <div class="my-badge float-right">
+                        <div *ngIf="(goalsDeletedCount$ | async) as goalsDeletedCount; else goalsCountLoading;">
+                                {{goalsDeletedCount}}
+                        </div> 
+                    </div>
                 </p-header>
                 <div  class="goal-container" *ngIf="deletedLoaded && goalsDeleted$ | async; else deletedLoading; let deletedGoals;">
                     <goal-card class="goal-card" 
@@ -85,9 +103,14 @@
                 </div>
                 <ng-template #deletedLoading>
                     Загрузка удаленных целей...
-                    <i class="pi pi-spin pi-spinner" style="font-size: 20px"></i>
+                    <i class="pi pi-spin pi-spinner" style="font-size: 22px"></i>
                 </ng-template>
             </p-accordionTab>
         </p-accordion>
     </mat-card>
 </div>
+
+
+<ng-template #goalsCountLoading>
+    <i class="pi pi-spin pi-spinner" style="font-size: 22px"></i>
+</ng-template>

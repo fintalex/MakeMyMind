@@ -7,20 +7,28 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    mat-card{
+        box-sizing: border-box;
+    }
 }
 
 .goal-center mat-card{
     margin: 10px;
-    width: 100%;
+    // we need it, as when we use BorderBox - it doesn't consider margin
+    // that's why we need to make width calculated
+    width: calc(100% - 20px); 
 }
 
 .goal-container{
+    position: relative;
+    max-width: 100%;
     display: flex;
     flex-wrap: wrap;
 }
 
 .goal-card{
-    width: 100%;
+    width: calc(100% - 10px); 
+    box-sizing: border-box;
 }
 
 .header-button-container{

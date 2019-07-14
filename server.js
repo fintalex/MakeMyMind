@@ -84,3 +84,83 @@ const server = http.createServer(app);
 
 server.listen(config.server.port, () => console.log(`Running on :${config.server.port}`));
 
+// ==================  nodemailer ======================
+// // const nodemailer = require('nodemailer'),
+// //     transporter = nodemailer.createTransport({
+// //         service: 'gmail',
+// //         auth: {
+// //             user: 'asdf',
+// //             pass: 'sdfa'
+// //         }
+// //     }),
+// const email = require('email-templates');
+//     //path = require('path'),
+//     //Promise = require('bluebird');
+// const email = new Email({
+//     message: {
+//         from: 'fintalex@mail.ru'
+//     },
+//     transport: {
+//         jsonTransport: true
+//     }
+// })
+
+// let users = [
+//     {
+//         name: 'Alex Harper',
+//         email: 'fintalex@mail.ru'
+//     },
+//     {
+//         name: 'Alexey Gmail',
+//         email: 'fintalex1989@gmail.com'
+//     }
+// ];
+
+// function sendEmail(obj){
+//     return transporter.sendMail(obj);
+// }
+
+// function loadTemplate(templateName, contexts) {
+//     let template = EmailTemplate(path.join(__dirname, 'server/email/templates', templateName));
+//     return Promise.all(contexts.map((context)=>{
+//         return new Promise((resolve, reject) => {
+//             template.render(context, (err, result) => {
+//                 if (err) reject(err);
+//                 else resolve(result);
+//             });
+//         });
+//     }));
+// }
+
+// loadTemplate('welcome', users).then((results) => {
+//     console.log(JSON.stringify(results, null, 4));
+// })
+
+const nodemailer = require('nodemailer');
+
+// Step 1
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'kharchenko.lyokha@yandex.ru',
+        pass: 'Ramss01071989'
+    }
+});
+
+// Step 2
+let mailOptions = {
+    to: 'fintalex@mail.ru',
+    from: 'fintalex1989@gmail.com',
+    subject: 'Testing',
+    text: 'IT Works'
+};
+
+// Step 3
+transporter.sendMail(mailOptions, function(err, data){
+    if (err){
+        console.log('Error Occurs', err);
+    } else {
+        console.log('Email sent!!!');
+    }
+})
+

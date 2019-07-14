@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { GoalService } from '../goal.service';
 import { Goal } from '../../../models/goal.model';
 import { Observable, from } from 'rxjs';
-import { filter, tap, concatMap } from 'rxjs/operators';
+import { filter, tap, concatMap, map } from 'rxjs/operators';
 import * as _ from 'underscore';
 import { GoalStatus } from 'app/models/enums/goals-status';
 
@@ -20,10 +20,10 @@ export class GoalCenterComponent implements OnInit {
     goalsFinished$: Observable<Goal[]>;
     goalsFailed$: Observable<Goal[]>;
 
-    goalsCount$: Observable<number>;
-    goalsDeletedCount$: Observable<number>;
-    goalsFinishedCount$: Observable<number>;
-    goalsFailedCount$: Observable<number>;
+    goalsCount$: Observable<string>;
+    goalsDeletedCount$: Observable<string>;
+    goalsFinishedCount$: Observable<string>;
+    goalsFailedCount$: Observable<string>;
 
     deletedLoaded: boolean = false;
     finishedLoaded: boolean = false;
@@ -40,10 +40,13 @@ export class GoalCenterComponent implements OnInit {
         this.goalsFinished$ = this.goalService.getMyGoals(GoalStatus.Finished);
         this.goalsFailed$ = this.goalService.getMyGoals(GoalStatus.Failed);
 
-        this.goalsCount$ = this.goalService.getMyGoalsCount(GoalStatus.Active);
-        this.goalsDeletedCount$ = this.goalService.getMyGoalsCount(GoalStatus.Deleted);
-        this.goalsFinishedCount$ = this.goalService.getMyGoalsCount(GoalStatus.Finished);
-        this.goalsFailedCount$ = this.goalService.getMyGoalsCount(GoalStatus.Failed);
+        // Why do i need string here instead of number???
+        // because if there is 0 goals count, we will get FALSE in async 
+        // and there will be eternal spiner
+        this.goalsCount$ = this.goalService.getMyGoalsCount(GoalStatus.Active).pipe(map(count => count.toString()));
+        this.goalsDeletedCount$ = this.goalService.getMyGoalsCount(GoalStatus.Deleted).pipe(map(count => count.toString()));
+        this.goalsFinishedCount$ = this.goalService.getMyGoalsCount(GoalStatus.Finished).pipe(map(count => count.toString()));
+        this.goalsFailedCount$ = this.goalService.getMyGoalsCount(GoalStatus.Failed).pipe(map(count => count.toString()));
     }
 
     goToGoalDetails(id){
