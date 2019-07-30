@@ -92,31 +92,28 @@ updateMarkedCount = (brickTypeId, count, callback) => {
 
             console.log('Current Condition is - ', condition);
 
-            if (condition.markedCount >= condition.neededCount) continue;
-            else {
-                console.log('LETS TRY TO UPDATE CONDITION COUNT')
-                var updateCond = {
-                  $inc:
-                  {
-                    'conditions.$.markedCount': count
-                  }
-                };
+            console.log('LETS TRY TO UPDATE CONDITION COUNT')
+            var updateCond = {
+              $inc:
+              {
+                'conditions.$.markedCount': count
+              }
+            };
 
-                // Need to check here if other conditions is finished.
-                condition.markedCount++;
-                if (_.every(goalsForUpdating[i].conditions, (cond) => cond.markedCount >= cond.neededCount)){
-                  //if (condition.markedCount + count >= condition.neededCount) {
-                  console.log('YEAH - WE NEED to set status 3 (success) for current goal');
-                  updateCond.$set =
-                    {
-                      'status': 3
-                    };
-                }
-                Goal.updateOne({
-                  '_id': goalsForUpdating[i]._id,
-                  'conditions.brickType': brickTypeId
-                }, updateCond, callback);
+            // Need to check here if other conditions is finished.
+            condition.markedCount++;
+            if (_.every(goalsForUpdating[i].conditions, (cond) => cond.markedCount >= cond.neededCount)){
+              //if (condition.markedCount + count >= condition.neededCount) {
+              console.log('YEAH - WE NEED to set status 3 (success) for current goal');
+              updateCond.$set =
+                {
+                  'status': 3
+                };
             }
+            Goal.updateOne({
+              '_id': goalsForUpdating[i]._id,
+              'conditions.brickType': brickTypeId
+            }, updateCond, callback);
           }
           //callback();
         });
