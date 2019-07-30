@@ -22,7 +22,7 @@ const goalSchema = mongoose.Schema({
     conditions: [
         {
             brickType: { type: mongoose.Schema.Types.ObjectId, ref: 'BrickType', required: true },
-            neededCount: { type: Number, required: true, default: 3 }, 
+            neededCount: { type: Number, required: true, default: 3 },
             markedCount: { type: Number, required: true, default: 0 }
         }
     ]

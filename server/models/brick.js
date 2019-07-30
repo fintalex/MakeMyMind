@@ -4,7 +4,7 @@ const _ = require('underscore');
 const brickSchema = mongoose.Schema({
     description: {
         type: String
-    }, 
+    },
     brickType: { type: mongoose.Schema.Types.ObjectId, ref: 'BrickType', required: true },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     date: {
@@ -39,15 +39,15 @@ brickSchema.statics.getAllBricksForMonthByUserId = (userId, date, nick, habbits,
 
     var userCondition = nick ? 'user.nickname' : 'user';
     var userVal = nick ? nick : userId;
-    var matchCondition = 
+    var matchCondition =
         {
             'date': {
-                '$gte': firstDayInMonth, 
-                '$lt': firstDayInNextMonth 
+                '$gte': firstDayInMonth,
+                '$lt': firstDayInNextMonth
             },
             // 'user.nickname': nick,
             // $or: [
-            //     { 'brickType.isPrivate': {$exists: false} }, 
+            //     { 'brickType.isPrivate': {$exists: false} },
             //     { 'brickType.isPrivate': false },
             // ]
         };
@@ -55,7 +55,7 @@ brickSchema.statics.getAllBricksForMonthByUserId = (userId, date, nick, habbits,
     if (nick){
         matchCondition['user.nickname'] = nick;
         matchCondition['$or'] = [
-                { 'brickType.isPrivate': {$exists: false} }, 
+                { 'brickType.isPrivate': {$exists: false} },
                 { 'brickType.isPrivate': false },
             ];
     } else {
@@ -134,8 +134,8 @@ brickSchema.statics.getAllBricksForMonthByUserId = (userId, date, nick, habbits,
             }
         ])
         // .populate({ path: 'brickType', select: 'sign name', populate: { path: 'category', select: 'color' }})
-        // .populate({ path: 'user', select: 'nickname', where: 'nickname' })  
-        // //.populate({ path: 'user', select: 'nickname', match: { 'nickname': nick} })  
+        // .populate({ path: 'user', select: 'nickname', where: 'nickname' })
+        // //.populate({ path: 'user', select: 'nickname', match: { 'nickname': nick} })
         // .where({'user': {$match: {'nickname': 'ddd'}}})
         .exec(callback);
 };
@@ -146,14 +146,14 @@ brickSchema.statics.getBrickById = (brickId, calllback) => {
 
 brickSchema.statics.addBrick = (brick, callback) => {
     Brick.create(brick)
-        .then((createdBrick)=> { 
-            Brick.populate(createdBrick, 
-                { 
-                    path: 'brickType', 
-                    select: 'sign name isIcon type', 
+        .then((createdBrick)=> {
+            Brick.populate(createdBrick,
+                {
+                    path: 'brickType',
+                    select: 'sign name isIcon type',
                     populate: { path: 'category', select: 'color' }
                 }, callback);
-        });   
+        });
 }
 
 brickSchema.statics.addBrickMulty = (bricks, callback) => {
@@ -167,7 +167,6 @@ brickSchema.statics.addBrickMulty = (bricks, callback) => {
             resBricksArray.push(newBrick);
             console.log("------ resBricksArray IS ----- INDEX IS " + index, resBricksArray);
             if(index >= bricks.brickTypeArray.length -1){
-                console.log("+++++++++++ YEHA!!! I WANT TO CALLBACK IT ++++++++++++++++++++ AND INDEX IS + "+index+" and callBack is " + callback);
                 callback(null, resBricksArray);
             }else {
                 i++;
@@ -183,7 +182,7 @@ brickSchema.statics.addBrickMulty = (bricks, callback) => {
             // CHANGE ONLY brickTYPE id and ADD IT
             bricks.brickType = bricks.brickTypeArray[i]._id;
             Brick.create(bricks)
-                .then((createdBrick)=> { 
+                .then((createdBrick)=> {
                     console.log("--createdBrick BEFORE POPULATE --------", createdBrick);
 
                     console.log("BrickType is - ", BrickType);
@@ -192,22 +191,24 @@ brickSchema.statics.addBrickMulty = (bricks, callback) => {
                         console.log("!!!!!!!!!!!!!!!!!!! HEY I INCREMENTED HIM !!!!!!!!!!!!!!!!!!!!!", updateBrickType);
                     });
 
+                    // We need to update appropriate goal (count or status)
                     Goal.updateMarkedCount(createdBrick.brickType, 1, (err, updatedGoal)=> {
                         console.log("!!!!!!!!!!!!!!!!!!! HEY I INCREMENTED Goal Condition !!!!!!!!!!!!!!!!!!!!!", updatedGoal);
+                        console.log("!!!!!!!!!!!!!!!!!!! HEY I INCREMENTED .... - err !!!!!!!!!!!!!!!!!!!!!", err);
                     });
 
                     Brick.populate(
-                        createdBrick, 
-                        { 
-                            path: 'brickType', 
-                            select: 'sign name isIcon type', 
+                        createdBrick,
+                        {
+                            path: 'brickType',
+                            select: 'sign name isIcon type',
                             populate: { path: 'category', select: 'color' }
-                        }, 
+                        },
                         (err, populatedBrick)=>{
                             addBricks(populatedBrick, i);
                         });
-                        
-                });  
+
+                });
         }
 
 
@@ -226,20 +227,20 @@ brickSchema.statics.addBrickMulty = (bricks, callback) => {
         //     // CHANGE ONLY brickTYPE id and ADD IT
         //     bricks.brickType = bricks.brickTypeArray[i]._id;
         //     Brick.create(bricks)
-        //         .then((createdBrick)=> { 
+        //         .then((createdBrick)=> {
         //             console.log("--createdBrick BEFORE POPULATE --------", createdBrick);
         //             Brick.populate(
-        //                 createdBrick, 
-        //                 { 
-        //                     path: 'brickType', 
-        //                     select: 'sign name isIcon type', 
+        //                 createdBrick,
+        //                 {
+        //                     path: 'brickType',
+        //                     select: 'sign name isIcon type',
         //                     populate: { path: 'category', select: 'color' }
-        //                 }, 
+        //                 },
         //                 (err, populatedBrick)=>{
         //                     addBricks(populatedBrick, i);
         //                 });
-                        
-        //         });  
+
+        //         });
         // }
 
         // callback(resBricksArray);
@@ -247,15 +248,15 @@ brickSchema.statics.addBrickMulty = (bricks, callback) => {
     } else {
         callback();
         // Brick.create(bricks.brickTypeArray[0])
-        //     .then((createdBrick)=> { 
-        //         Brick.populate(createdBrick, 
-        //             { 
-        //                 path: 'brickType', 
-        //                 select: 'sign name isIcon type', 
+        //     .then((createdBrick)=> {
+        //         Brick.populate(createdBrick,
+        //             {
+        //                 path: 'brickType',
+        //                 select: 'sign name isIcon type',
         //                 populate: { path: 'category', select: 'color' }
         //             }, callback);
-        //     }); 
-    }  
+        //     });
+    }
 }
 
 brickSchema.statics.updateBrick = (id, brick, callback) => {
@@ -263,19 +264,19 @@ brickSchema.statics.updateBrick = (id, brick, callback) => {
     updateCountMarkedForBrickType(id, -1);
 
     Brick.findByIdAndUpdate(id, brick, { new: true})
-        .then((updatedBrick)=> { 
+        .then((updatedBrick)=> {
 
             BrickType.updateCountMarked(updatedBrick.brickType, 1, (err, updateBrickType)=> {
                 console.log("!!!!!!!!!!!!!!!!!!! HEY I inc HIM !!!!!!!!!!!!!!!!!!!!!", updateBrickType);
             });
 
-            Brick.populate(updatedBrick, 
-                { 
-                    path: 'brickType', 
-                    select: 'sign name isIcon type', populate: 
+            Brick.populate(updatedBrick,
+                {
+                    path: 'brickType',
+                    select: 'sign name isIcon type', populate:
                     { path: 'category', select: 'color' }
                 }, callback);
-        }); 
+        });
 }
 
 brickSchema.static.updateCountMarkedByBrickId = (id, count) => {

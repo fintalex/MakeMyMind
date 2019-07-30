@@ -1,5 +1,6 @@
 
 const Goal = require('./../models/goal');
+const _ = require('underscore');
 
 getGoalsByUserAndStatus = async (req, res, next) => {
 
@@ -13,12 +14,12 @@ getGoalsByUserAndStatus = async (req, res, next) => {
     try {
         const goals = await Goal.find({'user': userId, 'status': status})
             .populate(
-                { 
-                    path: "conditions.brickType", 
+                {
+                    path: "conditions.brickType",
                     select: 'isIcon name sign type',
                     //model: "BrickType", (not necessary)
                     populate: {
-                        path: "category", 
+                        path: "category",
                         select: "color",
                         model: "Category"
                     }
@@ -59,12 +60,12 @@ getGoalById = async (req, res, next) => {
     try {
         const goals = await Goal.findOne({'_id': goalId})
             .populate(
-                { 
-                    path: "conditions.brickType", 
+                {
+                    path: "conditions.brickType",
                     select: 'isIcon name sign type',
                     //model: "BrickType", (not necessary)
                     populate: {
-                        path: "category", 
+                        path: "category",
                         select: "color",
                         model: "Category"
                     }
@@ -76,33 +77,50 @@ getGoalById = async (req, res, next) => {
     }
 }
 
-/// HERE in the count we can pass 1 or -1 if we want to INCREMENT or DECREMENT 
+/// HERE in the count we can pass 1 or -1 if we want to INCREMENT or DECREMENT
 updateMarkedCount = (brickTypeId, count, callback) => {
     console.log("!!!!!!!!!!!!!!!!!!! HEY I AM IN GOAL SERVICE - updateMarkedCount !!!!!!!!!!!!!!!!!!!!!", brickTypeId);
-    Goal.find({'conditions.brickType': brickTypeId})
+
+    // Update Goals (active goals), with conditions of current BrickType
+    Goal.find({'conditions.brickType': brickTypeId, status: 1})
         .then(goalsForUpdating => {
 
-            for(let i = 0; i < goalsForUpdating.length; i++){
-                console.log("!!!!!!!!!!!!!!!!!!! HEY I AM IN GOAL SERVICE - goalsForUpdating !!!!!!!!!!!!!!!!!!!!!", goalsForUpdating[i]);                
-                var updateCond = { $inc: 
+          for (let i = 0; i < goalsForUpdating.length; i++) {
+            console.log("!!!!!!!!!!!!!!!!!!! HEY I AM IN GOAL SERVICE - goalsForUpdating !!!!!!!!!!!!!!!!!!!!!" + goalsForUpdating[i]);
+
+            var condition = _.find(goalsForUpdating[i].conditions, (cond) => cond.brickType.equals(brickTypeId));
+
+            console.log('Current Condition is - ', condition);
+
+            if (condition.markedCount >= condition.neededCount) continue;
+            else {
+                console.log('LETS TRY TO UPDATE CONDITION COUNT')
+                var updateCond = {
+                  $inc:
+                  {
+                    'conditions.$.markedCount': count
+                  }
+                };
+
+                // Need to check here if other conditions is finished.
+                condition.markedCount++;
+                if (_.every(goalsForUpdating[i].conditions, (cond) => cond.markedCount >= cond.neededCount)){
+                  //if (condition.markedCount + count >= condition.neededCount) {
+                  console.log('YEAH - WE NEED to set status 3 (success) for current goal');
+                  updateCond.$set =
                     {
-                        'conditions.$.markedCount': count
-                    }
-                }; 
-                if (goalsForUpdating[i].markedCount + count >= goalsForUpdating[i].neededCount){
-                    
-                    updateCond.$set =
-                    {
-                        'status': 3
+                      'status': 3
                     };
                 }
                 Goal.updateOne({
-                    '_id': goalsForUpdating[i]._id,
-                    'conditions.brickType': brickTypeId
-                }, updateCond, callback);  
+                  '_id': goalsForUpdating[i]._id,
+                  'conditions.brickType': brickTypeId
+                }, updateCond, callback);
             }
+          }
+          //callback();
         });
-} 
+}
 
 deleteGoal = async (req, res) => {
     var goalId = req.params.goalId;
@@ -114,7 +132,7 @@ deleteGoal = async (req, res) => {
             .then(goal =>{
                 if (goal){
                     console.log("УДАЛЯЕМ ЦЕЛЬ Э" , goal._id);
-                    Goal.updateOne({'_id': goal._id}, 
+                    Goal.updateOne({'_id': goal._id},
                         {$set: {
                             'status': 2
                         }},
@@ -126,14 +144,14 @@ deleteGoal = async (req, res) => {
     } catch (error) {
         return res.status(500).json(error);
     }
-    // Goal.updateOne({'_id': goalId}, 
+    // Goal.updateOne({'_id': goalId},
     //             {$set: {
     //                 'status': 2
     //             }},
     //             res.status(200).json(true));
 }
 
-module.exports = { 
+module.exports = {
     getGoalsByUserAndStatus: getGoalsByUserAndStatus,
     getMyGoalsCount: getMyGoalsCount,
     updateMarkedCount: updateMarkedCount,

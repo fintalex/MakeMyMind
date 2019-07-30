@@ -47,9 +47,9 @@ export class BrickMultyModalComponent implements OnInit {
         this.curDate = this.datePipe.transform(this.data.curBrick.date, 'dd.MM.yyyy');
 
         this.existentBrickTypes = _.filter(this.data.brickTypes, (brickType: any) => brickType.status == 1 && (this.curDate != nowDate ? brickType.type == 1 : true));
-        
+
         if(this.data.curBrick._id){
-            var curBrickInExistent = _.find(this.existentBrickTypes, (br:any) => { 
+            var curBrickInExistent = _.find(this.existentBrickTypes, (br:any) => {
                 return br._id == this.data.curBrick.brickType._id;
             });
 
@@ -68,7 +68,7 @@ export class BrickMultyModalComponent implements OnInit {
         if (this.brickDetailsForm.value.brickTypeArray.length > 1) {
             this.brickDetailsForm.value.description = '';
         }
-        
+
         this.brickService.createMultyBrick(this.brickDetailsForm.value)
             .subscribe(createdBrickArray => {
                 var res = {
@@ -83,7 +83,7 @@ export class BrickMultyModalComponent implements OnInit {
     //     this.brickDetailsForm.value.user = this.authService.CurrentUser._id;
     //     this.brickDetailsForm.value.date = this.data.curBrick.date;
     //     // this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
-        
+
     //     this.brickDetailsForm.value._id = this.data.curBrick._id;
     //     // this.brickDetailsForm.value.brickType = this.brickTypeFC.value._id;
 
